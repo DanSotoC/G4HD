@@ -12,6 +12,8 @@ class Datos_Personales(models.Model):
 	Rut = models.CharField(max_length=30)
 	Nacionalidad = models.CharField(max_length=30)
 	Fecha_Nacimiento = models.DateField()
+	updated = models.DateTimeField(auto_now=True, auto_now_add=False, null=True)
+	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True, null=True)
 
 
 class Usuario(Datos_Personales):

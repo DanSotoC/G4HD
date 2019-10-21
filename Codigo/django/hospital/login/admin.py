@@ -6,10 +6,10 @@ from .models import Usuario
 
 
 class UsuarioModelAdmin(admin.ModelAdmin):
-	list_display = ["Rut"]
-	list_display_links = ["Rut"]
-	list_filter = ["Rut", "Primer_Nombre"]
-	search_fields = ["Primer_Nombre","Primer_Apellido","Rut"]
+	list_display = ["Rut","Telefono", "updated", "timestamp"]
+	list_display_links = ["Rut", "updated", "timestamp"]
+	list_filter = ["timestamp", "updated"]
+	search_fields = ["Primer_Nombre","Primer_Apellido", "Segundo_Apellido","Rut"]
 
 	class Meta:
 		model = Usuario
