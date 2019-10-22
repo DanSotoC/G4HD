@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from django.shortcuts import HttpResponse
+from login import views
 
-# Create your views here.
+def usuarios_home(request):
+	return HttpResponse("<h1>Holaaaa</h1>")
