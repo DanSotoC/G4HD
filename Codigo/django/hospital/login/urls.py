@@ -16,7 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url
 from login import views
+from . import views
 
 urlpatterns = [
-    url(r'^user/$', views.usuarios_home),
+    url(r'^create/$', views.usuarios_create),
+    url(r'^detail/$', views.usuarios_detail),
+    url(r'^list/$', views.usuarios_list),
+    url(r'^update/$', views.usuarios_update),
+    url(r'^delete/$', views.usuarios_delete),
 ]
