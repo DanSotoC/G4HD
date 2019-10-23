@@ -1,10 +1,21 @@
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import HttpResponse
 from .models import Usuario
+from .forms import UsuarioForm
 
 
 def usuarios_create(request):
-	return HttpResponse("<h1>Create</h1>")
+	form = UsuarioForm(request.POST or None)
+
+	if form.is_valid():
+		instance=form.save(commit=False)
+		instance.save()
+
+	context = {
+
+		"form": form,
+	}
+	return render(request,"create_form.html",context)
 
 def usuarios_detail(request, id=None):
 	instance = get_object_or_404(Usuario, idDatosPer=id)
@@ -20,7 +31,7 @@ def usuarios_detail(request, id=None):
 def usuarios_list(request):
 	queryset = Usuario.objects.all()
 	context = {
-		"object_list": queryset
+		"object_list": queryset,
 	}
 	#example of context form
 	return render(request,"index.html",context)

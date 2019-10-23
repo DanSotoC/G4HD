@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Datos_Personales(models.Model):
-	idDatosPer = models.IntegerField(primary_key=True)
+	idDatosPer = models.AutoField(primary_key=True)
 	Primer_Nombre = models.CharField(max_length=30)
 	Segundo_Nombre = models.CharField(max_length=30)
 	Primer_Apellido = models.CharField(max_length=30)
