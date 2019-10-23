@@ -4,7 +4,15 @@
 
 <body>
 
-<h1>{{title}} is workiiiing!!!!</h1>
+<h1>Template is workiiiing!!!!</h1>
+
+
+{% for obj in object_list %}
+
+{{ obj.Primer_Nombre}}
+<a href='{%  url "detail" id=obj.idDatosPer %}'> {{obj.Rut}} </a></br>
+
+{% endfor %}
 
 </body>
 

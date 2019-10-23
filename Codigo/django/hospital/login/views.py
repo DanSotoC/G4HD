@@ -1,17 +1,26 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.shortcuts import HttpResponse
+from .models import Usuario
 
 
 def usuarios_create(request):
 	return HttpResponse("<h1>Create</h1>")
 
-def usuarios_detail(request):
-	return HttpResponse("<h1>Detail</h1>")
+def usuarios_detail(request, id=None):
+	instance = get_object_or_404(Usuario, idDatosPer=id)
+	context = {
+		"nom": instance.Primer_Nombre,
+		"pap": instance.Primer_Apellido,
+		"sap": instance.Segundo_Apellido,
+		"instance": instance,
+	}
+	#example of context form
+	return render(request,"details.html",context)
 
 def usuarios_list(request):
-	
+	queryset = Usuario.objects.all()
 	context = {
-		"title": "My User List"
+		"object_list": queryset
 	}
 	#example of context form
 	return render(request,"index.html",context)

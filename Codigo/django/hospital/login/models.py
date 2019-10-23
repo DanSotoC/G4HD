@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Datos_Personales(models.Model):
 	idDatosPer = models.IntegerField(primary_key=True)
 	Primer_Nombre = models.CharField(max_length=30)
@@ -26,3 +27,6 @@ def __unicode__(self):
 
 def __str__(self):
 	return self.Email
+
+def get_absolute_url(self):
+	return reverse("detail", kwargs={"id",self.idDatosPer})
