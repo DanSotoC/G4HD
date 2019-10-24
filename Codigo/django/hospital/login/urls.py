@@ -21,7 +21,7 @@ from . import views
 urlpatterns = [
     url(r'^create/$', views.usuarios_create),
     url(r'^(?P<id>\d+)/$', views.usuarios_detail, name='detail'),
-    url(r'^list/$', views.usuarios_list),
-    url(r'^update/$', views.usuarios_update),
-    url(r'^delete/$', views.usuarios_delete),
+    url(r'^list/$', views.usuarios_list, name='list'),
+    url(r'^(?P<id>\d+)/edit/$', views.usuarios_update, name='update'),
+    url(r'^(?P<id>\d+)/delete/$', views.usuarios_delete),
 ]

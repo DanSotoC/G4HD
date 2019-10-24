@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Datos_Personales(models.Model):
@@ -21,12 +22,5 @@ class Usuario(Datos_Personales):
 	Cargo = models.IntegerField()
 	Email = models.CharField(max_length=30)
 
-
-def __unicode__(self):
-	return self.Email
-
-def __str__(self):
-	return self.Email
-
-def get_absolute_url(self):
-	return reverse("detail", kwargs={"id",self.idDatosPer})
+	def get_absolute_url(self):
+		return reverse("detail", kwargs={"id",self.idDatosPer})
