@@ -1,31 +1,20 @@
 <!--DOCTYPE html -->
+{%  extends "base.html" %}
 
-<html>
-
-<body>
-
-
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
+<title> {%block head_title %} {{nom}} {{pap}} | {{block.super}} {%endblock head_title%} </title>
 
 
-<h1>{{nom}} {{pap}} {{sap}} </h1>
+{%block content%}
+
+<h1>{{nom}} {{snom}} {{pap}} {{sap}} </h1>
 
 
-
-{{ instance.Rut}}
-{{ instance.Domicilio}}
-
-
-
-</body>
-
+Domicilio:  {{ instance.Domicilio}} </br>
+Comuna: {{ instance.Comuna}} </br>
+Telefono: {{ instance.Telefono}} </br>
+Rut: {{ instance.Rut}} </br>
+Nacionalidad: {{ instance.Nacionalidad}} </br>
+Fecha de Nacimiento: {{ instance.Fecha_Nacimiento}} </br>
 
 
-
-</html>
+{%endblock content%}

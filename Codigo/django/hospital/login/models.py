@@ -23,4 +23,4 @@ class Usuario(Datos_Personales):
 	Email = models.CharField(max_length=30)
 
 	def get_absolute_url(self):
-		return reverse("detail", kwargs={"id",self.idDatosPer})
+		return reverse("detail", kwargs={"id":self.idDatosPer})

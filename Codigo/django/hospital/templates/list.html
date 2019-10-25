@@ -1,0 +1,17 @@
+<!--DOCTYPE html -->
+{%extends "base.html"%}
+{%  block content %}
+
+<h1>User List</h1>
+
+
+{% for obj in object_list %}
+
+{{ obj.Primer_Nombre}} {{obj.Segundo_Nombre}} {{ obj.Primer_Apellido}} {{obj.Segundo_Apellido}}</br>
+{{obj.Rut}} </br>
+<a href='{%  url "detail" id=obj.idDatosPer %}'> {{obj.updated}} </a></br>
+{% endfor %}
+
+
+{%  endblock content %}
+

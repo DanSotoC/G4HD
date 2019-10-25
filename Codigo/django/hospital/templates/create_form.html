@@ -1,8 +1,10 @@
 <!--DOCTYPE html -->
 
-<html>
+{%  extends "base.html" %}
 
-<body>
+<title> {%block head_title %} Create | {{block.super}} {%endblock head_title%} </title>	
+
+{%block content%}
 
 <h1>  Create User </h1>
 
@@ -11,9 +13,4 @@
 <input type="submit" value="Create User"/>
 </form>
 
-</body>
-
-
-
-
-</html>
+{%endblock content%}

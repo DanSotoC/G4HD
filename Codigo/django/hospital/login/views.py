@@ -11,8 +11,8 @@ def usuarios_create(request):
 	if form.is_valid():
 		instance=form.save(commit=False)
 		instance.save()
-
-	#	return HttpResponseRedirect(instance.get_absolute_url())
+		messages.error(request, "Successfully Created")
+		return HttpResponseRedirect(instance.get_absolute_url())
 
 
 	context = {
@@ -25,8 +25,10 @@ def usuarios_detail(request, id=None):
 	instance = get_object_or_404(Usuario, idDatosPer=id)
 	context = {	
 		"nom": instance.Primer_Nombre,
+		"snom": instance.Segundo_Nombre,
 		"pap": instance.Primer_Apellido,
 		"sap": instance.Segundo_Apellido,
+
 		"instance": instance,
 	}
 	#example of context form
@@ -38,7 +40,7 @@ def usuarios_list(request):
 		"object_list": queryset,
 	}
 	#example of context form
-	return render(request,"index.html",context)
+	return render(request,"list.html",context)
 
 def usuarios_update(request, id=None):
 	instance = get_object_or_404(Usuario, idDatosPer=id)
@@ -46,8 +48,8 @@ def usuarios_update(request, id=None):
 	if form.is_valid():
 		instance=form.save(commit=False)
 		instance.save()
-		messages.success(request, "Successfully Created")
-	#	return HttpResponseRedirect(instance.get_absolute_url())
+		messages.success(request, "<a href='#'>Item</a> Saved", extra_tags='html_safe')
+		return HttpResponseRedirect(instance.get_absolute_url())
 	else:
 		messages.error(request, "Not Successfully Created")
 
@@ -60,5 +62,6 @@ def usuarios_update(request, id=None):
 def usuarios_delete(request, id=None):
 	instance = get_object_or_404(Usuario, idDatosPer=id)
 	instance.delete()
+	messages.error(request, "Successfully deleted")
 	return redirect("list")
 
