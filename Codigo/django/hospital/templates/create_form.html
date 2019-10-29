@@ -9,7 +9,150 @@
 <h1>  User Form </h1>
 
 <form method='POST' action=''>{%  csrf_token %}
-{{form.as_p}}
+
+<!-- 
+Renderizar de manera manual
+-->
+<p>
+<label for="id_Primer_Nombre"> Primer Nombre:</label>
+<input type="text" name="Primer_Nombre" required id="id_Primer_Nombre">
+</p>
+
+<p>
+<label for="id_Segundo_Nombre"> Segundo Nombre:</label>
+<input type="text" name="Segundo_Nombre" required id="id_Segundo_Nombre">
+</p>
+
+<p>
+<label for="id_Primer_Apellido"> Primer Apellido:</label>
+<input type="text" name="Primer_Apellido" required id="id_Primer_Apellido">
+</p>
+
+<p>
+<label for="id_Segundo_Apellido"> Segundo Apellido:</label>
+<input type="text" name="Segundo_Apellido" required id="id_Segundo_Apellido">
+</p>
+
+<p>
+<label for="id_Domicilio"> Domicilio:</label>
+<input type="text" name="Domicilio" required id="id_Domicilio">
+</p>
+
+<p>
+<label for="id_Comuna"> Comuna:</label>
+<select name="Comuna" required id="id_Comuna">
+	<option value="San Bernardo">San Bernardo</option>
+	<option value="El Bosque">El Bosque</option>
+</select>
+</p>
+
+<p>
+<label for="id_Telefono"> Telefono:</label>
+<input type="text" name="Telefono" required id="id_Telefono">
+</p>
+
+<p>
+<label for="id_Rut"> Rut:</label>
+<input type="text" name="Rut" required id="id_Rut">
+</p>
+
+<p>
+<label for="id_Nacionalidad"> Nacionalidad:</label>
+<select name="Nacionalidad" required id="id_Nacionalidad">
+	<option value="Chile">Chile</option>
+	<option value="Afganistán">Afganistán</option>
+	<option value="Alemania">Alemania</option>
+	<option value="Arabia Saudita">Arabia Saudita</option>
+	<option value="Argentina">Argentina</option>
+	<option value="Australia">Australia</option>
+	<option value="Bélgica">Bélgica</option>
+	<option value="Bolivia">Bolivia</option>
+	<option value="Brasil">Brasil</option>
+	<option value="Camboya">Camboya</option>
+	<option value="Canadá">Canadá</option>
+	<option value="China">China</option>
+	<option value="Colombia">Colombia</option>
+	<option value="Corea">Corea</option>
+	<option value="Costa Rica">Costa Rica</option>
+	<option value="Cuba">Cuba</option>
+	<option value="Dinamarca">Dinamarca</option>
+	<option value="Ecuador">Ecuador</option>
+	<option value="Egipto">Egipto</option>
+	<option value="El Salvador">El Salvador</option>
+	<option value="Escocia">Escocia</option>
+	<option value="España">España</option>
+	<option value="Estados Unidos">Estados Unidos</option>
+	<option value="Estonia">Estonia</option>
+	<option value="Etiopia">Etiopia</option>
+	<option value="Filipinas">Filipinas</option>
+	<option value="Finlandia">Finlandia</option>
+	<option value="Francia">Francia</option>
+	<option value="Gales">Gales</option>
+	<option value="Grecia">Grecia</option>
+	<option value="Guatemala">Guatemala</option>
+	<option value="Haití">Haití</option>
+	<option value="Holanda">Holanda</option>
+	<option value="Honduras">Honduras</option>
+	<option value="Indonesia">Indonesia</option>
+	<option value="Inglaterra">Inglaterra</option>
+	<option value="Irak">Irak</option>
+	<option value="Irán">Irán</option>
+	<option value="Irlanda">Irlanda</option>
+	<option value="Israel">Israel</option>
+	<option value="Italia">Italia</option>
+	<option value="Japón">Japón</option>
+	<option value="Jordania">Jordania</option>
+	<option value="Laos">Laos</option>
+	<option value="Letonia">Letonia</option>
+	<option value="Lituania">Lituania</option>
+	<option value="Malasia">Malasia</option>
+	<option value="Marruecos">Marruecos</option>
+	<option value="México">México</option>
+	<option value="Nicaragua">Nicaragua</option>
+	<option value="Noruega">Noruega</option>
+	<option value="Nueva Zelanda">Nueva Zelanda</option>
+	<option value="Panamá">Panamá</option>
+	<option value="Paraguay">Paraguay</option>
+	<option value="Perú">Perú</option>
+	<option value="Polonia">Polonia</option>
+	<option value="Portugal">Portugal</option>
+	<option value="Puerto Rico">Puerto Rico</option>
+	<option value="Republica Dominicana">Republica Dominicana</option>
+	<option value="Rumania">Rumania</option>
+	<option value="Rusia">Rusia</option>
+	<option value="Suecia">Suecia</option>
+	<option value="Suiza">Suiza</option>
+	<option value="Tailandia">Tailandia</option>
+	<option value="Taiwán">Taiwán</option>
+	<option value="Turquía">Turquía</option>
+	<option value="Ucrania">Ucrania</option>
+	<option value="Uruguay">Uruguay</option>
+	<option value="Venezuela">Venezuela</option>
+	<option value="Vietnam">Vietnam</option>
+
+</select>
+
+
+
+</p>
+
+<p>
+<label for="id_Fecha_Nacimiento"> Fecha Nacimiento:</label>
+<input type="date" name="Fecha_Nacimiento" required id="id_Fecha_Nacimiento">
+</p>
+
+<p>
+<label for="id_Cargo"> Cargo: </label>
+</br>
+<input type="radio" name="Cargo" required id="id_Cargo" value="1"> Paciente
+<input type="radio" name="Cargo" required id="id_Cargo" value="2"> Enfermero/a
+</p>
+
+<p>
+<label for="id_Email"> Email:</label>
+<input type="text" name="Email" required id="id_Email">
+</p>
+
 <input type="submit" value="Save User" class="btn btn-info"/>
 </form>
 

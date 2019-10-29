@@ -1,0 +1,12 @@
+ .banner{
+	width: 700px;
+	height: 300px;
+	border: 3px solid red;
+	margin: auto;
+
+	background-image: url(http://hospitalelpino.cl/wphep/wp-content/uploads/2017/01/banner-pino.jpg);
+	background-size: 100% 100%;
+
+
+
+}

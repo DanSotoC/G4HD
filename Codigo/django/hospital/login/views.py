@@ -34,13 +34,21 @@ def usuarios_detail(request, id=None):
 	#example of context form
 	return render(request,"details.html",context)
 
-def usuarios_list(request):
+def usuarios_listpa(request):
 	queryset = Usuario.objects.all()
 	context = {
 		"object_list": queryset,
 	}
 	#example of context form
-	return render(request,"list.html",context)
+	return render(request,"listpa.html",context)
+
+def usuarios_listen(request):
+	queryset = Usuario.objects.all()
+	context = {
+		"object_list": queryset,
+	}
+	#example of context form
+	return render(request,"listen.html",context)
 
 def usuarios_update(request, id=None):
 	instance = get_object_or_404(Usuario, idDatosPer=id)
@@ -63,5 +71,7 @@ def usuarios_delete(request, id=None):
 	instance = get_object_or_404(Usuario, idDatosPer=id)
 	instance.delete()
 	messages.error(request, "Successfully deleted")
-	return redirect("list")
+	return redirect("home")
 
+def home(request):
+	return render(request,"home.html")
