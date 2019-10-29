@@ -75,3 +75,12 @@ def usuarios_delete(request, id=None):
 
 def home(request):
 	return render(request,"home.html")
+
+def asignar(request):
+	return render(request,"asignar.html")
+
+def formar(request):
+	return render(request,"formar.html")
+
+def agendar(request):
+	return render(request,"agendar.html")
