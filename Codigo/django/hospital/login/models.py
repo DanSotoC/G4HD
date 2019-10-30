@@ -19,8 +19,18 @@ class Datos_Personales(models.Model):
 
 
 class Usuario(Datos_Personales):
-	Cargo = models.IntegerField()
+	Cargo = models.IntegerField(default=1)
 	Email = models.CharField(max_length=30)
+	Nombre_Completo_Tutor = models.CharField(max_length=60,default='')
+	Rut_Tutor = models.CharField(max_length=30,default='')
 
 	def get_absolute_url(self):
 		return reverse("detail", kwargs={"id":self.idDatosPer})
+
+
+class Especialista(Datos_Personales):
+	Cargo = models.IntegerField(default=2)
+	Email = models.CharField(max_length=30,default='')
+
+	def get_absolute_url(self):
+		return reverse("detailes", kwargs={"id":self.idDatosPer})

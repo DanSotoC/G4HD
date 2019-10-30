@@ -20,11 +20,14 @@ from . import views
 
 urlpatterns = [
     url(r'^create/$', views.usuarios_create),
+    url(r'^creates/$', views.especialista_create),
     url(r'^(?P<id>\d+)/$', views.usuarios_detail, name='detail'),
+    url(r'^esp/(?P<id>\d+)/$', views.especialista_detail, name='detailes'),
     url(r'^listen/$', views.usuarios_listen, name='listen'),
     url(r'^listpa/$', views.usuarios_listpa, name='listpa'),
     url(r'^(?P<id>\d+)/edit/$', views.usuarios_update, name='update'),
     url(r'^(?P<id>\d+)/delete/$', views.usuarios_delete),
+    url(r'^esp/(?P<id>\d+)/delete/$', views.especialista_delete),
     url(r'^home/$', views.home, name="home"),
     url(r'^asignar/$', views.asignar, name="asignar"),
     url(r'^agendar/$', views.agendar, name="agendar"),

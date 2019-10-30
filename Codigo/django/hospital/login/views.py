@@ -1,8 +1,8 @@
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import HttpResponse, HttpResponseRedirect, redirect
-from .models import Usuario
-from .forms import UsuarioForm
+from .models import Usuario, Especialista
+from .forms import UsuarioForm, EspecialistaForm
 
 
 def usuarios_create(request):
@@ -21,6 +21,23 @@ def usuarios_create(request):
 	}
 	return render(request,"create_form.html",context)
 
+def especialista_create(request):
+	form = EspecialistaForm(request.POST or None)
+
+	if form.is_valid():
+		instance=form.save(commit=False)
+		instance.save()
+		messages.error(request, "Successfully Created")
+		return HttpResponseRedirect(instance.get_absolute_url())
+
+
+	context = {
+
+		"form": form,
+	}
+	return render(request,"especialista_form.html",context)
+
+
 def usuarios_detail(request, id=None):
 	instance = get_object_or_404(Usuario, idDatosPer=id)
 	context = {	
@@ -30,7 +47,20 @@ def usuarios_detail(request, id=None):
 		"sap": instance.Segundo_Apellido,
 
 		"instance": instance,
-	}
+	} 
+	#example of context form
+	return render(request,"details.html",context)
+
+def especialista_detail(request, id=None):
+	instance = get_object_or_404(Especialista, idDatosPer=id)
+	context = {	
+		"nom": instance.Primer_Nombre,
+		"snom": instance.Segundo_Nombre,
+		"pap": instance.Primer_Apellido,
+		"sap": instance.Segundo_Apellido,
+
+		"instance": instance,
+	} 
 	#example of context form
 	return render(request,"details.html",context)
 
@@ -43,7 +73,7 @@ def usuarios_listpa(request):
 	return render(request,"listpa.html",context)
 
 def usuarios_listen(request):
-	queryset = Usuario.objects.all()
+	queryset = Especialista.objects.all()
 	context = {
 		"object_list": queryset,
 	}
@@ -69,6 +99,12 @@ def usuarios_update(request, id=None):
 
 def usuarios_delete(request, id=None):
 	instance = get_object_or_404(Usuario, idDatosPer=id)
+	instance.delete()
+	messages.error(request, "Successfully deleted")
+	return redirect("home")
+
+def especialista_delete(request, id=None):
+	instance = get_object_or_404(Especialista, idDatosPer=id)
 	instance.delete()
 	messages.error(request, "Successfully deleted")
 	return redirect("home")
