@@ -17,12 +17,15 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include, url
 from login import urls
+from especialista import  urls as e_urls
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^user/', include(urls)),
+    url(r'^especialista/', include(e_urls)),
+
 ]
 
 if settings.DEBUG:
