@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+class ausencia:
+    def __init__(self):
+        id = models.IntegerField
+        hora = models.DateTimeField
+        comentario =models.CharField(max_length= 90)
