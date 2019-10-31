@@ -1,0 +1,27 @@
+{%extends "base.html"%}
+
+{%  block content %}
+
+<body>
+
+	<h1>Biblioteca</h1>
+
+
+	<div>
+		{% for arch in archivo %}
+		<p>{{arch.nombre}}</p>
+		<a href="../../media/{{arch.file}}" download="{{arch.nombre}}"> descargar</a>
+		<a href="{% url 'form_archivos_delete' arch.id %}">borrar</a>
+		<a href="{% url 'form_archivos_edit' arch.id %}">editar</a>
+		{% endfor %}
+	</div>
+
+	<a href="{% url 'form_archivos'%}">Subir Archivo </a>
+
+
+</body>
+
+
+
+
+{%  endblock content %}
