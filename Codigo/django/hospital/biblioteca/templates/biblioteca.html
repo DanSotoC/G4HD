@@ -1,27 +1,30 @@
 {%extends "base.html"%}
+{% load static %}
 
 {%  block content %}
 
 <body>
 
 	<h1>Biblioteca</h1>
-
+	<a href="{% url 'form_archivos'%}" class="btn btn-info"> + Subir Archivo </a>
 
 	<div>
+		
 		{% for arch in archivo %}
+		<div>
+		<img src="/static/pdf.png"style="width: 100px;">
+
+		<a href="../../media/{{arch.file}}" download="{{arch.nombre}}"><img src="https://www.freeiconspng.com/uploads/downloads-icon-15.png" width="50" alt="Downloads Icon" /></a>
+
+		<a href="{% url 'form_archivos_delete' arch.id %}">X</a>
+		<a href="{% url 'form_archivos_edit' arch.id %}">editar</a>	
+		</div>
 		<p>{{arch.nombre}}</p>
-		<a href="../../media/{{arch.file}}" download="{{arch.nombre}}"> descargar</a>
-		<a href="{% url 'form_archivos_delete' arch.id %}">borrar</a>
-		<a href="{% url 'form_archivos_edit' arch.id %}">editar</a>
+		
 		{% endfor %}
 	</div>
 
-	<a href="{% url 'form_archivos'%}">Subir Archivo </a>
+	
 
 
 </body>
-
-
-
-
-{%  endblock content %}

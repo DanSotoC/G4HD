@@ -20,12 +20,12 @@ from login import urls as l_urls
 from especialista import  urls as e_urls
 from django.conf import settings
 from django.conf.urls.static import static
-from biblioteca import urls
+from biblioteca import urls as biblioteca_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^user/', include(l_urls)),
     url(r'^especialista/', include(e_urls)),
-    path(r'',include ('biblioteca.urls')),
+    url(r'^biblioteca/,' include (biblioteca_urls)),
 
 
 
