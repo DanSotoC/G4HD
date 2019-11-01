@@ -14,6 +14,25 @@
 <style>
 {%block style%}
 
+    body{
+    background:#eee;    
+}
+.main-box.no-header {
+    padding-top: 20px;
+}
+.main-box {
+    background: #FFFFFF;
+    -webkit-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -moz-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -o-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    -ms-box-shadow: 1px 1px 2px 0 #CCCCCC;
+    box-shadow: 1px 1px 2px 0 #CCCCCC;
+    margin-bottom: 16px;
+    -webikt-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
 .dropbtn {
   background-color: #30AED9;
   color: white;
@@ -108,7 +127,7 @@
 	<div class="dropdown">
   <button class="dropbtn">Biblioteca</button>
   <div class="dropdown-content">
-	<a href="/home">Ver Biblioteca </a>
+	<a href="{% url 'biblioteca' %}">Ver Biblioteca </a>
   </div>
 </div>
 
