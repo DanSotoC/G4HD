@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'login',
     'especialista',
     'biblioteca',
+    'equipo',
   
 ]
 
