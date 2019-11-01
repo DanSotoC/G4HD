@@ -7,9 +7,45 @@
 
 {%block content%}
 
-<h1>  User Form </h1>
 
 
+<style>
+	input[type=text] {
+  		width: 50%;
+  		padding: 12px 20px;
+  		margin: 8px 300;
+  		box-sizing: border-box;
+}
+
+	input[type=text] {
+  		border: 2px solid lightblue;
+  		border-radius: 4px;
+}
+
+	select {
+  		padding: 12px 12px 12px 300;
+  		display: inline-block;
+}	
+
+	label {
+  		padding: 12px 12px 12px 300;
+  		display: inline-block;
+}
+
+
+
+	input[type=submit] {
+  		background-color: #4CAF50;
+  		color: white;
+  		padding: 12px 20px;
+  		border: none;
+  		border-radius: 4px;
+  		cursor: pointer;
+  		float: right;
+}
+
+
+</style> 
 
 
 
@@ -43,12 +79,12 @@ Renderizar de manera manual
 </p>
 
 <p>
-<label for="id_Primer_Apellido"> Primer Apellido:</label>
+<label for="id_Primer_Apellido"> Apellido Paterno:</label>
 <input type="text" name="Primer_Apellido" required id="id_Primer_Apellido">
 </p>
 
 <p>
-<label for="id_Segundo_Apellido"> Segundo Apellido:</label>
+<label for="id_Segundo_Apellido"> Apellido Materno:</label>
 <input type="text" name="Segundo_Apellido" required id="id_Segundo_Apellido">
 </p>
 
