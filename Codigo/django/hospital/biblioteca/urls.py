@@ -5,10 +5,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-url(r'home/',views.biblioteca,name='biblioteca'),
-url(r'subir_archivo/',views.model_form_upload,name='form_archivos'),
-url(r'eliminar/(?P<id>\d+)$',views.model_form_delete, name="form_archivos_delete"),
-url(r'editar/(?P<id>\d+)$',views.model_form_edit, name="form_archivos_edit"),
+url(r'^home/$',views.biblioteca,name='biblioteca'),
+url(r'^subir_archivo/$',views.model_form_upload,name='form_archivos'),
+url(r'^eliminar/(?P<id>\d+)$',views.model_form_delete, name="form_archivos_delete"),
+url(r'^editar/(?P<id>\d+)$',views.model_form_edit, name="form_archivos_edit"),
    ]
 
 if settings.DEBUG:
