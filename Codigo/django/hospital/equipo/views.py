@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import HttpResponse, HttpResponseRedirect, redirect
-from .models import Equipo, Asignar
+from .models import Equipo
 from .forms import EquipoForm
 
 
@@ -11,9 +11,7 @@ def crear(request):
 	if form.is_valid():
 		instance=form.save(commit=False)
 		instance.save()
-		messages.error(request, "Successfully Created")
-		return HttpResponseRedirect(instance.get_absolute_url())
-
+		return redirect("crear")
 	context = {
 
 		"form": form,

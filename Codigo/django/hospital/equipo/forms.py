@@ -5,6 +5,6 @@ class EquipoForm(forms.ModelForm):
 	class Meta:
 		model = Equipo
 		fields = [
-			"id_equipo",
-			"cant_funcionarios",
+			"nombre_equipo",
+			"funcionario",
 		]
