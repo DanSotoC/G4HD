@@ -1,10 +1,18 @@
 from django import forms
-from .models import Equipo
+from .models import Crear,Registrar
 
-class EquipoForm(forms.ModelForm):
+class CrearForm(forms.ModelForm):
 	class Meta:
-		model = Equipo
+		model = Crear
 		fields = [
-			"nombre_equipo",
-			"funcionario",
+			"Nombre",
+		]
+
+
+class RegistrarForm(forms.ModelForm):
+	class Meta:
+		model = Registrar
+		fields = [
+			"Id",
+			"Rut",
 		]

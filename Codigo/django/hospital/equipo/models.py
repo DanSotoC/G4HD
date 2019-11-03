@@ -1,10 +1,13 @@
 from django.db import models
 from login.models import Especialista, Datos_Personales
 
-class Equipo(models.Model):
-	id_equipo = models.AutoField(primary_key = True)
-	nombre_equipo = models.CharField(max_length=1, default='A')
-	funcionario = models.ForeignKey(Especialista, null=True, blank=True, on_delete=models.CASCADE	)
+class Crear(models.Model):
+	Id = models.AutoField(primary_key = True)
+	Nombre = models.CharField(max_length=10, default='')
+	def __str__(self):
+		return self.Nombre
 
-
+class Registrar(models.Model):
+    Id= models.ForeignKey(Crear, null=False, blank= True, on_delete =models.CASCADE)	
+    Rut = models.ForeignKey(Especialista, null=False, blank=True, on_delete=models.CASCADE)
 

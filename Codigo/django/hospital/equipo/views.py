@@ -1,26 +1,35 @@
-<<<<<<< HEAD
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import HttpResponse, HttpResponseRedirect, redirect
-from .models import Equipo
-from .forms import EquipoForm
+from .models import Crear,Registrar
+from .forms import CrearForm,RegistrarForm
 
 
-def crear(request):
-	form = EquipoForm(request.POST or None)
+def crear_equipo(request):
+	form = CrearForm(request.POST or None)
 
 	if form.is_valid():
 		instance=form.save(commit=False)
 		instance.save()
-		return redirect("crear")
+		return redirect("crear_equipo")
 	context = {
 
 		"form": form,
 	}
 
 	return render(request,"crear_equipo.html",context)
-=======
-from django.shortcuts import render
 
-# Create your views here.
->>>>>>> parent of 9895f17... Creacion e implementacion de Models, Views y Urls de la aplicacion Equipo
+
+def registrar_funcionario(request):
+	form = RegistrarForm(request.POST or None)
+
+	if form.is_valid():
+		instance=form.save(commit=False)
+		instance.save()
+		return redirect("registrar_funcionario")
+	context = {
+
+		"form": form,
+	}
+
+	return render(request,"registrar_funcionario.html",context)
