@@ -1,5 +1,4 @@
 from django.db import models
-<<<<<<< HEAD
 from login.models import Especialista, Datos_Personales
 
 class Equipo(models.Model):
@@ -8,5 +7,4 @@ class Equipo(models.Model):
 	funcionario = models.ForeignKey(Especialista, null=True, blank=True, on_delete=models.CASCADE	)
 
 
-=======
->>>>>>> parent of 9895f17... Creacion e implementacion de Models, Views y Urls de la aplicacion Equipo
+
