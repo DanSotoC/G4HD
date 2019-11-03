@@ -22,12 +22,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 from biblioteca import urls as b_urls
 from equipo import urls as eq_urls
+from agendar import urls as ag_urls
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^user/', include(l_urls)),
     url(r'^especialista/', include(e_urls)),
     path(r'biblioteca/', include(b_urls)),
     url(r'^equipo/', include(eq_urls)),
+    url(r'^agendar/', include(ag_urls)),
 
 
 

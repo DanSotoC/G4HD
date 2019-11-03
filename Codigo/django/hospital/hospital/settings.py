@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'especialista',
     'biblioteca',
     'equipo',
+    'agendar',
   
 ]
 
