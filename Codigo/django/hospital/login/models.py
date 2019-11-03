@@ -16,6 +16,8 @@ class Datos_Personales(models.Model):
 	Fecha_Nacimiento = models.DateField()
 	updated = models.DateTimeField(auto_now=True, auto_now_add=False, null=True)
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True, null=True)
+	def __str__(self):
+		return self.Rut
 
 
 class Usuario(Datos_Personales):
