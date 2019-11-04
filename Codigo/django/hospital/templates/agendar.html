@@ -1,9 +1,22 @@
 <!--DOCTYPE html -->
 {%extends "base.html"%}
 
+
+<title> {%block head_title %} Hora | {{block.super}} {%endblock head_title%} </title>	
+
 {%  block content %}
 
-<h1>Agendar</h1>
+
+Rut de Paciente para Pedir Hora {{object_list.Rut}}
+
+
+<p>
+<label for="id_Fecha_Nacimiento"> Fecha Nacimiento:</label>
+<input type="date" name="Fecha_Nacimiento" required id="id_Fecha_Nacimiento">
+</p>
+
+<input type="submit" value="Save User" class="btn btn-info"/>
+</form>
 
 {%  endblock content %}
 

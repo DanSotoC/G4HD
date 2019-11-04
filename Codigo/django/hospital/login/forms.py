@@ -6,7 +6,6 @@ class UsuarioForm(forms.ModelForm):
 		model = Usuario
 		fields = [
 			"Primer_Nombre",
-			"Segundo_Nombre",
 			"Primer_Apellido",
 			"Segundo_Apellido",
 			"Domicilio",
@@ -26,7 +25,6 @@ class EspecialistaForm(forms.ModelForm):
 		model = Especialista
 		fields = [
 			"Primer_Nombre",
-			"Segundo_Nombre",
 			"Primer_Apellido",
 			"Segundo_Apellido",
 			"Domicilio",

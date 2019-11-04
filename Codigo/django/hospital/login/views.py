@@ -42,7 +42,6 @@ def usuarios_detail(request, id=None):
 	instance = get_object_or_404(Usuario, idDatosPer=id)
 	context = {	
 		"nom": instance.Primer_Nombre,
-		"snom": instance.Segundo_Nombre,
 		"pap": instance.Primer_Apellido,
 		"sap": instance.Segundo_Apellido,
 
@@ -55,7 +54,6 @@ def especialista_detail(request, id=None):
 	instance = get_object_or_404(Especialista, idDatosPer=id)
 	context = {	
 		"nom": instance.Primer_Nombre,
-		"snom": instance.Segundo_Nombre,
 		"pap": instance.Primer_Apellido,
 		"sap": instance.Segundo_Apellido,
 

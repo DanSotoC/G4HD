@@ -80,7 +80,7 @@ a {
                                 <tr>
                                    	
                                     <td>                                      
-                                        <span class="user-subhead">{{ obj.Primer_Nombre}} {{obj.Segundo_Nombre}} {{ obj.Primer_Apellido}} {{obj.Segundo_Apellido}}</span>
+                                        <span class="user-subhead">{{ obj.Primer_Nombre}} {{ obj.Primer_Apellido}} {{obj.Segundo_Apellido}}</span>
                                     </td>
                                     <td>{{obj.Rut}}</td> 
                                     <td>{{obj.Domicilio}}</td>                                     
@@ -89,7 +89,9 @@ a {
                                     </td>
                                     <td style="width: 20%;">
         							
-        								<a href='{%  url "detail" id=obj.idDatosPer %}' class="btn btn-info"> Detail </a></br>                           
+        								<a href='{%  url "detail" id=obj.idDatosPer %}' class="btn btn-info"> Detail </a>
+
+                                        <a href='{%  url "agendar" id=obj.idDatosPer %}' class="btn btn-info"> Agendar Hora </a></br>                                                                 
         
                                     </td>
 

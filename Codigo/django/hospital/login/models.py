@@ -5,7 +5,6 @@ from django.urls import reverse
 class Datos_Personales(models.Model):
 	idDatosPer = models.AutoField(primary_key=True)
 	Primer_Nombre = models.CharField(max_length=30)
-	Segundo_Nombre = models.CharField(max_length=30)
 	Primer_Apellido = models.CharField(max_length=30)
 	Segundo_Apellido = models.CharField(max_length=30)
 	Domicilio = models.CharField(max_length=30)
