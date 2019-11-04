@@ -7,5 +7,7 @@ from . import views
 urlpatterns = [
     url(r'^home/$', views.home_especialista, name="home"),
     url(r'^ausencia_paciente/$', views.ausencia_paciente, name="ausencia_paciente"),
+    url(r'^ausencia_paciente_detalle/$', views.ausencia_paciente_detalle, name="ausencia_paciente_detalle"),
+
 
     ]

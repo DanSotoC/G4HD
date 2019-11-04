@@ -1,7 +1,10 @@
 from django.db import models
 
-class ausencia:
+class Paciente:
     def __init__(self):
-        id = models.IntegerField
+        rut = models.CharField(max_length=12)
         hora = models.DateTimeField
         comentario =models.CharField(max_length= 90)
+
+    def __str__(self):
+        return  self.rut
