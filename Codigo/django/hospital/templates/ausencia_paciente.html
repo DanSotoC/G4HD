@@ -4,10 +4,13 @@
 
 <h1>Ausencia de paciente</h1>
 
+
 <div class="row" >
     <form method="get">
-        <input type="text", placeholder="Ingrese Rut...", name="buscar">
-        <a href=" ausencia_paciente_detalle"   ></a> <button type="submit">Buscar</button>
+        <input type="text", placeholder="Ingrese Rut...", name="buscar", required=True>
+
+        <a href='{% url "ausencia_paciente_detalle" %}'  role="button" class="btn btn-primary btn-lg" > Buscar</a>
+
     </form>
 </div>
 

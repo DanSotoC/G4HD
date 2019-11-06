@@ -13,8 +13,8 @@ def ausencia_paciente(request):
 	return render(request, "ausencia_paciente.html", context)
 
 
-def ausencia_paciente_detalle(request, id=None):
-	instance = get_object_or_404(Usuario, idDatosPer=id)
+def ausencia_paciente_detalle(request):
+	instance = get_object_or_404(Usuario)
 	context = {
 		"nom": instance.Primer_Nombre,
 		"snom": instance.Segundo_Nombre,
