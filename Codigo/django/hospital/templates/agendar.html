@@ -4,15 +4,30 @@
 
 <title> {%block head_title %} Hora | {{block.super}} {%endblock head_title%} </title>	
 
+
+
+
 {%  block content %}
 
 
+Usuario = {{object_list.Primer_Nombre}} {{object_list.Primer_Apellido}} {{object_list.Segundo_Apellido}} 
+</br>
 Rut de Paciente para Pedir Hora {{object_list.Rut}}
 
 
+<form>
+
+
+<div class="wrap-input100 rs1 validate-input">
+	<label for="id_Rut"> Rut:</label>
+	<input type="text" name="Rut" required id="id_Rut" value="{{num}}" disabled="disabled">
+	<span class="focus-input100"></span>
+</div>
+</p>
+
 <p>
-<label for="id_Fecha_Nacimiento"> Fecha Nacimiento:</label>
-<input type="date" name="Fecha_Nacimiento" required id="id_Fecha_Nacimiento">
+<label for="id_Fecha_Visita"> Fecha Visita:</label>
+<input type="date" name="Fecha_Visita" required id="id_Fecha_Visita">
 </p>
 
 <input type="submit" value="Save User" class="btn btn-info"/>

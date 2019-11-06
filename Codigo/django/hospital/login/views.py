@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import HttpResponse, HttpResponseRedirect, redirect
 from .models import Usuario, Especialista
+from agendar.models import DateReserva
 from .forms import UsuarioForm, EspecialistaForm
 
 
@@ -99,13 +100,13 @@ def usuarios_delete(request, id=None):
 	instance = get_object_or_404(Usuario, idDatosPer=id)
 	instance.delete()
 	messages.error(request, "Successfully deleted")
-	return redirect("home")
+	return redirect("home_admin")
 
 def especialista_delete(request, id=None):
 	instance = get_object_or_404(Especialista, idDatosPer=id)
 	instance.delete()
 	messages.error(request, "Successfully deleted")
-	return redirect("home")
+	return redirect("home_admin")
 
 def home(request):
 	return render(request,"home.html")
@@ -116,5 +117,9 @@ def asignar(request):
 def formar(request):
 	return render(request,"formar.html")
 
-def agendar(request):
-	return render(request,"agendar.html")
+def agendar_all(request):
+	instance = DateReserva.objects.all()
+	context = {
+		"object_list": instance,
+	}
+	return render(request,"agendar_lista.html", context)

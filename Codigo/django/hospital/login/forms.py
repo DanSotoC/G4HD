@@ -27,8 +27,6 @@ class EspecialistaForm(forms.ModelForm):
 			"Primer_Nombre",
 			"Primer_Apellido",
 			"Segundo_Apellido",
-			"Domicilio",
-			"Comuna",
 			"Telefono",
 			"Rut",
 			"Nacionalidad",
