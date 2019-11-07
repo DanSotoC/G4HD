@@ -6,7 +6,7 @@ from django.conf.urls import include, url
 from . import views
 
 urlpatterns = [
-    url(r'^(?P<id>\d+)/agendar/$', views.agendar_usuario , name='agendar'),
+    url(r'^(?P<id>\d+)/agendar/$', views.agendar_usuario , name='agendar_form'),
 
 ]
 

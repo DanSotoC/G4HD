@@ -1,0 +1,20 @@
+<!--DOCTYPE html -->
+{%extends "base.html"%}
+
+
+<title> {%block head_title %} Hora | {{block.super}} {%endblock head_title%} </title>	
+
+
+{%  block content %}
+
+{% for obj in object_list %}
+
+{{obj.Id}}
+
+
+
+{%  endfor %}
+
+
+{%  endblock content %}
+

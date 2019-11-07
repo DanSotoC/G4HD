@@ -9,11 +9,14 @@ def agendar_usuario(request, id=None):
 	if form.is_valid():
 		instance=form.save(commit=False)
 		instance.save()
-		return redirect("agendar")
+		return redirect("agendar_form")
 
 	context = {
 
 		"form": form,
 		"object_list": queryset,
+		"num": queryset.Rut,
 	}
 	return render(request,"agendar.html",context)
+
+

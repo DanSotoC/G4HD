@@ -12,8 +12,13 @@
   </div>
   <div class="card-body">
     <h5 class="card-title">{{ instance.Rut}}</h5>
-    <p class="card-text">Domicilio: {{ instance.Domicilio}}</p>
-    <p class="card-text">Comuna: {{ instance.Comuna}}</p>
+
+  {%  if instance.Cargo == 1 %}
+
+    <p class="card-text">Domicilio: {{ instance.Domicilio }}</p>
+    <p class="card-text">Comuna: {{ instance.Comuna }}</p>
+
+  {% endif %}
     <p class="card-text">Nacionalidad: {{ instance.Nacionalidad}}</p>
     <p class="card-text">Telefono: {{ instance.Telefono}}</p>
     <p class="card-text">Fecha de Nacimiento: {{ instance.Fecha_Nacimiento}}</p>

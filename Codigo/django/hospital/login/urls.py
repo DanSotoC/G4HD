@@ -28,8 +28,8 @@ urlpatterns = [
     url(r'^(?P<id>\d+)/edit/$', views.usuarios_update, name='update'),
     url(r'^(?P<id>\d+)/delete/$', views.usuarios_delete),
     url(r'^esp/(?P<id>\d+)/delete/$', views.especialista_delete),
-    url(r'^home/$', views.home, name="home"),
+    url(r'^home/$', views.home, name="home_admin"),
     url(r'^asignar/$', views.asignar, name="asignar"),
-    url(r'^agendar/$', views.agendar, name="agendar"),
+    url(r'^agendar_all/$', views.agendar_all, name="agendar_all"),
     url(r'^formar/$', views.formar, name="formar"),
 ]

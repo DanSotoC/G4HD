@@ -24,7 +24,7 @@ select {
 	input[type=text] {
   		border: 2px solid lightblue;
   		border-radius: 4px;
-  		margin: 8px 300;
+  		margin: 8px 100;
 }
 
 	input[type=date] {
@@ -61,25 +61,22 @@ label {
   		box-sizing: border-box;
 }
 
+.contenedor{
+
+	margin-top: 30px;
+	padding: 5px; 
+	width: 650px; 
+	margin-top: 0px; 
+	margin-left: -30px;
+	border-radius: 3px; 
+}
+
 </style>
 
 
+<div class="contenedor">
 
 <form method='POST' action=''>{%  csrf_token %}
-
-<!-- 
-Renderizar de manera manual
-
-				<div class="wrap-input100 rs1 validate-input">
-					<input id="first-name" class="input100" type="text" name="first-name" placeholder="First name">
-					<span class="focus-input100"></span>
-				</div>
-
--->
-
-
-
-
 <p>
 <label class="label-input100" for="id_Primer_Nombre"> Primer Nombre</label>
 <div class="wrap-input100 rs1 validate-input">
@@ -98,19 +95,6 @@ Renderizar de manera manual
 <p>
 <label for="id_Segundo_Apellido">Apellido Materno:</label>
 <input type="text" name="Segundo_Apellido" required id="id_Segundo_Apellido">
-</p>
-
-<p>
-<label for="id_Domicilio"> Domicilio:</label>
-<input type="text" name="Domicilio" required id="id_Domicilio">
-</p>
-
-<p>
-<label for="id_Comuna"> Comuna:</label>
-<select name="Comuna" required id="id_Comuna">
-	<option value="San Bernardo">San Bernardo</option>
-	<option value="El Bosque">El Bosque</option>
-</select>
 </p>
 
 <p>
@@ -224,5 +208,7 @@ Renderizar de manera manual
 
 <input type="submit" value="Save User" class="btn btn-info"/>
 </form>
+
+</div>
 
 {%endblock content%}
