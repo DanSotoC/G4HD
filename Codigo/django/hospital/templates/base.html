@@ -51,7 +51,7 @@
   display: none;
   position: absolute;
   background-color: #9BD7EC;
-  min-width: 165px;
+  min-width: 180px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -73,14 +73,11 @@
   background-color: #048DBC;
 }
 
-
-
 {%endblock style%}
-
-
-
 </style>
 </head>
+
+
 <body >
 
 
@@ -88,53 +85,44 @@
 <div id="navbar" class="navbar-collapse collapse" style="background-color: #30AED3;">
 
 	<div class="dropdown">
-  <button class="dropbtn">Home</button>
-  <div class="dropdown-content">
-  <a href="/user/home"> Home </a>
-  <a href="#">Dashboard 2</a>
-  <a href="#">Dashboard 3</a>
+    <a href='{% url "home_admin" %}' > <button class="dropbtn">Home</button> </a>
+    <div class="dropdown-content">
+    </div>
   </div>
-</div>
 
 
 	<div class="dropdown">
-  <button class="dropbtn">Registrar</button>
-  <div class="dropdown-content">
-	<a href="/user/create" > Registar Paciente </a>
-	<a href="/user/creates"> Registar Especialista </a>
+    <button class="dropbtn">Registrar</button>
+    <div class="dropdown-content">
+	   <a href='{% url "crear_usuario" %}' > Registar Paciente </a>
+	   <a href='{% url "crear_especialista" %}'> Registar Especialista </a>
+    </div>
   </div>
-</div>
 
 
 
 	<div class="dropdown">
-  <button class="dropbtn">Listas</button>
-  <div class="dropdown-content">
-	<a href="/user/listpa"> Lista Pacientes </a>
-	<a href="/user/listen"> Lista Enfermeros/as </a>
+    <button class="dropbtn">Listas</button>
+    <div class="dropdown-content">
+	   <a href='{% url "listpa" %}'> Lista Pacientes </a>
+	   <a href='{% url "listen" %}'> Lista Enfermeros/as </a>
+    </div>
   </div>
-</div>
 
 	<div class="dropdown">
-  <button class="dropbtn">Visita</button>
-  <div class="dropdown-content">
-	<a href="/equipo/crear" > Crear Equipos </a>
-	<a href="{% url 'agendar_all' %}"> Agendar Visita </a>
-	<a href="/equipo/registrar"> Asignar Equipos </a>
+    <button class="dropbtn">Visita</button>
+    <div class="dropdown-content">
+	   <a href='{% url "crear_equipo" %}' > Crear Equipos </a>
+	   <a href="{% url 'agendar_all' %}"> Agendar Visita </a>
+	   <a href='{% url "registrar_funcionario" %}'> Asignar Equipos </a>
+    </div>
   </div>
-</div>
 
 	<div class="dropdown">
-  <button class="dropbtn">Biblioteca</button>
-  <div class="dropdown-content">
-	<a href="{% url 'biblioteca' %}">Ver Biblioteca </a>
+    <a href="{% url 'biblioteca' %}" > <button class="dropbtn">Ver Biblioteca</button> </a>
+    <div class="dropdown-content">
+    </div>
   </div>
-</div>
-
-
-
-
-
 
 
 	<ul class="nav navbar-nav navbar-right">
@@ -143,10 +131,11 @@
 
 </div>
 
+<!--
 
+Mensajes
 
-
-
+-->
 
 {%  include "messages_display.html" %}
 <div class='container'>
@@ -156,11 +145,5 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
-
 </body>
 </html>
-
-
-

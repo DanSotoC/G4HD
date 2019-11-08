@@ -5,6 +5,8 @@ class AgendarForm(forms.ModelForm):
 	class Meta:
 		model = DateReserva
 		fields = [
+			"Id",
 			"Rut",
 			"Fecha_Visita"
 		]
+		

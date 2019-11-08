@@ -19,8 +19,8 @@ from login import views
 from . import views
 
 urlpatterns = [
-    url(r'^create/$', views.usuarios_create),
-    url(r'^creates/$', views.especialista_create),
+    url(r'^create/$', views.usuarios_create, name='crear_usuario'),
+    url(r'^creates/$', views.especialista_create, name='crear_especialista'),
     url(r'^(?P<id>\d+)/$', views.usuarios_detail, name='detail'),
     url(r'^esp/(?P<id>\d+)/$', views.especialista_detail, name='detailes'),
     url(r'^listen/$', views.usuarios_listen, name='listen'),

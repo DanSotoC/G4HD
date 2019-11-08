@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Usuario
 from .forms import AgendarForm
+from django.shortcuts import HttpResponse, HttpResponseRedirect, redirect
 
 def agendar_usuario(request, id=None):
 	form = AgendarForm(request.POST or None)
@@ -9,8 +10,7 @@ def agendar_usuario(request, id=None):
 	if form.is_valid():
 		instance=form.save(commit=False)
 		instance.save()
-		return redirect("agendar_form")
-
+		return redirect("agendar_all")
 	context = {
 
 		"form": form,

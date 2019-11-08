@@ -5,5 +5,4 @@ class DateReserva(models.Model):
 	Id = models.AutoField(primary_key=True)
 	Rut = models.ForeignKey(Usuario, null=False, blank= True, on_delete =models.CASCADE)	
 	Fecha_Visita = models.DateField()
-	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True, null=True)
 
