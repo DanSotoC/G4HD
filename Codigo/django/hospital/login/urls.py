@@ -33,3 +33,4 @@ urlpatterns = [
     url(r'^agendar_all/$', views.agendar_all, name="agendar_all"),
     url(r'^formar/$', views.formar, name="formar"),
 ]
+

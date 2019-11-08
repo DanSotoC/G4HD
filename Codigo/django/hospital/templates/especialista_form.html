@@ -7,59 +7,23 @@
 
 {%block content%}
 
-<h1>  Registrar Nuevo Especialista </h1>
-
 <style>
-		
-select {
-  width: 20%;
-  padding: 16px 20px;
-  border: none;
-  border-radius: 4px;
-  margin: 8px 300;
-  background-color: #f1f1f1;
-}
-
-
 	input[type=text] {
   		border: 2px solid lightblue;
   		border-radius: 4px;
-  		margin: 8px 100;
-}
-
-	input[type=date] {
-		width: 20%;
-  		border: 2px solid lightblue;
-  		border-radius: 4px;
-  		margin: 8px 300;
-}
-
-	input[type=radio] {
-  		border: 0px solid lightblue;
-  		border-radius: 0px;
-  		margin: 8px 300;
 }
 
 	input[type=submit] {
-  		border: 2px solid lightblue;
-  		border-radius: 4px;
-  		margin: 8px 300;
-}
-
-label {
-  width: 50%;
-  padding: 16px 20px 30;
-  border: none;
-  margin: 8px 300;
-  border-radius: 4px;
-}
-
-	input[type=text] {
-  		width: 50%;
+  		background-color: #4CAF50;
+  		color: white;
   		padding: 12px 20px;
-  		margin: 8px 300;
-  		box-sizing: border-box;
+  		border: none;
+  		border-radius: 4px;
+  		cursor: pointer;
+  		float: right;
+  		
 }
+
 
 .contenedor{
 
@@ -67,48 +31,55 @@ label {
 	padding: 5px; 
 	width: 650px; 
 	margin-top: 0px; 
-	margin-left: -30px;
+	margin-left: -60px;
 	border-radius: 3px; 
 }
 
+.contenedor2{
+
+	margin-top: 30px;
+	padding: 5px; 
+	width: 650px; 
+	margin-top: -660px; 
+	margin-left: 585px;
+	border-radius: 3px; 
+}		
 </style>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <div class="contenedor">
 
 <form method='POST' action=''>{%  csrf_token %}
-<p>
-<label class="label-input100" for="id_Primer_Nombre"> Primer Nombre</label>
-<div class="wrap-input100 rs1 validate-input">
 
-	<input type="text" name="Primer_Nombre" required id="id_Primer_Nombre">
-	<span class="focus-input100"></span>
+<div class="w3-container w3-light-blue">
+  <h3>Datos Personales Especialista</h3>
 </div>
-</p>
-
-
-<p>
-<label for="id_Primer_Apellido">Apellido Paterno:</label>
-<input type="text" name="Primer_Apellido" required id="id_Primer_Apellido">
-</p>
+</br>
 
 <p>
-<label for="id_Segundo_Apellido">Apellido Materno:</label>
-<input type="text" name="Segundo_Apellido" required id="id_Segundo_Apellido">
+<label for="id_Primer_Nombre"> Primer Nombre</label></br>
+{{form.Primer_Nombre}}
 </p>
 
 <p>
-<label for="id_Telefono"> Telefono Tutor:</label>
-<input type="text" name="Telefono" required id="id_Telefono">
+<label for="id_Primer_Apellido">Apellido Paterno</label></br>
+{{form.Primer_Apellido}}
 </p>
 
 <p>
-<label for="id_Rut"> Rut:</label>
+<label for="id_Segundo_Apellido">Apellido Materno</label></br>
+{{form.Segundo_Apellido}}
+</p>
+
+<p>
+<label for="id_Rut"> Rut Especialista</label></br>
 <input type="text" name="Rut" required id="id_Rut">
 </p>
 
 <p>
-<label for="id_Nacionalidad"> Nacionalidad:</label>
+<label for="id_Nacionalidad"> Nacionalidad</label></br>
 <select name="Nacionalidad" required id="id_Nacionalidad">
 	<option value="Chile">Chile</option>
 	<option value="Afganistán">Afganistán</option>
@@ -182,27 +153,38 @@ label {
 	<option value="Vietnam">Vietnam</option>
 
 </select>
-
-
-
 </p>
 
 <p>
-<label for="id_Fecha_Nacimiento"> Fecha Nacimiento:</label>
+<label for="id_Fecha_Nacimiento"> Fecha Nacimiento</label></br>
 <input type="date" name="Fecha_Nacimiento" required id="id_Fecha_Nacimiento">
 </p>
 
-<p>
-<label for="id_Cargo"> Cargo: </label>
+<div class="w3-container w3-light-blue">
+  <h3>Contacto</h3>
+</div>
 </br>
-<input type="radio" name="Cargo" required id="id_Cargo" value="2"> Enfermero  </br> 
-<input type="radio" name="Cargo" required id="id_Cargo" value="3"> Kinesiologo </br>
-<input type="radio" name="Cargo" required id="id_Cargo" value="4"> Técnico </br>
+
+<p>
+<label for="id_Telefono"> Telefono Tutor</label></br>
+<input type="text" name="Telefono" required id="id_Telefono">
 </p>
 
 <p>
-<label for="id_Email"> Email:</label>
+<label for="id_Email"> Email</label></br>
 <input type="text" name="Email" required id="id_Email">
+</p>
+
+<div class="w3-container w3-light-blue">
+  <h3>Especialidad</h3>
+</div>
+</br>
+
+<p>
+<label for="id_Cargo"> Cargo </label></br>
+<input type="radio" name="Cargo" required id="id_Cargo" value="2"> Enfermero  </br> 
+<input type="radio" name="Cargo" required id="id_Cargo" value="3"> Kinesiologo </br>
+<input type="radio" name="Cargo" required id="id_Cargo" value="4"> Técnico </br>
 </p>
 
 
@@ -210,5 +192,8 @@ label {
 </form>
 
 </div>
+
+</br>
+</br>
 
 {%endblock content%}

@@ -10,29 +10,12 @@
 
 
 <style>
-	input[type=text] {
-  		width: 50%;
-  		padding: 12px 20px;
-  		margin: 8px 300;
-  		box-sizing: border-box;
-}
+
 
 	input[type=text] {
   		border: 2px solid lightblue;
   		border-radius: 4px;
 }
-
-	select {
-  		padding: 12px 12px 12px 300;
-  		display: inline-block;
-}	
-
-	label {
-  		padding: 12px 12px 12px 300;
-  		display: inline-block;
-}
-
-
 
 	input[type=submit] {
   		background-color: #4CAF50;
@@ -42,6 +25,7 @@
   		border-radius: 4px;
   		cursor: pointer;
   		float: right;
+  		
 }
 
 
@@ -51,62 +35,66 @@
 	padding: 5px; 
 	width: 650px; 
 	margin-top: 0px; 
-	margin-left: -30px;
+	margin-left: -60px;
 	border-radius: 3px; 
 }
 
+.contenedor2{
+
+	margin-top: 30px;
+	padding: 5px; 
+	width: 650px; 
+	margin-top: -660px; 
+	margin-left: 585px;
+	border-radius: 3px; 
+}
 
 </style> 
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <div class="contenedor">
 
 <form method='POST' action=''>{%  csrf_token %}
 
-<p>
-<label class="label-input100" for="id_Primer_Nombre"> Primer Nombre</label>
-<div class="wrap-input100 rs1 validate-input">
 
-	<input type="text" name="Primer_Nombre" required id="id_Primer_Nombre">
-	<span class="focus-input100"></span>
+
+<div class="w3-container w3-light-blue">
+  <h3>Datos Personales Paciente</h3>
 </div>
-</p>
+</br>
 
 
-<p>
-<label for="id_Primer_Apellido"> Apellido Paterno:</label>
-<input type="text" name="Primer_Apellido" required id="id_Primer_Apellido">
-</p>
 
 <p>
-<label for="id_Segundo_Apellido"> Apellido Materno:</label>
-<input type="text" name="Segundo_Apellido" required id="id_Segundo_Apellido">
+<label for="id_Primer_Apellido"> Primer Nombre</label> </br>
+{{form.Primer_Nombre}}
 </p>
 
 <p>
-<label for="id_Domicilio"> Domicilio:</label>
-<input type="text" name="Domicilio" required id="id_Domicilio">
+<label for="id_Primer_Apellido"> Apellido Paterno</label> </br>
+{{form.Primer_Apellido}}
 </p>
 
 <p>
-<label for="id_Comuna"> Comuna:</label>
-<select name="Comuna" required id="id_Comuna">
-	<option value="San Bernardo">San Bernardo</option>
-	<option value="El Bosque">El Bosque</option>
-</select>
+<label for="id_Segundo_Apellido"> Apellido Materno</label></br>
+{{form.Segundo_Apellido}}
 </p>
 
 <p>
-<label for="id_Telefono"> Telefono Tutor:</label>
-<input type="text" name="Telefono" required id="id_Telefono">
-</p>
-
-<p>
-<label for="id_Rut"> Rut:</label>
+<label for="id_Rut"> Rut Paciente</label></br>
 <input type="text" name="Rut" required id="id_Rut">
 </p>
 
 <p>
-<label for="id_Nacionalidad"> Nacionalidad:</label>
+<label for="id_Fecha_Nacimiento"> Fecha Nacimiento</label></br>
+<input type="date" name="Fecha_Nacimiento" required id="id_Fecha_Nacimiento" value="1960-01-01">
+</p>
+
+
+<p>
+<label for="id_Nacionalidad"> Pais de Origen</label></br>
 <select name="Nacionalidad" required id="id_Nacionalidad">
 	<option value="Chile">Chile</option>
 	<option value="Afganistán">Afganistán</option>
@@ -180,36 +168,62 @@
 	<option value="Vietnam">Vietnam</option>
 
 </select>
+</p>
 
+<div class="w3-container w3-light-blue">
+  <h3>Domicilio</h3>
+</div></br>
 
-
+<p>
+<label for="id_Comuna"> Comuna</label></br>
+<select name="Comuna" required id="id_Comuna">
+	<option value="San Bernardo">San Bernardo</option>
+	<option value="El Bosque">El Bosque</option>
+</select>
 </p>
 
 <p>
-<label for="id_Fecha_Nacimiento"> Fecha Nacimiento:</label>
-<input type="date" name="Fecha_Nacimiento" required id="id_Fecha_Nacimiento">
+<label for="id_Domicilio"> Domicilio</label></br>
+{{form.Domicilio}}
+</p>
+
+</div>
+
+<div class="contenedor2">
+
+<div class="w3-container w3-light-blue">
+  <h3>Datos Tutor</h3>
+</div></br>
+
+<p>
+<label for="id_Nombre_Completo_Tutor"> Nombre Completo Tutor</label></br>
+{{form.Nombre_Completo_Tutor}}
 </p>
 
 <p>
-<label for="id_Cargo"> Cargo: </label>
-</br>
-<input type="radio" name="Cargo" required id="id_Cargo" value="1"> Paciente
-</p>
-
-<p>
-<label for="id_Email"> Email:</label>
-<input type="text" name="Email" required id="id_Email">
-</p>
-
-<p>
-<label for="id_Nombre_Completo_Tutor"> Nombre Completo Tutor:</label>
-<input type="text" name="Nombre_Completo_Tutor" required id="id_Nombre_Completo_Tutor">
-</p>
-
-<p>
-<label for="id_Rut_Tutor"> Rut Tutor:</label>
+<label for="id_Rut_Tutor"> Rut Tutor</label></br>
 <input type="text" name="Rut_Tutor" required id="id_Rut_Tutor">
 </p>
+
+<div class="w3-container w3-light-blue">
+  <h3>Contacto Tutor</h3>
+</div></br>
+
+<p>
+<label for="id_Telefono"> Telefono Tutor</label></br>
+<input type="text" name="Telefono" required id="id_Telefono">
+</p>
+
+<p>
+<label for="id_Email"> Email Tutor</label></br>
+<input type="text" name="Email" required id="id_Email">
+</p>
+<!--
+	Campo oculto para reconocer tipo de usuario
+ 	
+-->
+<label for="id_Cargo"></label>
+<input name="Cargo" required id="id_Cargo" value="1" style="visibility:hidden">
 
 
 <input type="submit" value="Save User" class="btn btn-info"/>
