@@ -7,6 +7,8 @@ from . import views
 
 urlpatterns = [
     url(r'^(?P<id>\d+)/agendar/$', views.agendar_usuario , name='agendar_form'),
-
+    url(r'^serializer/$', views.CreateView.as_view(), name='serializer'),
 ]
+
+
 

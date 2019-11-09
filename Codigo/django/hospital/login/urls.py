@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^creates/$', views.especialista_create, name='crear_especialista'),
     url(r'^(?P<id>\d+)/$', views.usuarios_detail, name='detail'),
     url(r'^esp/(?P<id>\d+)/$', views.especialista_detail, name='detailes'),
+    url(r'^lista/$', views.home_list, name='home_list'),
     url(r'^listen/$', views.usuarios_listen, name='listen'),
     url(r'^listpa/$', views.usuarios_listpa, name='listpa'),
     url(r'^(?P<id>\d+)/edit/$', views.usuarios_update, name='update'),

@@ -31,9 +31,7 @@ urlpatterns = [
     path(r'biblioteca/', include(b_urls)),
     url(r'^equipo/', include(eq_urls)),
     url(r'^agendar/', include(ag_urls)),
-
-
-
+    
 
 ]
 

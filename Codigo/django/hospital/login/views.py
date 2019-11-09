@@ -79,6 +79,15 @@ def usuarios_listen(request):
 	#example of context form
 	return render(request,"listen.html",context)
 
+def home_list(request):
+	querysetuser = Usuario.objects.count()
+	querysetesp = Especialista.objects.count()
+	context = {
+		"esp": querysetesp,
+		"usr": querysetuser,
+	}
+	return render(request,"lista.html", context)
+
 def usuarios_update(request, id=None):
 	instance = get_object_or_404(Usuario, idDatosPer=id)
 	form = UsuarioForm(request.POST or None, instance=instance)
