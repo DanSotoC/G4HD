@@ -23,7 +23,7 @@ class Usuario(Datos_Personales):
 	Email = models.CharField(max_length=30)
 	Nombre_Completo_Tutor = models.CharField(max_length=60,default='')
 	Rut_Tutor = models.CharField(max_length=30,default='')
-	Domicilio = models.CharField(max_length=30, default='')
+	Domicilio = models.CharField(max_length=50, default='')
 	Comuna = models.CharField(max_length=30, default='')
 
 	def get_absolute_url(self):
