@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect
  
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
-
+import os
 
 
 def biblioteca(request):
@@ -31,8 +31,10 @@ def model_form_upload(request):
 
 
 def model_form_delete(request,id):
+    
     archivo=Archivo.objects.get(id=id)
     if request.method=='POST':
+        os.remove("media/"+ str(archivo.file))
         archivo.delete()
         return redirect(biblioteca)
     return render(request,'form_archivos_delete.html', {'archivo':archivo})
