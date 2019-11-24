@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 from biblioteca import urls as b_urls
 from equipo import urls as eq_urls
 from agendar import urls as ag_urls
+from cuidador import urls as cu_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,8 +32,7 @@ urlpatterns = [
     path(r'biblioteca/', include(b_urls)),
     url(r'^equipo/', include(eq_urls)),
     url(r'^agendar/', include(ag_urls)),
-    
-
+    url(r'^cuidador/', include(cu_urls)),
 ]
 
 if settings.DEBUG:
