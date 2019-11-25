@@ -151,8 +151,17 @@ def formar(request):
 	return render(request,"formar.html")
 
 def agendar_all(request):
-	instance = DateReserva.objects.all()
+	qset = request.GET.get("buscar")
+	dat = DateReserva.objects.filter(Rut = qset) 
+	queryset = Usuario.objects.all()
+
+	if dat.count() < 1:
+		instance = DateReserva.objects.all()
+	else:
+		instance = dat
+
 	context = {
-		"object_list": instance,
+		"date_list": instance,
+		"object_list": queryset,
 	}
 	return render(request,"agendar_lista.html", context)
