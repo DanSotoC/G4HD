@@ -64,17 +64,34 @@ def especialista_detail(request, id=None):
 	return render(request,"details.html",context)
 
 def usuarios_listpa(request):
-	queryset = Usuario.objects.all()
+	qset = request.GET.get("buscar")
+	user = Usuario.objects.filter(Rut = qset)
+
+	if user.count() < 1:
+		queryset = Usuario.objects.all()
+	else:
+		queryset = user	
+	
 	context = {
+
 		"object_list": queryset,
+
 	}
 	#example of context form
 	return render(request,"listpa.html",context)
 
 def usuarios_listen(request):
-	queryset = Especialista.objects.all()
+	qset = request.GET.get("buscar")
+	user = Especialista.objects.filter(Rut = qset)
+	
+	if user.count() < 1:
+		queryset = Especialista.objects.all()
+	else:
+		queryset = user
+
 	context = {
-		"object_list": queryset,
+
+		"object_list": queryset,	
 	}
 	#example of context form
 	return render(request,"listen.html",context)
