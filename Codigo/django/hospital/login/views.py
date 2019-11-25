@@ -135,7 +135,14 @@ def especialista_delete(request, id=None):
 	return redirect("home_admin")
 
 def home(request):
-	return render(request,"home.html")
+	pacientes = Usuario.objects.count()
+	context = {
+
+		"pacientes_totales": pacientes,
+
+
+	}
+	return render(request,"home.html", context)
 
 def asignar(request):
 	return render(request,"asignar.html")

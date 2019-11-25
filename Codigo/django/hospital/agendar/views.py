@@ -26,10 +26,7 @@ def agendar_usuario(request, id=None):
 		"form": form,
 		"object_list": queryset,
 		"num": queryset.Rut,
-		"dir": Dir,
-		"la":n.latitude,
-		"lo":n.longitude,
-		
+	
 	}
 	return render(request,"agendar.html",context)
 
