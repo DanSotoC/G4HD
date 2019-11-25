@@ -12,3 +12,4 @@ def home_cuidador(request):
 def biblioteca_cuidador(request):
 	archivo = Archivo.objects.all()
 	return render(request,'biblioteca_cuidador.html',{'archivo':archivo})
+
