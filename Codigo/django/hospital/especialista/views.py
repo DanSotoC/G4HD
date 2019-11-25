@@ -7,17 +7,17 @@ def home_especialista(request):
 
 def ausencia_paciente(request):
 	queryset =request.GET.get("buscar")
+	user = Usuario.objects.filter(Rut = queryset)
 	context = {
-		"object_list": queryset,
+		"object_list": user,
 	}
 	return render(request, "ausencia_paciente.html", context)
 
 
-def ausencia_paciente_detalle(request):
-	instance = get_object_or_404(Usuario)
+def ausencia_paciente_detalle(request, id =None):
+	instance = get_object_or_404(Usuario, idDatosPer = id)
 	context = {
 		"nom": instance.Primer_Nombre,
-		"snom": instance.Segundo_Nombre,
 		"pap": instance.Primer_Apellido,
 		"sap": instance.Segundo_Apellido,
 

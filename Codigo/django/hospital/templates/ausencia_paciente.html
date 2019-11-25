@@ -4,15 +4,73 @@
 
 <h1>Ausencia de paciente</h1>
 
-
-<div class="row" >
-    <form method="get">
-        <input type="text", placeholder="Ingrese Rut...", name="buscar", required=True>
-
-        <a href='{% url "ausencia_paciente_detalle" %}'  role="button" class="btn btn-primary btn-lg" > Buscar</a>
-
-    </form>
+<div class="container">
+    <div class="row" >
+        <div class="col-md-12 search">
+        <form method="get">
+            <div id="custom-search-input">
+                <input type="text" class="form-control" placeholder="Ingrese Rut" name="buscar">
+                <span class="input-group-list">
+                    <i class="icon icon-search"></i>
+                    <button type="submit" class="button btn-success">Buscar</button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
 </div>
 
+<div class="container bootstrap snippet">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-box no-header clearfix">
+                <div class="main-box-body clearfix">
+                    <div class="table-responsive">
+                        <table class="table user-list">
+                            <thead>
+                                <tr>
+                                <th><span>Nombre Completo</span></th>
+                                <th><span>Rut</span></th>
+                                <th><span>Domicilio</span></th>
+                                <th><span>Email</span></th>
+                                <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            	{% for obj in object_list %}
+                            	{%if obj.Cargo == 1 %}
+
+                                <tr>
+
+                                    <td>
+                                        <span class="user-subhead">{{ obj.Primer_Nombre}} {{ obj.Primer_Apellido}} {{obj.Segundo_Apellido}}</span>
+                                    </td>
+                                    <td>{{obj.Rut}}</td>
+                                    <td>{{obj.Domicilio}}</td>
+                                    <td>
+                                        <a >{{obj.Email}}</a>
+                                    </td>
+                                    <td style="width: 20%;">
+
+        								<a href='{%  url "ausencia_paciente_detalle" id=obj.idDatosPer %}' class="btn btn-info"> Detail </a>
+
+
+                                    </td>
+
+
+                                </tr>
+
+										{%endif%}
+										{% endfor %}
+
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 {%  endblock content %}
