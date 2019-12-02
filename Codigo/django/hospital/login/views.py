@@ -152,11 +152,11 @@ def formar(request):
 
 def agendar_all(request):
 	qset = request.GET.get("buscar")
-	dat = DateReserva.objects.filter(Rut = qset) 
+	dat = DateReserva.objects.filter(Rut = qset).order_by('Fecha_Visita') 
 	queryset = Usuario.objects.all()
 
 	if dat.count() < 1:
-		instance = DateReserva.objects.all()
+		instance = DateReserva.objects.all().order_by('Fecha_Visita')
 	else:
 		instance = dat
 

@@ -24,9 +24,11 @@ from biblioteca import urls as b_urls
 from equipo import urls as eq_urls
 from agendar import urls as ag_urls
 from cuidador import urls as cu_urls
+from rest_framework.authtoken import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api_generate_token/', views.obtain_auth_token),
     url(r'^user/', include(l_urls)),
     url(r'^especialista/', include(e_urls)),
     path(r'biblioteca/', include(b_urls)),
