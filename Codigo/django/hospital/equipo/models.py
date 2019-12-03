@@ -10,4 +10,5 @@ class Crear(models.Model):
 class Registrar(models.Model):
     Id= models.ForeignKey(Crear, null=False, blank= True, on_delete =models.CASCADE)	
     Rut = models.ForeignKey(Especialista, null=False, blank=True, on_delete=models.CASCADE)
-
+    def __str__(self):
+    	return self.Id

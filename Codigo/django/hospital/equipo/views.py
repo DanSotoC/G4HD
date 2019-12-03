@@ -33,3 +33,13 @@ def registrar_funcionario(request):
 	}
 
 	return render(request,"registrar_funcionario.html",context)
+
+
+def listar_equipos(request, id=None):
+	queryset = Registrar.objects.all()
+	
+	context = {
+
+		"object_list": queryset,	
+	}
+	return render(request,"listar_equipo.html",context)

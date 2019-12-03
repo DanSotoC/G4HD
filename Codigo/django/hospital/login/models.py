@@ -15,7 +15,7 @@ class Datos_Personales(models.Model):
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True, null=True)
 	
 	def __str__(self):
-		return self.Rut
+		return self.Primer_Nombre + " " +self.Primer_Apellido+ " "+ self.Segundo_Apellido+ " "+ self.Rut
 
 
 class Usuario(Datos_Personales):
