@@ -58,6 +58,8 @@ a {
 
 </style>
 
+
+
 <h1>Lista de Visitas</h1>
 
 
@@ -91,7 +93,7 @@ a {
             <div class="main-box no-header clearfix">
                 <div class="main-box-body clearfix">
                     <div class="table-responsive">
-                        <table class="table user-list">
+                        <table class="table user-list" >
                             <thead>
                                 <tr>    
                                 <th><span>Nombre Completo</span></th>
@@ -104,8 +106,6 @@ a {
                             </thead>
                             <tbody>
 
-
-                            
                             	{% for fecha in date_list %}
 
                                 {%if fecha.Status == 1%}
@@ -142,8 +142,6 @@ a {
 
 
                                     </td>
-
-                                    	
                                 </tr>
                                 {%endif%}
 								{% endfor %}
@@ -188,8 +186,18 @@ a {
 
                                         
                                 </tr>
+
                                 {%endif%}
                                 {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 
