@@ -165,3 +165,6 @@ def agendar_all(request):
 		"object_list": queryset,
 	}
 	return render(request,"agendar_lista.html", context)
+
+def main(request):
+	return render(request,"main.html")

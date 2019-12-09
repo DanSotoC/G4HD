@@ -24,9 +24,12 @@ from biblioteca import urls as b_urls
 from equipo import urls as eq_urls
 from agendar import urls as ag_urls
 from cuidador import urls as cu_urls
+from login import views as main_view
 from rest_framework.authtoken import views
 
+
 urlpatterns = [
+    url(r'^$', main_view.main ),
     path('admin/', admin.site.urls),
     path('api_generate_token/', views.obtain_auth_token),
     url(r'^user/', include(l_urls)),
@@ -35,6 +38,7 @@ urlpatterns = [
     url(r'^equipo/', include(eq_urls)),
     url(r'^agendar/', include(ag_urls)),
     url(r'^cuidador/', include(cu_urls)),
+    path('accounts/', include('django.contrib.auth.urls'))
 ]
 
 if settings.DEBUG:
