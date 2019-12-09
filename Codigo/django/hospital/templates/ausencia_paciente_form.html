@@ -40,19 +40,20 @@
 }
 
 </style>
+
 <div class="contenedor">
     <form method='POST' action=''>{%  csrf_token %}
     <input type="hidden" name="rut" required id="id_rut"  value= {{ instance.Rut }} >
     <p>
-    <label for="hora">Hora</label></br>
+        <label for="hora">Hora</label></br>
         <input type="time" name="hora" required id="id_hora"  min="08:00" max="20:00">
     </p>
     <p>
-    <label for="hora">Comentario</label></br>
-    {{form.comentario}}
+      <label for="comentario">Comentario</label></br>
+      {{form.comentario}}
     </p>
-        <div class="contenedor2"><input type="submit" value="Aceptar" class="btn btn-success"/></div>
-</form>
+      <div class="contenedor2"><input type="submit" value="Aceptar" class="btn btn-success"/></div>
+    </form>
 </div>
 
 

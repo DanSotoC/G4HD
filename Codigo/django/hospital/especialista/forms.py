@@ -5,6 +5,7 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Paciente
         fields = [
+        	'rut',
             'hora',
             'comentario'
         ]
