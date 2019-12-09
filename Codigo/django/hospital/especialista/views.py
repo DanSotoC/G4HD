@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
 from login.models import Usuario
-
+from .forms import PostForm
+from django.shortcuts import HttpResponse, HttpResponseRedirect, redirect
+from django.contrib import messages
 def home_especialista(request):
 	return render(request,"index_especialista.html")
 
@@ -24,3 +26,19 @@ def ausencia_paciente_detalle(request, id =None):
 		"instance": instance,
 	}
 	return render(request,"ausencia_paciente_detalle.html", context)
+
+def ausencia_paciente_form(request, id=None):
+	instance = get_object_or_404(Usuario, idDatosPer=id)
+	form = PostForm(request.POST or None)
+	if form.is_valid():
+		instance = form.save(commit=False)
+		instance.save()
+		messages.error(request, "Successfully Created")
+		return HttpResponseRedirect(instance.get_absolute_url())
+
+	context = {
+
+		"form": form,
+		"instance": instance,
+	}
+	return render(request, "ausencia_paciente_form.html", context)

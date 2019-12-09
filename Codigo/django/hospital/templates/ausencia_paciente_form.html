@@ -1,0 +1,59 @@
+{% extends "base_especialista.html" %}
+{%block content%}
+
+<style>
+	input[type=text] {
+  		border: 2px solid lightblue;
+  		border-radius: 4px;
+}
+
+	input[type=submit] {
+  		background-color: #4CAF50;
+  		color: white;
+  		padding: 12px 20px;
+  		border: none;
+  		border-radius: 4px;
+  		cursor: pointer;
+  		float: right;
+
+}
+
+
+.contenedor{
+
+	margin-top: 30px;
+	padding: 5px;
+	width: 650px;
+	margin-top: 0px;
+	margin-left: -60px;
+	border-radius: 3px;
+}
+
+.contenedor2{
+
+	margin-top: 30px;
+	padding: 5px;
+	width: 650px;
+	margin-top: 0px;
+	margin-left: -500px;
+	border-radius: 3px;
+}
+
+</style>
+<div class="contenedor">
+    <form method='POST' action=''>{%  csrf_token %}
+    <input type="hidden" name="rut" required id="id_rut"  value= {{ instance.Rut }} >
+    <p>
+    <label for="hora">Hora</label></br>
+        <input type="time" name="hora" required id="id_hora"  min="08:00" max="20:00">
+    </p>
+    <p>
+    <label for="hora">Comentario</label></br>
+    <input type="text" name="comentario" required id="id_comentario"  min="08:00" max="20:00">
+    </p>
+        <div class="contenedor2"><input type="submit" value="Aceptar" class="btn btn-success"/></div>
+</form>
+</div>
+
+
+{% endblock %}

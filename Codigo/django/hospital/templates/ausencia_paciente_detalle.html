@@ -10,19 +10,24 @@
   <div class="card-header">
     <h1>{{nom}} {{snom}} {{pap}} {{sap}} </h1>
   </div>
-  <div class="card-body">
+  <div class="card-body">4
+      km,
     <h5 class="card-title">{{ instance.Rut}}</h5>
     <p class="card-text">Domicilio: {{ instance.Domicilio}}</p>
     <p class="card-text">Comuna: {{ instance.Comuna}}</p>
     <p class="card-text">Nacionalidad: {{ instance.Nacionalidad}}</p>
     <p class="card-text">Telefono: {{ instance.Telefono}}</p>
     <p class="card-text">Fecha de Nacimiento: {{ instance.Fecha_Nacimiento}}</p>
-    <a href="" class="btn btn-info" role="button">Notificar Ausencia</a>
+
+
+
+
+
 
 
 
 <a href="{% url 'ausencia_paciente' %}" class="btn btn-info" role="button">Volver</a>
-
+<a href='{% url "ausencia_paciente_form" id=instance.idDatosPer %} ' class="btn btn-info">Notificar Ausencia</a>
 
 
   </div>
