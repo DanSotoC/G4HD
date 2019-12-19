@@ -38,19 +38,26 @@
 	margin-left: -500px;
 	border-radius: 3px;
 }
+.medium-textarea textarea {
+    resize: none;
+   height: 6em;
+   width: 4000px;
+}
+
 
 </style>
 
 <div class="contenedor">
     <form method='POST' action=''>{%  csrf_token %}
-    <input type="hidden" name="rut" required id="id_rut"  value= {{ instance.Rut }} >
-    <p>
-        <label for="hora">Hora</label></br>
-        <input type="time" name="hora" required id="id_hora"  min="08:00" max="20:00">
-    </p>
+     <input type="hidden" name="rut" required id="id_rut"  value= {{ instance.Rut }} >
+     <p>
+       <label for="id_hora">Hora:</label>
+       <input id="id_hora" type="datetime-local" name="hora"  min="08:00" max="20:00" placeholder="08:00"   required>
+     </p>
     <p>
       <label for="comentario">Comentario</label></br>
-      {{form.comentario}}
+        <textarea class="medium-textarea" type="text"  rows="10" cols="50" name="comentario" required id="id_comentario"  placeholder=" Ingrese su comentario"  maxlength="90" required ></textarea>
+
     </p>
       <div class="contenedor2"><input type="submit" value="Aceptar" class="btn btn-success"/></div>
     </form>

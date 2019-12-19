@@ -30,11 +30,16 @@ def ausencia_paciente_detalle(request, id =None):
 def ausencia_paciente_form(request, id=None):
 	instance = get_object_or_404(Usuario, idDatosPer=id)
 	form = PostForm(request.POST or None)
+
 	if form.is_valid():
-		instance = form.save(commit=False)
-		instance.save()
+		print("dentro")
+		inst = form.save(commit=False)
+		inst.save()
 		messages.error(request, "Successfully Created")
-		return HttpResponseRedirect(instance.get_absolute_url())
+#		return HttpResponseRedirect(instance.get_absolute_url())
+		return HttpResponseRedirect("ausencia_paciente_detalle.html")
+	else :
+		print(form)
 
 	context = {
 
