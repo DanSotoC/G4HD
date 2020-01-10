@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'biblioteca',
     'equipo',
     'agendar',
+    'usuario',
   
 ]
 

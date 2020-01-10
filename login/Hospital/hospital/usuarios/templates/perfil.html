@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Perfil</title>
+</head>
+<body>
+	
+{% if usuarios %}
+
+<div><h1> Username: {{usuarios.username}}</h1>
+<h2> Id: {{usuarios.perfil.usuario_id}}</h2>
+<h2>Nombre: {{usuarios.first_name}}</h2>
+<h2> Apellido: {{usuarios.last_name}}</h2></div>
+<br>
+<br>
+<h2>Rut:{{usuarios.perfil.rut}}</h2>
+<h2>Rol: {{usuarios.perfil.rol}}</h2>
+<h2>Tel. Celular: +56 9 {{usuarios.perfil.tel}}  </h2>
+
+
+<a href="{% url 'perfil_editar' usuarios.perfil.usuario_id %}" class="a-editar">Editar</a>
+
+{% if usuarios.perfil.rol == "TUTOR" %}
+
+<h1>ingrese datos de Tutor</h1>
+<a href="{% url 'tutor_form' %} " class="a-editar">Editar</a>
+<button>link de paciente</button>
+{% endif %}
+{% endif %}
+ 
+</body>
+</html>
