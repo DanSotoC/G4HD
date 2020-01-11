@@ -17,7 +17,7 @@ class Perfil(models.Model):
 
 class Tutor(models.Model):
 	id_perfil = models.ForeignKey(Perfil, default=None,on_delete=models.CASCADE)
-	rut = models.CharField(primary_key=True, null=False,max_length=15)
+	rut = models.CharField( null=False,max_length=15)
 	comuna= models.CharField(max_length=20)
 	domicilio=models.CharField(max_length=50)
 	num_domicilio=models.CharField(max_length=50)
@@ -25,11 +25,11 @@ class Tutor(models.Model):
 	f_nacimiento=models.CharField(max_length=20)
 	
 	def __str__(self):
-		return str(self.rut)
+		return str(self.id_perfil.usuario.username)
 	
 
 class Paciente(models.Model):
-	rut_tutor= models.ForeignKey(Tutor,on_delete=models.CASCADE)
+	id_tutor= models.ForeignKey(Tutor,on_delete=models.CASCADE)
 	nombre = models.CharField(max_length=30)
 	apellido1=models.CharField(max_length=30)
 	apellido2=models.CharField(max_length=30)

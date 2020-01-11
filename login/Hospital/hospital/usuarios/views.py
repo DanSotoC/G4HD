@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib.auth.models import User
 from .models import Perfil, Tutor
-from .forms import  Registro_Form,Perfil_Form, Tutor_Form
+from .forms import  Registro_Form,Perfil_Form, Tutor_Form, Paciente_Form
 from django.urls import reverse_lazy
 import threading
 
@@ -14,10 +14,10 @@ import threading
 def PerfilView(request):
 
 	usuarios=User.objects.last()
+	tutores=Tutor.objects.get(id_perfil=usuarios.perfil.id)
 
 
-
-	return 	render(request,'perfil.html',{'usuarios':usuarios})
+	return 	render(request,'perfil.html',{'usuarios':usuarios,'tutores':tutores})
 
 
 
@@ -67,6 +67,24 @@ def Tutor_view(request):
 		form1 = Tutor_Form()
 		
 	return render(request,'tutor_form.html',{'form1':form1,'usuarios':usuarios})
+
+
+
+def Paciente_view(request):
+	if request.method=='POST':
+		form=Paciente_Form(request.POST)
+		
+		
+
+		if form.is_valid():
+			form.save()
+
+			
+		return redirect(PerfilView)
+	else:
+		form = Paciente_Form()
+		
+	return render(request,'paciente_form.html',{'form':form})
 
 
 

@@ -5,7 +5,7 @@
 </head>
 <body>
 	
-{% if usuarios %}
+{% if usuarios  %}
 
 <div><h1> Username: {{usuarios.username}}</h1>
 <h2> Id: {{usuarios.perfil.usuario_id}}</h2>
@@ -13,7 +13,7 @@
 <h2> Apellido: {{usuarios.last_name}}</h2></div>
 <br>
 <br>
-<h2>Rut:{{usuarios.perfil.rut}}</h2>
+
 <h2>Rol: {{usuarios.perfil.rol}}</h2>
 <h2>Tel. Celular: +56 9 {{usuarios.perfil.tel}}  </h2>
 
@@ -22,11 +22,14 @@
 
 {% if usuarios.perfil.rol == "TUTOR" %}
 
+<h2>hola</h2>
+
+
 <h1>ingrese datos de Tutor</h1>
-<a href="{% url 'tutor_form' %} " class="a-editar">Editar</a>
-<button>link de paciente</button>
+<a href="{% url 'tutor_form'  %} " class="a-editar">Datos de Tutor</a>
+<a href="{% url 'paciente_form'  %} " class="a-editar">Datos de Paciente</a>
 {% endif %}
 {% endif %}
- 
+
 </body>
 </html>

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import Perfil , Tutor
+from .models import Perfil , Tutor , Paciente
 from django.contrib.auth.models import User
 
 
@@ -56,3 +56,19 @@ class Tutor_Form(forms.ModelForm):
 				'edad',
 				'f_nacimiento']
 
+
+class Paciente_Form(forms.ModelForm):
+	class Meta:
+		model = Paciente
+
+		fields=['id_tutor',
+				'nombre',
+				'apellido1',
+				'apellido2',
+				'rut',
+				'comuna',
+				'domicilio',
+				'num_domicilio',
+				'edad_paciente',
+				'f_nacimiento',
+				'desc']
