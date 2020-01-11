@@ -14,10 +14,8 @@ import threading
 def PerfilView(request):
 
 	usuarios=User.objects.last()
-	tutores=Tutor.objects.get(id_perfil=usuarios.perfil.id)
-
-
-	return 	render(request,'perfil.html',{'usuarios':usuarios,'tutores':tutores})
+	
+	return 	render(request,'perfil.html',{'usuarios':usuarios})
 
 
 
