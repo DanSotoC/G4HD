@@ -7,6 +7,7 @@ from usuarios.models import Paciente
 def usuarios_listpa(request):
 	qset = request.GET.get("buscar")
 	user = Paciente.objects.filter(rut = qset)
+	current_user = request.user
 
 	if user.count() < 1:
 		queryset = Paciente.objects.all()
@@ -16,6 +17,7 @@ def usuarios_listpa(request):
 	context = {
 
 		"object_list": queryset,
+		"actual":current_user,
 
 	}
 	return render(request,"listpa.html",context)
