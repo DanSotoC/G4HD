@@ -5,6 +5,6 @@ from lista import views
 urlpatterns =[
 
 url(r'listpa/',views.usuarios_listpa,name="listpaciente"),
-url(r'listen',views.usuarios_listen, name="listenfermero"),
+url(r'listen/',views.usuarios_listen, name="listenfermero"),
 
 ]
