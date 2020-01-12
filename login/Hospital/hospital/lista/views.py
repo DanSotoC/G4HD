@@ -6,6 +6,7 @@ from django.contrib.auth import logout
 
 def logout_view(request):
     logout(request)
+    return render(request,"main.html")
 
 def usuarios_listpa(request):
 	qset = request.GET.get("buscar")

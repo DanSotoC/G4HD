@@ -14,7 +14,7 @@ import os
 
 def biblioteca(request):
 	archivo = Archivo.objects.all()
-	return render(request,'biblioteca.html',{'archivo':archivo})
+	return render(request,'biblioteca.html',{'archivo':archivo},{'actual':request.user})
 
 
 def model_form_upload(request):
