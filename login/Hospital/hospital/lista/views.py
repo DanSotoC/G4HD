@@ -2,7 +2,10 @@ from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import HttpResponse, HttpResponseRedirect, redirect
 from usuarios.models import Paciente
+from django.contrib.auth import logout
 
+def logout_view(request):
+    logout(request)
 
 def usuarios_listpa(request):
 	qset = request.GET.get("buscar")

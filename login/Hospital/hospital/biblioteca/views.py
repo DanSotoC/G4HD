@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, render_to_response
+from django.shortcuts import render, redirect
 from .models import Archivo
 from django.views.generic import TemplateView ,View
 from .forms import DocumentForm
@@ -34,7 +34,7 @@ def model_form_delete(request,id):
     
     archivo=Archivo.objects.get(id=id)
     if request.method=='POST':
-        os.remove("media/"+ str(archivo.file))
+        os.remove(str(archivo.file))
         archivo.delete()
         return redirect(biblioteca)
     return render(request,'form_archivos_delete.html', {'archivo':archivo})

@@ -126,4 +126,9 @@ STATIC_URL = '/static/'
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL='main'
+
 LOGOUT_REDIRECT_URL='main'
+
+
+
+MEDIA_URL = '/media/'

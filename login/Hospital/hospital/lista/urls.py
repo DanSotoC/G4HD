@@ -6,5 +6,5 @@ urlpatterns =[
 
 url(r'listpa/',views.usuarios_listpa,name="listpaciente"),
 url(r'listen/',views.usuarios_listen, name="listenfermero"),
-
+url(r'logout/',views.logout_view,name="logout")
 ]
