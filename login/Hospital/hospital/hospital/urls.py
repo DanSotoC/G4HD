@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
+from biblioteca import urls as biblio_urls
 
 
 urlpatterns = [
@@ -23,5 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'',include('Home.urls')),
     path(r'administrador/',include('lista.urls')),
+    path(r'admbiblio/',include(biblio_urls)),
+
 
 ]
