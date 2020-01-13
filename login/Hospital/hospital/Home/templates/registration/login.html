@@ -1,6 +1,81 @@
-<h2>Login</h2>
-<form method="POST">
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+	<title>Login</title>
+	
+<body>
+
+<style type="text/css">
+	
+body{
+	margin: 0;
+	padding:0;
+	font-family: sans-serif;
+	background:  url({% static 'd.jpg'%});
+	height: 100vh;
+			-webkit-background-size:cover;
+			background-size: cover;
+			background-position: center center;
+			position: relative;
+}
+
+.box{
+	width: 300px;
+	height: 360px;
+	padding: 40px;
+	position: absolute;
+	top: 50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,1));
+	text-align:center;
+	border-radius: 3px;
+}
+
+.titulo{
+			position: absolute;
+			top:40%;
+			left:50%;
+			transform: translate(-50%,-135%)
+		}
+		.titulo h1{
+			font-size: 60px;
+			color: white;
+		}
+
+
+.label{
+	top: 50%;
+	left: 50%;
+	transform: translate(-0%,90%);
+	padding: 10px;
+	color: white;
+}
+
+</style>
+
+<form class="box" method="POST">
 	{% csrf_token %}
-	{{ form.as_p }}
-	<button type="submit">Login</button>
+	<div class="titulo">
+		<h1>Login</h1>
+	</div>
+	<div class="label">
+		<label>Username:</label>
+		{{form.username}}
+
+	</div>
+	<div class="label">
+		<label>Password:</label>
+		{{form.password}}
+	</div>
+	<button   class="btn btn-outline-info" style="margin-top:40%" type="submit">Login</button>
 </form>
+</body>
+</html>

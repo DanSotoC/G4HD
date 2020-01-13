@@ -20,6 +20,8 @@ class Registro_Form(UserCreationForm):
  			'password1',
  			'password2'
  			)
+ 		
+ 
 
 		
 

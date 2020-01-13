@@ -46,6 +46,15 @@ class Paciente(models.Model):
 	
 
 
+'''class Personal(models.Models):
+	id_perfil = models.ForeignKey(Perfil, default=None,on_delete=models.CASCADE)
+	tipo=models.CharField(max_length=20)
+
+
+	def __str__(self):
+		return str(self.id_perfil.usuario.username)'''
+
+
 
 @receiver(post_save, sender=User)
 def crear_usuario_perfil(sender, instance, created, **kwargs):

@@ -1,10 +1,86 @@
-<h2>registro</h2>
-<form method="POST">
+{%extends "base.html"%}
+
+{%  block content %}
+
+
+<style type="text/css">
+	
+h1{
+	
+	font-size: 45px;
+	
+}
+
+span{
+	
+	font-size:30px; 
+
+}
+
+label{
+	font-size: 25px;
+	
+}
+
+label > span{
+	font-size: 20px;
+}
+
+.contenedor{
+
+}
+
+
+
+</style>
+
+<div>
+	<h1>R<span>egistro</span> </h1>
+
+</div>	
+
+<div class="contenedor">
+
+<form method="POST" class="row">
 	{% csrf_token%}
 
+
 	
-	{{form1.as_table}}
-	<br><br><br><br><br>
+<div class="col-sm-3">
+	<div style="padding: 10px">
+	<label>N<span>ombre</span> <span>de</span> U<span>suario:</span></label> <br>
+	{{form1.username}}
+	</div>	
+	<div style="padding: 10px">
+		<label>N<span>ombre:</span></label><br>
+		{{form1.first_name}}
+	</div>
+	<div style="padding: 10px">
+		<label>A<span>pellido:</span></label><br>
+		{{form1.last_name}}
+	</div>
 	
-	<button type="submit">Registar</button>
+	
+</div>
+
+<div class="col-sm-9">
+	<div style="padding: 10px">
+		<label>C<span>orreo</span> E<span>lectronico:</span></label><br>
+		{{form1.email}}
+	</div>
+	
+	<div style="padding: 10px">
+		<label>C<span>ontraseña:</span></label><br>
+		{{form1.password1}}
+	</div>
+	<div style="padding: 10px">
+		<label>R<span>epetir</span> C<span>ontraseña:</span></label><br>
+		{{form1.password2}}
+	</div>
+</div>
+	
+	<button class="btn btn-info" type="submit">Registar</button>
 </form>
+</div>	
+
+{% endblock %} 
