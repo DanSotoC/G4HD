@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import HttpResponse, HttpResponseRedirect, redirect
-from usuarios.models import Paciente
+from usuarios.models import Paciente , Personal
 from django.contrib.auth import logout
 
 def logout_view(request):
@@ -26,12 +26,13 @@ def usuarios_listpa(request):
 	}
 	return render(request,"listpa.html",context)
 
+
 def usuarios_listen(request):
 	qset = request.GET.get("buscar")
-	user = Especialista.objects.filter(Rut = qset)
+	user = Personal.objects.filter(rut = qset)
 	
 	if user.count() < 1:
-		queryset = Especialista.objects.all()
+		queryset = Personal.objects.all()
 	else:
 		queryset = user
 
@@ -39,6 +40,5 @@ def usuarios_listen(request):
 
 		"object_list": queryset,	
 	}
-	#example of context form
 	return render(request,"listen.html",context)
 

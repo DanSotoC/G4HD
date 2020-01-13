@@ -1,7 +1,7 @@
-<!--DOCTYPE html -->
-{%extends "base.html"%}
-{%  block content %}
 
+{% extends "base.html" %}
+
+{% block content %}
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
 <style>
@@ -70,7 +70,7 @@ a {
                     <i class="icon icon-search"></i></br> 
                     <button type="submit" class="button btn btn-info">Buscar</button>
                 </span>
-                <a href='{% url "listen" %}' class="btn btn-info"> Refresh </a>
+                <a href='{% url "listenfermero" %}' class="btn btn-info"> Refresh </a>
             </div>
         </form>
     </div>
@@ -93,7 +93,7 @@ a {
                         <table class="table user-list">
                             <thead>
                                 <tr>    
-                                <th><span>Foto</span></th>
+                                
                                 <th><span>Nombre Completo</span></th>
                                 <th><span>Rut</span></th>
                                 <th class="text-center"><span>Especialidad</span></th>
@@ -103,41 +103,39 @@ a {
                             </thead>
                             <tbody>
                             	{% for obj in object_list %}
-                            	{%if obj.Cargo >= 2 %}
+                            	
 
                                 <tr>
-                                   	<td>
-                                        <img src="https://bootdey.com/img/Content/user_1.jpg" alt="">
-                                    </td>
+                                   	
                                     <td>                                      
-                                        <span class="user-subhead">{{ obj.Primer_Nombre}} {{ obj.Primer_Apellido}} {{obj.Segundo_Apellido}}</span>
+                                        <span class="user-subhead">{{ obj.id_perfil.usuario.first_name}} {{ obj.id_perfil.usuario.last_name}}</span>
                                     </td>
-                                    <td>{{obj.Rut}}</td> 
+                                    <td>{{obj.rut}}</td> 
                                     <td class="text-center">
-                                    	{%if obj.Cargo == 2%}
+                                    	{%if obj.especialidad == "ENFERMERO"%}
                                         <span class="label label-default">Enfermero</span>
                                         {%endif%}
-                                    	{%if obj.Cargo == 3%}
+                                    	{%if obj.especialidad == "KINESIOLOGO" %}
                                         <span class="label label-default">Kinesiologo</span>
                                         {%endif%}
-                                    	{%if obj.Cargo == 4%}
+                                    	{%if obj.especialidad == "TECNICO" %}
                                         <span class="label label-default">Técnico</span>
                                         {%endif%}                                       
                                     </td>
                                     <td>
-                                        <a >{{obj.Email}}</a>
+                                        <a >{{obj.id_perfil.usuario.email}}</a>
                                     </td>
                                     <td style="width: 20%;">
         							
-        								<a href='{%  url "detailes" id=obj.idDatosPer %}' class="btn btn-info"> Detail </a>                                                               
+        								<a href='#' class="btn btn-info"> Detail </a>                                                               
                                     </td>
 
                                     	
                                 </tr>
 
-										{%endif%}
+										
 										{% endfor %}
 
 
-{%  endblock content %}
 
+{% endblock %}

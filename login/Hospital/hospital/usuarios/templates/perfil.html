@@ -29,6 +29,13 @@
 <a href="{% url 'tutor_form'  %} " class="a-editar">Datos de Tutor</a>
 <a href="{% url 'paciente_form'  %} " class="a-editar">Datos de Paciente</a>
 {% endif %}
+
+{%if usuarios.perfil.rol == "PERSONAL"%}
+<h1>Ingrese datos Personal</h1>
+<a href="{% url 'personal_form'%}">Datos de Personal </a>
+
+{% endif %}
+
 {% endif %}
 
 </body>

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import Perfil , Tutor , Paciente
+from .models import Perfil , Tutor , Paciente, Personal
 from django.contrib.auth.models import User
 
 
@@ -20,12 +20,6 @@ class Registro_Form(UserCreationForm):
  			'password1',
  			'password2'
  			)
- 		
- 
-
-		
-
-
 
 class Perfil_Form(forms.ModelForm):
 	class Meta:
@@ -36,27 +30,13 @@ class Perfil_Form(forms.ModelForm):
 		model = Perfil
 
 		fields=['rol',
-				'tel',]
-
-
+				'tel']
 
 		widgets={
 		'rut':forms.TextInput(attrs={'class':'form-control','placeholder':'12.345.68-9'}),
 		'rol':forms.Select(choices=ROL,attrs={'class':'form-control'}),
-		'tel':forms.TextInput(attrs={'class':'form-control','placeholder':'Ingrese número telefónico '})
+		'tel':forms.TextInput(attrs={'class':'form-control','placeholder':'Ingrese número telefónico '}),
 		}
-
-
-class Tutor_Form(forms.ModelForm):
-	class Meta:
-		model = Tutor
-
-		fields=['id_perfil','rut',
-				'comuna',
-				'domicilio',
-				'num_domicilio',
-				'edad',
-				'f_nacimiento']
 
 
 class Paciente_Form(forms.ModelForm):
@@ -74,3 +54,30 @@ class Paciente_Form(forms.ModelForm):
 				'edad_paciente',
 				'f_nacimiento',
 				'desc']
+
+class Tutor_Form(forms.ModelForm):
+	class Meta:
+		model = Tutor
+
+		fields=['id_perfil','rut',
+				'comuna',
+				'domicilio',
+				'num_domicilio',
+				'edad',
+				'f_nacimiento']
+
+
+
+class Personal_Form(forms.ModelForm):
+	class Meta:
+
+		ESPECIALIDAD=(('ENFERMERO','Enfermero'),('TECNICO','Técnico'),('KINESIOLOGO','Kinesiologo'))
+
+
+		model = Personal
+
+		fields =['id_perfil','rut','especialidad']
+
+		widgets ={
+		'especialidad': forms.Select(choices=ESPECIALIDAD)
+		}

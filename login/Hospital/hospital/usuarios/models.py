@@ -45,14 +45,14 @@ class Paciente(models.Model):
 		return str(self.nombre)
 	
 
-
-'''class Personal(models.Models):
+class Personal(models.Model):
 	id_perfil = models.ForeignKey(Perfil, default=None,on_delete=models.CASCADE)
-	tipo=models.CharField(max_length=20)
+	rut = rut = models.CharField(null=False,max_length=15)
+	especialidad=models.CharField(max_length=20)
 
 
 	def __str__(self):
-		return str(self.id_perfil.usuario.username)'''
+		return str(self.id_perfil.usuario.username)
 
 
 
