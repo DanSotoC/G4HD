@@ -7,18 +7,80 @@
 <html>
 <title>Home | Hospital El Pino</title>
 
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+
 </style>
-<body>
+<body class="w3-light-grey">
 
-Nombre del Propietario de la cuenta (Tutor) </br>
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
 
-{{nom}} {{ape}} </br>
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+  
+    <!-- Left Column -->
+    <div class="w3-third">
+    
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-display-container">
+          <img src="http://hospitalelpino.cl/wphep/wp-content/uploads/2017/03/gob_hep_2011.jpg" style="width:40%" alt="Avatar">
+<!--          <div class="w3-display-bottomleft w3-container w3-text-black">
+            <h2>Hospital El Pino</h2>
+          </div> -->
+        </div>
+        <div class="w3-container">
+          <hr>
 
-Email (Tutor) </br>
+          <p>NOTA: CAMBIAR IMAGEN POR ALGO REPRESENTATIVO DEL HOSPITAL</p>
+          <p>LINK1</p>
+          <p>LINK2</p>
+          <p>LINK3</p>
+      
+        </div>
+      </div><br>
 
-Tutor (ACTUAL USER) comuna : {{tutor.comuna}}
+    <!-- End Left Column -->
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-twothird">
+    
+      <div class="w3-container w3-card w3-white w3-margin-bottom">
+        <h1 > {{nom}} {{ape}} </h1>
+    	</br></br>
+    	<h2 > Detalles </h2>
+        <h6 > {{tutor.domicilio}} {{tutor.num_domicilio}} </h6>
+        <h6 > {{tutor.comuna}} </h6>
+      </div>
+
+
+      <div class="w3-container w3-card w3-white w3-margin-bottom">
+        <h1 > {{paciente.nombre}} {{paciente.apellido1}} {{paciente.apellido2}} </h1>
+    	</br></br>
+		<h2 > Detalles </h2>
+        <h6 > {{paciente.domicilio}} {{paciente.num_domicilio}} </h6>
+        <h6 > {{paciente.comuna}} </h6>      
+
+        <h2 > Descripción </h2>
+        <h6 > {{paciente.desc}} </h6>
+        </div>
+
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+  <!-- End Page Container -->
+</div>
+
+
 
 
 
