@@ -88,7 +88,7 @@
 <div id="navbar" class="navbar-collapse collapse" style="background-color: #DF3E3A;">
 
 	<div class="dropdown">
-    <a href='#' > <button class="dropbtn">Home</button> </a>
+    <a href='{% url "home_t" %}' > <button class="dropbtn">Home</button> </a>
     <div class="dropdown-content">
     </div>
   </div>
@@ -102,14 +102,14 @@
   </div>
 
 	<div class="dropdown">
-    <a href="#" > <button class="dropbtn">Ver Documentos</button> </a>
+    <a href='{% url "biblioteca_t" %}' > <button class="dropbtn">Ver Documentos</button> </a>
     <div class="dropdown-content">
     </div>
   </div>
 
 
 	<ul class="nav navbar-nav navbar-right">
-		<li><a href="#" class="btn btn-danger"> LogOut </a></li>
+		<li><a href='{% url "logout" %}' class="btn btn-danger"> LogOut </a></li>
 	</ul>
 
 </div>
