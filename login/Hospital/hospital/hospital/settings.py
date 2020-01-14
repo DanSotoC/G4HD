@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'lista',
     'biblioteca',
     'dashboard',
+    'tutor',
 ]
 
 MIDDLEWARE = [
