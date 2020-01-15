@@ -1,12 +1,51 @@
-<h1>Datos de tutor</h1>
+{% extends "base.html" %}
 
-<form method="POST">
+
+{% block content %}
+
+<h1>Datos de tutor</h1>br
+<hr style="background-color:lightblue; width: 320px; margin-left: 0px;margin-top:-20px; height: 3px;">
+
+<div class="col-sm-6">
+	<form method="POST">
 	{% csrf_token%}
-		
-	{{form1.as_table}}
 	
-	<br><br><br><br><br>
+	<div>
+		<label for=id_perfil></label>
+		<input type="hidden" name="id_perfil" id="id_perfil" value="{{perfil}}">
+	</div>
+	<div>
+		<label>Rut:</label>
+		{{form1.rut}}
+	</div>
+	<div>
+		<label>Comuna:</label>
+		{{form1.comuna}}
+	</div>
+	<div>
+		<label>Domicilio</label>
+		{{form1.domicilio}}
+	</div>
+	<div>
+		<label>N° Domicilio:</label>
+		{{form1.num_domicilio}}
+	</div>
+	<div>
+		<label>Edad:</label>
+		{{form1.edad}}
+	</div>
+	<div>
+		<label>Fecha de nacimiento:</label>
+		{{form1.f_nacimiento}}
+	</div>
 	
-	<button type="submit">guardar</button>
+	<br>
+	
+	<button class="btn btn-info" type="submit">guardar</button>
 	
 </form>
+</div>
+
+
+{% endblock %}
+

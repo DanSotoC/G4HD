@@ -12,14 +12,14 @@ class Registro_Form(UserCreationForm):
  	class Meta:
  		model = User
 
- 		fields = (
+ 		fields = [
  			'username',
  			'email',
  			'first_name',
  			'last_name',
  			'password1',
  			'password2'
- 			)
+ 			]
 
 class Perfil_Form(forms.ModelForm):
 	class Meta:
@@ -33,7 +33,7 @@ class Perfil_Form(forms.ModelForm):
 				'tel']
 
 		widgets={
-		'rut':forms.TextInput(attrs={'class':'form-control','placeholder':'12.345.68-9'}),
+		
 		'rol':forms.Select(choices=ROL,attrs={'class':'form-control'}),
 		'tel':forms.TextInput(attrs={'class':'form-control','placeholder':'Ingrese número telefónico '}),
 		}
@@ -55,18 +55,40 @@ class Paciente_Form(forms.ModelForm):
 				'f_nacimiento',
 				'desc']
 
+		widgets ={
+				'nombre':forms.TextInput(attrs={'class':'form-control'}),
+				'apellido1':forms.TextInput(attrs={'class':'form-control'}),
+				'apellido2':forms.TextInput(attrs={'class':'form-control'}),
+				'rut':forms.TextInput(attrs={'class':'form-control'}),
+				'comuna':forms.TextInput(attrs={'class':'form-control'}),
+				'domicilio':forms.TextInput(attrs={'class':'form-control'}),
+				'num_domicilio':forms.TextInput(attrs={'class':'form-control'}),
+				'edad_paciente':forms.TextInput(attrs={'class':'form-control'}),
+				'f_nacimiento':forms.DateInput(attrs={'class':'form-control','type':'date'}),
+				'desc':forms.TextInput(attrs={'class':'form-control','type':'textarea'}),
+
+				}
+
 class Tutor_Form(forms.ModelForm):
 	class Meta:
 		model = Tutor
 
-		fields=['id_perfil','rut',
+		fields=['id_perfil',
+				'rut',
 				'comuna',
 				'domicilio',
 				'num_domicilio',
 				'edad',
 				'f_nacimiento']
 
-
+		widgets={
+				'rut':forms.TextInput(attrs={'class':'form-control'}),
+				'comuna':forms.TextInput(attrs={'class':'form-control'}),
+				'domicilio':forms.TextInput(attrs={'class':'form-control'}),
+				'num_domicilio':forms.TextInput(attrs={'class':'form-control'}),
+				'edad':forms.TextInput(attrs={'class':'form-control'}),
+				'f_nacimiento':forms.DateInput(attrs={'class':'form-control','type':'date'})
+		}
 
 class Personal_Form(forms.ModelForm):
 	class Meta:
@@ -79,5 +101,6 @@ class Personal_Form(forms.ModelForm):
 		fields =['id_perfil','rut','especialidad']
 
 		widgets ={
-		'especialidad': forms.Select(choices=ESPECIALIDAD)
+		'rut':forms.TextInput(attrs={'class':'form-control'}),
+		'especialidad': forms.Select(choices=ESPECIALIDAD,attrs={'class':'form-control'})
 		}

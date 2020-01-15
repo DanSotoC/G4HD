@@ -15,6 +15,7 @@ def PerfilView(request):
 
 	usuarios=User.objects.last()
 	
+	
 	return 	render(request,'perfil.html',{'usuarios':usuarios})
 
 
@@ -49,8 +50,8 @@ def Registro_View(request):
 			
 		
 
-def Tutor_view(request):
-	usuarios=User.objects.last()
+def Tutor_view(request,perfil):
+	
 	if request.method=='POST':
 		form1=Tutor_Form(request.POST)
 		
@@ -64,12 +65,13 @@ def Tutor_view(request):
 	else:
 		form1 = Tutor_Form()
 		
-	return render(request,'tutor_form.html',{'form1':form1,'usuarios':usuarios})
+	return render(request,'tutor_form.html',{'form1':form1, 'perfil':perfil})
 
 
 
 
-def Paciente_view(request):
+def Paciente_view(request,perfil):
+	tutor=Tutor.objects.get(id_perfil=perfil)
 	if request.method=='POST':
 		form=Paciente_Form(request.POST)
 		
@@ -83,10 +85,10 @@ def Paciente_view(request):
 	else:
 		form = Paciente_Form()
 		
-	return render(request,'paciente_form.html',{'form':form})
+	return render(request,'paciente_form.html',{'form':form, 'tutor':tutor})
 
 
-def Personal_view(request):
+def Personal_view(request,perfil):
 	if request.method=='POST':
 		form=Personal_Form(request.POST)
 		
@@ -100,6 +102,6 @@ def Personal_view(request):
 	else:
 		form = Personal_Form()
 		
-	return render(request,'paciente_form.html',{'form':form})
+	return render(request,'personal_form.html',{'form':form,'perfil':perfil})
 
 # Create your views here.

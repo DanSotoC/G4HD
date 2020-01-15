@@ -1,42 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Perfil</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="row">
+
+	<h1>Datos del usuario<h1>
+
+	<hr style="background-color:lightblue; width: 320px; margin-left: 0px;margin-top:-20px; height: 3px;">
+	<div class="col-sm-6">
+		<h1> {{usuarios.first_name}} {{usuarios.last_name}}</h1>
+		<h3>Username: {{usuarios.username}} </h3>
+		
+		<h3>ID de usuario: {{usuarios.perfil.usuario_id}}</h3>		
+		<h3>Email: {{usuarios.email}}</h3>
+		<h3>Tel. Celular: +56 9 {{usuarios.perfil.tel}}</h3>
+		<br>
+
+		<a  class="btn btn-info" href="{% url 'perfil_editar' usuarios.perfil.usuario_id %}" class="a-editar">Datos Perfil</a>
+
+
+		
+
+		
+		
+	</div>
+	{% if usuarios.perfil.rol == "TUTOR" %}
+	<div class="col-sm-6">
 	
-{% if usuarios  %}
+		<h1>Ingrese datos de Tutor</h1>
 
-<div><h1> Username: {{usuarios.username}}</h1>
-<h2> Id: {{usuarios.perfil.usuario_id}}</h2>
-<h2>Nombre: {{usuarios.first_name}}</h2>
-<h2> Apellido: {{usuarios.last_name}}</h2></div>
-<br>
-<br>
+		
 
-<h2>Rol: {{usuarios.perfil.rol}}</h2>
-<h2>Tel. Celular: +56 9 {{usuarios.perfil.tel}}  </h2>
+		<a href="{% url 'tutor_form' perfil=usuarios.perfil.id  %} " class="btn btn-info">Datos de Tutor</a>
+		<br><br><br>
+		<h1>Ingrese datos de Paciente</h1>
+		<a href="{% url 'paciente_form' perfil=usuarios.perfil.id  %} " class="btn btn-info">Datos de Paciente</a>
+		
+		
+	</div>
+	{% else %}
+	{% if  usuarios.perfil.rol == "PERSONAL"%}
+	<div class="col-sm-6">
+		
 
+		<h1>Ingrese datos de Personal</h1>
+		<a href="{% url 'personal_form' perfil=usuarios.perfil.id %}" class="btn btn-info"> Datos de Personal</a>
 
-<a href="{% url 'perfil_editar' usuarios.perfil.usuario_id %}" class="a-editar">Editar</a>
+		
+	</div>
 
-{% if usuarios.perfil.rol == "TUTOR" %}
+	{% endif %}
+	{% endif %}
+</div>
 
-<h2>hola</h2>
-
-
-<h1>ingrese datos de Tutor</h1>
-<a href="{% url 'tutor_form'  %} " class="a-editar">Datos de Tutor</a>
-<a href="{% url 'paciente_form'  %} " class="a-editar">Datos de Paciente</a>
-{% endif %}
-
-{%if usuarios.perfil.rol == "PERSONAL"%}
-<h1>Ingrese datos Personal</h1>
-<a href="{% url 'personal_form'%}">Datos de Personal </a>
-
-{% endif %}
-
-{% endif %}
-
-</body>
-</html>
+{% endblock %}

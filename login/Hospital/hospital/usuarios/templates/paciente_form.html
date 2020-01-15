@@ -1,13 +1,75 @@
-<h1>Datos de Paciente</h1>
+{% extends "base.html" %}
+
+
+{% block content %}
+<h1>Datos de Paciente</h1><br>
+<hr style="background-color:lightblue; width: 320px; margin-left: 0px;margin-top:-20px; height: 3px;"><br>
 
 <form method="POST">
 	{% csrf_token%}
 	
+	<div class="row">
+		<div class="col-sm-5">
+		<div>
+		<label for=id_tutor></label>
+		<input type="hidden" name="id_tutor" id="id_tutor" value="{{tutor.id}}">
+		</div>
 	
-	{{form.as_table}}
+		<div>
+			<label>Nombre Paciente:</label>
+			{{form.nombre}}
+		</div>
+		<div>
+			<label>Primer Apellido:</label>
+			{{form.apellido1}}
+		</div>
+		<div>
+			<label>Segundo Apellido:</label>
+			{{form.apellido2}}
+		</div>
+		<div>
+			<label>Rut:</label>
+			{{form.rut}}
+		</div>
+		<div>
+			<label>Fecha de nacimiento:</label>
+			{{form.f_nacimiento}}
+		</div>
+		<div>
+			<label>Edad:</label>
+			{{form.edad_paciente}}
+		</div>
+		
+	</div>
+	<div class="col-sm-5">
+		<div>
+			<label>Comuna:</label>
+			{{form.comuna}}
+		</div>
+		<div>
+			<label>Domicilio</label>
+			{{form.domicilio}}
+		</div>
+		<div>
+			<label>N° Domicilio:</label>
+			{{form.num_domicilio}}
+		</div>
+		<div>
+			<label>Descripción Paciente</label>
+			{{form.desc}}
+		</div>
+		
+		
+	</div>
 	
-	<br><br><br><br><br>
+	</div>
+	<br>
+	<div>
+			<button class="btn btn-info" type="submit">guardar</button>
+	</div>
 	
-	<button type="submit">guardar</button>
 	
 </form>
+
+{% endblock %}
+
