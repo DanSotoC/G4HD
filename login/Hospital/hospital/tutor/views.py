@@ -14,8 +14,9 @@ def logout_view(request):
 
 def home_tutor(request):
 	current_user = request.user
-	px = instance = get_object_or_404(Paciente, id_tutor_id = current_user.id)
 	tx = instance = get_object_or_404(Tutor, id_perfil_id = current_user.id)
+	px = instance = get_object_or_404(Paciente, id_tutor_id = tx.id)
+	
 
 	context = {
 
