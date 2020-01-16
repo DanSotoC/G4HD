@@ -19,6 +19,7 @@ from django.conf.urls import url
 from biblioteca import urls as biblio_urls
 from dashboard import urls as dash_urls
 from tutor import urls as tutor_urls
+from detalle import urls as det_urls
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -30,6 +31,7 @@ urlpatterns = [
     path(r'admbiblio/',include(biblio_urls)),
     path(r'dashboard/',include(dash_urls)),
     path(r'tutor/',include(tutor_urls)),
+    path(r'detalle',include(det_urls)),
 
 
 ]
