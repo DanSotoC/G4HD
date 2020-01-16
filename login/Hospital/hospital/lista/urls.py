@@ -4,7 +4,7 @@ from lista import views
 
 urlpatterns =[
 
-url(r'/lista/pacientes/',views.usuarios_listpa,name="listpaciente"),
-url(r'/lista/personal/',views.usuarios_listen, name="listenfermero"),
+url(r'lista/pacientes/',views.usuarios_listpa,name="listpaciente"),
+url(r'lista/personal/',views.usuarios_listen, name="listenfermero"),
 url(r'logout/',views.logout_view,name="logout")
 ]
