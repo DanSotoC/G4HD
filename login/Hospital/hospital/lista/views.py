@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import HttpResponse, HttpResponseRedirect, redirect
-from usuarios.models import Paciente , Personal
+from usuarios.models import Paciente , Personal, Tutor
+from django.contrib.auth.models import User
 from django.contrib.auth import logout
 
 def logout_view(request):
@@ -41,4 +42,21 @@ def usuarios_listen(request):
 		"object_list": queryset,	
 	}
 	return render(request,"listen.html",context)
+
+def usuarios_listu(request):
+	qset = request.GET.get("buscar")
+	user = Tutor.objects.filter(rut = qset)
+	
+	if user.count() < 1:
+		queryset = Tutor.objects.all()
+		instance = User.objects.all()
+	else:
+		queryset = user
+
+	context = {
+
+		"object_list": queryset,
+		"inst": instance,	
+	}
+	return render(request,"listu.html",context)
 
