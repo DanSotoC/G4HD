@@ -7,8 +7,19 @@ from .models import Perfil, Tutor
 from .forms import  Registro_Form,Perfil_Form, Tutor_Form, Paciente_Form, Personal_Form
 from django.urls import reverse_lazy
 import threading
+from django.contrib.auth.models import Group
 
 
+def Usuarios_in_Grupos(usuario_id):
+	users=User.objects.get(id=usuario_id)
+	tutores=Group.objects.get(name='Tutores')
+	personal=Group.objects.get(name='Personal')
+	if users.perfil.rol=='TUTOR':
+		tutores.user_set.add(users)
+	else:
+		if users.perfil.rol=='PERSONAL':
+			personal.user_set.add(users)
+       	
 
 
 def PerfilView(request):
@@ -28,7 +39,10 @@ def perfil_edit(request,usuario_id):
         form=Perfil_Form(request.POST,instance=usuario)
         if form.is_valid():
             form.save()
+            Usuarios_in_Grupos(usuario_id)
         return redirect(PerfilView)
+        
+        
     return render(request,'perfil_form.html',{'form':form})	
 
 
@@ -41,7 +55,7 @@ def Registro_View(request):
 		if form1.is_valid():
 			form1.save()
 
-			
+		
 		return redirect(PerfilView)
 	else:
 		form1 = Registro_Form()
