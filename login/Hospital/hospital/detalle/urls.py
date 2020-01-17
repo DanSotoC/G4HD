@@ -5,5 +5,6 @@ from detalle import views
 urlpatterns =[
 
 url(r'paciente/(?P<id>\d+)$',views.usuario_detail, name="paciente_detalle"),
+url(r'tutor/(?P<id>\d+)$',views.tutor_detail, name="tutor_detalle"),
 
 ]
