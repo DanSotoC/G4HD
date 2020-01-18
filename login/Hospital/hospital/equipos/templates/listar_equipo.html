@@ -3,7 +3,58 @@
 
 {% block content%}
 
-listar equipo
+<h1>Listar Equipo</h1><br>
+<hr style="background-color:lightblue; width: 300px; margin-left: -10px;margin-top:-20px; height: 3px;">
+
+
+	
+
+	<hr>
+
+	<div class="container bootstrap snippet">
+	    <div class="row">
+	        <div class="col-sm-6">
+	            <div class="main-box no-header clearfix">
+	                <div class="main-box-body clearfix">
+	                    <div class="table-responsive">
+	                        <table class="table user-list">
+	                            <thead>
+	                                <tr>    
+	                                <th><span>#</span></th>
+	                                <th><span>Nombre Grupo</span></th>
+	                                
+	                                
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                            	{% for g in group %}
+	                            	
+	                            	{% if g.id != 1 and g.id != 2%}
+
+	                                <tr>
+	                                   	
+	                                    <td>                                      
+	                                        <span class="user-subhead">{{g.id}}</span>
+	                                    </td>
+	                                    <td>{{g.name}}</td> 
+	                                   
+
+	                                    	
+	                                </tr>
+	                                {% endif %}
+
+											
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 
 
 
