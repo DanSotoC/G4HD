@@ -26,6 +26,7 @@ def home_tutor(request):
 		"id_actual":current_user.id,
 		"paciente": px,
 		"tutor": tx,
+		"actual":current_user,
 
 	}
 	return render(request,"home_tutor.html",context)

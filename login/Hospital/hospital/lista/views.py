@@ -31,6 +31,7 @@ def usuarios_listpa(request):
 def usuarios_listen(request):
 	qset = request.GET.get("buscar")
 	user = Personal.objects.filter(rut = qset)
+	current_user = request.user
 	
 	if user.count() < 1:
 		queryset = Personal.objects.all()
@@ -39,13 +40,15 @@ def usuarios_listen(request):
 
 	context = {
 
-		"object_list": queryset,	
+		"object_list": queryset,
+		"actual":current_user,	
 	}
 	return render(request,"listen.html",context)
 
 def usuarios_listu(request):
 	qset = request.GET.get("buscar")
 	user = Tutor.objects.filter(rut = qset)
+	current_user = request.user
 	
 	if user.count() < 1:
 		queryset = Tutor.objects.all()
@@ -57,6 +60,7 @@ def usuarios_listu(request):
 
 		"object_list": queryset,
 		"inst": instance,	
+		"actual":current_user,
 	}
 	return render(request,"listu.html",context)
 
