@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'dashboard',
     'tutor',
     'detalle',
-    'especialista'
+    'especialista',
+    'equipos'
 ]
 
 MIDDLEWARE = [

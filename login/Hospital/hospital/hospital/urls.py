@@ -23,6 +23,7 @@ from detalle import urls as det_urls
 from django.conf import settings
 from django.conf.urls.static import static
 from especialista import urls as especialista_urls
+from equipos import urls as equipos_urls
 
 urlpatterns = [
     
@@ -33,7 +34,8 @@ urlpatterns = [
     path(r'dashboard/',include(dash_urls)),
     path(r'tutor/',include(tutor_urls)),
     path(r'detalle',include(det_urls)),
-    path(r'especialista/',include(especialista_urls))
+    path(r'especialista/',include(especialista_urls)),
+    path(r'especialista/',include(equipos_urls))
 
 
 ]
