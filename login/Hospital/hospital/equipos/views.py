@@ -33,3 +33,10 @@ def Asignar_equipo_view(request):
 
 
 	return render(request,'asignar_equipo.html',{'personal':personal,'group':group})
+
+
+
+def Ingreso_usuarios(request,):
+	'''disponible=Group.objects.get(id=8)
+	personal=User.group.get(id=8)'''
+	return render(request,"ingreso_usuarios_grupo.html",context=None)
