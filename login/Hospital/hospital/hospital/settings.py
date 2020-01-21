@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'tutor',
     'detalle',
     'especialista',
-    'equipos'
+    'equipos',
+    'redireccion'
 ]
 
 MIDDLEWARE = [
@@ -130,7 +131,7 @@ STATIC_URL = '/static/'
 
 
 
-LOGIN_REDIRECT_URL='main'
+LOGIN_REDIRECT_URL='redireccion'
 
 LOGOUT_REDIRECT_URL='main'
 
