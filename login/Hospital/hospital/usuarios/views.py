@@ -14,11 +14,15 @@ def Usuarios_in_Grupos(usuario_id):
 	users=User.objects.get(id=usuario_id)
 	tutores=Group.objects.get(name='Tutores')
 	personal=Group.objects.get(name='Personal')
+	disponible=Group.objects.get(name='Disponible')
 	if users.perfil.rol=='TUTOR':
 		tutores.user_set.add(users)
 	else:
 		if users.perfil.rol=='PERSONAL':
 			personal.user_set.add(users)
+			disponible.user_set.add(users)
+
+	
        	
 
 

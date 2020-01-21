@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import Group
-from usuarios.models import Personal
+from usuarios.models import Personal, Perfil
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -26,6 +27,9 @@ def Listar_equipo_view(request):
 
 
 def Asignar_equipo_view(request):
-	personal =Personal.objects.all()
+	
+	personal=Personal.objects.all()
+	group = Group.objects.all()
 
-	return render(request,'asignar_equipo.html',{'personal':personal})
+
+	return render(request,'asignar_equipo.html',{'personal':personal,'group':group})

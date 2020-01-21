@@ -1,9 +1,169 @@
 {% extends "base.html"%}
-
+{% load static %}
 
 {% block content%}
 
-asignar equipo
+<style type="text/css">
+
+
+#contenedor{
+	max-width: 100%;
+}
+	
+#tarjeta{
+	min-height:250px;
+	background: grey; 
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+#tarjeta h3{
+	color: white;
+	text-align: center;
+}
+
+#tarjeta a	{
+	margin-top: 45px;
+	margin-bottom: 15px;
+}
+#tarjeta ol	{
+	list-style:none;
+	margin-left: -15px;
+	
+}
+#tarjeta ol li	{
+	list-style:none;
+	
+}
+
+
+</style>
+<h1>Asignación de Equipos </h1><br>
+<hr style="background-color:lightblue; width: 450px; margin-left: -10px;margin-top:-20px; height: 3px;">
+<br><br>
+
+<div  id="contenedor" class="row">
+	{% for g in group %}
+	                            	
+	{% if g.id != 1 and g.id != 2 and g.id != 8 %}
+    
+	
+	<div  id="tarjeta" class="col-sm-2">
+		<h3>{{g.name}}</h3>
+		<ol>
+			<li>user equipo {{g.name}}</li>
+			<li>user equipo {{g.name}}</li>
+			<li>user equipo {{g.name}}</li>
+			<li>user equipo {{g.name}}</li>
+
+		</ol>
+		<a href="#" class="btn btn-success">Agregar</a>
+		<a href="#" class="btn btn-danger">Quitar</a>
+	</div>
+
+	{% endif %}
+    {% endfor %}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="container bootstrap snippet">
+	    <div class="row">
+	        <div class="col-sm-4">
+	            <div class="main-box no-header clearfix">
+	                <div class="main-box-body clearfix">
+	                    <div class="table-responsive">
+	                        <table class="table user-list">
+	                            <thead>
+	                                <tr>    
+	                                
+	                                <th><span>Especialista</span></th>
+	                                <th><span>Especialidad</span></th>
+	                                
+	                                
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                            	
+
+	                            	{% for p in personal %}
+	                            	
+	                            	{%if p.usuario.id != 1  %}
+	                            	
+	                            
+
+	                                <tr>
+	                                   	
+	                                    <td>                                      
+	                                        <span class="user-subhead">{{p.id_perfil.usuario.first_name}} {{p.id_perfil.usuario.last_name}}</span>
+	                                    </td>
+	                                 
+	                                   <td class="text-center">
+                                    	{%if p.especialidad == "ENFERMERO"%}
+                                        <span >Enfermero/a</span>
+                                        {%endif%}
+                                    	{%if p.especialidad == "KINESIOLOGO" %}
+                                        <span >Kinesiologo/a</span>
+                                        {%endif%}
+                                    	{%if p.especialidad == "TECNICO" %}
+                                        <span >Técnico/a</span>
+                                        {%endif%}                                       
+                                    </td>
+
+	                                    	
+	                                </tr>
+	                               
+
+									{% endif%}		
+									{% endfor %}
+									
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>-->
+
 
 
 
