@@ -30,7 +30,7 @@
 	                            <tbody>
 	                            	{% for g in group %}
 	                            	
-	                            	{% if g.id != 1 and g.id != 2 %}
+	                            	{% if g.id != 1 and g.id != 2 and g.id != 20 %}
 
 	                                <tr>
 	                                   	
@@ -54,7 +54,8 @@
 					</div>
 
 				</div>
-			</div><a href="{%url 'crear-equipo' %}" class="btn btn-info">Volver a Crear Equipo</a>
+			</div><a href="{%url 'crear-equipo' %}" class="btn btn-info">Crear Equipo</a>
+			<a href="{% url 'asignar-equipo'%}"class="btn btn-info">Asignar Usuarios</a>
 		</div>
 	</div>
 

@@ -10,12 +10,6 @@
 	max-width: 100%;
 }
 	
-#tarjeta{
-	min-height:250px;
-	background: grey; 
-	margin-right: 5px;
-	margin-bottom: 5px;
-}
 #tarjeta h3{
 	color: white;
 	text-align: center;
@@ -44,11 +38,11 @@
 <div  id="contenedor" class="row">
 	{% for g in group %}
 	                            	
-	{% if g.id != 1 and g.id != 2 and g.id != 8 %}
+	{% if g.id != 1 and g.id != 2 and g.id != 20 %}
     
 	
-	<div  id="tarjeta" class="col-sm-2">
-		<h3>{{g.name}}</h3>
+	<fieldset id="tarjeta" class="col-sm-2">
+		<legend>{{g.name}}</legend>
 		<ol>
 			<li>user equipo {{g.name}}</li>
 			<li>user equipo {{g.name}}</li>
@@ -56,9 +50,9 @@
 			<li>user equipo {{g.name}}</li>
 
 		</ol>
-		<a href="{% url 'ingresar-usuario'%}" class="btn btn-success">Agregar</a>
+		<a href="{% url 'ingresar-usuario' id=g.id %}" class="btn btn-success">Agregar</a>
 		<a href="#" class="btn btn-danger">Quitar</a>
-	</div>
+	</fieldset>
 
 	{% endif %}
     {% endfor %}
