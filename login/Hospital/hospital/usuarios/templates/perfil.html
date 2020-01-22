@@ -36,7 +36,8 @@
 		<br><br><br>
 		<h1>Ingrese datos de Paciente</h1>
 		<a href="{% url 'paciente_form' perfil=usuarios.perfil.id  %} " class="btn btn-info">Datos de Paciente</a>
-		
+		<br><br><br><br><br><br><br>
+		<a href="{% url 'listtutor' %}" class="btn btn-success">Finalizar Registro</a>
 		
 	</div>
 	{% else %}
@@ -46,7 +47,8 @@
 
 		<h1>Ingrese datos de Personal</h1>
 		<a href="{% url 'personal_form' perfil=usuarios.perfil.id %}" class="btn btn-info"> Datos de Personal</a>
-
+		<br><br><br><br><br><br><br>
+		<a href="{% url 'listenfermero' %}" class="btn btn-success">Finalizar Registro</a>
 		
 	</div>
 

@@ -9,7 +9,7 @@
 
 	
 
-	<hr>
+	
 
 	<div class="container bootstrap snippet">
 	    <div class="row">
@@ -22,6 +22,7 @@
 	                                <tr>    
 	                                <th><span>#</span></th>
 	                                <th><span>Nombre Grupo</span></th>
+	                                <th><span>Acción</span></th>
 	                                
 	                                
 	                                </tr>
@@ -29,7 +30,7 @@
 	                            <tbody>
 	                            	{% for g in group %}
 	                            	
-	                            	{% if g.id != 1 and g.id != 2 and g.id != 8 %}
+	                            	{% if g.id != 1 and g.id != 2 %}
 
 	                                <tr>
 	                                   	
@@ -37,6 +38,7 @@
 	                                        <span class="user-subhead">{{g.id}}</span>
 	                                    </td>
 	                                    <td>{{g.name}}</td> 
+	                                    <td><a href="{% url 'eliminar-equipo' id=g.id %}" class="btn btn-danger">Eliminar Equipo</a></td>
 	                                   
 
 	                                    	
@@ -47,10 +49,12 @@
 									{% endfor %}
 								</tbody>
 							</table>
+
 						</div>
 					</div>
+
 				</div>
-			</div>
+			</div><a href="{%url 'crear-equipo' %}" class="btn btn-info">Volver a Crear Equipo</a>
 		</div>
 	</div>
 
