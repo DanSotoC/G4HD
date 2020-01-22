@@ -14,7 +14,7 @@ def redireccion(request):
 	if actual == "PERSONAL":
 		return HttpResponseRedirect(reverse('home'))
 
-	if actual == "ADM":
+	if actual == "ADMINISTRADOR":
 		return HttpResponseRedirect(reverse('dash'))
 
 	return render(request,"salto.html")

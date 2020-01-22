@@ -25,7 +25,8 @@ class Perfil_Form(forms.ModelForm):
 	class Meta:
 		ROL=(
 			('PERSONAL','Personal'),
-			('TUTOR','Tutor'))
+			('TUTOR','Tutor'),
+			('ADMINISTRADOR','Administrador'))
 
 		model = Perfil
 
