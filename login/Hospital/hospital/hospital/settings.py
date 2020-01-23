@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'detalle',
     'especialista',
     'equipos',
-    'redireccion'
+    'redireccion',
+    'visita'
 ]
 
 MIDDLEWARE = [

@@ -3,6 +3,7 @@ from django.contrib.auth.models import Group
 from usuarios.models import Personal, Perfil
 from django.contrib.auth.models import User
 
+
 # Create your views here.
 
 
@@ -29,6 +30,7 @@ def Asignar_equipo_view(request):
 	personal=Personal.objects.all()
 	group = Group.objects.all()
 	user= User.objects.all()
+
 
 
 	return render(request,'asignar_equipo.html',{'personal':personal,'group':group,'user':user})

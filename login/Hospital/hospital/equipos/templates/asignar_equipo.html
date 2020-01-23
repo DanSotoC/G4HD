@@ -37,6 +37,8 @@
 
 <div  id="contenedor" class="row">
 	{% for g in group %}
+
+	{{g}}
 	                            	
 	{% if g.id != 1 and g.id != 2 and g.id != 20 %}
     
@@ -48,6 +50,8 @@
 			<li>user equipo {{g.name}}</li>
 			<li>user equipo {{g.name}}</li>
 			<li>user equipo {{g.name}}</li>
+
+
 
 		</ol>
 		<a href="{% url 'ingresar-usuario' id=g.id %}" class="btn btn-success">Agregar o Quitar</a>
