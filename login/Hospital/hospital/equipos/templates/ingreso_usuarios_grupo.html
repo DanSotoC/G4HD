@@ -139,7 +139,19 @@
 				<label>
 					<input type="checkbox" name="">
 					<span class="icon"></span>
-					<span class="list">{{d.first_name}} {{d.last_name}}{{d.perfil.personal.especialidad}}</span>
+					<span class="list">{{d.first_name}} {{d.last_name}}{{d.perfil.personal.especialidad}}</span> </br> 
+
+					{% for e in personal %}
+
+						{%  if d.id == e.id_perfil_id %}
+
+							<h6> {{e.especialidad}} </h6>
+
+						{% endif %}
+
+					{% endfor %}
+
+
 				</label>
 			</li>
 			
