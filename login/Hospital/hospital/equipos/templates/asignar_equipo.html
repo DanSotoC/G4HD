@@ -44,14 +44,14 @@
 	<fieldset id="tarjeta" class="col-sm-2">
 		<legend>{{g.name}}</legend>
 		<ol>
-			<li>user equipo {{g.name}}</li>
+			<li>user equipo {{g.user.name}}</li>
 			<li>user equipo {{g.name}}</li>
 			<li>user equipo {{g.name}}</li>
 			<li>user equipo {{g.name}}</li>
 
 		</ol>
-		<a href="{% url 'ingresar-usuario' id=g.id %}" class="btn btn-success">Agregar</a>
-		<a href="#" class="btn btn-danger">Quitar</a>
+		<a href="{% url 'ingresar-usuario' id=g.id %}" class="btn btn-success">Agregar o Quitar</a>
+		
 	</fieldset>
 
 	{% endif %}

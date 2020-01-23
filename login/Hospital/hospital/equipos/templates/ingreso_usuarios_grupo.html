@@ -8,7 +8,7 @@
 	
 
 	form{
-		width: 330px;
+		width: 430px;
 		font-family: sans-serif;
 	}
 
@@ -28,6 +28,7 @@
 		padding: 10px 20px;
 		border:1px dashed rgba(0,0,0,.5);
 		border-top: none;
+		min-height: 300px;
 	}
 	ul.list_box li{
 		list-style: none;
@@ -125,28 +126,52 @@
 		transform: translateY(0);
 	}	
 
+	.esp{
+		margin-left: 210px;
+		margin-top: -25px;
+	}
+
+	.ingreso{
+		margin-left: 470px;
+		margin-top: -130px;
+	}
+
 </style>
 <h1>Ingreso a equipo </h1><br>
+<a href="{% url 'asignar-equipo' %} "class="btn btn-info" style="float:right;">Volver</a>
 <hr style="background-color:lightblue; width: 450px; margin-left: -10px;margin-top:-20px; height: 3px;">
 
 
 <form method="POST">
+	{% csrf_token %}
 	<div>
 		<h2>Usuarios disponibles</h2>
-		{%for d in disponible %}
+		
 		<ul class="list_box">
+			{%for d in disponible %}
 			<li>
 				<label>
-					<input type="checkbox" name="">
+
+					<input type="checkbox" name="id_usuario" value={{d.id}} >
 					<span class="icon"></span>
-					<span class="list">{{d.first_name}} {{d.last_name}}{{d.perfil.personal.especialidad}}</span> </br> 
+					<span class="list">{{d.first_name}} {{d.last_name}}</span> </br> 
 
 					{% for e in personal %}
 
 						{%  if d.id == e.id_perfil_id %}
 
-							<h6> {{e.especialidad}} </h6>
+						<div class="esp">
+							{%if e.especialidad == "ENFERMERO"%}
+	                        <span class="label label-info">Enfermero</span>
+	                        {%endif%}
+	                    	{%if e.especialidad == "KINESIOLOGO" %}
+	                        <span class="label label-success">Kinesiologo</span>
+	                        {%endif%}
+	                    	{%if e.especialidad == "TECNICO" %}
+	                        <span class="label label-warning">Técnico</span>
+	                        {%endif%}                         
 
+						</div>
 						{% endif %}
 
 					{% endfor %}
@@ -154,10 +179,68 @@
 
 				</label>
 			</li>
-			
+			{%endfor%}
 		</ul>
-		{%endfor%}
+		
 	</div>
+	<button class="ingreso btn btn-info" type="submit">>></button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form method="POST" style="margin-left: 550px;margin-top: -351px;">
+	{% csrf_token %}
+	<div>
+		<h2>Equipo {{group.name}}</h2>
+		
+		<ul class="list_box">
+			{%for eq in equipo %}
+			<li>
+				<label>
+
+					<input type="checkbox" name="id_usuario_s" value={{eq.id}} >
+					<span class="icon"></span>
+					<span class="list">{{eq.first_name}} {{eq.last_name}}</span> </br> 
+
+					{% for e in personal %}
+
+						{%  if eq.id == e.id_perfil_id %}
+
+						<div class="esp">
+							{%if e.especialidad == "ENFERMERO"%}
+	                        <span class="label label-info">Enfermero</span>
+	                        {%endif%}
+	                    	{%if e.especialidad == "KINESIOLOGO" %}
+	                        <span class="label label-success">Kinesiologo</span>
+	                        {%endif%}
+	                    	{%if e.especialidad == "TECNICO" %}
+	                        <span class="label label-warning">Técnico</span>
+	                        {%endif%}                         
+
+						</div>
+						{% endif %}
+
+					{% endfor %}
+
+
+				</label>
+			</li>
+			{%endfor%}
+		</ul>
+		
+	</div>
+	<button class="ingreso btn btn-info" type="submit" style="margin-left: -80px; margin-top: -200px;"> << </button>
 </form>
 
 
