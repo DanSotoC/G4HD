@@ -30,17 +30,18 @@
 <h2><label> {{px.nombre}} {{px.apellido1}} {{px.apellido2}} </label></h2>
 
 </br>
-<form method='POST' action=''>{%  csrf_token %}
+<form method='POST' action=''>
+	{%  csrf_token %}
 
 
 <p>
-<label for="id_fecha"> Fecha Visita</label></br>
-<input type="date" name="fecha" required id="id_fecha">
+<label for="fecha"> Fecha Visita</label></br>
+<input type="date" name="fecha"  id="fecha">
 </p>
 
 <div class="wrap-input100 rs1 validate-input">
-	<label for="id_id_paciente"> Id Paciente</label></br>
-	<input type="number" name="id_id_paciente" required id="id_id_paciente" value="{{px.id}}" readonly>
+	</br>
+	<input type="hidden" name="id_paciente"  id="id_paciente" value="{{px.id}}" readonly>
 	<span class="focus-input100"></span>
 </div>
 </p>
