@@ -6,5 +6,6 @@ urlpatterns =[
 
 url(r'hora/(?P<id>\d+)$',views.agendar_visita, name="agendar_visita"),
 url(r'lista/',views.agendar_lista, name="agendar_lista"),
+url(r'paciente/',views.visita_paciente, name="visita_paciente"),
 
 ]
