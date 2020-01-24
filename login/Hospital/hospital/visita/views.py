@@ -2,8 +2,11 @@ from django.shortcuts import render, get_object_or_404,redirect
 from usuarios.models import Paciente
 from visita.models import Visita
 from usuarios.models import Tutor
+from usuarios.models import Perfil
 from .forms import  Agendar
 from lista.views import usuarios_listpa
+from django.contrib import messages
+from django.contrib.auth.models import User
 
 def agendar_visita(request, id=None):
 	aux = Paciente.objects.get(id=id)	
@@ -51,3 +54,31 @@ def visita_paciente(request):
 	}	
 
 	return render(request,"visita_paciente.html",context)
+
+def visita_paciente_admin(request, id=None):
+	px = Paciente.objects.get(id=id)
+	queryset = Visita.objects.all()
+	tx = Tutor.objects.get(id=px.id_tutor_id)
+	usr = get_object_or_404(User, id=tx.id_perfil_id)
+	tel = get_object_or_404(Perfil, id=tx.id_perfil_id)
+
+	context = {
+
+		"date_list": queryset,
+		"obj": px,
+		"usr":usr,
+		"tx":tx,
+		"tel":tel,
+
+
+	}	
+
+	return render(request,"registro_visita_adm.html",context)
+
+
+def borrar_fecha(request,id=None):
+	instance = get_object_or_404(Visita, id=id)
+	instance.delete()
+	messages.error(request, "Successfully deleted")
+	return redirect("agendar_lista")
+
