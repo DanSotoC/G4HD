@@ -5,5 +5,6 @@ from visita import views
 urlpatterns =[
 
 url(r'hora/(?P<id>\d+)$',views.agendar_visita, name="agendar_visita"),
+url(r'lista/',views.agendar_lista, name="agendar_lista"),
 
 ]
