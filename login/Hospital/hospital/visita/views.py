@@ -82,3 +82,5 @@ def borrar_fecha(request,id=None):
 	messages.error(request, "Successfully deleted")
 	return redirect("agendar_lista")
 
+
+
