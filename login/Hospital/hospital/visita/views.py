@@ -22,7 +22,6 @@ def agendar_visita(request, id=None):
 		form = Agendar()
 	return render(request,"agendar_visita.html",{"form":form,"px":aux})
 
-
 def agendar_lista(request):
 	queryset = Visita.objects.all()
 	instance = Paciente.objects.all()
@@ -82,5 +81,17 @@ def borrar_fecha(request,id=None):
 	messages.error(request, "Successfully deleted")
 	return redirect("agendar_lista")
 
+def visita_update(request, id=None):
+	instance = get_object_or_404(Visita, id=id)
+	form = Agendar(request.POST or None, instance=instance)
+	if form.is_valid():
+		instance=form.save(commit=False)
+		instance.save()
+		return redirect("agendar_lista")
 
+	context = {
+		"instance": instance,
+		"form": form,
+	}
+	return render(request,"agendar_visita.html",context)
 

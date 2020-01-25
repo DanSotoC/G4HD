@@ -44,16 +44,3 @@ def especialista_detail(request, id=None):
 	return render(request,"detailspersonal.html",context)
 
 
-def borrar_especialista(request,id=None):
-	instance = get_object_or_404(Personal, id=id)
-	aux = instance.id_perfil_id
-	instance.delete()
-
-	instance = get_object_or_404(User, id=aux)
-	aux = instance.id
-	instance.delete()
-
-	instance = get_object_or_404(Perfil, id=aux)
-	instance.delete()
-
-	return redirect("list_enfermero")

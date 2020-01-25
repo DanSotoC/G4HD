@@ -17,9 +17,9 @@
 
     <p class="card-text">{{ det.especialidad }}</p>
         
-    <a href='{%  url "borrar_especialista" id=det.id %}' class="btn btn-danger" role="button" onclick="MensajeConfirmacion()">Delete</a>
+    <a href="#" class="btn btn-danger" role="button" onclick="MensajeConfirmacion()">Delete</a>
     <a href="#" class="btn btn-info" role="button">Edit</a>
-    <a href="#" class="btn btn-info" role="button">Volver</a>
+    <a href='{% url "listenfermero" %}' class="btn btn-info" role="button">Volver</a>
 
 
 {%endblock content%}
