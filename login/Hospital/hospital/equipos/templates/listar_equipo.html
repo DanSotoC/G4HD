@@ -38,7 +38,9 @@
 	                                        <span class="user-subhead">{{g.id}}</span>
 	                                    </td>
 	                                    <td>{{g.name}}</td> 
-	                                    <td><a href="{% url 'eliminar-equipo' id=g.id %}" class="btn btn-danger">Eliminar Equipo</a></td>
+
+	                                    <td><a href="{% url 'ingresar-usuario' id=g.id %}" class="btn btn-success" style="margin-right: 10px;">Agregar/Quitar Personal</a><a href="{% url 'eliminar-equipo' id=g.id %}" class="btn btn-danger">Eliminar Equipo</a></td>
+
 	                                   
 
 	                                    	
@@ -55,7 +57,7 @@
 
 				</div>
 			</div><a href="{%url 'crear-equipo' %}" class="btn btn-info">Crear Equipo</a>
-			<a href="{% url 'asignar-equipo'%}"class="btn btn-info">Asignar Usuarios</a>
+			
 		</div>
 	</div>
 

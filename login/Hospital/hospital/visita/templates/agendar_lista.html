@@ -121,7 +121,7 @@ a {
                                         {%endif%}                                        
                                     </td>                            
                                     <td style="width: 20%;">
-        						      <a href='{%  url "update_fecha" id=fecha.id %}' class="btn btn-info"> Modificar </a>
+        						      <a href='{%  url "update_fecha" id=fecha.id  id_usuario=obj.id %}' class="btn btn-info"> Modificar </a>
         						      <a href='{%  url "borrar_fecha" id=fecha.id %}' class="btn btn-danger"> Borrar </a>
 
 
@@ -164,7 +164,7 @@ a {
                                         {%endif%}                                        
                                     </td>                            
                                     <td style="width: 20%;">
-                                      <a href='#' class="btn btn-info"> Modificar </a>
+                                      <a href='{%  url "update_fecha" id=fecha.id  id_usuario=obj.id %}' class="btn btn-info"> Modificar </a>
                                       <a href='{%  url "borrar_fecha" id=fecha.id %}' class="btn btn-danger"> Borrar </a>
 
 

@@ -25,15 +25,7 @@ def Listar_equipo_view(request):
 
 
 
-def Asignar_equipo_view(request):
-	
-	personal=Personal.objects.all()
-	group = Group.objects.all()
-	user= User.objects.all()
 
-
-
-	return render(request,'asignar_equipo.html',{'personal':personal,'group':group,'user':user})
 
 
 

@@ -8,7 +8,8 @@ from .forms import  Registro_Form,Perfil_Form, Tutor_Form, Paciente_Form, Person
 from django.urls import reverse_lazy
 import threading
 from django.contrib.auth.models import Group
-
+from lista.views import usuarios_listen, usuarios_listu
+from django.contrib.auth.decorators import login_required
 
 def Usuarios_in_Grupos(usuario_id):
 	users=User.objects.get(id=usuario_id)
@@ -26,7 +27,7 @@ def Usuarios_in_Grupos(usuario_id):
 	
        	
 
-
+@login_required
 def PerfilView(request):
 
 	usuarios=User.objects.last()
@@ -35,7 +36,7 @@ def PerfilView(request):
 	return render(request,'perfil.html',{'usuarios':usuarios})
 
 
-
+@login_required
 def perfil_edit(request,usuario_id):
     usuario=Perfil.objects.get(usuario_id=usuario_id)
     if request.method=='GET':
@@ -50,7 +51,7 @@ def perfil_edit(request,usuario_id):
         
     return render(request,'perfil_form.html',{'form':form})	
 
-
+@login_required
 def Registro_View(request):
 	if request.method=='POST':
 		form1=Registro_Form(request.POST)
@@ -68,7 +69,7 @@ def Registro_View(request):
 	return render(request,'registro.html',{'form1':form1})
 			
 		
-
+@login_required
 def Tutor_view(request,perfil):
 	
 	if request.method=='POST':
@@ -88,7 +89,7 @@ def Tutor_view(request,perfil):
 
 
 
-
+@login_required
 def Paciente_view(request,perfil):
 	tutor=Tutor.objects.get(id_perfil=perfil)
 	if request.method=='POST':
@@ -100,13 +101,13 @@ def Paciente_view(request,perfil):
 			form.save()
 
 			
-		return redirect(PerfilView)
+		return redirect(usuarios_listu)
 	else:
 		form = Paciente_Form()
 		
 	return render(request,'paciente_form.html',{'form':form, 'tutor':tutor})
 
-
+@login_required
 def Personal_view(request,perfil):
 	if request.method=='POST':
 		form=Personal_Form(request.POST)
@@ -117,7 +118,7 @@ def Personal_view(request,perfil):
 			form.save()
 
 			
-		return redirect(PerfilView)
+		return redirect(usuarios_listen)
 	else:
 		form = Personal_Form()
 		
