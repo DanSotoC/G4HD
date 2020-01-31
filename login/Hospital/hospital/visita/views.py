@@ -86,9 +86,9 @@ def borrar_fecha(request,id=None):
 
 
 
-def visita_update(request, id=None, id_usuario=None):
+def visita_update(request, id=None):
 	aux = Visita.objects.get(id=id)	
-	px=Paciente.objects.get(id=id_usuario)
+	
 	if request.method=='GET':
 		form=Agendar(instance=aux)
 	else:
@@ -97,5 +97,5 @@ def visita_update(request, id=None, id_usuario=None):
 			form.save()
 		return redirect(agendar_lista)
 	
-	return render(request,"agendar_visita.html",{"form":form,"px":px})
+	return render(request,"agendar_visita.html",{"form":form})
 
