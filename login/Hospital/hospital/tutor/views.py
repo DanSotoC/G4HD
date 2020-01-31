@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from biblioteca.models import Archivo
 from usuarios.models import Paciente
 from usuarios.models import Tutor
+from usuarios.models import Perfil
 from django.views.generic import TemplateView ,View
 
 from django.conf import settings
@@ -30,6 +31,26 @@ def home_tutor(request):
 
 	}
 	return render(request,"home_tutor.html",context)
+
+def ver_perfil (request):
+	current_user = request.user
+	tx = instance = get_object_or_404(Tutor, id_perfil_id = current_user.id)
+	px = instance = get_object_or_404(Paciente, id_tutor_id = tx.id)
+	tl = get_object_or_404(Perfil,id=current_user.id)
+
+	context = {
+
+		"nom": current_user.first_name,
+		"ape":current_user.last_name,
+		"email": current_user.email,
+		"id_actual":current_user.id,
+		"paciente": px,
+		"tutor": tx,
+		"actual":current_user,
+		"tel":tl.tel,
+
+	}
+	return render(request,"ver_perfil.html",context)
 
 def biblioteca_tutor(request):
 	archivo = Archivo.objects.all()
