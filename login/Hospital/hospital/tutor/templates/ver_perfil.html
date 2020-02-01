@@ -6,7 +6,11 @@
 
 <!DOCTYPE html>
 <html>
+<style type="text/css">
+  
+li a{color:black}
 
+</style>
 
 
 <!DOCTYPE html>
@@ -72,10 +76,10 @@
             <nav id="main-nav" class="main-nav clearfix t-center uppercase tabbed">
 
             <ul class="clearfix">
-              <li ><a  href='{%  url "home_t"%}'><i class="icon-user"></i>Página Principal</li></a><hr style="background-color:red; width: 110px; margin-left: 0px;margin-top:-3px; height: 3px;">
-              <li><a  href='{%  url "visita_paciente" %}'><i class="icon-user"></i>Visitas Programadas</li></a><hr style="background-color:red; width: 110px; margin-left: 0px;margin-top:-3px; height: 3px;">
-              <li><a  href='{%  url "biblioteca_t" %}'><i class="icon-user"></i>Biblioteca</li></a><hr style="background-color:red; width: 110px; margin-left: 0px;margin-top:-3px; height: 3px;">
-              <li><a  href="#Password"><i class="icon-user"></i>Cambiar Contraseña</li></a><hr style="background-color:red; width: 110px; margin-left: 0px;margin-top:-3px; height: 3px;">
+              <li ><a  href='{%  url "home_t"%}'><i class="icon-user"></i><b>Página Principal</b></li></a><hr style="background-color:red; width: 110px; margin-left: 0px;margin-top:-3px; height: 3px;">
+              <li><a  href='{%  url "visita_paciente" %}'><i class="icon-user"></i><b>Visitas Programadas</b></li></a><hr style="background-color:red; width: 110px; margin-left: 0px;margin-top:-3px; height: 3px;">
+              <li><a  href='{%  url "biblioteca_t" %}'><i class="icon-user"></i><b>Biblioteca</b></li></a><hr style="background-color:red; width: 110px; margin-left: 0px;margin-top:-3px; height: 3px;">
+              <li><a  href="#Password"><i class="icon-user"></i><b>Cambiar Contraseña</b></li></a><hr style="background-color:red; width: 110px; margin-left: 0px;margin-top:-3px; height: 3px;">
             </ul>
 
             </nav>
@@ -115,7 +119,7 @@
                   <div class="col-md-12  ">
                 
                 <div class="main-title profile">
-                                  <h1 class="mb-20"> {{nom}} {{ape}} </h1>
+                                  <h1 class="mb-20"><b>{{nom}} {{ape}}</b> </h1>
 
                               </div>
                    </div>
@@ -134,7 +138,7 @@
                     <div class="col-md-12  ">
 
                       <div class="sub-title mb-40">
-                                        <h2 class="uppercase">Contact Info</h2> <a href="#" class="btn btn-danger" role="button">Editar</a>
+                                        <h2 class="uppercase">Contact Info</h2><hr style="background-color:black; width: 210px; margin-left: 0px;margin-top:-3px; height: 3px;"> <a href="#" class="btn btn-danger" role="button">Editar</a>
                                     </div>
 
                      </div>
@@ -183,7 +187,7 @@
                       <div class="col-md-12  ">
 
                         <div class="sub-title mb-40">
-                                          <h2 class="uppercase">Paciente Info</h2><a href="#" class="btn btn-danger" role="button">Editar</a>
+                                          <h2 class="uppercase">Paciente Info</h2><hr style="background-color:black; width: 210px; margin-left: 0px;margin-top:-3px; height: 3px;"><a href="#" class="btn btn-danger" role="button">Editar</a>
                                       </div>
 
                        </div>
@@ -227,7 +231,7 @@
                     <div class="col-md-12  ">
 
                       <div class="sub-title mb-40">
-                                        <h2 class="uppercase">Descripción del paciente</h2>
+                                        <h2 class="uppercase">Descripción del paciente</h2><hr style="background-color:black; width: 350px; margin-left: 0px;margin-top:-3px; height: 3px;"> 
                                     </div>
 
                      </div>
@@ -237,7 +241,8 @@
     
                 <p class="lead-intro">“ {{paciente.desc}} “</p>
                   
-
+                </br>
+                </br>
                 </div>
                 <!--End block content-->                
                 
