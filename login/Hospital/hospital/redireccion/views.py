@@ -12,7 +12,7 @@ def redireccion(request):
 		return HttpResponseRedirect(reverse('home_t'))	
 
 	if actual == "PERSONAL":
-		return HttpResponseRedirect(reverse('home'))
+		return HttpResponseRedirect(reverse('home_e'))
 
 	if actual == "ADMINISTRADOR":
 		return HttpResponseRedirect(reverse('dash'))

@@ -17,7 +17,7 @@ def agendar_visita(request, id=None):
 			form.save()
 
 			
-		return redirect(usuarios_listpa)
+		return redirect(visita_paciente_admin,id)
 	else:
 		form = Agendar()
 	return render(request,"agendar_visita.html",{"form":form,"px":aux})
@@ -77,9 +77,10 @@ def visita_paciente_admin(request, id=None):
 
 def borrar_fecha(request,id=None):
 	instance = get_object_or_404(Visita, id=id)
+	id_p=instance.id_paciente
 	instance.delete()
 	messages.error(request, "Successfully deleted")
-	return redirect("agendar_lista")
+	return redirect(visita_paciente_admin,id_p)
 
 
 
