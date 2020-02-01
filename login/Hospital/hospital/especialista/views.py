@@ -4,6 +4,7 @@ from usuarios.models import Personal , Paciente, Perfil
 '''from .forms import PostForm'''
 from django.shortcuts import HttpResponse, HttpResponseRedirect, redirect
 from django.contrib import messages
+from biblioteca.models import Archivo
 
 
 
@@ -12,64 +13,33 @@ def logout_view(request):
     return render(request,"main.html")
 
 
-
 def home_especialista(request):
 	current_user = request.user
-	paciente=Paciente.objects.count()
 	px = instance = get_object_or_404(Personal, id_perfil_id = current_user.id)
-	perfil= Perfil.objects.get(id= current_user.id)
+
 	context = {
 
-		"nom": current_user.first_name,
-		"ape":current_user.last_name,
-		"email": current_user.email,
-		"perfil":perfil,
-		"id_actual":current_user.id,
-		"personal": px,
-		"num_pacientes":paciente
-		
+		"actual": current_user,	
+		"personal":px,
 
 	}
-
 	return render(request,"index_especialista.html",context)
 
-def ausencia_paciente(request):
-	queryset =request.GET.get("buscar")
-	user = Usuario.objects.filter(Rut = queryset)
-	context = {
-		"object_list": user,
-	}
-	return render(request, "ausencia_paciente.html", context)
 
-
-def ausencia_paciente_detalle(request, id =None):
-	instance = get_object_or_404(Usuario, idDatosPer = id)
-	context = {
-		"nom": instance.Primer_Nombre,
-		"pap": instance.Primer_Apellido,
-		"sap": instance.Segundo_Apellido,
-
-		"instance": instance,
-	}
-	return render(request,"ausencia_paciente_detalle.html", context)
-
-def ausencia_paciente_form(request, id=None):
-	instance = get_object_or_404(Usuario, idDatosPer=id)
-	form = PostForm(request.POST or None)
-
-	if form.is_valid():
-		print("dentro")
-		inst = form.save(commit=False)
-		inst.save()
-		messages.error(request, "Successfully Created")
-#		return HttpResponseRedirect(instance.get_absolute_url())
-		return HttpResponseRedirect("ausencia_paciente_detalle.html")
-	else :
-		print(form)
+def ver_perfil_e (request):
+	current_user = request.user
+	px = instance = get_object_or_404(Personal, id_perfil_id = current_user.id)
+	tl = get_object_or_404(Perfil,id=current_user.id)
 
 	context = {
 
-		"form": form,
-		"instance": instance,
+		"actual": current_user,
+		"personal":px,
+		"tel":tl.tel,
+
 	}
-	return render(request, "ausencia_paciente_form.html", context)
+	return render(request,"ver_perfil_e.html",context)
+
+def biblioteca_e(request):
+	archivo = Archivo.objects.all()
+	return render(request,'biblioteca_especialista.html',{'archivo':archivo})

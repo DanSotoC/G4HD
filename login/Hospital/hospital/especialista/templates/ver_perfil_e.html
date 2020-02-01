@@ -1,0 +1,270 @@
+<!--DOCTYPE html -->
+{%extends "base_especialista.html"%}
+{% load static %}
+
+{%  block content %}
+
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+
+.button {
+  background-color: #6D213C;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  }
+  
+li a{color:black}
+
+</style>
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  
+     <!-- Metas -->
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <title>Perfil | Hospital El Pino</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="telephone=no" name="format-detection">
+
+    <!-- Css -->
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/base.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/main.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href="css/owl-carousel/owl.carousel.css" rel="stylesheet"  media="all">
+    <link href="css/owl-carousel/owl.theme.css" rel="stylesheet"  media="all">
+    <link href="css/magnific-popup.css" type="text/css" rel="stylesheet" media="all" />
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,300,600%7CRoboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="css/fontello.css" rel="stylesheet" type="text/css"  media="all">
+
+    </head>
+
+    <body>
+  
+<!-- Preloader -->
+<div class="loader">
+    <!-- Preloader inner -->
+  <div class="loader-inner">
+  <div class="spinner">
+    <div class="dot1"></div>
+    <div class="dot2"></div>
+  </div>
+  </div>
+<!-- End preloader inner -->
+</div>
+<!-- End preloader-->
+
+
+<!--Wrapper-->
+<div id="wrapper" class="mt-150 mb-150">
+  
+  <!--Container-->
+  <div class="container">
+    
+      <!--Row-->  
+      <div class="row ">
+    
+    <!--Left content-->
+    <div class="col-md-2 left-content pd-r0">
+  
+  <!--Header-->
+  <header id="header">
+
+          <!--Main header-->
+          <div class="main-header">
+          
+          </br></br>
+                  
+          <!--Main navigation-->
+            <nav id="main-nav" class="main-nav clearfix t-center uppercase tabbed">
+
+            <ul class="clearfix">
+              <li ><a  href='{%  url "home_e"%}'><i class="icon-user"></i><b>Página Principal</b></li></a><hr style="background-color:purple; width: 110px; margin-left: 0px;margin-top:-3px; height: 3px;">
+              <li><a  href="#"><i class="icon-user"></i><b>Visitas Programadas</b></li></a><hr style="background-color:purple; width: 110px; margin-left: 0px;margin-top:-3px; height: 3px;">
+              <li><a  href='{%  url "biblioteca_e" %}'><i class="icon-user"></i><b>Biblioteca</b></li></a><hr style="background-color:purple; width: 110px; margin-left: 0px;margin-top:-3px; height: 3px;">
+              <li><a  href="#Password"><i class="icon-user"></i><b>Cambiar Contraseña</b></li></a><hr style="background-color:purple; width: 110px; margin-left: 0px;margin-top:-3px; height: 3px;">
+            </ul>
+
+            </nav>
+          <!--End main navigation-->
+              
+        </div>
+        <!--End main header-->
+        
+    </header>
+    <!--End  header-->
+    
+    
+    </div>
+    <!--End left content-->
+    
+    
+        
+      <!--Right content-->
+      <div class="col-md-9 right-content pd-r0 pd-l0">
+
+            <!--About Tab-->
+          <section id="about" class="bg-white t-center">
+            
+            <!--About -->
+            <div class="about">
+                  
+            
+            <!--Content-->  
+            <div class="content">
+              
+              <!--Block content-->  
+              <div class="block-content mb-100">
+                
+                  <!--Row-->
+                  <div class="row">
+
+                  <div class="col-md-12  ">
+                
+                <div class="main-title profile">
+                                  <h1 class="mb-20"><b> {{actual.first_name}} {{actual.last_name}} </b> </h1>
+
+                              </div>
+                   </div>
+                 </div>
+                <!--End row-->
+
+              </div>
+              <!--End block content-->
+                      
+                <!--Block content-->  
+                <div class="block-content mb-100  pb-30">
+
+                    <!--Row-->
+                      <div class="row">
+
+                    <div class="col-md-12  ">
+
+                      <div class="sub-title mb-40">
+                                        <h2 class="uppercase">Personal Info</h2><hr style="background-color:black; width: 210px; margin-left: 0px;margin-top:-3px; height: 3px;"> <a href="#" class="button" role="button">Editar</a>
+                                    </div>
+
+                     </div>
+                     </div>
+                    <!--End row-->                    
+
+                    <!--Row-->
+                    <div class="row">
+                  <div class="col-md-8 col-md-offset-3  col-sm-8 col-sm-offset-3 ">
+
+                  <!--Listing-->  
+                  <div class="listing mt-40">                                    
+                  <div class="listing-inner">
+                  <div class="listing-event">
+                    <ul class="data left">
+                      <li><span class="emph-1">Especialidad</span> :<br>
+                      {{personal.especialidad}}</li>
+                    </ul>
+
+                    <ul class="data right">
+                      <li><span class="emph-1">E-Mail</span> : {{actual.email}} </li>
+                      <li><span class="emph-1">Rut</span> : {{personal.rut}} </li>
+                      <li><span class="emph-1">Phone</span> : +56 9{{tel}} </li>
+                    </ul>
+
+                  </div>
+                  </div>
+
+                  </div>
+                  <!--End listing-->  
+
+                </div>
+
+                </div>
+                <!--End row-->
+
+                </div>
+                <!--End block content-->
+
+                  <!--Block content-->  
+                  <div class="block-content mb-100 pb-30">
+
+                      <!--Row-->
+                        <div class="row">
+
+                      <div class="col-md-12  ">
+
+                        <div class="sub-title mb-40">
+                                          <h2 class="uppercase">Team Info: NOMBRE EQUIPO</h2><hr style="background-color:black; width: 410px; margin-left: 0px;margin-top:-3px; height: 3px;"><a href="#" class="button" role="button">Editar</a>
+                                      </div>
+
+                       </div>
+                       </div>
+                      <!--End row-->
+      
+      
+                      <div class="row">
+                    <div class="col-md-8 col-md-offset-3  col-sm-8 col-sm-offset-3 ">
+                                        
+                    <!--Listing-->  
+                    <div class="listing mt-40">
+                      
+                    <div class="listing-inner">
+                    <div class="listing-event">
+                      <ul class="data left">
+                        <li class="emph-1">Name : Personal 1 </li>
+                        <li class="emph-1">Name : Personal 2 </li>
+                        <li class="emph-1">Name : Personal 3 </li>
+                        
+                      </ul>                  
+                    </div>
+                    </div>
+                    
+                    </div>
+                    <!--End listing-->  
+                                        
+                  </div>
+                  
+                  </div>
+
+                  </div>
+                  <!--End block content-->
+
+                <!--Block content-->  
+                <div class="block-content mb-100">
+
+                    <!--Row-->
+                      <div class="row">
+
+                    <div class="col-md-12  ">
+
+                      <div class="sub-title mb-40">
+                                         
+                                    </div>
+
+                     </div>
+                     </div>
+                    <!--End row-->
+                  
+                </br>
+                </br>
+                </div>
+                <!--End block content-->                
+                
+                               
+
+    </body>
+</html>
+
+
+
+
+
+{%  endblock content %}
+
