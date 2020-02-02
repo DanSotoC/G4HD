@@ -1,0 +1,49 @@
+{% extends "base_especialista.html" %}
+
+
+{% block content %}
+<style type="text/css">
+
+.button {
+  background-color: #6D213C;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  }
+  
+li a{color:black}
+
+</style>
+<h1>Datos de Personal</h1><br>
+<hr style="background-color:purple; width: 320px; margin-left: 0px;margin-top:-20px; height: 3px;">
+
+<div class="col-sm-5">
+	<form method="POST">
+	{% csrf_token%}
+	
+	<div>
+		<label for=id_perfil></label>
+		<input type="hidden" name="id_perfil" id="id_perfil" value="{{perfil}}">
+	</div>
+	<div>
+		<label>Rut:</label>
+		{{form.rut}}
+	</div>
+	<div>
+		<label>Especialidad:</label>
+		{{form.especialidad}}
+	</div><br>
+		<button class="button"type="submit">guardar</button>
+	
+
+	<div>
+</form>	
+</div>
+{% endblock %}

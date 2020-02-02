@@ -8,5 +8,6 @@ urlpatterns = [
     url(r'^home/$', views.home_especialista, name="home_e"),
     url(r'^perfil/$', views.ver_perfil_e, name="perfil_e"),
     url(r'^biblioteca/$', views.biblioteca_e, name="biblioteca_e"),
+    url(r'personal/edit/(?P<perfil>\d+)/(?P<id_personal>\d+)$',views.Especialista_edit, name="Especialista_edit"),
     
     ]

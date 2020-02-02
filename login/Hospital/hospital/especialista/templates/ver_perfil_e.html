@@ -152,7 +152,7 @@ li a{color:black}
                     <div class="col-md-12  ">
 
                       <div class="sub-title mb-40">
-                                        <h2 class="uppercase">Personal Info</h2><hr style="background-color:black; width: 210px; margin-left: 0px;margin-top:-3px; height: 3px;"> <a href="#" class="button" role="button">Editar</a>
+                                        <h2 class="uppercase">Personal Info</h2><hr style="background-color:black; width: 210px; margin-left: 0px;margin-top:-3px; height: 3px;"> <a href="{% url 'Especialista_edit' perfil=actual.id id_personal=personal.id %}" class="button" role="button">Editar</a>
                                     </div>
 
                      </div>
@@ -201,7 +201,7 @@ li a{color:black}
                       <div class="col-md-12  ">
 
                         <div class="sub-title mb-40">
-                                          <h2 class="uppercase">Team Info: NOMBRE EQUIPO</h2><hr style="background-color:black; width: 410px; margin-left: 0px;margin-top:-3px; height: 3px;"><a href="#" class="button" role="button">Editar</a>
+                                          <h2 class="uppercase">Team Info: {{name_group}}</h2><hr style="background-color:black; width: 410px; margin-left: 0px;margin-top:-3px; height: 3px;">
                                       </div>
 
                        </div>
@@ -218,9 +218,10 @@ li a{color:black}
                     <div class="listing-inner">
                     <div class="listing-event">
                       <ul class="data left">
-                        <li class="emph-1">Name : Personal 1 </li>
-                        <li class="emph-1">Name : Personal 2 </li>
-                        <li class="emph-1">Name : Personal 3 </li>
+                        {% for g in users_group %}
+                        <li class="emph-1">{{g.first_name}}{{g.last_name}} </li>
+                       
+                        {% endfor %}
                         
                       </ul>                  
                     </div>
