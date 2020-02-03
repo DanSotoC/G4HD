@@ -5,8 +5,18 @@ from usuarios.models import Tutor
 from usuarios.models import Personal
 from usuarios.models import Perfil
 from usuarios.forms import Paciente_Form , Tutor_Form , Personal_Form
+from lista.views import usuarios_listpa
 
 
+def borrar_paciente(request,id):
+	obj = get_object_or_404(User, id=id)
+	if request.method=="POST":
+		obj.delete()
+		return redirect("/dashboard/home/")
+	context = {	
+	  "object":obj
+	} 
+	return render(request,"delete.html",context)
 
 def usuario_detail(request, id=None):
 	px = get_object_or_404(Paciente, id_tutor_id=id)
