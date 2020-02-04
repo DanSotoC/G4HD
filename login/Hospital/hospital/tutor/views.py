@@ -69,7 +69,7 @@ def Tutor_edit(request,perfil=None,id_detalle=None):
 		if form1.is_valid():
 			form1.save()
 		return redirect(ver_perfil)
-	return render(request,'tutor_f.html',{'form1':form1,'perfil':perfil})
+	return render(request,'tutor_f.html',{'form1':form1,'perfil':perfil,'tutor':tutor})
 
 
 def Paciente_edit(request,id_tutor=None,id_paciente=None):
@@ -82,4 +82,4 @@ def Paciente_edit(request,id_tutor=None,id_paciente=None):
 		if form.is_valid():
 			form.save()
 		return redirect(ver_perfil)
-	return render(request,'paciente_f.html',{'form':form,'tutor':tutor})	
+	return render(request,'paciente_f.html',{'form':form,'tutor':tutor,'paciente':paciente})	
