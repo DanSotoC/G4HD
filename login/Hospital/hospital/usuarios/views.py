@@ -24,6 +24,24 @@ def Usuarios_in_Grupos(usuario_id):
 			personal.user_set.add(users)
 			disponible.user_set.add(users)
 
+
+def Set_password(usuario_id):
+	nombre=[]
+	apellido=[]
+	tel=[]
+	clave=[]
+	user=User.objects.get(id=usuario_id)
+	perfil=Perfil.objects.get(id=usuario_id)
+	nombre=user.first_name
+	apellido=user.last_name
+	tel=perfil.tel
+	clave.append(nombre[:3])
+	clave.append(apellido[:3])
+	clave.append(tel[:4])
+	user.set_password(clave[0].lower()+clave[1].lower()+clave[2])
+	user.save()
+
+
 	
        	
 
@@ -44,6 +62,7 @@ def perfil_edit(request,usuario_id):
         if form.is_valid():
             form.save()
             Usuarios_in_Grupos(usuario_id)
+            Set_password(usuario_id)
         return redirect(PerfilView)
         
         

@@ -35,7 +35,10 @@ def ver_perfil_e (request):
 	for g in group:
 		if g.id != '1' and g.id != '2' and g.id != '20':
 			user=User.objects.filter(groups__id=g.id)
-			name=g.name
+			for u in user:
+				if u.id == current_user.id:
+					name=g.name
+					user_group=User.objects.filter(groups__name=name)
 
 	px = instance = get_object_or_404(Personal, id_perfil_id = current_user.id)
 	tl = get_object_or_404(Perfil,id=current_user.id)
@@ -46,7 +49,7 @@ def ver_perfil_e (request):
 		"actual": current_user,
 		"personal":px,
 		"tel":tl.tel,
-		"users_group":user,
+		"users_group":user_group,
 		"name_group":name
 
 	}
