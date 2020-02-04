@@ -42,7 +42,7 @@ class Paciente(models.Model):
 	desc=models.CharField(max_length=100)
 	
 	def __str__(self):
-		return str(self.nombre)
+		return self.nombre
 	
 
 class Personal(models.Model):
@@ -64,8 +64,6 @@ def crear_usuario_perfil(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def guardar_usuario_perfil(sender, instance, **kwargs):
     instance.perfil.save()
-
-
 
 
 

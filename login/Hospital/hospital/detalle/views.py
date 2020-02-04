@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404,redirect
+from django.shortcuts import render, get_object_or_404,redirect,HttpResponseRedirect
 from django.contrib.auth.models import User
 from usuarios.models import Paciente
 from usuarios.models import Tutor
@@ -9,13 +9,16 @@ from lista.views import usuarios_listpa
 
 
 def borrar_paciente(request,id):
-	obj = get_object_or_404(User, id=id)
-	if request.method=="POST":
-		obj.delete()
-		return redirect("/dashboard/home/")
+	obj = get_object_or_404(Paciente, id=id)
+	obj2 = get_object_or_404(Tutor, id=obj.id_tutor_id)
+	aux = obj2.id_perfil_id
+	obj = get_object_or_404(User, id=aux)
+	#if request.method == "POST":
+	obj.delete()
+	#return HttpResponseRedirect(reverse('listpaciente'))
 	context = {	
 	  "object":obj
-	} 
+	}
 	return render(request,"delete.html",context)
 
 def usuario_detail(request, id=None):
