@@ -47,14 +47,17 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
 
   <div class="card-header">
-    <h1> Bienvenido {{nom}} {{ape}} </h1>
+    <h1> Contact Us </h1>
     
             <div class="logo">
                 <img src="{% static 'logo.png'%}">          
             </div>
             <div class="title">
                     
-                              
+               Hacer formulario...Nombre de tutor, rut, consulta. (Hacer ventana para admin para que reciba las consultas y puedan ser contestadas)
+
+               Hacer en visitas la opcion de reagendar con el mismo template + id de visita para identificarla y poder realizar cambio.
+
 
             </div>
 
@@ -63,10 +66,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   <div class="card-body">
     <p class="card-text"></p>
     
-    <a href='{%  url "perfil_t" %}'> <button class="block"> Ver Perfil </button></a> </br> 
-    <a href='{%  url "visita_paciente" %}'> <button class="block"> Visitas Programadas </button></a> </br>
-    <a href='{%  url "contacto_t" %}'> <button class="block"> Contacto con Unidad </button></a> </br> 
-    <a href='{%  url "biblioteca_t" %}'> <button class="block"> Biblioteca </button></a> </br>
+    <a href='{%  url "home_t" %}'> <button class="block"> Volver al Menú Principal </button></a> </br> 
+    
 
 </div>
 
@@ -84,6 +85,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
 
 </html>
+
 
 {%  endblock content %}
 

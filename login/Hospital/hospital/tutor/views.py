@@ -3,6 +3,7 @@ from biblioteca.models import Archivo
 from usuarios.models import Paciente
 from usuarios.models import Tutor
 from usuarios.models import Perfil
+from django.contrib.auth.models import User
 from usuarios.forms import Paciente_Form , Tutor_Form , Personal_Form
 from django.views.generic import TemplateView ,View
 
@@ -83,3 +84,14 @@ def Paciente_edit(request,id_tutor=None,id_paciente=None):
 			form.save()
 		return redirect(ver_perfil)
 	return render(request,'paciente_f.html',{'form':form,'tutor':tutor,'paciente':paciente})	
+
+
+def contacto(request):
+	ux = User.objects.all()
+	px = Perfil.objects.all()
+	
+	context = {
+		"user": ux,
+		"perfil":px,
+	}
+	return render(request,"contacto.html",context)
