@@ -16,11 +16,11 @@
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
-        .logo img{
-            width:90px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+.logo img{
+  width:90px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
         }
 
 .block {
@@ -53,10 +53,28 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
                 <img src="{% static 'logo.png'%}">          
             </div>
             <div class="title">
-                    
-               Hacer formulario...Nombre de tutor, rut, consulta. (Hacer ventana para admin para que reciba las consultas y puedan ser contestadas)
+              
 
-               Hacer en visitas la opcion de reagendar con el mismo template + id de visita para identificarla y poder realizar cambio.
+
+
+              <form method="POST">
+              {% csrf_token%} 
+
+              Tutor</br>
+              {{form.id_tutor}}</br></br>
+
+
+              Rut</br>
+              {{form.rut}} </br></br>
+
+              Mensaje</br>
+              {{form.mensaje}} </br>
+
+
+             </br>
+
+              <button class="btn btn-danger" type="submit">Enviar</button>
+              </form>
 
 
             </div>

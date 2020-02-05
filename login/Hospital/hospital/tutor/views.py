@@ -6,6 +6,7 @@ from usuarios.models import Perfil
 from django.contrib.auth.models import User
 from usuarios.forms import Paciente_Form , Tutor_Form , Personal_Form
 from django.views.generic import TemplateView ,View
+from tutor.forms import consulta_mensaje
 
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
@@ -89,9 +90,20 @@ def Paciente_edit(request,id_tutor=None,id_paciente=None):
 def contacto(request):
 	ux = User.objects.all()
 	px = Perfil.objects.all()
-	
+
+	form = consulta_mensaje(request.POST or None)
+
+	if form.is_valid():
+		instance=form.save(commit=False)
+		instance.save()
+		return redirect(ver_perfil)
+
 	context = {
+
+		"form": form,
 		"user": ux,
-		"perfil":px,
+		"perfil": px,
 	}
-	return render(request,"contacto.html",context)
+		
+	return render(request,'Contacto.html',context)
+
