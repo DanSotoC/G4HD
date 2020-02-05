@@ -13,9 +13,15 @@
 
 	th{
 		min-width:280px; 
-		font-size: 23px;
+		font-size: 20px;
 
 	}
+	td{
+		min-width:280px; 
+		
+
+	}
+
 
 	a:link{
 		text-decoration: none;
@@ -44,54 +50,139 @@
 			<tbody>
 				<tr>
 					<th>Username:</th>
-					<td> {{usuarios.username}} </td>
+					<td> {{usuario.username}} </td>
 				</tr>
 				<tr>
 					<th>Nombre Completo: </th>
-					<td>{{usuarios.first_name}}{{usuarios.last_name}}</td>
+					<td>{{usuario.first_name}} {{usuario.last_name}}</td>
 				</tr>
 				<tr>
 					<th>Correo Electronico:</th>
-					<td>{{usuarios.email}}</td>
+					<td>{{usuario.email}}</td>
 				</tr>
+
 			</tbody>
 		</table>
 		<br>
-		<a  href="{% url 'perfil_editar' usuarios.perfil.usuario_id %}" class="a-editar"><h1>Datos Perfil</h1></a><br>
+		<h1>Datos Perfil</h1><br>
 		<hr style="background-color:lightblue; width: 320px; margin-left: 0px;margin-top:-20px; height: 3px;">
-
+		<table>
+			<tbody>
+				<tr>
+					<th>Rol:</th>
+					<td>{{perfil.rol}}</td>
+				</tr>
+				<tr>
+					<th>N° Telefonico:</th>
+					<td>{{perfil.tel}}</td>
+				</tr>
+				
+			</tbody>
+		</table>
 
 		
 
 		
 		
 	</div>
-	{% if usuarios.perfil.rol == "TUTOR" %}
+	{% if perfil.rol == "TUTOR" %}
 	<div class="col-sm-6" style="margin-top: 15px;">
 	
 		
 
 		
 
-		<a href="{% url 'tutor_form' perfil=usuarios.perfil.id  %} " ><h1>Datos de Tutor</h1></a>
+		<h1>Datos de Tutor</h1>
 		<br>
 		<hr style="background-color:lightblue; width: 320px; margin-left: 0px;margin-top:-20px; height: 3px;">
-		<br><br>
-		<a href="{% url 'paciente_form' perfil=usuarios.perfil.id  %} " ><h1>Datos de Paciente</h1></a>
+		<br>
+			<table>
+			<tbody>
+				<tr>
+					<th>Rut:</th>
+					<td>{{tutor.rut}}</td>
+				</tr>
+				<tr>
+					<th>Comuna:</th>
+					<td>{{tutor.comuna}}</td>
+				</tr>
+
+				<tr>
+					<th>Domicilio:</th>
+					<td>{{tutor.domicilio}}{{tutor.num_domicilio}}</td>
+				</tr>
+				
+				<tr>
+					<th>Fecha de nacimiento:</th>
+					<td>{{tutor.f_nacimiento}}</td>
+				</tr>
+			</tbody>
+		</table>
+        <br>
+		<h1>Datos de Paciente</h1>
 		<br>
 		<hr style="background-color:lightblue; width: 320px; margin-left: 0px;margin-top:-20px; height: 3px;">
+		<br>
+			<table>
+			<tbody>
+				<tr>
+					<th>Nombre:</th>
+					<td>{{paciente.nombre}}</td>
+				</tr>
+				<tr>
+					<th>Apellidos:</th>
+					<td>{{paciente.apellido1}} {{paciente.apellido2}}</td>
+				</tr>
+				<tr>
+					<th>Rut:</th>
+					<td>{{paciente.rut}}</td>
+				</tr>
+				<tr>
+					<th>Comuna:</th>
+					<td>{{paciente.comuna}}</td>
+				</tr>
+
+				<tr>
+					<th>Domicilio:</th>
+					<td>{{paciente.domicilio}}{{paciente.num_domicilio}}</td>
+				</tr>
+				
+				<tr>
+					<th>Fecha de nacimiento:</th>
+					<td>{{paciente.f_nacimiento}}</td>
+				</tr>
+				<tr>
+					<th>Estado de Paciente:</th>
+					<td>{{paciente.desc}}</td>
+				</tr>
+				
+			</tbody>
+		</table>
 		<a id="fin" href="{% url 'listtutor' %}" class="btn btn-success">Finalizar Registro</a>
 		
 	</div>
 	{% else %}
-	{% if  usuarios.perfil.rol == "PERSONAL"%}
+	{% if  perfil.rol == "PERSONAL" %}
 	<div class="col-sm-6" style="margin-top: 15px;">
 		
 
 		
-		<a href="{% url 'personal_form' perfil=usuarios.perfil.id %}" ><h1> Datos de Personal</h1></a>
-		<br>
+		<h1> Datos de Personal</h1><br>
 		<hr style="background-color:lightblue; width: 320px; margin-left: 0px;margin-top:-20px; height: 3px;">
+		<br>
+			<table>
+			<tbody>
+				<tr>
+					<th>Rut:</th>
+					<td>{{personal.rut}}</td>
+				</tr>
+				<tr>
+					<th>Especialidad:</th>
+					<td>{{personal.especialidad}}</td>
+				</tr>
+			</tbody>
+			</table>
+		
 		<a id="fin" href="{% url 'listenfermero' %}" >Finalizar Registro</a>
 		
 	</div>

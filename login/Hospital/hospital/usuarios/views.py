@@ -3,7 +3,7 @@ from django.views import generic
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib.auth.models import User
-from .models import Perfil, Tutor
+from .models import Perfil, Tutor, Paciente ,Personal
 from .forms import  Registro_Form,Perfil_Form, Tutor_Form, Paciente_Form, Personal_Form
 from django.urls import reverse_lazy
 import threading
@@ -46,10 +46,27 @@ def Set_password(usuario_id):
        	
 
 
-def PerfilView(request):
+def PerfilView(request,perfil):
+	tutor=None
+	paciente=None
+	personal=None
+	usuario=User.objects.get(id=perfil)
+	perfile=Perfil.objects.get(id=perfil)
+	if perfile.rol=='TUTOR':
+		tutor=Tutor.objects.get(id_perfil=perfil)
+		paciente=Paciente.objects.get(id_tutor=tutor.id)
+	if perfile.rol=='PERSONAL':
+		personal=Personal.objects.get(id_perfil=perfil)
+	
+	context={
+		"usuario":usuario,
+		"perfil":perfile,
+		"tutor":tutor,
+		"personal":personal,
+		"paciente":paciente
+	}
 
-	usuarios=User.objects.last()
-	return render(request,'perfil.html',{'usuarios':usuarios})
+	return render(request,'perfil.html',context)
 
 
 
@@ -63,7 +80,10 @@ def perfil_edit(request,usuario_id):
             form.save()
             Usuarios_in_Grupos(usuario_id)
             Set_password(usuario_id)
-        return redirect(PerfilView)
+        if usuario.rol=='TUTOR':
+        	return redirect(Tutor_view,usuario.id)
+        if usuario.rol=='PERSONAL':
+        	return redirect(Personal_view,usuario.id)
         
         
     return render(request,'perfil_form.html',{'form':form})	
@@ -78,8 +98,9 @@ def Registro_View(request):
 		if form1.is_valid():
 			form1.save()
 
-		
-		return redirect(PerfilView)
+		usuarios=User.objects.last()
+		usuario_id=usuarios.id
+		return redirect(perfil_edit,usuario_id)
 	else:
 		form1 = Registro_Form()
 		
@@ -98,7 +119,7 @@ def Tutor_view(request,perfil):
 			form1.save()
 
 			
-		return redirect(PerfilView)
+		return redirect(Paciente_view,perfil)
 	else:
 		form1 = Tutor_Form()
 		
@@ -118,7 +139,7 @@ def Paciente_view(request,perfil):
 			form.save()
 
 			
-		return redirect(usuarios_listu)
+		return redirect(PerfilView,perfil)
 	else:
 		form = Paciente_Form()
 		
@@ -135,7 +156,7 @@ def Personal_view(request,perfil):
 			form.save()
 
 			
-		return redirect(usuarios_listen)
+		return redirect(PerfilView,perfil)
 	else:
 		form = Personal_Form()
 		
