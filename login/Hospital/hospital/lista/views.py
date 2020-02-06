@@ -67,7 +67,7 @@ def usuarios_listu(request):
 
 def consulta_lista(request):
 	
-	con = Consulta.objects.all()
+	con = Consulta.objects.all().order_by('timestamp')
 	usr = User.objects.all()
 
 	context = {

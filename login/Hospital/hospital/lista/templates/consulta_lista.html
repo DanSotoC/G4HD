@@ -76,8 +76,15 @@ a {
                                 </tr>
                             </thead>
                             <tbody>
+
+
+
+
                             	{% for obj in con %}
                             	
+
+                                {% if obj.estado == 0 %}
+
 
                                 <tr>
                                    	
@@ -112,7 +119,7 @@ a {
         							 
                                      {% if obj.estado == 0 %}
                                     
-                                        <a href="#" class="btn btn-success">Resolver </a>
+                                        <a href="#" class="btn btn-warning">Resolver </a>
 
                                     {% endif %}       
         
@@ -121,8 +128,59 @@ a {
                                     	
                                 </tr>
 
-										
+										{% endif %}
 										{% endfor %}
+
+                                {% for obj in con %}
+                                
+
+                                {% if obj.estado == 1 %}
+
+
+                                <tr>
+                                    
+                                    <td>                                      
+                                        <span class="user-subhead"> {{obj.titulo}} </span>
+                                    </td>
+                                    <td>{{obj.timestamp}}</td>
+
+                                        {% for u in usr %}
+
+                                            {% if u.id == obj.id_usuario %}
+
+                                            <td>{{u.first_name}} {{u.last_name}} </td> 
+
+                                            {% endif %} 
+                                    
+                                        {% endfor %}
+
+                                    <td> 
+
+                                   {% if obj.estado == 0 %}
+                                            <span class="label label-default">Pendiente</span>
+                                   {%endif%}
+                                       
+                                    {% if obj.estado == 1 %}
+                                            <span class="label label-success">Resuelta</span>
+                                    {%endif%} 
+
+                                    </td>
+
+                                    <td style="width: 26%;">
+                                     
+                                     {% if obj.estado == 1 %}
+                                    
+                                        <a href="#" class="btn btn-success"> Ver resolución </a>
+
+                                    {% endif %}       
+        
+                                    </td>
+
+                                        
+                                </tr>
+
+                                        {% endif %}
+                                        {% endfor %}
 
 
 
