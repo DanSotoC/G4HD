@@ -97,7 +97,16 @@ def especialista_edit(request,perfil=None,id_personal=None):
 		return redirect(especialista_detail,id_personal)
 	return render(request,'personal_form.html',{'form':form,'perfil':perfil})
 
+def borrar_especialista(request,id):
+	obj2 = get_object_or_404(Personal, id=id)
+	obj = get_object_or_404(User, id=obj2.id_perfil_id)
+	obj.delete()
 
+	return HttpResponseRedirect(reverse('listenfermero'))
+	context = {	
+	  "object":obj
+	}
+	return render(request,"delete.html",context)
 
 
 
