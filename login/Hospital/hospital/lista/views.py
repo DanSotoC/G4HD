@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import HttpResponse, HttpResponseRedirect, redirect
 from usuarios.models import Paciente , Personal, Tutor
+from tutor.models import Consulta
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 
@@ -64,3 +65,14 @@ def usuarios_listu(request):
 	}
 	return render(request,"listu.html",context)
 
+def consulta_lista(request):
+	
+	con = Consulta.objects.all()
+	usr = User.objects.all()
+
+	context = {
+
+		"con": con,
+		"usr": usr,
+	}
+	return render(request,"consulta_lista.html",context)
