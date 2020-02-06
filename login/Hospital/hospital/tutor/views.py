@@ -88,8 +88,9 @@ def Paciente_edit(request,id_tutor=None,id_paciente=None):
 
 
 def contacto(request):
-	ux = User.objects.all()
-	px = Perfil.objects.all()
+	current_user = request.user
+	tx =  get_object_or_404(Tutor, id_perfil_id = current_user.id)
+	
 
 	form = consulta_mensaje(request.POST or None)
 
@@ -101,8 +102,8 @@ def contacto(request):
 	context = {
 
 		"form": form,
-		"user": ux,
-		"perfil": px,
+		"user": tx,
+		"actual":current_user,
 	}
 		
 	return render(request,'Contacto.html',context)

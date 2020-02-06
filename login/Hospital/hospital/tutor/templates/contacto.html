@@ -16,6 +16,13 @@
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
+input[type=box] {
+  width: 100%;
+  padding: 80px 20px;
+  margin: 8px 2;
+  box-sizing: border-box;
+}
+
 .logo img{
   width:90px;
   display: block;
@@ -60,15 +67,40 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
               <form method="POST">
               {% csrf_token%} 
 
-              Tutor</br>
-              {{form.id_tutor}}</br></br>
 
+                <b>{{actual.first_name}} {{actual.last_name}}</b></br>
 
+                <div>
+                  <label for=id_tutor></label>
+                  <input name="id_tutor" type="hidden" id="id_tutor" value={{user.id}}>
+                </div>            
+
+              
               Rut</br>
-              {{form.rut}} </br></br>
+                <div>
+                  <label for=rut></label>
+                  <input name="rut" style="text-align:center; id="rut" value="{{user.rut}}" readonly>
+                </div> 
+
+              </br>
+                <div>
+                  <label for=estado></label>
+                  <input name="estado" type="hidden" id="estado" value=0>
+                </div>                 
+
+
+              
+                <div>
+                  <label for=respuesta></label>
+                  <input name="respuesta" type="hidden" id="respuesta" value="Sin Respuesta">
+                </div> 
+
 
               Mensaje</br>
-              {{form.mensaje}} </br>
+                <div>
+                  <label for=mensaje></label>
+                  <input name="mensaje" type=box id="mensaje" value="mensjae de prueba" >
+                </div> 
 
 
              </br>

@@ -4,7 +4,8 @@ class Consulta(models.Model):
 	id_tutor = models.IntegerField()
 	rut = models.CharField(null=False,max_length=20)
 	mensaje = models.CharField(null=False,max_length=200)
-	estado = models.CharField(null=False, default="Pendiente",max_length=20)
-	respuesta = models.CharField(null=False,max_length=200, default="Sin Respuesta")
+	estado = models.IntegerField(null=False, default=0)
+	respuesta = models.CharField(null=False,max_length=200,default="Sin Respuesta")
+	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True, null=True)
 
 
