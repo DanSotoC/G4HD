@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from usuarios.forms import Paciente_Form , Tutor_Form , Personal_Form
 from django.views.generic import TemplateView ,View
 from tutor.forms import consulta_mensaje
+from tutor.models import Consulta
 
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
@@ -108,3 +109,18 @@ def contacto(request):
 		
 	return render(request,'Contacto.html',context)
 
+def ver_consultas (request):
+	current_user = request.user
+	tx = Tutor.objects.all()
+	con = Consulta.objects.all()
+
+	context = {
+
+		"tutor": tx,
+		"actual":current_user,
+		"con":con,
+		"aux":current_user.id,
+
+
+	}
+	return render(request,"ver_consulta.html",context)

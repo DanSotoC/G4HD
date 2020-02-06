@@ -10,6 +10,8 @@ class consulta_mensaje(forms.ModelForm):
 
  		fields = [
  			'id_tutor',
+ 			'titulo',
+ 			'id_usuario',
  			'rut',
  			'mensaje',
  			'estado',

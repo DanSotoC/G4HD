@@ -2,6 +2,8 @@ from django.db import models
 
 class Consulta(models.Model):
 	id_tutor = models.IntegerField()
+	id_usuario = models.IntegerField()
+	titulo = models.CharField(null=False,max_length=20)
 	rut = models.CharField(null=False,max_length=20)
 	mensaje = models.CharField(null=False,max_length=200)
 	estado = models.IntegerField(null=False, default=0)
