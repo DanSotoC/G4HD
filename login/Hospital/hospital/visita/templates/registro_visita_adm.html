@@ -167,10 +167,10 @@ a {
            <a href= '{%  url "listpaciente" %}' type="button" class="btn btn-info"> Volver </a>
 
           <br><br>
-    <div style="margin-left: 810px;margin-top: -80px; background: white; padding-top:5px; border-radius: 3px;   ">
+    <div style="margin-left: 780px;margin-top: -80px; background: white; padding-top:5px; border-radius: 3px;   ">
 
-        <h2>{{usr.first_name}} {{usr.last_name}}(TUTOR) </h2>
-        <span class="list">CONTACTO:</span> </br>  
+        <h2>  {{usr.first_name}} {{usr.last_name}}(TUTOR)  </h2>
+        <span class="list"> - CONTACTO:</span> </br>  
         
         <ul class="list_box">
             
@@ -179,15 +179,15 @@ a {
                 <label>
                     
                                      
-                    <span class="small-list"> {{usr.email}} </span> </br> 
-                    <span class="small-list"> {{tx.domicilio}} {{tx.num_domicilio}}, {{tx.comuna}} </span> </br> 
-                    <span class="small-list"> +56 9 {{tel.tel}} </span> </br> 
-                   
+                    <span class="small-list"> Email: {{usr.email}} </span> </br> 
+                    <span class="small-list"> Domicilio: {{tx.domicilio}} {{tx.num_domicilio}}, {{tx.comuna}} </span> </br> 
+                    <span class="small-list"> Telefono: +56 9 {{tel.tel}} </span> </br>                 
 
 
 
 
                 </label>
+           
             </li>
             
         </ul>
