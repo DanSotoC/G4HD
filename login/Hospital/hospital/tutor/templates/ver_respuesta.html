@@ -1,0 +1,21 @@
+<!--DOCTYPE html -->
+{%  extends "base_tutor.html" %}
+
+<title> {%block head_title %} {{usr.first_name}} {{usr.last_name}} | {{block.super}} {%endblock head_title%} </title>
+
+
+{%block content%}
+
+<div class="card text-center">
+  <div class="card-header">
+    <h1> Detalles de Consulta </h1>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><b>Consulta:</b> {{con.mensaje}}</h5> </br>
+    <h5 class="card-title"><b>Respuesta:</b>{{con.respuesta}}</h5> </br>
+             
+    <a href='{% url "consulta_t" %}' class="btn btn-danger" role="button">Volver</a>
+
+
+{%endblock content%}
+

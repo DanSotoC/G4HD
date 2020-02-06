@@ -124,3 +124,15 @@ def ver_consultas (request):
 
 	}
 	return render(request,"ver_consulta.html",context)
+
+def ver_respuesta (request,id=None):
+	current_user = request.user
+	con =  get_object_or_404(Consulta, id=id)
+
+	context = {
+
+		"actual":current_user,
+		"con":con,
+
+	}
+	return render(request,"ver_respuesta.html",context)
