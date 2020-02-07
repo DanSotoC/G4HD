@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpResponseRedirect
 
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
@@ -103,7 +103,7 @@ def contacto(request):
 	if form.is_valid():
 		instance=form.save(commit=False)
 		instance.save()
-		return redirect(ver_perfil)
+		return HttpResponseRedirect(reverse('consulta_t'))
 
 	context = {
 
