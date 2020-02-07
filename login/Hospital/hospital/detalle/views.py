@@ -4,7 +4,9 @@ from usuarios.models import Paciente
 from usuarios.models import Tutor
 from usuarios.models import Personal
 from usuarios.models import Perfil
+from tutor.models import Consulta
 from usuarios.forms import Paciente_Form , Tutor_Form , Personal_Form
+from tutor.forms import consulta_mensaje
 from lista.views import usuarios_listpa
 
 
@@ -108,7 +110,21 @@ def borrar_especialista(request,id):
 	}
 	return render(request,"delete.html",context)
 
+def consulta_edit(request,id=None):
+	consulta=Consulta.objects.get(id=id)
 
+	if request.method=='GET':
+		form=consulta_mensaje(instance=consulta)
+	else:
+		form=consulta_mensaje(request.POST,instance=consulta)
+		if form.is_valid():
+			form.save()
+		return redirect(listconsulta)
+	context = {	
+	
+	  "form":form
+	}	
+	return render(request,'consulta_form.html',context)	
 
 
 

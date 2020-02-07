@@ -119,7 +119,7 @@ a {
         							 
                                      {% if obj.estado == 0 %}
                                     
-                                        <a href="#" class="btn btn-warning">Resolver </a>
+                                        <a href='{%  url "consulta_edit" id=obj.id %}' class="btn btn-warning">Resolver </a>
 
                                     {% endif %}       
         
