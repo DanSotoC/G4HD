@@ -34,7 +34,7 @@ input[type=box] {
   display: block;
   width: 100%;
   border: none;
-  background-color: #DF3E3A;
+  background-color: #30AED3;
   color: white;
   padding: 14px 50px;
   font-size: 16px;
@@ -68,19 +68,20 @@ input[type=box] {
                
 
                 <div>
-                  <label>id_tutor:</label>
-                   {{form.id_tutor}}
+                  <label for=id_tutor></label>
+                  <input name="id_tutor" type=hidden id="id_tutor" value={{usr.id_tutor}}>
                 </div>
+
 
                 <div>
                   <label for=id_usuario></label>
-                  <input name="id_usuario" type="hidden" id="id_usuario" value={{actual.id}}>
+                  <input name="id_usuario" type=hidden id="id_usuario" value={{usr.id_usuario}}>
                 </div> 
 
               Titulo</br>
                 <div>
                   <label for=titulo></label>
-                  <input name="titulo" id="titulo" width="20">
+                  <input name="titulo" id="titulo" width="200" value="{{usr.titulo}}" readonly>
                 </div> 
 
 
@@ -88,33 +89,31 @@ input[type=box] {
               Rut</br>
                 <div>
                   <label for=rut></label>
-                  <input name="rut" style="text-align:center; id="rut" value="{{user.rut}}" readonly>
+                  <input name="rut" style="text-align:center; id="rut" value="{{usr.rut}}" readonly>
                 </div> 
 
               </br>
                 <div>
                   <label for=estado></label>
-                  <input name="estado" type="hidden" id="estado" value=0>
+                  <input name="estado" type=hidden id="estado" value=1>
                 </div>                 
-
-
-              
-                <div>
-                  <label for=respuesta></label>
-                  <input name="respuesta" type="hidden" id="respuesta" value="Sin Respuesta">
-                </div> 
 
 
               Mensaje</br>
                 <div>
                   <label for=mensaje></label>
-                  <input name="mensaje" type=box id="mensaje" value="mensjae de prueba" >
+                  <input name="mensaje" type=box id="mensaje" value="{{usr.mensaje}}" readonly>
                 </div> 
 
+              Respuesta </br>
+                <div>
+                  <label for=respuesta></label>
+                  <input name="respuesta" id="respuesta" value="Sin Respuesta">
+                </div> 
 
              </br>
 
-              <button class="btn btn-danger" type="submit">Enviar</button>
+              <button class="btn btn-info" type="submit">Enviar</button>
               </form>            
 
 

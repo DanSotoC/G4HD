@@ -68,7 +68,7 @@ a {
                             <thead>
                                 <tr>
                                 <th><span>Titulo</span></th>
-                                <th><span>Fecha</span></th>
+                                <th><span>Fecha Enviada</span></th>
                                 <th><span>Usuario</span></th>
                                 <th><span>Estado</span></th>
                                 <th><span>Opciones</span></th>
@@ -148,7 +148,7 @@ a {
 
                                             {% if u.id == obj.id_usuario %}
 
-                                            <td>{{u.first_name}} {{u.last_name}} </td> 
+                                            <td> {{u.first_name}} {{u.last_name}} </td> 
 
                                             {% endif %} 
                                     
@@ -170,7 +170,7 @@ a {
                                      
                                      {% if obj.estado == 1 %}
                                     
-                                        <a href="#" class="btn btn-success"> Ver resolución </a>
+                                        <a href='{%  url "consulta_detalle_adm" id=obj.id %}' class="btn btn-success"> Ver resolución </a>
 
                                     {% endif %}       
         

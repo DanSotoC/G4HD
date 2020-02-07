@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404,redirect,HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404,redirect,HttpResponseRedirect, reverse
 from django.contrib.auth.models import User
 from usuarios.models import Paciente
 from usuarios.models import Tutor
@@ -119,12 +119,24 @@ def consulta_edit(request,id=None):
 		form=consulta_mensaje(request.POST,instance=consulta)
 		if form.is_valid():
 			form.save()
-		return redirect(listconsulta)
+		return HttpResponseRedirect(reverse('listconsulta'))
 	context = {	
 	
-	  "form":form
+	  "form":form,
+	  "usr":consulta,
+
 	}	
 	return render(request,'consulta_form.html',context)	
 
+def consulta_detail_adm(request, id=None):
+	instance = get_object_or_404(Consulta, id=id)
+	detalle = get_object_or_404(User, id=instance.id_usuario)
+	current_user = request.user
 
+	context = {	
+	
+		"consulta":instance,
+		"usr":detalle,
+	} 
+	return render(request,"detailsconsulta.html",context)
 

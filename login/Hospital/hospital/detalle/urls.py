@@ -13,5 +13,6 @@ url(r'personal/edit/(?P<perfil>\d+)/(?P<id_personal>\d+)$',views.especialista_ed
 path('<int:id>/delete',views.borrar_paciente, name='borrar_paciente'),
 path('<int:id>/delete/personal',views.borrar_especialista, name='borrar_especialista'),
 url(r'consulta/edit/(?P<id>\d+)$',views.consulta_edit, name="consulta_edit"),
+url(r'consulta/detalle/(?P<id>\d+)$',views.consulta_detail_adm, name="consulta_detalle_adm"),
 
 ]
