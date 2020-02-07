@@ -1,8 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
+
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 from biblioteca.models import Archivo
 from usuarios.models import Paciente
 from usuarios.models import Tutor
 from usuarios.models import Perfil
+from django.contrib import messages
 from django.contrib.auth.models import User
 from usuarios.forms import Paciente_Form , Tutor_Form , Personal_Form
 from django.views.generic import TemplateView ,View
@@ -52,7 +56,8 @@ def ver_perfil (request):
 		"tutor": tx,
 		"actual":current_user,
 		"tel":tl.tel,
-		"usr":tl
+		"usr":tl,
+		"id_actual":current_user.id,
 
 	}
 	return render(request,"ver_perfil.html",context)
@@ -136,3 +141,24 @@ def ver_respuesta (request,id=None):
 
 	}
 	return render(request,"ver_respuesta.html",context)
+
+
+
+
+
+
+def contraseña_edit(request):
+	if request.method == 'POST':
+		form = PasswordChangeForm(request.user, request.POST)
+		if form.is_valid():
+			user = form.save()
+			update_session_auth_hash(request, user)  # Important!
+			messages.success(request, 'Your password was successfully updated!')
+			return redirect(contraseña_edit)
+		else:
+			messages.error(request, 'Please correct the error below.')
+	else:
+		form = PasswordChangeForm(request.user)
+		return render(request,'contra_edit.html',{'form': form})
+		
+

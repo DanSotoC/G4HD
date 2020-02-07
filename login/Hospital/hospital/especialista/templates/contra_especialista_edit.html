@@ -1,0 +1,48 @@
+{%  extends "base_especialista.html" %}
+{% load static %}
+
+{%  block content %}
+<style type="text/css">
+
+.button {
+  background-color: #6D213C;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  }
+  
+li a{color:black}
+
+</style>
+
+<h1>Datos de tutor</h1><br>
+<hr style="background-color:purple; width: 320px; margin-left: 0px;margin-top:-20px; height: 3px;">
+<div class="col-sm-6">
+	<form method="post">
+  	{% csrf_token %}
+	  <div>
+
+	  	<label>Contraseña Antigua:</label>
+	  	<input type="password" name="old_password" autofocus="" required="" id="id_old_password" class="form-control">
+	  </div>
+	  <div>
+	  	<label>Contraseña Nueva:</label>
+	  	<input type="password" name="new_password1" required="" id="id_new_password1" class="form-control">
+	  </div>
+	  <div>
+	  	  <label>Repetir Contraseña:</label>
+	  	  <input type="password" name="new_password2" required="" id="id_new_password2" class="form-control">
+	  </div><br>
+
+	  <button class="button" type="submit">Guardar</button>
+</form>
+</div>
+
+{%  endblock content %}

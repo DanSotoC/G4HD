@@ -12,4 +12,7 @@ url(r'respuesta/(?P<id>\d+)$',views.ver_respuesta,name="ver_respuesta"),
 url(r'contacto/',views.contacto,name="contacto_t"),
 url(r'tutor/edit/(?P<perfil>\d+)/(?P<id_detalle>\d+)$',views.Tutor_edit, name="Tutor_edit"),
 url(r'paciente/edit/(?P<id_tutor>\d+)/(?P<id_paciente>\d+)$',views.Paciente_edit, name="Paciente_edit"),
+url(r'tutor/password/edit',views.contraseña_edit, name="contra_edit"),
+
+
 ]

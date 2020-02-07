@@ -17,7 +17,7 @@ def borrar_paciente(request,id):
 	obj = get_object_or_404(User, id=aux)
 	#if request.method == "POST":
 	obj.delete()
-	#return HttpResponseRedirect(reverse('listpaciente'))
+	return redirect(usuarios_listpa)
 	context = {	
 	  "object":obj
 	}

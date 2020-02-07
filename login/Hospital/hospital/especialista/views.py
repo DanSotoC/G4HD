@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
 from usuarios.models import Personal , Paciente, Perfil
-'''from .forms import PostForm'''
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib import messages
 from django.shortcuts import HttpResponse, HttpResponseRedirect, redirect
 from django.contrib import messages
 from biblioteca.models import Archivo
@@ -71,3 +73,19 @@ def Especialista_edit(request,perfil=None,id_personal=None):
 			form.save()
 		return redirect(ver_perfil_e)
 	return render(request,'personal_f.html',{'form':form,'perfil':perfil})
+
+
+def contraseña_edit(request):
+	if request.method == 'POST':
+		form = PasswordChangeForm(request.user, request.POST)
+		if form.is_valid():
+			user = form.save()
+			update_session_auth_hash(request, user)  # Important!
+			messages.success(request, 'Your password was successfully updated!')
+			return redirect(contraseña_edit)
+		else:
+			messages.error(request, 'Please correct the error below.')
+	else:
+		form = PasswordChangeForm(request.user)
+		return render(request,'contra_especialista_edit.html',{'form': form})
+		
