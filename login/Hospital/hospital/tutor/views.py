@@ -156,7 +156,9 @@ def contraseña_edit(request):
 			messages.success(request, 'Your password was successfully updated!')
 			return redirect(contraseña_edit)
 		else:
-			messages.error(request, 'Please correct the error below.')
+			messages.error(request, 'Porfavor introduzca contraseña correcta')
+			return redirect(contraseña_edit)
+			
 	else:
 		form = PasswordChangeForm(request.user)
 		return render(request,'contra_edit.html',{'form': form})

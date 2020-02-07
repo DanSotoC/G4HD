@@ -81,10 +81,11 @@ def contraseña_edit(request):
 		if form.is_valid():
 			user = form.save()
 			update_session_auth_hash(request, user)  # Important!
-			messages.success(request, 'Your password was successfully updated!')
+			messages.success(request, 'Tu password ha sido cambiada exitosamente!')
 			return redirect(contraseña_edit)
 		else:
-			messages.error(request, 'Please correct the error below.')
+			messages.error(request, 'Porfavor ingrese clave correcta')
+			return redirect(contraseña_edit)
 	else:
 		form = PasswordChangeForm(request.user)
 		return render(request,'contra_especialista_edit.html',{'form': form})

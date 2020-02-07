@@ -1,6 +1,7 @@
 
 from django.views import generic
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.views.generic import TemplateView
 from django.contrib.auth.models import User
 from .models import Perfil, Tutor, Paciente ,Personal

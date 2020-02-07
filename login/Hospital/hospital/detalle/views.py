@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404,redirect,HttpResponseRedirect, reverse
 from django.contrib.auth.models import User
+from django.contrib import messages
 from usuarios.models import Paciente
 from usuarios.models import Tutor
 from usuarios.models import Personal
@@ -16,7 +17,9 @@ def borrar_paciente(request,id):
 	aux = obj2.id_perfil_id
 	obj = get_object_or_404(User, id=aux)
 	#if request.method == "POST":
+	messages.success(request, 'El usuario ha sido borrado ')
 	obj.delete()
+	messages.success(request, 'El usuario ha sido borrado ')
 	return redirect(usuarios_listpa)
 	context = {	
 	  "object":obj
@@ -103,6 +106,7 @@ def borrar_especialista(request,id):
 	obj2 = get_object_or_404(Personal, id=id)
 	obj = get_object_or_404(User, id=obj2.id_perfil_id)
 	obj.delete()
+	messages.success(request, 'El usuario ha sido borrado ')
 
 	return HttpResponseRedirect(reverse('listenfermero'))
 	context = {	
