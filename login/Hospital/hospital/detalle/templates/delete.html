@@ -3,7 +3,14 @@
 
 {% block content %}
 <form action="." method="POST">{% csrf_token%}
-   <h1>¿Desea eliminar?</h1>
+   <div class="card" style="width: 800px;margin-top:20px;margin-left:20px;">
+        <h2 class="card-header" >
+            <span style="font-size: 30px;">{{object.nombre}} {{object.apellido1}} {{object.apellido2}}</span> <br>
+            <p>La eliminación de un Paciente tambien eliminara a su Tutor</p>
+            
+        <div class="card-footer">
+          <h3 class="card-title">Desea Eliminar al Paciente:</h3>
+          <p class="card-text" ></p>
    
    <p><input type="submit" value='YES'> <a href="/dashboard/home/">Cancel</a></p>
 </form>	
