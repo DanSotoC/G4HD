@@ -8,23 +8,23 @@ from usuarios.models import Perfil
 from tutor.models import Consulta
 from usuarios.forms import Paciente_Form , Tutor_Form , Personal_Form
 from tutor.forms import consulta_mensaje
-from lista.views import usuarios_listpa
+from lista.views import usuarios_listpa, usuarios_listen
 
 
 def borrar_paciente(request,id):
-	obj = get_object_or_404(Paciente, id=id)
-	obj2 = get_object_or_404(Tutor, id=obj.id_tutor_id)
-	aux = obj2.id_perfil_id
-	obj = get_object_or_404(User, id=aux)
-	#if request.method == "POST":
-	messages.success(request, 'El usuario ha sido borrado ')
-	obj.delete()
-	messages.success(request, 'El usuario ha sido borrado ')
-	return redirect(usuarios_listpa)
+
+	paciente = get_object_or_404(Paciente, id=id)
+	tutor = get_object_or_404(Tutor, id=paciente.id_tutor_id)
+	user = get_object_or_404(User, id=tutor.id_perfil_id)
+	if request.method == "POST":
+		user.delete()
+		return redirect(usuarios_listpa)
+
 	context = {	
-	  "object":obj
+	  "paciente":paciente,
+	  "tutor":tutor
 	}
-	return render(request,"delete.html",context)
+	return render(request,"delete_paciente.html",context)
 
 def usuario_detail(request, id=None):
 	px = get_object_or_404(Paciente, id_tutor_id=id)
@@ -102,17 +102,22 @@ def especialista_edit(request,perfil=None,id_personal=None):
 		return redirect(especialista_detail,id_personal)
 	return render(request,'personal_form.html',{'form':form,'perfil':perfil})
 
-def borrar_especialista(request,id):
-	obj2 = get_object_or_404(Personal, id=id)
-	obj = get_object_or_404(User, id=obj2.id_perfil_id)
-	obj.delete()
-	messages.success(request, 'El usuario ha sido borrado ')
 
-	return HttpResponseRedirect(reverse('listenfermero'))
+def borrar_especialista(request,id):
+
+	personal = get_object_or_404(Personal, id=id)
+	user = get_object_or_404(User, id=personal.id_perfil_id)
+	if request.method == "POST":
+		user.delete()
+		return redirect(usuarios_listen)
+
 	context = {	
-	  "object":obj
+	  "personal":personal,
+	  "user":user
+
 	}
-	return render(request,"delete.html",context)
+	return render(request,"delete_personal.html",context)
+
 
 def consulta_edit(request,id=None):
 	consulta=Consulta.objects.get(id=id)

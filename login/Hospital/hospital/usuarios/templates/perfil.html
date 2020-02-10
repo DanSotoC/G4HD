@@ -183,13 +183,13 @@
 			</tbody>
 			</table>
 		
-		<a id="fin" href="{% url 'listenfermero' %}" >Finalizar Registro</a>
+		<a id="fin" href="{% url 'listenfermero' %}" class="btn btn-success">Finalizar Registro</a>
 		
 	</div>
 
 	{% else %}
 	{% if usuarios.perfil.rol == 'ADMINISTRADOR' %}
-		<a id="fin" href="{% url 'dash' %}" >Finalizar Registro</a>
+		<a id="fin" href="{% url 'dash' %}" class="btn btn-success" >Finalizar Registro</a>
 	{% endif %}
 	{% endif %}
 	{% endif %}

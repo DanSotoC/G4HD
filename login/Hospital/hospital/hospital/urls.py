@@ -35,9 +35,9 @@ urlpatterns = [
     path(r'admbiblio/',include(biblio_urls)),
     path(r'dashboard/',include(dash_urls)),
     path(r'tutor/',include(tutor_urls)),
-    path(r'detalle',include(det_urls)),
+    path(r'detalle/',include(det_urls)),
     path(r'especialista/',include(especialista_urls)),
-    path(r'especialista/',include(equipos_urls)),
+    path(r'equipos/',include(equipos_urls)),
     path(r'red/',include(red)),
     path(r'visita/',include(agnd_visita))
 ]
