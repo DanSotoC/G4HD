@@ -65,6 +65,7 @@ a {
 <a href='{%  url "home_t"%}' class="btn btn-danger" role="button"> Página Principal </a> 
 <a href='{%  url "perfil_t" %}' class="btn btn-danger" role="button"> Ver Perfil </a> 
 <a href='{%  url "biblioteca_t" %}' class="btn btn-danger" role="button"> Biblioteca </a> 
+<a href='{%  url "reagendar" %}' class="btn btn-danger"> Solicitud Reagendar </a>
 </br></br>
 
 <!-- Metodo Buscar -->
@@ -124,7 +125,7 @@ a {
                                         {%endif%}                                        
                                     </td>                            
                                     <td style="width: 20%;">
-        						      <a href='#' class="btn btn-danger"> Solicitud Reagendar </a>
+        						      <a href='{%  url "visita_paciente_detalle" id=fecha.id %}' class="btn btn-danger"> Details </a>
         						     
                                     </td>
                                 </tr>
@@ -167,7 +168,7 @@ a {
                                         {%endif%}                                        
                                     </td>                            
                                     <td style="width: 20%;">
-                                     <a href='#' class="btn btn-danger"> Solicitud Reagendar </a>
+                                     <a href='{%  url "visita_paciente_detalle" id=fecha.id %}' class="btn btn-danger"> Details </a>
 
                                     </td>
 

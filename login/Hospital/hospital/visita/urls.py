@@ -10,5 +10,7 @@ url(r'paciente/',views.visita_paciente, name="visita_paciente"),
 url(r'all/(?P<id>\d+)$',views.visita_paciente_admin, name="visita_paciente_admin"),
 url(r'^(?P<id>\d+)/delete/$', views.borrar_fecha,name="borrar_fecha"),
 url(r'^(?P<id>\d+)/edit/$', views.visita_update, name="update_fecha"),
+url(r'reagendar/',views.reagendar, name="reagendar"),
+url(r'detalle/(?P<id>\d+)$',views.visita_paciente_detalle, name="visita_paciente_detalle"),
 
 ]

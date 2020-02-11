@@ -100,3 +100,17 @@ def visita_update(request, id=None):
 	
 	return render(request,"agendar_visita.html",{"form":form})
 
+def reagendar(request):
+	return render(request,"reagendar.html")
+
+
+def visita_paciente_detalle(request, id=None):
+	queryset = get_object_or_404(Visita, id=id)
+
+	context = {
+
+		"visita": queryset,
+		
+	}	
+
+	return render(request,"visita_paciente_detalle.html",context)
