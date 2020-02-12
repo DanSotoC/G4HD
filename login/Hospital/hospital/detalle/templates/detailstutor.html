@@ -18,7 +18,7 @@
     <p class="card-text">Fecha de Nacimiento: {{ det.f_nacimiento}}</p>
     
     
-    <a href="#" class="btn btn-danger" role="button" onclick="MensajeConfirmacion()">Delete</a>
+    <a href='{%  url "borrar_tutor" id=det.id %}' class="btn btn-danger" role="button" onclick="MensajeConfirmacion()">Delete</a>
     <a href='{%  url "paciente_detalle" id=det.id %}' class="btn btn-warning" role="button">Paciente</a>
     <a href="{%url 'tutor_edit'  perfil=usr.id id_detalle=det.id %}" class="btn btn-info" role="button">Edit</a>
     <a href='{%  url "listtutor" %}' class="btn btn-info" role="button">Volver</a>

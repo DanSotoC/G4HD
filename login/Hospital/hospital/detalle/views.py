@@ -8,7 +8,24 @@ from usuarios.models import Perfil
 from tutor.models import Consulta
 from usuarios.forms import Paciente_Form , Tutor_Form , Personal_Form
 from tutor.forms import consulta_mensaje
-from lista.views import usuarios_listpa, usuarios_listen
+from lista.views import usuarios_listpa, usuarios_listen, usuarios_listu 
+
+
+def borrar_tutor(request,id):
+	paciente = get_object_or_404(Paciente, id=id)
+	tutor = get_object_or_404(Tutor, id=paciente.id_tutor_id)
+	user = get_object_or_404(User, id=tutor.id_perfil_id)
+	if request.method == "POST":
+		user.delete()
+		return redirect(usuarios_listu)
+
+	context = {	
+	  "paciente":paciente,
+	  "tutor":tutor,
+	  "user":user
+	}
+	return render(request,"delete_tutor.html",context)
+
 
 
 def borrar_paciente(request,id):
