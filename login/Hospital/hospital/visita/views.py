@@ -98,7 +98,7 @@ def visita_update(request, id=None):
 			form.save()
 		return redirect(agendar_lista)
 	
-	return render(request,"agendar_visita.html",{"form":form})
+	return render(request,"agendar_update.html",{"form":form,"id_paciente":aux.id_paciente,"status":aux.status})
 
 def reagendar(request):
 	return render(request,"reagendar.html")

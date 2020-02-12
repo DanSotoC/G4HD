@@ -69,10 +69,12 @@ def consulta_lista(request):
 	
 	con = Consulta.objects.all().order_by('timestamp')
 	usr = User.objects.all()
+	var = 0
 
 	context = {
 
 		"con": con,
 		"usr": usr,
+		"var":var,
 	}
 	return render(request,"consulta_lista.html",context)
