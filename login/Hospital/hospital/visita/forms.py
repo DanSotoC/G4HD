@@ -13,3 +13,16 @@ class Agendar(forms.ModelForm):
 
 				'fecha':forms.DateInput(attrs={'class':'form-control','type':'date'}),
 		}
+
+
+class asignar_equipo(forms.ModelForm):
+
+ 	class Meta:
+ 		model = Visita
+
+ 		fields = [
+ 			'fecha',
+ 			'id_paciente',
+ 			'status',
+ 			'equipo'
+ 			]

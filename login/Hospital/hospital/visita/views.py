@@ -3,10 +3,12 @@ from usuarios.models import Paciente
 from visita.models import Visita
 from usuarios.models import Tutor
 from usuarios.models import Perfil
-from .forms import  Agendar
+from .forms import  Agendar, asignar_equipo
 from lista.views import usuarios_listpa
 from django.contrib import messages
 from django.contrib.auth.models import User
+from datetime import date
+from django.contrib.auth.models import Group
 
 def agendar_visita(request, id=None):
 	aux = Paciente.objects.get(id=id)	
@@ -114,3 +116,43 @@ def visita_paciente_detalle(request, id=None):
 	}	
 
 	return render(request,"visita_paciente_detalle.html",context)
+
+
+def agendar_lista_hoy(request):
+	queryset = Visita.objects.all()
+	instance = Paciente.objects.all()
+	hoy = date.today()
+	group = Group.objects.all()
+
+
+	context = {
+
+		"date_list": queryset,
+		"px": instance,
+		"hoy":hoy,
+		"group":group,
+
+
+	}	
+	return render(request,"agendar_lista_hoy.html",context)
+
+def asignar_equipo_visita(request,id=None):
+	queryset = get_object_or_404(Visita, id=id)
+	px = get_object_or_404(Paciente, id=queryset.id_paciente)
+	group = Group.objects.all()	
+	form = asignar_equipo(request.POST or None)
+
+	if form.is_valid():
+		instance=form.save(commit=False)
+		instance.save()
+		return HttpResponseRedirect(reverse('agendar_lista_hoy'))
+
+	context = {
+
+		"form": form,
+		"v": queryset,
+		"px": px,
+		"group":group,
+	}
+		
+	return render(request,'asignar_equipo_visita.html',context)

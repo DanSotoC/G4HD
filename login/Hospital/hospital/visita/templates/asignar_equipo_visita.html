@@ -1,0 +1,121 @@
+<!--DOCTYPE html -->
+{%  extends "base.html" %}
+{% load static %}
+
+{%  block content %}
+
+<!DOCTYPE html>
+<html>
+<title>Home | Hospital El Pino</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+
+input[type=box] {
+  width: 100%;
+  padding: 80px 20px;
+  margin: 8px 2;
+  box-sizing: border-box;
+}
+
+.logo img{
+  width:90px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+        }
+
+.block {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: #DF3E3A;
+  color: white;
+  padding: 14px 50px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.block:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+</style>
+<body class="w3-light-grey">
+
+<div class="card text-center">
+
+
+  <div class="card-header">
+    <h1> Asignar Equipo </h1>
+    
+             
+
+
+
+              <form method="POST">
+              {% csrf_token%} 
+
+
+                <b>{{px.nombre}} {{px.apellido1}} {{px.apellido2}}</b></br>
+
+                <div>
+                  <label for=fecha></label>
+                  <input name="fecha" id="fecha" type="date" value={{v.fecha}}>
+                </div> 
+
+                <div>
+                  <label for=id_paciente></label>
+                  <input name="id_paciente" id="id_paciente" value={{v.id_paciente}}>
+                </div> 
+
+              
+                <div>
+                  <label for=status></label>
+                  <input name="status"  id="status" value={{v.status}}>
+                </div> 
+
+
+              
+              Asignar Equipo</br>
+                <div>
+                  <label for=equipo></label>
+                  <input name="equipo" id="equipo">
+                </div> 
+
+              
+             </br>
+
+              <button class="btn btn-info" type="submit">Enviar</button>
+              </form>
+
+
+            </div>
+
+
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
+
+
+{%  endblock content %}
+
