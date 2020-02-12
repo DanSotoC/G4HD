@@ -33,9 +33,12 @@ def home_especialista(request):
 def ver_perfil_e (request):
 
 	current_user = request.user
+	
+	
+
 	group=Group.objects.all()
 	for g in group:
-		if g.id != '1' and g.id != '2' and g.id != '20':
+		if g.name != 'Administrador' and g.name != 'Personal' and g.name != 'Tutores':
 			user=User.objects.filter(groups__id=g.id)
 			for u in user:
 				if u.id == current_user.id:
