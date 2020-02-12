@@ -8,19 +8,17 @@ from django.contrib.auth.models import User
 
 
 
-def Crear_equipo_view(request):
+
+def Listar_equipo_view(request):	
+	group = Group.objects.all()
 	if request.POST.get('nombre_equipo'):
 		nombre=request.POST.get('nombre_equipo')
 		group = Group.objects.create(name=nombre)
 		group.save()
 		return redirect(Listar_equipo_view)
 	else:
-		return render(request,'crear_equipo.html')
-	return render(request,'crear_equipo.html')
-
-
-def Listar_equipo_view(request):	
-	group = Group.objects.all()
+		return render(request,'listar_equipo.html',{'group':group})
+		
 	return render(request,'listar_equipo.html',{'group':group})
 
 

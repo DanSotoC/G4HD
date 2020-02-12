@@ -52,7 +52,6 @@ class Paciente_Form(forms.ModelForm):
 				'comuna',
 				'domicilio',
 				'num_domicilio',
-				'edad_paciente',
 				'f_nacimiento',
 				'desc']
 
@@ -64,7 +63,6 @@ class Paciente_Form(forms.ModelForm):
 				'comuna':forms.TextInput(attrs={'class':'form-control'}),
 				'domicilio':forms.TextInput(attrs={'class':'form-control'}),
 				'num_domicilio':forms.TextInput(attrs={'class':'form-control'}),
-				'edad_paciente':forms.TextInput(attrs={'class':'form-control'}),
 				'f_nacimiento':forms.DateInput(attrs={'class':'form-control','type':'date'}),
 				'desc':forms.TextInput(attrs={'class':'form-control','type':'textarea'}),
 
@@ -79,7 +77,6 @@ class Tutor_Form(forms.ModelForm):
 				'comuna',
 				'domicilio',
 				'num_domicilio',
-				'edad',
 				'f_nacimiento']
 
 		widgets={
@@ -87,7 +84,6 @@ class Tutor_Form(forms.ModelForm):
 				'comuna':forms.TextInput(attrs={'class':'form-control'}),
 				'domicilio':forms.TextInput(attrs={'class':'form-control'}),
 				'num_domicilio':forms.TextInput(attrs={'class':'form-control'}),
-				'edad':forms.TextInput(attrs={'class':'form-control'}),
 				'f_nacimiento':forms.DateInput(attrs={'class':'form-control','type':'date'})
 		}
 

@@ -3,8 +3,28 @@
 
 {% block content%}
 
-<h1>Listar Equipo</h1><br>
+<div class="col-sm-4">
+	<h1>Crear Equipos</h1><br>
 <hr style="background-color:lightblue; width: 300px; margin-left: -10px;margin-top:-20px; height: 3px;">
+
+<form action="" method="POST">
+        {% csrf_token %}
+        <table>
+        <label for="nombre_equipo">Nombre Equipo:</label>
+        <input type="text_input" class="form-control" name="nombre_equipo">
+        </table> </br>
+        <input type="submit" class="btn btn-info"  value="Crear Equipo" />
+    </form>
+
+</div>
+
+<div class="col-sm-2">
+	<div style="background: #38BDFF;height:90%; width: 2px; margin-left: 100%; text-align: center;"></div>
+</div>
+
+
+
+
 
 
 	
@@ -13,7 +33,9 @@
 
 	<div class="container bootstrap snippet">
 	    <div class="row">
-	        <div class="col-sm-6">
+	        <div class="col-sm-6" style="padding-left: 50px;">
+	        	<h1>Equipos</h1><br>
+				<hr style="background-color:lightblue; width: 300px; margin-left: -10px;margin-top:-20px; height: 3px;">
 	            <div class="main-box no-header clearfix">
 	                <div class="main-box-body clearfix">
 	                    <div class="table-responsive">
@@ -30,7 +52,7 @@
 	                            <tbody>
 	                            	{% for g in group %}
 	                            	
-	                            	{% if g.id != 1 and g.id != 2 and g.id != 20 %}
+	                            	{% if g.name != 'Administrador' and g.name != 'Tutores' and g.name != 'Personal' and  g.name != 'Disponible' %}
 
 	                                <tr>
 	                                   	
@@ -56,7 +78,7 @@
 					</div>
 
 				</div>
-			</div><a href="{%url 'crear-equipo' %}" class="btn btn-info">Crear Equipo</a>
+			</div>
 			
 		</div>
 	</div>

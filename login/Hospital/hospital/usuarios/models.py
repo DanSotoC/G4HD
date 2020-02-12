@@ -9,7 +9,7 @@ from django.dispatch import receiver
 class Perfil(models.Model):
 	usuario = models.OneToOneField(User,on_delete=models.CASCADE)
 	rol = models.CharField(null=False,max_length=20)
-	tel = models.CharField(null=False, max_length=20 )
+	tel = models.CharField(null=False, max_length=20)
 
 	def __str__(self):
 		return str(self.usuario.username)
@@ -21,7 +21,6 @@ class Tutor(models.Model):
 	comuna= models.CharField(max_length=20)
 	domicilio=models.CharField(max_length=50)
 	num_domicilio=models.CharField(max_length=50)
-	edad=models.IntegerField()
 	f_nacimiento=models.CharField(max_length=20)
 	
 	def __str__(self):
@@ -37,7 +36,6 @@ class Paciente(models.Model):
 	comuna= models.CharField(max_length=20)
 	domicilio=models.CharField(max_length=50)
 	num_domicilio=models.CharField(max_length=50)
-	edad_paciente=models.IntegerField(null=True)
 	f_nacimiento=models.CharField(max_length=20)
 	desc=models.CharField(max_length=100)
 	
