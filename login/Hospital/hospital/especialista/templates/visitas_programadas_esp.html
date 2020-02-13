@@ -55,12 +55,28 @@ a {
     padding: 12px 8px;
 }
 
+.button {
+  background-color: #6D213C;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  }
+  
+li a{color:black}
+
 
 </style>
 
 
 
-<h1>Lista de Visitas - {{hoy}} </h1>
+<h1>Lista de Visitas - {{hoy}} </h1></br>
 
 
 
@@ -138,7 +154,7 @@ a {
 
 
                                     <td style="width: 20%;">
-        						      <a href='{%  url "asignar_equipo_visita" id=fecha.id %}' class="btn btn-info"> Asignar Equipo </a>
+        						      <a href="#" class="button"> Registrar Visita </a>
         						      
 
 
@@ -194,7 +210,7 @@ a {
 
 
                                     <td style="width: 20%;">
-                                      <a href='{%  url "asignar_equipo_visita" id=fecha.id %}' class="btn btn-info"> Asignar Equipo </a>
+                                      <a href="#" class="button"> Ver Registro </a>
 
 
                                     </td>
