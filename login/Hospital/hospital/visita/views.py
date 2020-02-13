@@ -137,21 +137,23 @@ def agendar_lista_hoy(request):
 	return render(request,"agendar_lista_hoy.html",context)
 
 def asignar_equipo_visita(request,id=None):
-	queryset = get_object_or_404(Visita, id=id)
-	px = get_object_or_404(Paciente, id=queryset.id_paciente)
+	visita = Visita.objects.get(id=id)
+	paciente = Paciente.objects.get(id=visita.id_paciente)
 	group = Group.objects.all()	
-	form = asignar_equipo(request.POST or None)
-
-	if form.is_valid():
-		instance=form.save(commit=False)
-		instance.save()
-		return HttpResponseRedirect(reverse('agendar_lista_hoy'))
+	
+	if request.method=='GET':
+		form=asignar_equipo(instance=visita)
+	else:
+		form=asignar_equipo(request.POST,instance=visita)
+		if form.is_valid():
+			form.save()
+		return redirect(agendar_lista_hoy)
 
 	context = {
 
 		"form": form,
-		"v": queryset,
-		"px": px,
+		"visita": visita,
+		"paciente": paciente,
 		"group":group,
 	}
 		

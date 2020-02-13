@@ -64,30 +64,36 @@ input[type=box] {
               {% csrf_token%} 
 
 
-                <b>{{px.nombre}} {{px.apellido1}} {{px.apellido2}}</b></br>
+                <b>{{paciente.nombre}} {{paciente.apellido1}} {{paciente.apellido2}}</b></br>
 
                 <div>
                   <label for=fecha></label>
-                  <input name="fecha" id="fecha" type="date" value={{v.fecha}}>
+                  {{form.fecha}}
                 </div> 
 
                 <div>
                   <label for=id_paciente></label>
-                  <input name="id_paciente" id="id_paciente" value={{v.id_paciente}}>
+                  <input name="id_paciente" id="id_paciente" type="hidden" value={{visita.id_paciente}}>
                 </div> 
 
               
                 <div>
                   <label for=status></label>
-                  <input name="status"  id="status" value={{v.status}}>
+                  <input name="status" type="hidden"  id="status" value={{visita.status}}>
                 </div> 
 
 
               
               Asignar Equipo</br>
-                <div>
+                <div style="width: 300px; margin-left: 37%;">
                   <label for=equipo></label>
-                  <input name="equipo" id="equipo">
+                  <select id="equipo" name="equipo" class="form-control">
+                    {%for g in group %}
+                      {%if g.name != 'Disponible' and g.name != 'Tutores' and g.name != 'Personal' and  g.name != 'Administrador' %}
+                        <option value="{{g.name}}">{{g.name}}</option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
                 </div> 
 
               

@@ -26,3 +26,7 @@ class asignar_equipo(forms.ModelForm):
  			'status',
  			'equipo'
  			]
+ 		widgets={
+
+				'fecha':forms.DateInput(attrs={'class':'form-control','type':'hidden'}),
+		}
