@@ -1,0 +1,223 @@
+<!--DOCTYPE html -->
+{%extends "base_especialista.html"%}
+
+
+<title> {%block head_title %} Hora | {{block.super}} {%endblock head_title%} </title>	
+
+
+{%  block content %}
+
+<style>
+.table a.table-link.danger {
+    color: #e74c3c;
+}
+.label {
+    border-radius: 3px;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+.user-list tbody td .user-subhead {
+    font-size: 0.875em;
+    font-style: italic;
+}
+.user-list tbody td .user-link {
+    display: block;
+    font-size: 1.25em;
+    padding-top: 3px;
+    margin-left: 60px;
+}
+a {
+    color: #3498db;
+    outline: none!important;
+}
+.user-list tbody td>img {
+    position: relative;
+    max-width: 50px;
+    float: left;
+    margin-right: 15px;
+}
+
+.table thead tr th {
+    text-transform: uppercase;
+    font-size: 0.875em;
+}
+.table thead tr th {
+    border-bottom: 2px solid #e7ebee;
+}
+.table tbody tr td:first-child {
+    font-size: 1.125em;
+    font-weight: 300;
+}
+.table tbody tr td {
+    font-size: 0.875em;
+    vertical-align: middle;
+    border-top: 1px solid #e7ebee;
+    padding: 12px 8px;
+}
+
+
+</style>
+
+
+
+<h1>Lista de Visitas - {{hoy}} </h1>
+
+
+
+<!-- Metodo Buscar -->
+
+
+<!-- FIN -->
+
+
+
+<div class="container bootstrap snippet">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-box no-header clearfix">
+                <div class="main-box-body clearfix">
+                    <div class="table-responsive">
+                        <table class="table user-list" >
+                            <thead>
+                                <tr>    
+                                <th><span>Nombre Completo</span></th>
+                                <th><span>Rut</span></th>
+                                <th><span>Fecha</span></th>
+                                <th><span>Estado</span></th>
+                                <th><span>Equipo</span></th>
+                                <th><span>Opciones</span></th>
+                                <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+
+
+                            	{% for fecha in date_list %}
+
+                                {% if fecha.fecha == hoy %}
+
+                                {% if fecha.equipo == name_group %}
+
+                                {%if fecha.status == 0%}
+                                <tr>
+                                    <td>            
+
+										{% for obj in px %}
+											
+											{% if obj.id == fecha.id_paciente %}
+
+											   <span class="user-subhead">{{ obj.nombre}} {{ obj.apellido1}} {{obj.apellido2}}</span>
+
+                                               <td>{{obj.rut}}</td> 
+
+											{%endif%}
+
+                                        {%endfor%}	
+
+                                    </td>
+                                    
+                                    <td>
+                                        <a >{{fecha.fecha}}</a>
+                                    </td>
+                                    <td>
+                                        {% if fecha.status == 0 %}
+                                            <span class="label label-default">Pendiente</span>
+                                        {%endif%}
+                                        {% if fecha.status == 1 %}
+                                            <span class="label label-success">Realizada</span>
+                                        {%endif%}                                        
+                                    </td> 
+
+                                    <td>
+                                        
+                                        {{name_group}}
+
+                                    </td>
+
+
+                                    <td style="width: 20%;">
+        						      <a href='{%  url "asignar_equipo_visita" id=fecha.id %}' class="btn btn-info"> Asignar Equipo </a>
+        						      
+
+
+                                    </td>
+                                </tr>
+                                {%endif%}
+                                {%endif%}
+                                {%endif%}
+
+								        {% endfor %}
+
+
+                                {% for fecha in date_list %}
+
+                                {% if fecha.fecha == hoy %}
+                                {% if fecha.equipo == name_group %}
+                                {%if fecha.status == 1%}
+                                <tr>
+                                    <td>            
+
+                                        {% for obj in px %}
+                                            
+                                            {% if obj.id == fecha.id_paciente %}
+
+                                               <span class="user-subhead">{{ obj.nombre}} {{ obj.apellido1}} {{obj.apellido2}}</span>
+
+                                               <td>{{obj.rut}}</td> 
+
+                                            {%endif%}
+
+                                        {%endfor%}  
+
+                                    </td>
+
+                                    
+                                    <td>
+                                        <a >{{fecha.fecha}}</a>
+                                    </td>
+                                    <td>
+                                        {% if fecha.status == 0 %}
+                                            <span class="label label-default">Pendiente</span>
+                                        {%endif%}
+                                        {% if fecha.status == 1 %}
+                                            <span class="label label-success">Realizada</span>
+                                        {%endif%}                                        
+                                    </td>   
+
+                                    <td>
+                                        
+                                        {{name_group}}
+
+                                    </td>
+
+
+                                    <td style="width: 20%;">
+                                      <a href='{%  url "asignar_equipo_visita" id=fecha.id %}' class="btn btn-info"> Asignar Equipo </a>
+
+
+                                    </td>
+
+                                        
+                                </tr>
+
+                                {%endif%}
+                                {%endif%}
+                                {%endif%}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{%  endblock content %}
+
+

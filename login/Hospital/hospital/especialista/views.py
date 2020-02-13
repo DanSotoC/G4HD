@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
 from usuarios.models import Personal , Paciente, Perfil
+from visita.models import Visita
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
@@ -10,6 +11,7 @@ from biblioteca.models import Archivo
 from usuarios.forms import Paciente_Form , Tutor_Form , Personal_Form
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
+from datetime import date
 
 
 def logout_view(request):
@@ -93,3 +95,34 @@ def contraseña_edit(request):
 		form = PasswordChangeForm(request.user)
 		return render(request,'contra_especialista_edit.html',{'form': form})
 		
+
+def visitas_programadas_esp(request):
+
+	current_user = request.user
+	group=Group.objects.all()
+	for g in group:
+		if g.name != 'Administrador' and g.name != 'Personal' and g.name != 'Tutores':
+			user=User.objects.filter(groups__id=g.id)
+			for u in user:
+				if u.id == current_user.id:
+					name=g.name
+					user_group=User.objects.filter(groups__name=name)
+
+	px = instance = get_object_or_404(Personal, id_perfil_id = current_user.id)
+	tl = get_object_or_404(Perfil,id=current_user.id)
+	visita = Visita.objects.all()
+	paciente = Paciente.objects.all()
+	hoy = date.today()
+	
+
+	context = {
+
+		"actual": current_user,
+		"personal":px,
+		"name_group":name,
+		"date_list":visita,
+		"hoy":hoy,
+		"px":paciente
+
+	}
+	return render(request,"visitas_programadas_esp.html",context)
