@@ -1,7 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import formulario
+from datetime import date, time,datetime
 
+now=datetime.today()
 
 class formulario_visita_esp(forms.ModelForm):
 
@@ -9,7 +11,12 @@ class formulario_visita_esp(forms.ModelForm):
  		model = formulario
 
  		fields = [
- 			'id_fecha',
+ 			'id_visita',
  			'id_especialista',
- 			'detalle'
+ 			'detalle',
+ 			'h_inicio',
+
+
  			]
+ 		
+ 		
