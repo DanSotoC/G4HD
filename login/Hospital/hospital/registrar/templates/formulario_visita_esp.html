@@ -1,0 +1,142 @@
+<!--DOCTYPE html -->
+{%  extends "base_especialista.html" %}
+{% load static %}
+
+{%  block content %}
+
+<!DOCTYPE html>
+<html>
+<title>Home | Hospital El Pino</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+
+input[type=box] {
+  width: 100%;
+  padding: 80px 20px;
+  margin: 8px 2;
+  box-sizing: border-box;
+}
+
+.logo img{
+  width:90px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+        }
+
+.block {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: #6D213C;
+  color: white;
+  padding: 14px 50px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.block:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+
+.button {
+  background-color: #6D213C;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  }
+  
+li a{color:black}
+
+</style>
+<body class="w3-light-grey">
+
+<div class="card text-center">
+
+
+  <div class="card-header">
+    <h1> Formulario de Visita </h1>
+    
+            <div class="logo">
+                <img src="{% static 'logo.png'%}">          
+            </div>
+            <div class="title">
+              
+
+
+
+              <form method="POST">
+              {% csrf_token%} 
+
+
+                <b>{{px.nombre}} {{px.apellido1}} {{px.apellido2}} </b></br>
+
+                <div>
+                  <label for=id_visita></label>
+                  <input name="id_visita" id="id_visita" value={{id_visita}}>
+                </div> 
+
+                <div>
+                  <label for=id_paciente></label>
+                  <input name="id_paciente" id="id_paciente" value={{id_paciente}}>
+                </div> 
+
+              Descripción Realizado</br>
+                <div>
+                  <label for=detalle></label>
+                  <input name="detalle" type=box id="detalle" value="Descripción detallada de lo realizado" >
+                </div> 
+
+
+             </br>
+
+              <button class="button" type="submit">Enviar</button>
+              </form>
+
+
+            </div>
+
+
+  </div>
+  <div class="card-body">
+    <p class="card-text"></p>
+    
+    <a href='{%  url "home_e" %}'> <button class="block"> Volver al Menú Principal </button></a> </br> 
+    
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
+
+
+{%  endblock content %}
+

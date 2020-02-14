@@ -26,6 +26,8 @@ from especialista import urls as especialista_urls
 from equipos import urls as equipos_urls
 from redireccion import urls as red
 from visita import urls as agnd_visita
+from registrar import urls as abc
+
 
 urlpatterns = [
     
@@ -39,7 +41,10 @@ urlpatterns = [
     path(r'especialista/',include(especialista_urls)),
     path(r'equipos/',include(equipos_urls)),
     path(r'red/',include(red)),
-    path(r'visita/',include(agnd_visita))
+    path(r'visita/',include(agnd_visita)),
+    path(r'abc/',include(abc)),
+
+
 ]
 
 if settings.DEBUG:

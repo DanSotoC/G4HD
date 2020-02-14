@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'especialista',
     'equipos',
     'redireccion',
-    'visita'
+    'visita',
+    'registrar',
 ]
 
 MIDDLEWARE = [
