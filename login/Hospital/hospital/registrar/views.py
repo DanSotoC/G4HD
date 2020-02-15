@@ -26,6 +26,8 @@ def formulario(request, id=None):
 
 
 		if form.is_valid():
+			visita.status=1
+			visita.save()
 			form.save()
 
 			return redirect(visitas_programadas_esp)
