@@ -6,6 +6,7 @@ from visita.models import Visita
 from django.contrib.auth.models import User
 from registrar.forms import formulario_visita_esp
 from especialista.views import visitas_programadas_esp
+from visita.forms import  asignar_equipo
 from datetime import date, time,datetime
 
 def formulario(request, id=None):
@@ -21,8 +22,12 @@ def formulario(request, id=None):
 	if request.method=='POST':
 		form=formulario_visita_esp(request.POST)
 
+
+
+
 		if form.is_valid():
 			form.save()
+
 			return redirect(visitas_programadas_esp)
 	context = {
 

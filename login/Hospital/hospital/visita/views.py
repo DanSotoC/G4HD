@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from datetime import date
 from django.contrib.auth.models import Group
+from registrar.models import formulario
 
 def agendar_visita(request, id=None):
 	aux = Paciente.objects.get(id=id)	
@@ -108,10 +109,12 @@ def reagendar(request):
 
 def visita_paciente_detalle(request, id=None):
 	queryset = get_object_or_404(Visita, id=id)
+	aux = get_object_or_404(formulario, id_visita=queryset.id)
 
 	context = {
 
 		"visita": queryset,
+		"detalle":aux.detalle
 		
 	}	
 
