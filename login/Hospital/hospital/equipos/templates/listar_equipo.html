@@ -3,37 +3,9 @@
 
 {% block content%}
 
-<div class="col-sm-4">
-	<h1>Crear Equipos</h1><br>
-<hr style="background-color:lightblue; width: 300px; margin-left: -10px;margin-top:-20px; height: 3px;">
-
-<form action="" method="POST">
-        {% csrf_token %}
-        <table>
-        <label for="nombre_equipo">Nombre Equipo:</label>
-        <input type="text_input" class="form-control" name="nombre_equipo">
-        </table> </br>
-        <input type="submit" class="btn btn-info"  value="Crear Equipo" />
-    </form>
-
-</div>
-
-<div class="col-sm-2">
-	<div style="background: #38BDFF;height:90%; width: 2px; margin-left: 100%; text-align: center;"></div>
-</div>
-
-
-
-
-
 
 	
-
-	
-
-	<div class="container bootstrap snippet">
-	    <div class="row">
-	        <div class="col-sm-6" style="padding-left: 50px;">
+	        <div class="col-sm-6" style="">
 	        	<h1>Equipos</h1><br>
 				<hr style="background-color:lightblue; width: 300px; margin-left: -10px;margin-top:-20px; height: 3px;">
 	            <div class="main-box no-header clearfix">
@@ -80,8 +52,40 @@
 				</div>
 			</div>
 			
-		</div>
-	</div>
+	
+
+<div class="col-sm-1">
+	
+</div>
+
+
+
+
+
+
+<div class="col-sm-4">
+		<h1>Crear Equipos</h1><br>
+	<hr style="background-color:lightblue; width: 300px; margin-left: -10px;margin-top:-20px; height: 3px;">
+
+	<form action="" method="POST">
+	        {% csrf_token %}
+	        <table>
+	        <label for="nombre_equipo">Nombre Equipo:</label>
+	        <input type="text_input" class="form-control" name="nombre_equipo">
+	        </table> </br>
+	        <input type="submit" class="btn btn-info"  value="Crear Equipo" />
+	    </form>
+
+</div>
+
+
+
+
+
+
+	
+
+	
 
 
 

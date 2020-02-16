@@ -62,7 +62,7 @@ a {
 
 
 
-<h1>Visitas {{obj.nombre}} {{obj.apellido1}} {{obj.apellido2}} </h1>
+<h1>Visitas: {{obj.nombre}} {{obj.apellido1}} {{obj.apellido2}} </h1>
 
 
 
@@ -74,9 +74,8 @@ a {
 <!-- FIN -->
 
 
-<div class="container bootstrap snippet">
-    <div class="row">
-        <div class="col-sm-6">
+
+        <div class="col-sm-5">
             <div class="main-box no-header clearfix">
                 <div class="main-box-body clearfix">
                     <div class="table-responsive">
@@ -163,13 +162,18 @@ a {
                 </div>
             </div>
         </div>
-          <a href='{%  url "agendar_visita" id=obj.id %}' class="btn btn-info"> Agendar Hora</a>
-           <a href= '{%  url "listpaciente" %}' type="button" class="btn btn-info"> Volver </a>
+         <div class="col-sm-3" style="height: 100%;">
+            <a href='{%  url "agendar_visita" id=obj.id %}' class="btn btn-info"> Agendar Hora</a>
+            <a href= '{%  url "listpaciente" %}' type="button" class="btn btn-info"> Volver </a>
+        </div>
 
           <br><br>
-    <div style="margin-left: 780px;margin-top: -80px; background: white; padding-top:5px; border-radius: 3px;   ">
 
-        <h2>  {{usr.first_name}} {{usr.last_name}}(TUTOR)  </h2>
+
+    
+    <div class="col-sm-4" style=" margin-top: -110px; ">
+        <h1>Tutor</h1>
+        <h2>  {{usr.first_name}} {{usr.last_name}}  </h2>
         <span class="list"> - CONTACTO:</span> </br>  
         
         <ul class="list_box">
@@ -193,23 +197,10 @@ a {
         </ul>
         
     </div>
+
  
 
 
-
-
-<script>
-function MensajeConfirmacion() {
-  var txt;
-  var r = confirm("Desea borrar el usuario actual?");
-  if (r == true) {
-    txt = "Yes";
-  } else {
-    txt = "No";
-  }
-  document.getElementById("demo").innerHTML = txt;
-}
-</script>
 
 
 
