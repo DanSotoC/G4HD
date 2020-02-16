@@ -8,6 +8,7 @@ from registrar.forms import formulario_visita_esp
 from especialista.views import visitas_programadas_esp
 from visita.forms import  asignar_equipo
 from datetime import date, time,datetime
+from registrar.models import formulario as fm
 
 def formulario(request, id=None):
 
@@ -42,3 +43,19 @@ def formulario(request, id=None):
 	}
 		
 	return render(request,'formulario_visita_esp.html',context)
+
+
+def ver_formulario(request, id=None):
+
+	visita = get_object_or_404(Visita, id=id)
+	frml = get_object_or_404(fm,id_visita=visita.id)
+	
+
+
+	context = {
+
+		"f": frml,
+		"v": visita,
+	}
+
+	return render(request,'ver_formulario_detalle.html',context)

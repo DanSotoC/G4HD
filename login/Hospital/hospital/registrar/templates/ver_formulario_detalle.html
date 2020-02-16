@@ -1,0 +1,44 @@
+<!--DOCTYPE html -->
+{%  extends "base_especialista.html" %}
+
+<title> {%block head_title %} Detalles | {{block.super}} {%endblock head_title%} </title>
+
+
+{%block content%}
+
+
+<style>
+
+.button {
+  background-color: #6D213C;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  }
+  
+li a{color:black}
+
+
+</style>
+
+
+
+<div class="card text-center">
+  <div class="card-header">
+    <h1>Detalles Visita </h1>
+  </div>
+  <div class="card-body">
+    <h3 class="card-title"><b>Procedimiento Realizado</b></br></br> {{ f.detalle }}</h3></br>
+             
+    <a href='{% url "visitas_esp" %}' class="button">Volver</a>
+
+
+{%endblock content%}
+
