@@ -79,7 +79,8 @@ a {
                     <div class="table-responsive">
                         <table class="table user-list" >
                             <thead>
-                                <tr>    
+                                <tr> 
+                                   
                                 <th><span>Nombre Completo</span></th>
                                 <th><span>Rut</span></th>
                                 <th><span>Fecha</span></th>
@@ -197,27 +198,24 @@ a {
                                     </td>   
 
                                     <td>
-                                        
-                                        {% if fecha.equipo == 0%}
+                                      {% if fecha.status == 1%}
+                                       
+                                                {% for g in group %}
 
-                                            <a> Sin equipo asignado </a>
+                                                    {% if g.name == fecha.equipo %}
+                                                        <a>{{g.name}}</a>
+                                                    {%endif%}
+
+                                                {%endfor%}  
 
                                         {%endif%}
+                                     
 
-                                        {% if fecha.equipo != 0%}
-
-                                            <a> Hacer querydeequipo </a>
-
-                                        {%endif%}
 
                                     </td>
 
 
-                                    <td style="width: 20%;">
-                                      <a href='{%  url "asignar_equipo_visita" id=fecha.id %}' class="btn btn-info"> Asignar Equipo </a>
-
-
-                                    </td>
+                                    
 
                                         
                                 </tr>
