@@ -14,6 +14,7 @@
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
+
 </style>
 <body class="w3-light-grey">
 
@@ -35,7 +36,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         </div>
         <div class="w3-container">
           <hr>
-
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Fecha de Hoy</h6>
           <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Datos Generales</b></p>
           <p>Pacientes Totales</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
@@ -71,10 +72,14 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
     <!-- Right Column -->
     <div class="w3-twothird">
+
+        {% for g in group %}
+                                
+        {% if g.name != 'Administrador' and g.name != 'Tutores' and g.name != 'Personal' and  g.name != 'Disponible' %}
     
       <div class="w3-container w3-card w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Resumen Dashboard 1</h2>
-        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Fecha de Hoy</h6>
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Equipo {{g.name}} </h2>
+        <h6 class="w3-text-teal">Pacientes para hoy: N°</h6>
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Titulo de grafico</b></h5>
           <p>Algo escrito para hacer un resumen de que muestra el grafico</p>
@@ -82,26 +87,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       	</div>
       </div>
 
+        {%endif%}
+        {%endfor%}
 
-     <div class="w3-container w3-card w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Resumen Dashboard 2</h2>
-        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Fecha de Hoy</h6>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Titulo de grafico</b></h5>
-          <p>Algo escrito para hacer un resumen de que muestra el grafico</p>
-          <hr>
-      	</div>
-      </div>
-
-     <div class="w3-container w3-card w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Resumen Dashboard 3</h2>
-        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Fecha de Hoy</h6>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Titulo de grafico</b></h5>
-          <p>Algo escrito para hacer un resumen de que muestra el grafico</p>
-          <hr>
-      	</div>
-      </div>
 
 
     <!-- End Right Column -->

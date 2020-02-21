@@ -90,7 +90,7 @@ class Tutor_Form(forms.ModelForm):
 class Personal_Form(forms.ModelForm):
 	class Meta:
 
-		ESPECIALIDAD=(('ENFERMERO','Enfermero'),('TECNICO','Técnico'),('KINESIOLOGO','Kinesiologo'))
+		ESPECIALIDAD=(('ENFERMERO','Enfermero'),('TECNICO','Técnico'),('KINESIOLOGO','Kinesiologo'), ('MEDICO','Médico'))
 
 
 		model = Personal

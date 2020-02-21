@@ -120,7 +120,11 @@ a {
                                         {%endif%}
                                     	{%if obj.especialidad == "TECNICO" %}
                                         <span class="label label-default">Técnico</span>
-                                        {%endif%}                                       
+                                        {%endif%} 
+                                        {%if obj.especialidad == "MEDICO" %}
+                                        <span class="label label-default">Médico</span>
+                                        {%endif%}   
+
                                     </td>
                                     <td>
                                         <a >{{obj.id_perfil.usuario.email}}</a>
