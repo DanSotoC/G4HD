@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Archivo, Archivo_Unico
 from django.views.generic import TemplateView ,View
 from .forms import DocumentForm, DocumentFormUnico
-
 from django.contrib import messages 
 from django.urls import reverse
 from django.http import HttpResponseRedirect
@@ -46,7 +45,7 @@ def model_form_upload_unico(request,id=None):
     else:
         form = DocumentFormUnico()
     return render(request, 'form_archivos_unico.html', {
-        'form': form
+        'form': form,'id':id
     })
 
 

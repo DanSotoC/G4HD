@@ -139,4 +139,6 @@ LOGOUT_REDIRECT_URL='main'
 
 
 STATIC_URL = '/static/'
+
+
 MEDIA_URL = '/media/'
