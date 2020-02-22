@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpR
 
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
-from biblioteca.models import Archivo
+from biblioteca.models import Archivo, Archivo_Unico
 from usuarios.models import Paciente
 from usuarios.models import Tutor
 from usuarios.models import Perfil
@@ -62,9 +62,22 @@ def ver_perfil (request):
 	}
 	return render(request,"ver_perfil.html",context)
 
-def biblioteca_tutor(request):
+def biblioteca_tutor(request, id=None):
 	archivo = Archivo.objects.all()
-	return render(request,'biblioteca_tutor.html',{'archivo':archivo})
+	current_user =  request.user
+	tx = get_object_or_404(Tutor, id_perfil_id = current_user.id)
+	px = instance = get_object_or_404(Paciente, id_tutor_id = tx.id)
+	archivo_unico = Archivo_Unico.objects.all()
+
+	context = {
+
+		"archivo":archivo,
+		"archivo_unico":archivo_unico,
+		"pxid":px.id,
+	}
+
+
+	return render(request,'biblioteca_tutor.html',context)
 
 
 def Tutor_edit(request,perfil=None,id_detalle=None):
