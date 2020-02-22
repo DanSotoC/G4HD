@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
-from .models import Archivo
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Archivo, Archivo_Unico
 from django.views.generic import TemplateView ,View
-from .forms import DocumentForm
+from .forms import DocumentForm, DocumentFormUnico
 
 from django.contrib import messages 
 from django.urls import reverse
@@ -16,6 +16,13 @@ def biblioteca(request):
 	archivo = Archivo.objects.all()
 	return render(request,'biblioteca.html',{'archivo':archivo})
 
+def biblioteca_unica(request):
+    current_user =  request.user
+    tutor=get_object_or_404(Tutor, id_perfil_id = current_user.id)
+    px=get_object_or_404(Paciente, id_tutor_id = tutor.id) 
+    archivo = Archivo_Unico.objects.get(paciente=px.id)
+    return render(request,'biblioteca_unica.html',{'archivo':archivo})
+
 
 def model_form_upload(request):
     if request.method == 'POST':
@@ -28,6 +35,20 @@ def model_form_upload(request):
     return render(request, 'form_archivos.html', {
         'form': form
     })
+
+
+def model_form_upload_unico(request,id=None):
+    if request.method == 'POST':
+        form = DocumentFormUnico(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(biblioteca)
+    else:
+        form = DocumentFormUnico()
+    return render(request, 'form_archivos_unico.html', {
+        'form': form
+    })
+
 
 
 def model_form_delete(request,id):

@@ -52,6 +52,21 @@ a {
     border-top: 1px solid #e7ebee;
     padding: 12px 8px;
 }
+
+.button {
+  background-color: #27928E;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  }
+
 </style>
 
 <h1>Lista de Pacientes</h1>
@@ -114,7 +129,8 @@ a {
         							
         								<a href='{%  url "paciente_detalle" id=obj.id_tutor_id %}' class="btn btn-info"> Detail </a>
 
-                                       
+                                        <a href='{% url "form_archivos_unico" id=obj.id %}' class="button"> Biblioteca </a>
+
                                         <a href='{% url "visita_paciente_admin" id=obj.id %}' class="btn btn-success">Ver Horas </a>
 
                                                                  
