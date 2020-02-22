@@ -2,10 +2,13 @@
 {%extends "base_especialista.html"%}
 {% load static %}
 
+{%block head_title%}
+  Perfil
+{%endblock head_title%}
+
 {%  block content %}
 
-<!DOCTYPE html>
-<html>
+
 <style type="text/css">
 
 .button {
@@ -22,92 +25,17 @@
   border-radius: 5px;
   }
   
-li a{color:black}
+  li a{color:black}
 
 </style>
-
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-  
-     <!-- Metas -->
-        <meta charset="utf-8">
-        <meta name="description" content="">
-        <title>Perfil | Hospital El Pino</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta content="telephone=no" name="format-detection">
-
-    <!-- Css -->
-        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="css/base.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="css/main.css" rel="stylesheet" type="text/css" media="all"/>
-        <link href="css/owl-carousel/owl.carousel.css" rel="stylesheet"  media="all">
-    <link href="css/owl-carousel/owl.theme.css" rel="stylesheet"  media="all">
-    <link href="css/magnific-popup.css" type="text/css" rel="stylesheet" media="all" />
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,300,600%7CRoboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
-    <link href="css/fontello.css" rel="stylesheet" type="text/css"  media="all">
-
-    </head>
-
-    <body>
-  
-<!-- Preloader -->
-<div class="loader">
-    <!-- Preloader inner -->
-  <div class="loader-inner">
-  <div class="spinner">
-    <div class="dot1"></div>
-    <div class="dot2"></div>
-  </div>
-  </div>
-<!-- End preloader inner -->
-</div>
-<!-- End preloader-->
-
-
-<!--Wrapper-->
-<div id="wrapper" class="mt-150 mb-150">
-  
+ 
   <!--Container-->
   <div class="container">
     
       <!--Row-->  
-      <div class="row ">
+      
     
-    <!--Left content-->
-    <div class="col-md-2 left-content pd-r0">
-  
-  <!--Header-->
-  <header id="header">
 
-          <!--Main header-->
-          <div class="main-header">
-          
-          </br></br>
-                  
-          <!--Main navigation-->
-            <nav id="main-nav" class="main-nav clearfix t-center uppercase tabbed">
-
-            <ul class="clearfix">
-              <li ><a  href='{%  url "home_e"%}'><i class="icon-user"></i><b>Página Principal</b></li></a><hr style="background-color:purple; width: 110px; margin-left: 0px;margin-top:-3px; height: 3px;">
-              <li><a  href="{% url 'visitas_esp'%}"><i class="icon-user"></i><b>Visitas Programadas</b></li></a><hr style="background-color:purple; width: 110px; margin-left: 0px;margin-top:-3px; height: 3px;">
-              <li><a  href='{%  url "biblioteca_e" %}'><i class="icon-user"></i><b>Biblioteca</b></li></a><hr style="background-color:purple; width: 110px; margin-left: 0px;margin-top:-3px; height: 3px;">
-              <li><a  href="{%url 'Contra_edit' %}"><i class="icon-user"></i><b>Cambiar Contraseña</b></li></a><hr style="background-color:purple; width: 110px; margin-left: 0px;margin-top:-3px; height: 3px;">
-            </ul>
-
-            </nav>
-          <!--End main navigation-->
-              
-        </div>
-        <!--End main header-->
-        
-    </header>
-    <!--End  header-->
-    
-    
-    </div>
-    <!--End left content-->
     
     
         
@@ -134,10 +62,12 @@ li a{color:black}
                 
                 <div class="main-title profile">
                                   <h1 class="mb-20"><b> {{actual.first_name}} {{actual.last_name}} </b> </h1>
+                                  <a href="{% url 'Especialista_edit' perfil=actual.id id_personal=personal.id %}" class="button" role="button">Editar</a>
+
 
                               </div>
                    </div>
-                 </div>
+                
                 <!--End row-->
 
               </div>
@@ -147,20 +77,14 @@ li a{color:black}
                 <div class="block-content mb-100  pb-30">
 
                     <!--Row-->
-                      <div class="row">
+                    
 
-                    <div class="col-md-12  ">
-
-                      <div class="sub-title mb-40">
-                                        <h2 class="uppercase">Personal Info</h2><hr style="background-color:black; width: 210px; margin-left: 0px;margin-top:-3px; height: 3px;"> <a href="{% url 'Especialista_edit' perfil=actual.id id_personal=personal.id %}" class="button" role="button">Editar</a>
-                                    </div>
-
-                     </div>
-                     </div>
+                    
+                     
                     <!--End row-->                    
 
                     <!--Row-->
-                    <div class="row">
+                    
                   <div class="col-md-8 col-md-offset-3  col-sm-8 col-sm-offset-3 ">
 
                   <!--Listing-->  
@@ -186,7 +110,7 @@ li a{color:black}
 
                 </div>
 
-                </div>
+                
                 <!--End row-->
 
                 </div>
@@ -196,20 +120,20 @@ li a{color:black}
                   <div class="block-content mb-100 pb-30">
 
                       <!--Row-->
-                        <div class="row">
+                        
 
                       <div class="col-md-12  ">
 
                         <div class="sub-title mb-40">
-                                          <h2 class="uppercase">Team Info: {{name_group}}</h2><hr style="background-color:black; width: 410px; margin-left: 0px;margin-top:-3px; height: 3px;">
+                                          <h2 class="uppercase">Team {{name_group}}</h2>
                                       </div>
 
                        </div>
-                       </div>
+                      
                       <!--End row-->
       
       
-                      <div class="row">
+                    
                     <div class="col-md-8 col-md-offset-3  col-sm-8 col-sm-offset-3 ">
                                         
                     <!--Listing-->  
@@ -234,14 +158,14 @@ li a{color:black}
                   
                   </div>
 
-                  </div>
+                
                   <!--End block content-->
 
                 <!--Block content-->  
                 <div class="block-content mb-100">
 
                     <!--Row-->
-                      <div class="row">
+                      
 
                     <div class="col-md-12  ">
 
@@ -250,7 +174,7 @@ li a{color:black}
                                     </div>
 
                      </div>
-                     </div>
+                     
                     <!--End row-->
                   
                 </br>
@@ -259,9 +183,6 @@ li a{color:black}
                 <!--End block content-->                
                 
                                
-
-    </body>
-</html>
 
 
 

@@ -1,6 +1,8 @@
 {%  extends "base_especialista.html" %}
 {% load static %}
-
+{%block head_title%}
+  Cambiar Contraseña
+{%endblock head_title%}
 {%  block content %}
 <style type="text/css">
 
@@ -22,9 +24,10 @@ li a{color:black}
 
 </style>
 
-<h1 style="margin-left: 30px;">Datos de tutor</h1><br>
-<hr style="background-color:purple; width: 320px; margin-left: 30px;margin-top:-20px; height: 3px;">
-<div class="col-sm-3" style="margin-left: 30px;" >
+
+<div class="container">
+  <h1>Cambiar Contraseña</h1><br>
+  
 	<form method="post">
   	{% csrf_token %}
 	  <div>

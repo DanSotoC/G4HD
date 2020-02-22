@@ -1,6 +1,8 @@
 {%extends "base_especialista.html"%}
 {% load static %}
-
+{%block head_title%}
+  Bibloteca
+{%endblock head_title%}
 
 
 
@@ -84,15 +86,11 @@
 
 </style>
 
-
-
-
-	<h1>Biblioteca</h1><br>
-
-<a href='{%  url "home_e"%}' class="button" role="button"> Página Principal </a> 
-<a href='{%  url "perfil_e" %}' class="button" role="button"> Ver Perfil </a> 
-<a href="#" class="button" role="button"> Visitas Programadas </a> 
-</br></br>
+<div class="container">
+  <h1>Biblioteca</h1>
+  <br>
+  </br>
+  </br>
 
 	<div class=" row ">
 		
@@ -113,6 +111,10 @@
 
 
 
+</div>
+
+
+ 
 
 
 
