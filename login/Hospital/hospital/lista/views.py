@@ -78,3 +78,11 @@ def consulta_lista(request):
 		"var":var,
 	}
 	return render(request,"consulta_lista.html",context)
+
+
+def reingreso(request):
+
+	context = {
+
+	}
+	return render(request,"reingreso.html",context)
