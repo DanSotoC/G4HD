@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Archivo, Archivo_Unico
+from usuarios.models import Paciente
 from django.views.generic import TemplateView ,View
 from .forms import DocumentForm, DocumentFormUnico
 from django.contrib import messages 
@@ -15,12 +16,15 @@ def biblioteca(request):
 	archivo = Archivo.objects.all()
 	return render(request,'biblioteca.html',{'archivo':archivo})
 
-def biblioteca_unica(request):
-    current_user =  request.user
-    tutor=get_object_or_404(Tutor, id_perfil_id = current_user.id)
-    px=get_object_or_404(Paciente, id_tutor_id = tutor.id) 
-    archivo = Archivo_Unico.objects.get(paciente=px.id)
-    return render(request,'biblioteca_unica.html',{'archivo':archivo})
+
+def biblioteca_unica(request,id=None):
+    px=get_object_or_404(Paciente, id_tutor_id = id) 
+    archivo = Archivo_Unico.objects.all()
+    context={
+        "px":px.id,
+        "archivo":archivo,
+    }
+    return render(request,'biblioteca_unica.html',context)
 
 
 def model_form_upload(request):
@@ -53,6 +57,15 @@ def model_form_upload_unico(request,id=None):
 def model_form_delete(request,id):
     
     archivo=Archivo.objects.get(id=id)
+    if request.method=='POST':
+        os.remove(str(archivo.file))
+        archivo.delete()
+        return redirect(biblioteca)
+    return render(request,'form_archivos_delete.html', {'archivo':archivo})
+
+def model_form_delete_unico(request,id):
+    
+    archivo=Archivo_Unico.objects.get(id=id)
     if request.method=='POST':
         os.remove(str(archivo.file))
         archivo.delete()

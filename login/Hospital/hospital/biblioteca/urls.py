@@ -6,9 +6,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
 url(r'^home/$',views.biblioteca,name='biblioteca'),
+url(r'^home/biblioteca_unica/(?P<id>\d+)$',views.biblioteca_unica,name='biblioteca_adm_unica'),
 url(r'^subir_archivo/$',views.model_form_upload,name='form_archivos'),
 url(r'^subir_archivo_unico/(?P<id>\d+)$',views.model_form_upload_unico,name='form_archivos_unico'),
 url(r'^eliminar/(?P<id>\d+)$',views.model_form_delete, name="form_archivos_delete"),
+url(r'^eliminar_unico/(?P<id>\d+)$',views.model_form_delete_unico, name="form_archivos_delete_unico"),
 url(r'^editar/(?P<id>\d+)$',views.model_form_edit, name="form_archivos_edit"),
    ]
 
