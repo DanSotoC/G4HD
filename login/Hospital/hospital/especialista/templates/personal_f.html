@@ -23,8 +23,9 @@
 li a{color:black}
 
 </style>
-<h1>Datos de Personal</h1><br>
-<hr style="background-color:purple; width: 320px; margin-left: 0px;margin-top:-20px; height: 3px;">
+<div class="container">
+	<h1>Datos de Personal</h1><br>
+
 
 <div class="col-sm-5">
 	<form method="POST">
@@ -42,10 +43,11 @@ li a{color:black}
 		<label>Especialidad:</label>
 		{{form.especialidad}}
 	</div><br>
-		<button class="button"type="submit">guardar</button>
+		<button class="btn btn-info btn-lg btn-block" type="submit">guardar</button>
 	
 
 	<div>
 </form>	
+</div>
 </div>
 {% endblock %}

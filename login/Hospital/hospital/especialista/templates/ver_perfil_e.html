@@ -8,54 +8,77 @@
 
 {%  block content %}
 
-
-<style type="text/css">
-
-.button {
-  background-color: #6D213C;
-  border: none;
-  color: white;
-  padding: 5px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 5px;
-  }
+<div class="container" style="width: 90%; margin-top: 20px;">
   
-  li a{color:black}
+  <div class="row">
+    <div class="card col-sm-6" style="max-width: 540px; ">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="{%static 'user.png'%}" style="width: 99%; margin-top: 20px;">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h2 class="card-title">{{actual.first_name}} {{actual.last_name}}</h2>
+            <p class="card-text"> <span class="emph-1">Especialidad</span>:
+              {{personal.especialidad}}</<span><br>
+                <span class="emph-1">E-Mail</span> : {{actual.email}} <br>
+                <span class="emph-1">Rut</span> : {{personal.rut}} <br>
+                <span class="emph-1">Phone</span> : +56 9{{tel}} 
+              </p>
+             <a href="{% url 'Especialista_edit' perfil=actual.id id_personal=personal.id %}" class="btn btn-info btn-lg btn-block" role="button">Editar</a>
+             <a  href="{%url 'Contra_edit' %}" class="btn btn-info btn-lg btn-block" role="button">Cambiar contraseña</a>
 
-</style>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-1" style="margin-bottom: 40px;"></div>
+    <div class="card col-sm-5" style="margin-bottom: 40px;">
+      <h4 class="card-header">Equipo {{name_group}}</h4>
+      <div class="card-body">
+        <h5 class="card-title">Personal:</h5>
+        {% for g in users_group %}
+        <p class="card-text">
+         
+          {{g.first_name}}{{g.last_name}}
+         
+         
+        </p>
+        {% endfor %}
+       
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!--
  
-  <!--Container-->
+  
   <div class="container">
     
-      <!--Row-->  
+      
       
     
 
     
     
         
-      <!--Right content-->
+     
       <div class="col-md-9 right-content pd-r0 pd-l0">
 
-            <!--About Tab-->
+           
           <section id="about" class="bg-white t-center">
             
-            <!--About -->
+         
             <div class="about">
                   
-            
-            <!--Content-->  
+      
             <div class="content">
               
-              <!--Block content-->  
+          
               <div class="block-content mb-100">
                 
-                  <!--Row-->
                   <div class="row">
 
                   <div class="col-md-12  ">
@@ -68,26 +91,15 @@
                               </div>
                    </div>
                 
-                <!--End row-->
+              
 
               </div>
-              <!--End block content-->
-                      
-                <!--Block content-->  
+          
                 <div class="block-content mb-100  pb-30">
 
-                    <!--Row-->
-                    
-
-                    
-                     
-                    <!--End row-->                    
-
-                    <!--Row-->
-                    
                   <div class="col-md-8 col-md-offset-3  col-sm-8 col-sm-offset-3 ">
 
-                  <!--Listing-->  
+                  
                   <div class="listing mt-40">                                    
                   <div class="listing-inner">
                   <div class="listing-event">
@@ -106,20 +118,17 @@
                   </div>
 
                   </div>
-                  <!--End listing-->  
+                 
 
                 </div>
 
                 
-                <!--End row-->
+         
 
                 </div>
-                <!--End block content-->
-
-                  <!--Block content-->  
+            
                   <div class="block-content mb-100 pb-30">
 
-                      <!--Row-->
                         
 
                       <div class="col-md-12  ">
@@ -130,13 +139,13 @@
 
                        </div>
                       
-                      <!--End row-->
+                 
       
       
                     
                     <div class="col-md-8 col-md-offset-3  col-sm-8 col-sm-offset-3 ">
                                         
-                    <!--Listing-->  
+                
                     <div class="listing mt-40">
                       
                     <div class="listing-inner">
@@ -152,19 +161,18 @@
                     </div>
                     
                     </div>
-                    <!--End listing-->  
+                 
                                         
                   </div>
                   
                   </div>
 
                 
-                  <!--End block content-->
 
-                <!--Block content-->  
+               
                 <div class="block-content mb-100">
 
-                    <!--Row-->
+                
                       
 
                     <div class="col-md-12  ">
@@ -175,14 +183,14 @@
 
                      </div>
                      
-                    <!--End row-->
+                   
                   
                 </br>
                 </br>
                 </div>
-                <!--End block content-->                
+                  -->              
                 
-                               
+                             
 
 
 

@@ -12,20 +12,20 @@
 </head>
 <body >
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{% url 'home_e' %}"><img src="{% static 'logo.png'%}" width="40">Portal Funcionario </a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-info">
+    <a class="navbar-brand" href="{% url 'home_e' %}" style="color: white;margin-right:20px;"><img src="{% static 'logo.png'%}" width="50" style="margin-right:20px;" >   Portal Funcionario </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02" ">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item ">
-          <a class="nav-link" href="{% url 'home_e' %}">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home_e' %}" style="color: white;">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Perfil</a>
-            <div class="dropdown-menu">
+            <a class="nav-link dropdown-toggle "style="color: white;" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Perfil</a>
+            <div class="dropdown-menu ">
               <a class="dropdown-item" href="{%  url 'perfil_e' %}" class="nav-link"> Ver Perfil</a>
               <a  class="dropdown-item" href="{%url 'Contra_edit' %}" class="nav-link">Cambiar Contraseña</a>
               
@@ -33,16 +33,16 @@
         </li>
         
         <li class="nav-item">
-          <a href='{%  url "visitas_esp" %}' class="nav-link">Visitas Programadas</a>
+          <a href='{%  url "visitas_esp" %}' style="color: white;" class="nav-link">Visitas Programadas</a>
         </li>
         <li class="nav-item">
-          <a href='{%  url "biblioteca_e" %}' class="nav-link">Biblioteca</a>
+          <a href='{%  url "biblioteca_e" %}' style="color: white;" class="nav-link">Biblioteca</a>
         </li>
         <li class="nav-item">
           
         </li>
         <li class="nav-item">
-          <a href="{% url 'logout'%}" class="nav-link">Log Out</a>
+          <a href="{% url 'logout'%}"  style="color: white;" class="nav-link">Log Out</a>
         </li>
        
       </ul>
