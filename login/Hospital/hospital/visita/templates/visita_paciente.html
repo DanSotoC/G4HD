@@ -60,21 +60,11 @@ a {
 
 
 
-<h1>Lista de Visitas</h1>
 
-<a href='{%  url "home_t"%}' class="btn btn-danger" role="button"> Página Principal </a> 
-<a href='{%  url "perfil_t" %}' class="btn btn-danger" role="button"> Ver Perfil </a> 
-<a href='{%  url "biblioteca_t" %}' class="btn btn-danger" role="button"> Biblioteca </a> 
-<a href='{%  url "reagendar" %}' class="btn btn-danger"> Solicitud Reagendar </a>
+<div class="container bootstrap snippet" style="max-width: 100%;">
+    <h1>Lista de Visitas</h1>
+    <a href='{%  url "reagendar" %}' class="btn btn-danger"> Solicitud Reagendar </a>
 </br></br>
-
-<!-- Metodo Buscar -->
-
-
-<!-- FIN -->
-
-
-<div class="container bootstrap snippet">
     <div class="row">
         <div class="col-lg-12">
             <div class="main-box no-header clearfix">
@@ -148,7 +138,7 @@ a {
                                             
                                             {% if obj.id == fecha.id_paciente %}
 
-                                               <td>{{obj.rut}}</td> 
+                                               <td>{{obj.id}}</td> 
 
                                             {%endif%}
 

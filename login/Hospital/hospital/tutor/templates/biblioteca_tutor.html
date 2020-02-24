@@ -69,18 +69,13 @@
 
 </style>
 
-
-
-
-	<h1>Biblioteca</h1><br>
-
-<a href='{%  url "home_t"%}' class="btn btn-danger" role="button"> Página Principal </a> 
-<a href='{%  url "perfil_t" %}' class="btn btn-danger" role="button"> Ver Perfil </a> 
-<a href='{%  url "visita_paciente" %}' class="btn btn-danger" role="button"> Visitas Programadas </a> 
-</br></br>
+<div class="container" style="margin-top: 20px;">
+	
 
 	<div class=" row ">
 		
+	<div class="col-sm-12">
+		<h1>Biblioteca</h1><br>
 		{% for arch in archivo %}
 	
 		<div class="dropdown2">
@@ -93,9 +88,11 @@
 		
 		
 		{% endfor %}
+	</div>
 
-</br>
-	<h1>Biblioteca Personal</h1><br>
+
+	<div class="col-sm-12">
+		<h1>Biblioteca Personal</h1><br>
 
 		{% for g in archivo_unico %}
 	
@@ -118,7 +115,12 @@
 
 
 		</div>
+	</div>
 
+</div>
+
+
+	
 
 
 

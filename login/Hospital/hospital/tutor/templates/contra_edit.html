@@ -1,11 +1,14 @@
 {%  extends "base_tutor.html" %}
 {% load static %}
-
+{%block head_title%}
+  Cambiar Contraseña
+{%endblock head_title%}
 {%  block content %}
 
-<h1>Datos de tutor</h1><br>
-<hr style="background-color:red; width: 320px; margin-left: 0px;margin-top:-20px; height: 3px;">
-<div class="col-sm-6">
+<div class="container" style="max-width: 800px; margin-top: 20px;">
+	<h1>Cambiar Contraseña</h1><br>
+
+
 	<form method="post">
   	{% csrf_token %}
 	  <div>
@@ -32,5 +35,6 @@
 </ul>
 {% endif %}
 </div>
+
 
 {%  endblock content %}
