@@ -1,118 +1,80 @@
 <!--DOCTYPE html -->
+{% load static %}
 <html>
 <head>
-<title> {%block head_title %} Hospital El Pino {%endblock head_title%} </title>
-
+<title> {%block head_title %} Portal de  Tutores {%endblock head_title%} </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="telephone=no" name="format-detection">
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-<link rel = "icon" href =  
-"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlv85776HlL5zDlCuBxxRSUZBUKxQc3sxqTu_k7JOVHNDrc2avvA&s" 
-        type = "image/x-icon"> 
-
-<link rel='stylesheet' href='/static/css/detail.css' />
-<style>
-{%block style%}
-
-    body{
-    background:#eee;    
-}
-.main-box.no-header {
-    padding-top: 20px;
-}
-.main-box {
-    background: #FFFFFF;
-    -webkit-box-shadow: 1px 1px 2px 0 #CCCCCC;
-    -moz-box-shadow: 1px 1px 2px 0 #CCCCCC;
-    -o-box-shadow: 1px 1px 2px 0 #CCCCCC;
-    -ms-box-shadow: 1px 1px 2px 0 #CCCCCC;
-    box-shadow: 1px 1px 2px 0 #CCCCCC;
-    margin-bottom: 16px;
-    -webikt-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
-
-.dropbtn {
-  background-color: #D34E45;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #D35B53;
-  min-width: 180px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.dropdown:hover .dropbtn {
-  background-color: #D02216;
-}
-
-{%endblock style%}
-</style>
 </head>
 
 
 <body >
 
+  <nav class="navbar navbar-expand-lg navbar-light bg-danger">
+    <a class="navbar-brand" href="{% url 'home_t' %}" style="color: white;margin-right:20px;"><img src="{% static 'logo.png'%}" width="60" style="margin-right:20px; background: white; border-radius:50%;padding:5px;" >   Portal de Tutores </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02" >
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home_t' %}" style="color: white;">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle "style="color: white;" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Perfil</a>
+            <div class="dropdown-menu ">
+              <a class="dropdown-item" href="{%  url 'perfil_t' %}" class="nav-link"> Ver Perfil</a>
+              <a  class="dropdown-item" href="{%url 'contra_edit' %}" class="nav-link">Cambiar Contraseña</a>
+              
+            </div>
+        </li>
+        
+        <li class="nav-item">
+          <a href='{%  url "visita_paciente" %}' style="color: white;" class="nav-link">Visitas Programadas</a>
+        </li>
+        <li class="nav-item">
+          <a href='{%  url "biblioteca_t" %}' style="color: white;" class="nav-link">Biblioteca</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="#"  style="color: white;" class="nav-link">Ver Historia</a>
+        </li>
+        <li class="nav-item">
+          
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle "  style="color: white;" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Contactanos</a>
+          <div class="dropdown-menu ">
+            <a  class="dropdown-item" href="{% url 'contacto_t'%}" class="nav-link">Contacto con UHD</a>
+            <a  class="dropdown-item" href="{% url 'consulta_t'%}" class="nav-link">Ver Consulta</a>
+            
+            
+          </div>
+      </li>
+        <li class="nav-item">
+          <a href="{% url 'logout'%}"  style="color: white;;" class="nav-link">Log Out</a>
+        </li>
+      </ul>
+      
+    </div>
+  </nav>
 
 
-<div id="navbar" class="navbar-collapse collapse" style="background-color: #DF3E3A;">
+{%  block content %}
 
-	<div class="dropdown">
-  </div>
+{%  endblock content %}
 
-
-	<ul class="nav navbar-nav navbar-right">
-		<li><a href='{% url "logout" %}' class="btn btn-danger"> LogOut </a></li>
-	</ul>
-
-</div>
-
-<!--
-
-
-
--->
-
-
-
-
-
-<div class='container'>
-{%  block content %}{%  endblock content %}
-</div>
 
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 </body>
 </html>
