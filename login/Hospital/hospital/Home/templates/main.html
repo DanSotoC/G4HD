@@ -4,6 +4,13 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta content="telephone=no" name="format-detection">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+	
+
 	<title> HOME</title>
 	
 </head>
@@ -12,7 +19,7 @@
 		*{
 			margin: 0;
 			padding: 0;
-			font-family:Century Gothic;  
+			font-family:'Poppins',sans-serif; 
 
 
 		}
@@ -26,6 +33,7 @@
 			background-size: cover;
 			background-position: center center;
 			position: relative;
+			backdrop-filter: blur(6px);
 		}
 
 
@@ -36,11 +44,11 @@
 		}
 
 		.title{
-  			 margin-top: 20px;
+  			 margin-top: 10px;
 		     text-transform: uppercase;
 			 color: red; 
-		  	 margin-left: 110px;
-		     font-size: 55px;
+		  	 margin-left: 100px;
+		     font-size: 45px;
 		  	 position: absolute;
 
 		}
@@ -50,7 +58,7 @@
 		}
 
 		.title span:nth-child(even){
-			  font-size: 25px;
+			  font-size: 10px;
 			  overflow: hidden;
 			  transition: ease-in-out 0.5s;
 			  border-bottom: 2px solid green;
@@ -66,43 +74,31 @@
 
 		.titulo{
 			position: absolute;
-			top:40%;
+			top:50%;
 			left:50%;
-			transform: translate(-50%,-50%)
+			transform: translate(-50%,-50%);
+			
 		}
 		.titulo h1{
 			font-size: 60px;
 			color: white;
 		}
 		
-		.botones{
-			position: absolute;
-			top:55%;
-			left:50%;
-			transform: translate(-50%,-50%);
-			
+		.btn-custom{
+			background: #723dbe;
+			border-color: #723dbe;
+			color:#fff;
+			font-weight:600;
+			font-size: large;
+			min-height: 48px;
+}
+		.btn-custom:focus,.btn-custom:hover,.btn-custom:active,.btn-custom:active:focus{
+			background: #54229d;
+			border-color: #54229d;
+			color:#fff;
 		}
-		.botones ul {
-			list-style-type: none;
-		}
-
-		.botones ul li{
-			display: inline-block;
-
-		}
-		.botones ul li a{
-			text-decoration: none;
-			color: white;
-			padding:  5px 20px;
-			border: 1px solid white;
-			transition-duration: .3s;
-		}
-		.botones ul li a:hover{
-			background-color:  white;
-			font-size: 35px;
-			color: black;
-			transition-duration: .5s;
-		
+		.btn-custom:focus{
+			box-shadow: 0 0 0 0.2rem rgba(114,61,190, .25);
 		}
 			
 	</style>
@@ -124,17 +120,13 @@
 	 
 
 	 	</div>
-	 	<div class="titulo">
-	 		<h1>Bienvenido</h1>
-	 	</div>
-
-	 	<div class="botones">
-	 		<ul>
-	 			<li><a href="{%url 'login'%}"> Iniciar Sesión </a></li>
+		 	<div class="titulo">
+				<h1>Bienvenidos</h1>
+				<a href="{%url 'login'%}" class="btn mt-5 btn-custom btn-block text_uppercase rounded-pill "> Login </a>
+			 </div>
+		 	
 	 			
-	 		</ul>
-	 	</div>
-
+	 	
 	 	
 	 	
  	
