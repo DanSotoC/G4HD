@@ -90,7 +90,7 @@ li a{color:black}
                                 <th><span>Nombre Completo</span></th>
                                 
                                 <th><span>Estado</span></th>
-                                <th><span>Equipo</span></th>
+                                <th><span>Dirección</span></th>
                                 <th><span>Opciones</span></th>
                                 <th>&nbsp;</th>
                                 </tr>
@@ -135,8 +135,15 @@ li a{color:black}
                                     </td> 
 
                                     <td>
+                                        {%for p in px%}
+                                        {% if fecha.id_paciente == p.id %}
+                                        <a href="https://maps.google.com/?q={{p.domicilio}}+{{p.num_domicilio}}+{{p.comuna}}">{{p.domicilio}} {{p.num_domicilio}},{{p.comuna}}</a>
                                         
-                                        {{name_group}}
+                                        
+                                        
+                                        {%endif%}
+                                        {%endfor%}
+                                        
 
                                     </td>
 
@@ -170,17 +177,12 @@ li a{color:black}
 
                                                <span class="user-subhead">{{ obj.nombre}} {{ obj.apellido1}} {{obj.apellido2}}</span>
 
-                                               <td>{{obj.rut}}</td> 
+                                              
 
                                             {%endif%}
 
                                         {%endfor%}  
 
-                                    </td>
-
-                                    
-                                    <td>
-                                        <a >{{fecha.fecha}}</a>
                                     </td>
                                     <td>
                                         {% if fecha.status == 0 %}
@@ -191,11 +193,20 @@ li a{color:black}
                                         {%endif%}                                        
                                     </td>   
 
+                                    
                                     <td>
+                                        {%for p in px%}
+                                        {% if fecha.id_paciente == p.id %}
+                                        <a href="https://maps.google.com/?q={{p.domicilio}}+{{p.num_domicilio}}+{{p.comuna}}">{{p.domicilio}} {{p.num_domicilio}},{{p.comuna}}</a>
                                         
-                                        {{name_group}}
-
+                                        
+                                        
+                                        {%endif%}
+                                        {%endfor%}
                                     </td>
+                                
+
+                                    
 
 
                                     <td style="width: 20%;">
