@@ -103,27 +103,72 @@ body{
     padding-left: 54px;
     border-radius: 5px;
 }
+
+#eyes{
+	position: relative;
+    left: 150px;
+	margin-left: -35px;
+	top:45px;
+    font-size: 24px;
+    
+	color: #54229D;
+}
+
+
+
+#eye2{
+	display: none;
+	
+}
 </style>
 
 <div class="login-container d-flex align-items-center justify-content-center">
 	<form class="login-form text-center " method="POST">
 		{% csrf_token %}
 		<h1 class="mb-5 font-weight-light text-uppercase ">Login</h1>
-		<div class="form-group" id="icon" >
+		<div class="form-group" id="icon" > 
 			<input type="text" class="form-control rounded-pill form-controll-lg" name="username" id="username" placeholder="Username" autocomplete="off">
 		</div>
 		<div class="form-group " id="icon2">
+			<span id="eyes" onclick="myFunction()">
+				<i class="fa fa-eye" id="eye1" ></i>
+				<i class="fa fa-eye-slash" id="eye2"></i>
+			</span>
 			<input type="password" class="form-control rounded-pill form-controll-lg" name="password" id="password" placeholder="Password" autocomplete="off">
-
+			
 		</div>
-		<button type="submit" class="btn mt-5 btn-custom btn-block text_uppercase rounded-pill ">Login</button>
+		<button type="submit" class="btn mt-5 btn-custom btn-block text_uppercase rounded-pill ">Iniciar Sesión</button>
 
 
 	</form>
 </div>
 
 
+<script>
+	
+	function myFunction(){
+		var x = document.getElementById("password");
+		var y = document.getElementById("eye1");
+		var z = document.getElementById("eye2");
 
+		if (x.type == 'password'){
+			x.type="text";
+			z.style.display="inline";
+			y.style.display="none";
+		}
+		else{
+			x.type="password";
+			y.style.display="inline";
+			z.style.display="none";
+		}
+
+
+	}
+
+
+
+
+</script>
 
 
 </body>
