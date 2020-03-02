@@ -169,7 +169,10 @@
 	                        {%endif%}
 	                    	{%if e.especialidad == "TECNICO" %}
 	                        <span class="label label-warning">Técnico</span>
-	                        {%endif%}                         
+	                        {%endif%}  
+							{%if e.especialidad == "MEDICO" %}
+	                        <span class="label label-danger">Medico</span>
+	                        {%endif%}                          
 
 						</div>
 						{% endif %}
@@ -227,7 +230,9 @@
 	                    	{%if e.especialidad == "TECNICO" %}
 	                        <span class="label label-warning">Técnico</span>
 	                        {%endif%}                         
-
+							{%if e.especialidad == "MEDICO" %}
+	                        <span class="label label-danger">Medico</span>
+	                        {%endif%}  
 						</div>
 						{% endif %}
 

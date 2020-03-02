@@ -85,7 +85,12 @@ def borrar_fecha(request,id=None):
 	messages.error(request, "Successfully deleted")
 	return redirect(visita_paciente_admin,id_p)
 
-
+def borrar_lista(request,id=None):
+	instance = get_object_or_404(Visita, id=id)
+	id_p=instance.id_paciente
+	instance.delete()
+	messages.error(request, "Successfully deleted")
+	return redirect(agendar_lista)
 
 
 
@@ -102,6 +107,9 @@ def visita_update(request, id=None):
 		return redirect(agendar_lista)
 	
 	return render(request,"agendar_update.html",{"form":form,"id_paciente":aux.id_paciente,"status":aux.status})
+
+
+
 
 def reagendar(request):
 	return render(request,"reagendar.html")
