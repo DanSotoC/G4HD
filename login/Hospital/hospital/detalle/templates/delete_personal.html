@@ -14,14 +14,17 @@
            		 <span style="font-size: 40px;">{{user.first_name}} {{user.last_name}} </span><br>
             	 <span style="font-size: 25px;"> {{personal.rut}} </span><br>
             	 {% if personal.especialidad == "ENFERMERO" %}
-                <span style="font-size: 25px;">Enfermero</span> 
-               {% endif %}
-               {% if personal.especialidad == "KINESIOLOGO" %}
-                <span style="font-size: 25px;">Kinesiólogo</span> 
-               {% endif %}
-               {% if personal.especialidad == "TECNICO" %}
-                <span style="font-size: 25px;">Técnico</span> 
-               {% endif %}
+                    <span style="font-size: 25px;">Enfermero</span> 
+                 {% endif %}
+                 {% if personal.especialidad == "KINESIOLOGO" %}
+                    <span style="font-size: 25px;">Kinesiólogo</span> 
+                 {% endif %}
+                 {% if personal.especialidad == "TECNICO" %}
+                    <span style="font-size: 25px;">Técnico</span> 
+                 {% endif %}
+                 {%if e.especialidad == "MEDICO" %}
+	                <span class="label label-danger">Médico</span>
+	             {%endif%}  
                 <br>
             	
            	</div>
