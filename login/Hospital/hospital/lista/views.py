@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.shortcuts import HttpResponse, HttpResponseRedirect, redirect
 from usuarios.models import Paciente , Personal, Tutor
 from tutor.models import Consulta
+
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 
@@ -86,3 +87,5 @@ def reingreso(request):
 
 	}
 	return render(request,"reingreso.html",context)
+
+
