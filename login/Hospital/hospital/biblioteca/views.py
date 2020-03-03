@@ -10,10 +10,11 @@ from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 import os
+from tutor.models import Consulta
 
 
 def biblioteca(request):
-	archivo = Archivo.objects.all()
+	archivo = Archivo.objects.all()    
 	return render(request,'biblioteca.html',{'archivo':archivo})
 
 
