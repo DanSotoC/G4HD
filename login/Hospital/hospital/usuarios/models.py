@@ -38,6 +38,7 @@ class Paciente(models.Model):
 	num_domicilio=models.CharField(max_length=50)
 	f_nacimiento=models.CharField(max_length=20)
 	desc=models.CharField(max_length=100)
+	activo=models.IntegerField(null=False, default=1)
 	
 	def __str__(self):
 		return self.nombre

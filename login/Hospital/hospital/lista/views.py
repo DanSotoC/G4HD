@@ -82,9 +82,10 @@ def consulta_lista(request):
 
 
 def reingreso(request):
-
+	qset = request.GET.get("buscar")
+	user = Paciente.objects.filter(rut = qset)
 	context = {
-
+		
 	}
 	return render(request,"reingreso.html",context)
 
