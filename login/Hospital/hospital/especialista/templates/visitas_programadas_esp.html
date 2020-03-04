@@ -74,6 +74,8 @@ li a{color:black}
 
 </style>
 
+<html>
+<body>
 
 
 
@@ -137,7 +139,7 @@ li a{color:black}
                                     <td>
                                         {%for p in px%}
                                         {% if fecha.id_paciente == p.id %}
-                                        <a href="https://maps.google.com/?q={{p.domicilio}}+{{p.num_domicilio}}+{{p.comuna}}">{{p.domicilio}} {{p.num_domicilio}},{{p.comuna}}</a>
+                                        <a href="https://maps.google.com/?q={{p.domicilio}}+{{p.num_domicilio}}+{{p.comuna}}"target="_blank"> {{p.domicilio}} {{p.num_domicilio}},{{p.comuna}} </a>
                                         
                                         
                                         
@@ -197,7 +199,7 @@ li a{color:black}
                                     <td>
                                         {%for p in px%}
                                         {% if fecha.id_paciente == p.id %}
-                                        <a href="https://maps.google.com/?q={{p.domicilio}}+{{p.num_domicilio}}+{{p.comuna}}">{{p.domicilio}} {{p.num_domicilio}},{{p.comuna}}</a>
+                                        <a href="https://maps.google.com/?q={{p.domicilio}}+{{p.num_domicilio}}+{{p.comuna}}"target="_blank"> {{p.domicilio}} {{p.num_domicilio}},{{p.comuna}} </a>
                                         
                                         
                                         
@@ -210,10 +212,11 @@ li a{color:black}
 
 
                                     <td style="width: 20%;">
-                                      <a href="{% url 'ver_formulario_detalle' id=fecha.id%}" class="button"> Ver Registro </a>
+                                      <a href="{% url 'ver_formulario_detalle' id=fecha.id%}"  class="button"> Ver Registro </a>
 
 
                                     </td>
+
 
                                         
                                 </tr>
@@ -232,6 +235,9 @@ li a{color:black}
 </div>
 
 
+
+</body>
+</html>
 
 
 {%  endblock content %}
