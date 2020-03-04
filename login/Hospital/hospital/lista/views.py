@@ -85,8 +85,14 @@ def consulta_lista(request):
 def reingreso(request):
 	qset = request.GET.get("buscar")
 	user = Paciente.objects.filter(rut = qset)
+
+	if user.count() < 1:
+		queryset = Paciente.objects.all()
+	else:
+		queryset = user
+
 	context = {
-		
+		"object_list":queryset,
 	}
 	return render(request,"reingreso.html",context)
 
