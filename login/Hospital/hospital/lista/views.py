@@ -7,6 +7,7 @@ from tutor.models import Consulta
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 
+
 def logout_view(request):
     logout(request)
     return render(request,"main.html")

@@ -18,7 +18,7 @@
 
 
 <style>
-{%block style%}
+ {%block style%}
 
 li a{color:white}
 
@@ -109,9 +109,9 @@ li a{color:white}
   	<div class="dropdown">
       <a href='#'> <button class="dropbtn">Listas</button> </a>
       <div class="dropdown-content">
-  	   <a href='{% url "listpaciente" %}'> Lista Pacientes </a>
-  	   <a href='{% url "listenfermero" %}'> Lista Especialistas </a>
-       <a href='{% url "listtutor" %}'> Lista Tutores </a>
+  	   <a href='{% url "listtutor" %}'> Lista Tutores </a>
+       <a href='{% url "listpaciente" %}'> Lista Pacientes </a>
+       <a href='{% url "listenfermero" %}'> Lista Especialistas </a>
       </div>
     </div>
 
@@ -135,9 +135,10 @@ li a{color:white}
     </div>
 
     <div class="dropdown">
-      <a href='{% url "listconsulta" %}'> <button class="dropbtn">Contacto ({{consulta}})
-    </button> </a>
-    
+      <a href='{% url "listconsulta" %}'> 
+        <button  class="dropbtn">Contacto<div style="font-size:12px; position:absolute; width: 17px; height: 17px; background: red; border-radius: 50%; margin-top:-25px; margin-left:65px; " id="Consulta"> </div>
+        </button> </a>
+        
     </div>
 
   	<div class="dropdown">
@@ -169,5 +170,37 @@ li a{color:white}
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  </body>
+  
+<script>
+  function Consulta(){
+    fetch('http://localhost:8000/dashboard/data/consulta')
+    .then(res => res.json())
+    .then(data => {
+        
+      consulta=document.getElementById("Consulta");
+      consulta.innerHTML="<span>"+data.consulta+"</span>";  
+    
+      if (data.consulta == "0"){
+        consulta.style.visibility="hidden";
+        
+      }
+      else{
+        
+        consulta.style.visibility="visible";
+        
+      }
+          
+    })
+    
+    setTimeout(Consulta,120000)
+  };
+
+
+  window.onload=Consulta;
+</script>
+
+
+
+
+</body>
 </html>

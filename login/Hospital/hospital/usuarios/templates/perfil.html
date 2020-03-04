@@ -27,12 +27,6 @@
 		text-decoration: none;
 
 	}
-	#fin{
-		top:50%;
-		left: 50%;
-		transform: translate(-100%,600%);
-		font-size: 20px;
-	}
 
 </style>
 
@@ -158,7 +152,7 @@
 				
 			</tbody>
 		</table>
-		<a id="fin" href="{% url 'listtutor' %}" class="btn btn-success">Finalizar Registro</a>
+		<a id="fin" href="{% url 'listtutor' %}" class="btn btn-info btn-block" style="margin-top:30px;" >Finalizar Registro</a>
 		
 	</div>
 	{% else %}
@@ -183,13 +177,13 @@
 			</tbody>
 			</table>
 		
-		<a id="fin" href="{% url 'listenfermero' %}" class="btn btn-success">Finalizar Registro</a>
+		<a id="fin" href="{% url 'listenfermero' %}" class="btn btn-info btn-block" style="margin:top:30px;">Finalizar Registro</a>
 		
 	</div>
 
 	{% else %}
-	{% if usuarios.perfil.rol == 'ADMINISTRADOR' %}
-		<a id="fin" href="{% url 'dash' %}" class="btn btn-success" >Finalizar Registro</a>
+	{% if perfil.rol == 'ADMINISTRADOR' %}
+		<a id="fin" href="{% url 'dash' %}" class="btn btn-success" style="margin-top: 450px; margin-left:-560px;" >Finalizar Registro</a>
 	{% endif %}
 	{% endif %}
 	{% endif %}

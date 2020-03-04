@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from usuarios.models import Paciente, Personal
 from tutor.models import Consulta
-
+from django.http import JsonResponse
 from django.contrib.auth.models import Group
 
 def home(request):
@@ -22,6 +22,17 @@ def home(request):
 			'personal':personal,
 			"actual":current_user,
 			"group":group,
-			"consulta":cont,
+			
 	}
 	return render(request,"dashboard.html", context)
+
+
+def get_data_consulta(request,*args,**kwargs):
+
+	con=Consulta.objects.filter(estado='0')
+	consulta=con.count()
+	data={
+		"consulta":consulta,
+	}
+	return JsonResponse(data)
+	
