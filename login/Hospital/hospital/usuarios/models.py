@@ -48,6 +48,7 @@ class Personal(models.Model):
 	id_perfil = models.ForeignKey(Perfil, default=None,on_delete=models.CASCADE)
 	rut = rut = models.CharField(null=False,max_length=15)
 	especialidad=models.CharField(max_length=20)
+	file = models.FileField(upload_to='archivos/personal')
 
 
 	def __str__(self):

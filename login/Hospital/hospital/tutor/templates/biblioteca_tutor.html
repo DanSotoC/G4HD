@@ -79,10 +79,8 @@
 		{% for arch in archivo %}
 	
 		<div class="dropdown2">
-		  <a class="dropbtn2"><img src="/static/pdf.png"style="width: 100px;"></a>
-		  <div class="dropdown-content2">
-			<a href="../media/{{arch.file}}" download="{{arch.nombre}}"> descargar</a>
-		  </div>
+		  <a class="dropbtn2" href="../..{{arch.file.url}}" download="{{arch.nombre}}"><img src="/static/pdf.png"style="width: 100px;"></a>
+		  
 		  <p style="text-align: center;">{{arch.nombre}}</p>
 		</div>
 		

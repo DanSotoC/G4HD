@@ -147,9 +147,13 @@ def Paciente_view(request,perfil):
 	return render(request,'paciente_form.html',{'form':form, 'tutor':tutor})
 
 
+
+
+
+
 def Personal_view(request,perfil):
 	if request.method=='POST':
-		form=Personal_Form(request.POST)
+		form=Personal_Form(request.POST,request.FILES)
 		
 		
 

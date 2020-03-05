@@ -6,7 +6,7 @@
 <hr style="background-color:lightblue; width: 320px; margin-left: 0px;margin-top:-20px; height: 3px;">
 
 <div class="col-sm-5">
-	<form method="POST">
+	<form method="POST" enctype="multipart/form-data">
 	{% csrf_token%}
 	
 	<div>
@@ -20,6 +20,10 @@
 	<div>
 		<label>Especialidad:</label>
 		{{form.especialidad}}
+    </div>
+    <div>
+		<label>Foto de Usuario:</label>
+		{{form.file}}
 	</div><br>
 		<button class="btn btn-info" type="submit">guardar</button>
 	

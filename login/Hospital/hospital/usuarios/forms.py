@@ -95,7 +95,7 @@ class Personal_Form(forms.ModelForm):
 
 		model = Personal
 
-		fields =['id_perfil','rut','especialidad']
+		fields =['id_perfil','rut','especialidad','file']
 
 		widgets ={
 		'rut':forms.TextInput(attrs={'class':'form-control'}),

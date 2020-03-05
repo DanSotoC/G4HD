@@ -93,7 +93,7 @@ a {
                         <table class="table user-list">
                             <thead>
                                 <tr>    
-                                
+                                <th><span>Foto</span></th>
                                 <th><span>Nombre Completo</span></th>
                                 <th><span>Rut</span></th>
                                 <th class="text-center"><span>Especialidad</span></th>
@@ -106,7 +106,9 @@ a {
                             	
 
                                 <tr>
-                                   	
+                                   	<td>
+                                        <img src="../../..{{obj.file.url}}" width="100%" alt="{{ obj.id_perfil.usuario.first_name}} {{ obj.id_perfil.usuario.last_name}}">
+                                    </td>
                                     <td>                                      
                                         <span class="user-subhead">{{ obj.id_perfil.usuario.first_name}} {{ obj.id_perfil.usuario.last_name}}</span>
                                     </td>
