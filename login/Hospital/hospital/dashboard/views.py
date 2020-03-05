@@ -3,11 +3,21 @@ from usuarios.models import Paciente, Personal
 from tutor.models import Consulta
 from django.http import JsonResponse
 from django.contrib.auth.models import Group
+from datetime import datetime
 
 def home(request):
-	pacientes=Paciente.objects.count()
+	pacientes=Paciente.objects.all()
 	personal=Personal.objects.count()
 	current_user = request.user
+	now = datetime.now()
+	total = 100 #diferencia entre pacientes totales y pacientes para hoy
+
+	aux = 0
+	for n in pacientes:
+		if n.activo == 1:
+			aux = aux + 1
+
+
 
 	cont = 0
 	consulta = Consulta.objects.all()
@@ -18,10 +28,12 @@ def home(request):
 
 	group = Group.objects.all() 
 	context = {
-			'pacientes':pacientes,
+			'pacientes':aux,
 			'personal':personal,
 			"actual":current_user,
 			"group":group,
+			"now":now,
+			"total":total,
 			
 	}
 	return render(request,"dashboard.html", context)
