@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from usuarios.models import Paciente
-from visita.models import Visita
+from visita.models import Visita, Tiempos
 from usuarios.models import Tutor
 from usuarios.models import Perfil
 from .forms import  Agendar, asignar_equipo
@@ -169,3 +169,15 @@ def asignar_equipo_visita(request,id=None):
 	}
 		
 	return render(request,'asignar_equipo_visita.html',context)
+
+def tiempos(request):
+
+	time = Tiempos.objects.all()
+
+	context = {
+
+		"time":time,
+
+	}
+
+	return render(request,'tiempos.html',context)

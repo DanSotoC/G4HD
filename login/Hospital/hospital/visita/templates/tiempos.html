@@ -1,0 +1,90 @@
+{% extends "base.html"%}
+
+
+{% block content%}
+
+
+	
+	        <div class="col-sm-6" style="">
+	        	<h1>Tiempos</h1><br>
+				<hr style="background-color:lightblue; width: 300px; margin-left: -10px;margin-top:-20px; height: 3px;">
+	            <div class="main-box no-header clearfix">
+	                <div class="main-box-body clearfix">
+	                    <div class="table-responsive">
+	                        <table class="table user-list">
+	                            <thead>
+	                                <tr>    
+	                                <th><span>#</span></th>
+	                                <th><span>Item</span></th>
+	                                <th><span>Tiempo</span></th>
+	                                <th><span>Acción</span></th>	                               	      
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                            	{% for g in time %}
+	                            
+	                                <tr>
+	                                   	
+	                                    <td>                                      
+	                                        <span class="user-subhead">{{g.id}}</span>
+	                                    </td>
+	                                    <td>{{g.item}}</td> 
+	                                    <td>{{g.tiempo}}</td> 
+
+	                                    <td><a href="#" class="btn btn-success" style="margin-right: 10px;">Asignar Tiempo</a><a href="#" class="btn btn-danger">Eliminar Item</a></td>
+
+	                                   
+
+	                                    	
+	                                </tr>
+	                               											
+									{% endfor %}
+								</tbody>
+							</table>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+			
+	
+
+<div class="col-sm-1">
+	
+</div>
+
+
+
+
+
+
+<div class="col-sm-4">
+		<h1>Crear Item</h1><br>
+	<hr style="background-color:lightblue; width: 300px; margin-left: -10px;margin-top:-20px; height: 3px;">
+
+	<form action="" method="POST">
+	        {% csrf_token %}
+	        <table>
+	        <label for="nombre_equipo">Nombre Item:</label>
+	        <input type="text_input" class="form-control" name="nombre_equipo">
+	        </table> </br>
+	        <input type="submit" class="btn btn-info"  value="Crear Item" />
+	    </form>
+
+</div>
+
+
+
+
+
+
+	
+
+	
+
+
+
+
+
+{%endblock%}
