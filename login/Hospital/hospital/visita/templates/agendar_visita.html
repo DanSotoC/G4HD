@@ -30,15 +30,28 @@
 <h2><label> {{px.nombre}} {{px.apellido1}} {{px.apellido2}} </label></h2>
 
 </br>
-<form method='POST' action=''>
+<form method='POST' action='' class="col-sm-5">
 	{%  csrf_token %}
 
 
 <p>
 <label for="fecha"> Fecha Visita</label></br>
-<input type="date" name="fecha"  id="fecha">
+<input type="date" name="fecha"  id="fecha" class="form-control">
 </p>
 
+<label for="periosidad">Periosidad visitas:</label>
+<select name="periosidad" id="periosidad" class="form-control" >
+	<option value="0">1 día</option>
+	<option value="2vdAMPM">2 veces al día AM-PM</option>
+	<option value="2vsLM" disabled>2 veces a la semana Lunes-Miércoles</option>
+	<option value="2vsMJ" disabled>2 veces a la semana Martes-Jueves</option>
+	<option value="2vsMV" disabled>2 veces a la semana Miércoles-Viernes</option>
+	<option value="2vsJS" disabled>2 veces a la semana Jueves-Sábado</option>
+	<option value="3vsLMV" disabled>3 veces a la semana Lunes-Miércoles-Viernes</option>
+	<option value="3vsMJS" disabled>3 veces a la semana Martes-Jueves-Sábado</option>
+	
+
+</select>
 <div class="wrap-input100 rs1 validate-input">
 	</br>
 	<input type="hidden" name="id_paciente"  id="id_paciente" value="{{px.id}}" readonly>
