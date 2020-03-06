@@ -18,7 +18,74 @@
             
         <div class="card-footer">
           	<h3 class="card-title">¿Desea Reingresar al Paciente?</h3>
-            <input class="btn btn-danger" type="submit" value="Continuar">
+
+              <form method="POST">
+              {% csrf_token%} 
+
+              <div>
+                  <label for=nombre></label>
+                  <input name="nombre" id="nombre" value={{paciente.nombre}}>
+              </div> 
+
+              <div>
+                  <label for=apellido1></label>
+                  <input name="apellido1" id="apellido1" value={{paciente.apellido1}}>
+              </div> 
+
+              <div>
+                  <label for=apellido2></label>
+                  <input name="apellido2" id="apellido2" value={{paciente.apellido2}}>
+              </div>
+
+              <div>
+                  <label for=rut></label>
+                  <input name="rut" id="rut" value={{paciente.rut}}>
+              </div>
+
+              <div>
+                  <label for=comuna></label>
+                  <input name="comuna" id="comuna" value={{paciente.comuna}}>
+              </div>
+
+              <div>
+                  <label for=domicilio></label>
+                  <input name="domicilio" id="domicilio" value={{paciente.domicilio}}>
+              </div>
+
+              <div>
+                  <label for=num_domicilio></label>
+                  <input name="num_domicilio" id="num_domicilio" value={{paciente.num_domicilio}}>
+              </div>
+
+              <div>
+                  <label for=f_nacimiento></label>
+                  <input name="f_nacimiento" id="f_nacimiento" value={{paciente.f_nacimiento}}>
+              </div>
+
+              <div>
+                  <label for=desc></label>
+                  <input name="desc" id="desc" value={{paciente.desc}}>
+              </div>
+
+              <div>
+                  <label for=activo></label>
+                  <input name="activo" id="activo" value=1>
+              </div>
+
+              <div>
+                  <label for=id_tutor_id></label>
+                  <input name="id_tutor_id" id="id_tutor_id" value={{paciente.id_tutor_id}}>
+              </div>
+
+              <div>
+                  <label for=episodio></label>
+                  <input name="episodio" id="episodio" value={{ep}}>
+              </div>
+
+
+
+
+            <button class="btn btn-danger" type="submit">Continuar</button>
             <a href='{%  url "reingreso"%}' class="btn btn-info">Volver</a>
         </div>
     </div> 

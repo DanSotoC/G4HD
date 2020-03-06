@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.shortcuts import HttpResponse, HttpResponseRedirect, redirect
 from usuarios.models import Paciente , Personal, Tutor
 from tutor.models import Consulta
+from .forms import Paciente_Form_activo
 
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
@@ -99,14 +100,26 @@ def reingreso(request):
 
 def reingreso_paciente(request, id=None):
 	instance = get_object_or_404(Paciente, id=id)
-	
+	episodio = instance.episodio + 1
+
+	if request.method=='GET':
+		form=Paciente_Form_activo(instance=instance)
+	else:
+		form=Paciente_Form_activo(request.POST,instance=instance)
+		if form.is_valid():
+			form.save()
+		return HttpResponseRedirect(reverse('listpaciente'))
+
 	context = {
 
 		"paciente":instance,
+		"form":form,
+		"ep":episodio,
 
 	}
 
 	return render(request,"confirmarreingreso.html",context)
+
 
 
 
