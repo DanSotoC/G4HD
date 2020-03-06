@@ -86,6 +86,7 @@ def consulta_lista(request):
 def reingreso(request):
 	qset = request.GET.get("buscar")
 	user = Paciente.objects.filter(rut = qset)
+	calificacion = 4
 
 	if user.count() < 1:
 		queryset = Paciente.objects.all()
@@ -94,6 +95,7 @@ def reingreso(request):
 
 	context = {
 		"object_list":queryset,
+		"nota":calificacion,
 	}
 	return render(request,"reingreso.html",context)
 
@@ -101,6 +103,7 @@ def reingreso(request):
 def reingreso_paciente(request, id=None):
 	instance = get_object_or_404(Paciente, id=id)
 	episodio = instance.episodio + 1
+	
 
 	if request.method=='GET':
 		form=Paciente_Form_activo(instance=instance)
@@ -115,6 +118,7 @@ def reingreso_paciente(request, id=None):
 		"paciente":instance,
 		"form":form,
 		"ep":episodio,
+		
 
 	}
 

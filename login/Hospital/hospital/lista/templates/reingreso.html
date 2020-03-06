@@ -6,6 +6,18 @@
 
 <style>
 
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  color: orange;
+}
+
+
+
+
 .table a.table-link.danger {
     color: #e74c3c;
 }
@@ -117,7 +129,61 @@ a {
                                     </td>
                                     <td>{{obj.rut}}</td> 
                                     <td>
-                                        <a > Promedio de puntos </a>
+                                        
+                                        <form>
+                                            <p class="clasificacion">
+                                            
+                                                {% if nota <= 1%}
+
+                                             <label for="radio1">★</label>
+                                                
+                                                {% endif %}   
+
+
+                                                {% if nota >= 2 and nota < 3 %}
+
+                                             <label for="radio1">★</label>
+                                             <label for="radio2">★</label>   
+
+                                                {% endif %}
+
+                                                {% if nota >= 3 and nota < 4 %}
+
+                                             <label for="radio1">★</label>
+                                             <label for="radio2">★</label>   
+                                             <label for="radio3">★</label>
+
+                                                {% endif %}
+                                                 
+                                    
+                                                {% if nota >= 4 and nota < 5 %}
+
+                                             <label for="radio1">★</label>
+                                             <label for="radio2">★</label>   
+                                             <label for="radio3">★</label>
+                                             <label for="radio4">★</label>
+
+                                                {% endif %}
+                                             
+                                            
+                                                {% if nota == 5 %}
+
+                                             <label for="radio1">★</label>
+                                             <label for="radio2">★</label>   
+                                             <label for="radio3">★</label>
+                                             <label for="radio4">★</label>
+                                             <label for="radio5">★</label>
+
+                                                {% endif %}
+                                             
+                                            
+                                             
+                                            
+                                            </p>
+                                        </form>
+
+
+
                                     </td>
                                     <td style="width: 20%;">
                                     
