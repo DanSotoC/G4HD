@@ -25,7 +25,10 @@
                 <span class="emph-1">Rut</span> : <br> {{tutor.rut}} <br>
                 <span class="emph-1">Phone</span> : <br> +56 9{{tel}} 
               </p>
+
+              {% if paciente.activo == 1 %}
              <a href="{%url 'Tutor_edit'  perfil=usr.id id_detalle=tutor.id %}" class="btn btn-danger btn-lg btn-block" role="button">Editar</a>
+             {%endif%}
              <a  href="{%url 'contra_edit' %}" class="btn btn-info btn-lg btn-block" role="button">Cambiar contraseña</a>
 
           </div>
@@ -51,7 +54,10 @@
                 <span class="emph-1">Rut</span> : <br> {{paciente.rut}} <br>
                 <span class="emph-1">Phone</span> : <br> +56 9{{tel}} 
               </p>
+
+              {% if paciente.activo == 1 %}
              <a href="{%url 'Paciente_edit'  id_tutor=tutor.id id_paciente=paciente.id %}" class="btn btn-danger btn-block btn-lg" role="button">Editar</a>
+              {% endif %}
              
 
           </div>

@@ -97,3 +97,17 @@ def reingreso(request):
 	return render(request,"reingreso.html",context)
 
 
+def reingreso_paciente(request, id=None):
+	instance = get_object_or_404(Paciente, id=id)
+	
+	context = {
+
+		"paciente":instance,
+
+	}
+
+	return render(request,"confirmarreingreso.html",context)
+
+
+
+

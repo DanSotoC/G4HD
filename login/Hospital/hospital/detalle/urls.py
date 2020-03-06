@@ -15,5 +15,6 @@ path('<int:id>/delete/personal',views.borrar_especialista, name='borrar_especial
 path('<int:id>/delete/tutor',views.borrar_tutor, name='borrar_tutor'),
 url(r'consulta/edit/(?P<id>\d+)$',views.consulta_edit, name="consulta_edit"),
 url(r'consulta/detalle/(?P<id>\d+)$',views.consulta_detail_adm, name="consulta_detalle_adm"),
+url(r'bajapx/(?P<id>\d+)$',views.baja_paciente, name="bajapaciente"),
 
 ]

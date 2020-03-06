@@ -19,9 +19,11 @@
     
     
     <a href='{% url "borrar_paciente" id=paciente.id %}' class="btn btn-danger" role="button">Delete</a>
-    <a href='{%  url "tutor_detalle" id=tutor.id_perfil_id %}' class="btn btn-warning" role="button">Tutor</a>
+    <a href='{% url "bajapaciente" id=paciente.id %}' class="btn btn-danger" role="button">Dar de baja</a>
+    <a href='{%  url "tutor_detalle" id=tutor.id_perfil_id %}' class="btn btn-warning" role="button">Tutor</a></br></br>
     <a href="{% url 'paciente_edit' id_tutor=paciente.id_tutor_id id_paciente=paciente.id %}" class="btn btn-info" role="button">Edit</a>
     <a href='{%  url "listpaciente"%}' class="btn btn-info" role="button">Volver</a>
+    
 
 
 {%endblock content%}

@@ -166,3 +166,14 @@ def consulta_detail_adm(request, id=None):
 	} 
 	return render(request,"detailsconsulta.html",context)
 
+
+def baja_paciente(request, id=None):
+	instance = get_object_or_404(Paciente, id=id)
+	
+	context = {
+
+		"paciente":instance,
+
+	}
+
+	return render(request,"confirmarbaja.html",context)

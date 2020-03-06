@@ -74,6 +74,7 @@ def biblioteca_tutor(request, id=None):
 		"archivo":archivo,
 		"archivo_unico":archivo_unico,
 		"pxid":px.id,
+		"paciente":px,
 	}
 
 

@@ -50,7 +50,9 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle "  style="color: white;" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Contactanos</a>
           <div class="dropdown-menu ">
+            {% if paciente.activo == 1%}
             <a  class="dropdown-item" href="{% url 'contacto_t'%}" class="nav-link">Contacto con UHD</a>
+            {%endif%}
             <a  class="dropdown-item" href="{% url 'consulta_t'%}" class="nav-link">Ver Consulta</a>
             
             

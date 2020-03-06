@@ -113,6 +113,7 @@ a {
                             <tbody>
                             	{% for obj in object_list %}
                             	
+                                {% if obj.activo == 1 %}
 
                                 <tr>
                                    	
@@ -140,7 +141,7 @@ a {
                                     	
                                 </tr>
 
-										
+										{% endif %}
 										{% endfor %}
 
 

@@ -54,7 +54,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     <a href='{%  url "perfil_t" %}'> <button class="btn btn-danger btn-lg btn-block"> Ver Perfil </button></a> </br> 
     <a href='{%  url "visita_paciente" %}'> <button class="btn btn-danger btn-lg btn-block"> Visitas Programadas </button></a> </br>
     <a href="#"> <button class="btn btn-danger btn-lg btn-block"> Ver Historia </button></a> </br>
+    {% if paciente.activo == 1%}
     <a href='{%  url "contacto_t" %}'> <button class="btn btn-danger btn-lg btn-block"> Contacto con Unidad </button></a> </br> 
+    {%endif%}
     <a href='{%  url "consulta_t" %}'> <button class="btn btn-danger btn-lg btn-block"> Ver Consultas </button></a> </br>
     <a href='{%  url "biblioteca_t" %}'> <button class="btn btn-danger btn-lg btn-block"> Biblioteca </button></a> </br>
 
