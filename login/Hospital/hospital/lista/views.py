@@ -101,21 +101,21 @@ def reingreso(request):
 
 
 def reingreso_paciente(request, id=None):
-	instance = get_object_or_404(Paciente, id=id)
-	episodio = instance.episodio + 1
+	paciente=Paciente.objects.get(id=id)
+	episodio = paciente.episodio + 1
 	
 
 	if request.method=='GET':
-		form=Paciente_Form_activo(instance=instance)
+		form=Paciente_Form_activo(instance=paciente)
 	else:
-		form=Paciente_Form_activo(request.POST,instance=instance)
+		form=Paciente_Form_activo(request.POST,instance=paciente)
 		if form.is_valid():
 			form.save()
 		return HttpResponseRedirect(reverse('listpaciente'))
 
 	context = {
 
-		"paciente":instance,
+		"paciente":paciente,
 		"form":form,
 		"ep":episodio,
 		
@@ -126,5 +126,27 @@ def reingreso_paciente(request, id=None):
 
 
 
+def dar_de_baja_paciente(request, id=None):
+	paciente=Paciente.objects.get(id=id)
+	episodio = paciente.episodio
+	
 
+	if request.method=='GET':
+		form=Paciente_Form_activo(instance=paciente)
+	else:
+		form=Paciente_Form_activo(request.POST,instance=paciente)
+		if form.is_valid():
+			form.save()
+		return HttpResponseRedirect(reverse('listpaciente'))
+
+	context = {
+
+		"paciente":paciente,
+		"form":form,
+		"ep":episodio,
+		
+
+	}
+
+	return render(request,"dar_de_baja.html",context)
 
