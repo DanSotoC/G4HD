@@ -16,6 +16,7 @@
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
+
 input[type=box] {
   width: 100%;
   padding: 80px 20px;
@@ -101,13 +102,123 @@ li a{color:black}
                   <input name="id_especialista" id="id_especialista"  type="hidden" value={{id_especialista}}>
                 </div> 
 
+                <div>
+                  <label for=id_paciente></label>
+                  <input name="id_paciente" id="id_paciente"  type="hidden" value={{id_paciente}}>
+                </div> 
 
 
-              Descripción Realizado</br>
+              </br>
+              <u>ANTECEDENTES MORBIDOS</u></br></br>
+
+                <input type="radio" id="HTA" name="antecedentes" value="HTA">
+                <label for="HTA">HTA &nbsp;</label>
+                <input type="radio" id="DM" name="antecedentes" value="DM">
+                <label for="DM">DM &nbsp;</label>
+                <input type="radio" id="ERC" name="antecedentes" value="ERC">
+                <label for="ERC">ERC &nbsp;</label>
+                <input type="radio" id="HMD" name="antecedentes" value="HMD">
+                <label for="HMD">HMD &nbsp;</label>
+                <input type="radio" id="BISEMANAL" name="antecedentes" value="BISEMANAL">
+                <label for="BISEMANAL">BISEMANAL &nbsp;</label>
+                <input type="radio" id="TRIMESTRAL" name="antecedentes" value="TRIMESTRAL">
+                <label for="TRIMESTRAL">TRIMESTRAL &nbsp;</label></br></br>
+
+
+              </br>
+              <u>RED DE APOYO</u></br></br>
+
+                <input type="radio" id="Buena" name="red_apoyo" value=1>
+                <label for="Buena">Buena &nbsp;</label>
+                <input type="radio" id="Regular" name="red_apoyos" value=2>
+                <label for="Regular">Regular &nbsp;</label>
+                <input type="radio" id="Mala" name="red_apoyo" value=3>
+                <label for="Mala">Mala &nbsp;</label></br></br>
+
+
+              </br>
+              <u>INDICE DE BARTHEL</u></br></br>
+
+                <input type="radio" id="Autovalente" name="indice_barthel" value=1>
+                <label for="Autovalente">Autovalente &nbsp;</label>
+                <input type="radio" id="Semivalente" name="indice_barthel" value=2>
+                <label for="Semivalente">Semivalente &nbsp;</label>
+                <input type="radio" id="Dependiente" name="indice_barthel" value=3>
+                <label for="Dependiente">Dependiente &nbsp;</label></br></br>
+
+              </br>
+              <u>ESCALA BRADEN (LPP)</u></br></br>
+
+                <input type="radio" id="Alta" name="escala_braden" value=1>
+                <label for="Alta">Alta &nbsp;</label>
+                <input type="radio" id="Moderada" name="escala_braden" value=2>
+                <label for="Moderada">Moderada &nbsp;</label>
+                <input type="radio" id="Bajo" name="escala_braden" value=3>
+                <label for="Bajo">Bajo &nbsp;</label></br></br>              
+
+
+              </br>
+              <u>ESCALA NORTON (CAIDAS)</u></br></br>
+
+                <input type="radio" id="Alta" name="escala_norton" value=1>
+                <label for="Alta">Alta &nbsp;</label>
+                <input type="radio" id="Moderada" name="escala_norton" value=2>
+                <label for="Moderada">Moderada &nbsp;</label>
+                <input type="radio" id="Bajo" name="escala_norton" value=3>
+                <label for="Bajo">Bajo &nbsp;</label></br></br>           
+
+
+              <u>EVOLUCION</u></br>
+                <div>
+                  <label for=evolucion></label>
+                  <input name="evolucion" type=box id="evolucion" placeholder="Descripción de la evolución del paciente..." >
+                </div> 
+
+              <u>PENDIENTES</u></br>
+                <div>
+                  <label for=pendientes></label>
+                  <input name="pendientes" type=box id="pendientes" placeholder="Descripción de pendientes..." >
+                </div>
+
+
+              <u>OBSERVACIONES</u></br>
                 <div>
                   <label for=detalle></label>
-                  <input name="detalle" type=box id="detalle" value="Descripción detallada de lo realizado" >
+                  <input name="detalle" type=box id="detalle" placeholder="Descripción detallada de lo realizado..." >
                 </div> 
+
+
+
+
+
+
+              </br></br><u>CALIFICACION</u></br>
+
+                  
+                    <p class="clasificacion">
+                      <input id="radio1" type="radio" name="nota" value="5"><!--
+                      --><label for="radio1">★</label><!--
+                      --><input id="radio2" type="radio" name="nota" value="4"><!--
+                      --><label for="radio2">★</label><!--
+                      --><input id="radio3" type="radio" name="nota" value="3"><!--
+                      --><label for="radio3">★</label><!--
+                      --><input id="radio4" type="radio" name="nota" value="2"><!--
+                      --><label for="radio4">★</label><!--
+                      --><input id="radio5" type="radio" name="nota" value="1"><!--
+                      --><label for="radio5">★</label>
+                    </p>
+                  
+
+
+
+                </br><u>COMENTARIOS</u></br>
+                <div>
+                  <label for=comentarios></label>
+                  <input name="comentarios" type=box id="comentarios" placeholder="Ingrese comentarios de la visita...">
+                </div> 
+
+
+
 
 
              </br>

@@ -3,6 +3,7 @@ from django.db import models
 class formulario(models.Model):
 	id_visita = models.IntegerField(null=False)
 	id_especialista = models.IntegerField(null=False)
+	id_paciente = models.IntegerField(null=False,default=0)
 	h_inicio=models.TimeField(null=False)
 	h_termino=models.TimeField(null=False, auto_now_add=True)
 	antecedentes=models.CharField(max_length=10,null=False,default="Vacio")

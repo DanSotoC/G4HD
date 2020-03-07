@@ -16,6 +16,18 @@ class formulario_visita_esp(forms.ModelForm):
  			'id_especialista',
  			'detalle',
  			'h_inicio',
+ 			'antecedentes',
+ 			'red_apoyo',
+ 			'indice_barthel',
+			'escala_braden',
+			'escala_norton',
+			'detalle',
+			'evolucion',
+			'pendientes',
+			'comentarios',
+			'nota',
+			'id_paciente',
+
 
 
  			]

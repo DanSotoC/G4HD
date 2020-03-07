@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, reverse
 from django.shortcuts import HttpResponse, HttpResponseRedirect, redirect
 from usuarios.models import Paciente , Personal, Tutor
+from registrar.models import formulario
 from tutor.models import Consulta
 from .forms import Paciente_Form_activo
 
@@ -90,9 +91,10 @@ def reingreso(request):
 
 	if user.count() < 1:
 		queryset = Paciente.objects.all()
+		
 	else:
 		queryset = user
-
+		
 	context = {
 		"object_list":queryset,
 		"nota":calificacion,

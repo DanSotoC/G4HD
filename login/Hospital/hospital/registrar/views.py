@@ -39,7 +39,8 @@ def formulario(request, id=None):
 		"actual":current_user,
 		"px":px,
 		"form":form,
-		"h_inicio":current_time
+		"h_inicio":current_time,
+		"id_paciente":px.id,
 	}
 		
 	return render(request,'formulario_visita_esp.html',context)
