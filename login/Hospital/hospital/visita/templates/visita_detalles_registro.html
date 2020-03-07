@@ -1,0 +1,22 @@
+<!--DOCTYPE html -->
+{%  extends "base.html" %}
+
+<title> {%block head_title %} Detalle Visita | {{block.super}} {%endblock head_title%} </title>
+
+
+{%block content%}
+
+<div class="card text-center">
+  <div class="card-header">
+    <h1>  Detalle Visita </h1>
+  </div>
+  <div class="card-body">
+  
+    <p class="card-text"> Detalle </p>
+    
+
+    <a href='{%  url "agendar_lista" %}' class="btn btn-info" role="button">Volver</a>
+
+
+{% endblock content %}
+

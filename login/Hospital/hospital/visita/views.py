@@ -204,3 +204,16 @@ def tiempos(request):
     }
 
     return render(request,'tiempos.html',context)
+
+
+def visita_detalles(request,id=None):
+
+    registro = get_object_or_404(formulario, id_visita=id)    
+
+    context = {
+
+        "registro":registro,
+
+    }
+
+    return render(request,'visita_detalles_registro.html',context)
