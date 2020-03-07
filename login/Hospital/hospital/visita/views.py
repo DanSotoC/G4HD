@@ -37,9 +37,9 @@ def agendar_visita(request, id=None):
             visita.fecha = fecha_inicial
             visita.save()
 
-        if request.POST.get('periosidad')==""      
+        if request.POST.get('periosidad')=="":      
         
-        return redirect(visita_paciente_admin,id)
+            return redirect(visita_paciente_admin,id)
      
 
     context={
