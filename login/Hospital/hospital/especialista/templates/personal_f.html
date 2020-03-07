@@ -10,7 +10,7 @@
 
 
 <div class="col-sm-5">
-	<form method="POST">
+	<form method="POST" enctype="multipart/form-data">
 	{% csrf_token%}
 	
 	<div>
@@ -24,7 +24,12 @@
 	<div>
 		<label>Especialidad:</label>
 		{{form.especialidad}}
-	</div><br>
+	</div>
+	<div>
+		<label>Foto:</label>
+		{{form.file}}
+	</div>
+	<br>
 		<button class="btn btn-info btn-lg btn-block" type="submit">guardar</button>
 	
 

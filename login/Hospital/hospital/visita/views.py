@@ -7,7 +7,8 @@ from .forms import  Agendar, asignar_equipo
 from lista.views import usuarios_listpa
 from django.contrib import messages
 from django.contrib.auth.models import User
-from datetime import date
+from datetime import datetime, timedelta
+
 from django.contrib.auth.models import Group
 from registrar.models import formulario
 
@@ -37,9 +38,93 @@ def agendar_visita(request, id=None):
             visita.fecha = fecha_inicial
             visita.save()
 
-        if request.POST.get('periosidad')=="":      
+        if request.POST.get('periosidad')=="2vsSA":
+            fecha_inicial=request.POST.get('fecha')
+            f_inicial=datetime.strptime(fecha_inicial,"%Y-%m-%d")
+
+            fecha_sig = f_inicial + timedelta(days=2)
+            paciente=request.POST.get('id_paciente')
+           
+            visita=Visita()
+            visita.id_paciente = paciente
+            visita.fecha = fecha_inicial
+            visita.save()
+
+            visita=Visita()
+            visita.id_paciente = paciente
+            visita.fecha = fecha_sig
+            visita.save()
+
+        if request.POST.get('periosidad')=="2vsSE":
+            fecha_inicial=request.POST.get('fecha')
+            f_inicial=datetime.strptime(fecha_inicial,"%Y-%m-%d")
+
+            fecha_sig = f_inicial + timedelta(days=1)
+            paciente=request.POST.get('id_paciente')
+           
+            visita=Visita()
+            visita.id_paciente = paciente
+            visita.fecha = fecha_inicial
+            visita.save()
+
+            visita=Visita()
+            visita.id_paciente = paciente
+            visita.fecha = fecha_sig
+            visita.save()
         
-            return redirect(visita_paciente_admin,id)
+
+        if request.POST.get('periosidad')=="3vsSA":
+            fecha_inicial=request.POST.get('fecha')
+            f_inicial=datetime.strptime(fecha_inicial,"%Y-%m-%d")
+
+            fecha_2 = f_inicial + timedelta(days=2)
+            fecha_3 = fecha_2 + timedelta(days=2)
+            paciente=request.POST.get('id_paciente')
+           
+            visita=Visita()
+            visita.id_paciente = paciente
+            visita.fecha = fecha_inicial
+            visita.save()
+
+            visita=Visita()
+            visita.id_paciente = paciente
+            visita.fecha = fecha_2
+            visita.save()
+
+            visita=Visita()
+            visita.id_paciente = paciente
+            visita.fecha = fecha_3
+            visita.save()
+
+        
+        if request.POST.get('periosidad')=="3vsSE":
+            fecha_inicial=request.POST.get('fecha')
+            f_inicial=datetime.strptime(fecha_inicial,"%Y-%m-%d")
+
+            fecha_2 = f_inicial + timedelta(days=1)
+            fecha_3 = fecha_2 + timedelta(days=1)
+            paciente=request.POST.get('id_paciente')
+           
+            visita=Visita()
+            visita.id_paciente = paciente
+            visita.fecha = fecha_inicial
+            visita.save()
+
+            visita=Visita()
+            visita.id_paciente = paciente
+            visita.fecha = fecha_2
+            visita.save()
+
+            visita=Visita()
+            visita.id_paciente = paciente
+            visita.fecha = fecha_3
+            visita.save()
+
+
+        
+
+        
+        return redirect(visita_paciente_admin,id)
      
 
     context={
