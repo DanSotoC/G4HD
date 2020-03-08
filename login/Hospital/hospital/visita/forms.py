@@ -1,6 +1,5 @@
 from django import forms
-from .models import Visita
-
+from .models import Visita, Tiempos
 
 class Agendar(forms.ModelForm):
 	class Meta:
@@ -30,3 +29,14 @@ class asignar_equipo(forms.ModelForm):
 
 				'fecha':forms.DateInput(attrs={'class':'form-control','type':'hidden'}),
 		}
+
+class time(forms.ModelForm):
+
+ 	class Meta:
+ 		model = Tiempos
+
+ 		fields = [
+ 			'item',
+ 			'tiempo'
+ 			]
+

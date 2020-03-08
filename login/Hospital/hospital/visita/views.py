@@ -1,9 +1,9 @@
-from django.shortcuts import render, get_object_or_404,redirect
+from django.shortcuts import render, get_object_or_404,redirect, reverse, HttpResponseRedirect
 from usuarios.models import Paciente
 from visita.models import Visita, Tiempos
 from usuarios.models import Tutor
 from usuarios.models import Perfil
-from .forms import  Agendar, asignar_equipo
+from .forms import  Agendar, asignar_equipo, time
 from lista.views import usuarios_listpa
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -288,15 +288,39 @@ def asignar_equipo_visita(request,id=None):
 
 def tiempos(request):
 
-    time = Tiempos.objects.all()
+    lista = Tiempos.objects.all()
+    form = time(request.POST or None)
+
+    if form.is_valid():
+        instance=form.save(commit=False)
+        instance.save()
+        return HttpResponseRedirect(reverse('tiempos'))
 
     context = {
 
-        "time":time,
+        "time":lista,
+        "form":form
 
     }
 
     return render(request,'tiempos.html',context)
+
+
+def eliminar_tiempo(request,id):
+    tiempo = get_object_or_404(Tiempos, id=id)
+    
+    if request.method == "POST":
+        tiempo.delete()
+        return redirect(tiempos)
+
+
+    context = { 
+
+      "t":tiempo,
+    }
+
+    return render(request,'delete_time.html',context)
+
 
 
 def visita_detalles(request,id=None):

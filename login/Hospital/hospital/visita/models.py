@@ -8,7 +8,7 @@ class Visita(models.Model):
 
 class Tiempos(models.Model):
 	item = models.CharField(max_length=20,null=False)
-	tiempo = models.TimeField(blank=True)
+	tiempo = models.IntegerField(null=False, default=0)
 
 
 
