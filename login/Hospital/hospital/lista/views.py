@@ -152,3 +152,32 @@ def dar_de_baja_paciente(request, id=None):
 
 	return render(request,"dar_de_baja.html",context)
 
+
+
+def observaciones(request,id=None):
+
+	px = get_object_or_404(Paciente, id=id)
+	fx = formulario.objects.all()
+	cont = 0
+	n = 0
+
+	for i in fx:
+		if i.id_paciente == px.id:
+			cont = cont + 1
+			n = n + i.nota
+
+
+	if n > 0:
+		n = n/cont
+		n = int(n)
+		
+	context = {
+
+		"px":px,
+		"fx":fx,
+		"nota":n,
+
+	}
+
+
+	return  render(request,"observaciones.html",context)

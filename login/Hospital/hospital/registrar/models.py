@@ -6,7 +6,7 @@ class formulario(models.Model):
 	id_paciente = models.IntegerField(null=False,default=0)
 	h_inicio=models.TimeField(null=False)
 	h_termino=models.TimeField(null=False, auto_now_add=True)
-	antecedentes=models.CharField(max_length=10,null=False,default="Vacio")
+	antecedentes=models.CharField(max_length=400,null=False,default="Vacio")
 	red_apoyo=models.CharField(max_length=20,null=False,default="Vacio")
 	indice_barthel=models.IntegerField(null=False,default=0)
 	escala_braden=models.IntegerField(null=False,default=0)
