@@ -71,22 +71,24 @@ a {
 
 
 
-<div class="container bootstrap snippet">
+<div class="container bootstrap snippet" style="margin-left: -80px;">
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-9">
             <div class="main-box no-header clearfix">
                 <div class="main-box-body clearfix">
                     <div class="table-responsive">
+                        
+                        <form method="POST">
+                            {% csrf_token %}
                         <table class="table user-list" >
                             <thead>
                                 <tr> 
-                                   
+                                <th>#</th>   
                                 <th><span>Nombre Completo</span></th>
                                 <th><span>Rut</span></th>
-                                <th><span>Fecha</span></th>
                                 <th><span>Estado</span></th>
                                 <th><span>Equipo</span></th>
-                                <th><span>Opciones</span></th>
+                                
                                 <th>&nbsp;</th>
                                 </tr>
                             </thead>
@@ -100,26 +102,31 @@ a {
                                 {% if fecha.fecha == hoy %}
 
                                 {%if fecha.status == 0%}
-                                <tr>
-                                    <td>            
 
-										{% for obj in px %}
+                                <tr>
+                                    {% for obj in px %}
 											
 											{% if obj.id == fecha.id_paciente %}
 
+                                    <td>
+                                        <label for="id_visita"></label>
+                                        <input type="checkbox" name="id_visita" id="id_visita" value={{fecha.id}} >
+                                    </td>
+                                    <td>            
+
+										
 											   <span class="user-subhead">{{ obj.nombre}} {{ obj.apellido1}} {{obj.apellido2}}</span>
 
-                                               <td>{{obj.rut}}</td> 
+                                              
 
-											{%endif%}
-
-                                        {%endfor%}	
+										
 
                                     </td>
-                                    
-                                    <td>
-                                        <a >{{fecha.fecha}}</a>
-                                    </td>
+                                    <td>{{obj.rut}}</td> 
+                                    {%endif%}
+
+                                    {%endfor%}	
+                                   
                                     <td>
                                         {% if fecha.status == 0 %}
                                             <span class="label label-default">Pendiente</span>
@@ -151,79 +158,13 @@ a {
                                     </td>
 
 
-                                    <td style="width: 20%;">
-        						      <a href='{%  url "asignar_equipo_visita" id=fecha.id %}' class="btn btn-info"> Asignar Equipo </a>
-        						      
-
-
-                                    </td>
+                                    
                                 </tr>
+                        
                                 {%endif%}
                                 {%endif%}
 								        {% endfor %}
-
-
-                                {% for fecha in date_list %}
-
-                                {% if fecha.fecha == hoy %}
-                                {%if fecha.status == 1%}
-                                <tr>
-                                    <td>            
-
-                                        {% for obj in px %}
-                                            
-                                            {% if obj.id == fecha.id_paciente %}
-
-                                               <span class="user-subhead">{{ obj.nombre}} {{ obj.apellido1}} {{obj.apellido2}}</span>
-
-                                               <td>{{obj.rut}}</td> 
-
-                                            {%endif%}
-
-                                        {%endfor%}  
-
-                                    </td>
-
-                                    
-                                    <td>
-                                        <a >{{fecha.fecha}}</a>
-                                    </td>
-                                    <td>
-                                        {% if fecha.status == 0 %}
-                                            <span class="label label-default">Pendiente</span>
-                                        {%endif%}
-                                        {% if fecha.status == 1 %}
-                                            <span class="label label-success">Realizada</span>
-                                        {%endif%}                                        
-                                    </td>   
-
-                                    <td>
-                                      {% if fecha.status == 1%}
-                                       
-                                                {% for g in group %}
-
-                                                    {% if g.name == fecha.equipo %}
-                                                        <a>{{g.name}}</a>
-                                                    {%endif%}
-
-                                                {%endfor%}  
-
-                                        {%endif%}
-                                     
-
-
-                                    </td>
-
-
-                                    
-
-                                        
-                                </tr>
-
-                                {%endif%}
-                                {%endif%}
-                                {% endfor %}
-                            </tbody>
+                              
                         </table>
                     </div>
                 </div>
@@ -232,9 +173,117 @@ a {
     </div>
 </div>
 
+<div class="container bootstrap snippet" style="margin-left: 240px; margin-top: -30%;">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="main-box no-header clearfix">
+                <div class="main-box-body clearfix">
+                    <div class="table-responsive">   
+          
+                      
+                        <div style="text-align: center; padding: 20px;">
+                         <label for=equipo>Asignar Equipo:</label>
+                          <select id="equipo" name="equipo" class="form-control">
+                            {%for g in group %}
+                              {%if g.name != 'Disponible' and g.name != 'Tutores' and g.name != 'Personal' and  g.name != 'Administrador' %}
+                                <option value="{{g.name}}">{{g.name}}</option>
+                              {% endif %}
+                            {% endfor %}
+                          </select>
+                          <br>
+                          <button class="btn btn-info" type="submit">Asignar</button>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                    </form>
+                        
+                  
+<!--
+
+                        <table class="table user-list">
+                            <thead>
+                                <tr> 
+                                   
+                                <th><span>Nombre Completo</span></th>
+                                <th><span>Rut</span></th>
+                                <th><span>Estado</span></th>
+                                <th><span>Equipo</span></th>
+                                <th><span>Opciones</span></th>
+                                <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            {% for fecha in date_list %}
+
+                            {% if fecha.fecha == hoy %}
+                            {%if fecha.status == 1%}
+                            <tr>
+                                <td>            
+
+                                    {% for obj in px %}
+                                        
+                                        {% if obj.id == fecha.id_paciente %}
+
+                                           <span class="user-subhead">{{ obj.nombre}} {{ obj.apellido1}} {{obj.apellido2}}</span>
+
+                                           <td>{{obj.rut}}</td> 
+
+                                        {%endif%}
+
+                                    {%endfor%}  
+
+                                </td>
+
+                                
+                               
+                                <td>
+                                    {% if fecha.status == 0 %}
+                                        <span class="label label-default">Pendiente</span>
+                                    {%endif%}
+                                    {% if fecha.status == 1 %}
+                                        <span class="label label-success">Realizada</span>
+                                    {%endif%}                                        
+                                </td>   
+
+                                <td>
+                                  {% if fecha.status == 1%}
+                                   
+                                            {% for g in group %}
+
+                                                {% if g.name == fecha.equipo %}
+                                                    <a>{{g.name}}</a>
+                                                {%endif%}
+
+                                            {%endfor%}  
+
+                                    {%endif%}
+                                 
 
 
+                                </td>
 
+
+                                
+
+                                    
+                            </tr>
+
+                            {%endif%}
+                            {%endif%}
+                            {% endfor %}
+                        </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                        
+-->
 {%  endblock content %}
 
 

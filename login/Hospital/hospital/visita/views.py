@@ -251,6 +251,20 @@ def agendar_lista_hoy(request):
     hoy = date.today()
     group = Group.objects.all()
 
+    if request.method=='POST':
+        if request.POST.getlist('id_visita'):
+            visita=request.POST.getlist('id_visita')
+            grupo=request.POST.get('equipo')
+
+            for i in visita:
+                fecha=Visita.objects.get(id=i)
+                f=fecha.fecha
+                id_p=fecha.id_paciente
+                fecha.status=0
+                fecha.fecha=f
+                fecha.id_paciente=id_p
+                fecha.equipo=grupo
+                fecha.save()
 
     context = {
 
@@ -263,28 +277,7 @@ def agendar_lista_hoy(request):
     }	
     return render(request,"agendar_lista_hoy.html",context)
 
-def asignar_equipo_visita(request,id=None):
-    visita = Visita.objects.get(id=id)
-    paciente = Paciente.objects.get(id=visita.id_paciente)
-    group = Group.objects.all()	
-    
-    if request.method=='GET':
-        form=asignar_equipo(instance=visita)
-    else:
-        form=asignar_equipo(request.POST,instance=visita)
-        if form.is_valid():
-            form.save()
-        return redirect(agendar_lista_hoy)
 
-    context = {
-
-        "form": form,
-        "visita": visita,
-        "paciente": paciente,
-        "group":group,
-    }
-        
-    return render(request,'asignar_equipo_visita.html',context)
 
 def tiempos(request):
 
