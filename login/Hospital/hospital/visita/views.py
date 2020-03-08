@@ -7,8 +7,7 @@ from .forms import  Agendar, asignar_equipo
 from lista.views import usuarios_listpa
 from django.contrib import messages
 from django.contrib.auth.models import User
-from datetime import datetime, timedelta
-
+from datetime import datetime, timedelta, date
 from django.contrib.auth.models import Group
 from registrar.models import formulario
 
@@ -133,10 +132,20 @@ def agendar_visita(request, id=None):
         
     return render(request,"agendar_visita.html",context)
 
+
+
 def agendar_lista(request):
     queryset = Visita.objects.all()
     instance = Paciente.objects.all()
+    qset = request.GET.get("buscar")
+    user = Paciente.objects.filter(rut = qset)
+    current_user = request.user
 
+    if user.count() < 1:
+        instance = Paciente.objects.all()
+    else:
+        instance = user 
+    
 
     context = {
 
@@ -153,7 +162,6 @@ def visita_paciente(request):
     current_user = request.user
     px = Paciente.objects.all()
     instance = get_object_or_404(Tutor, id_perfil_id = current_user.id)
-
 
 
     context = {
