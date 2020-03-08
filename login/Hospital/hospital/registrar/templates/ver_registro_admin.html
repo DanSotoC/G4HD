@@ -1,0 +1,79 @@
+<!--DOCTYPE html -->
+{%  extends "base.html" %}
+
+<title> {%block head_title %} {{obj.nombre}} {{obj.apellido1}} {{obj.apellido2}} | {{block.super}} {%endblock head_title%} </title>
+
+
+{%block content%}
+
+<div class="card text-center">
+  <div class="card-header">
+    <h1>{{obj.nombre}} {{obj.apellido1}} {{obj.apellido2}} </h1>
+  </div>
+
+
+Si alguien lo pone bonito plis </br>
+NOTA: Falta poner el num de episodio a las visitas
+</br>
+Con eso se puede filtrar las visitas de un episodio
+
+  <div class="card-body">
+
+
+          <div class="col-sm-5">
+            <div class="main-box no-header clearfix">
+                <div class="main-box-body clearfix">
+                    <div class="table-responsive">
+                        <table class="table user-list" >
+                            <thead>
+                                <tr>    
+                                <th><span>Episodio</span></th>
+                                <th><span>Opciones</span></th>                          
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+
+                  
+                              {% for i in episodio %}
+                                <tr>
+                                    <td style="width: 10%">
+                                        <a > {{i}}</a>
+                                    </td>
+                                                            
+                                    <td style="width: 10%">
+                                  
+                                      <a href="#" class="btn btn-info"> Ver Episodio </a>                      
+
+                                    </td>
+                                </tr>
+                                
+                                
+                              
+                              
+                              {% endfor %}
+                                      
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+</br>
+   <div class="col-sm-3" style="height: 100%;">
+    <a href='{% url "listpaciente" %}' class="btn btn-info" role="button">Volver</a>
+   </div>
+
+
+
+
+
+{%endblock content%}
+

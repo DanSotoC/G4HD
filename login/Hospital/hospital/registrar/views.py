@@ -60,3 +60,22 @@ def ver_formulario(request, id=None):
 	}
 
 	return render(request,'ver_formulario_detalle.html',context)
+
+
+def ver_registro_admin(request, id=None):
+
+	px = get_object_or_404(Paciente, id=id)
+	fx = Visita.objects.all()
+
+
+	context = {
+
+		"obj":px,
+		"date_list":fx,
+		"episodio": range(1,px.episodio+1),
+		"count": 1,
+
+	}
+
+
+	return render(request,'ver_registro_admin.html',context)
