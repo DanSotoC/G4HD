@@ -16,4 +16,5 @@ class formulario(models.Model):
 	pendientes = models.CharField(max_length=400,null=False,default="Vacio")
 	comentarios = models.CharField(max_length=400,null=False,default="Vacio")
 	nota = models.IntegerField(null=False,default=0)
+	episodio = models.IntegerField(null=False,default=0)
 

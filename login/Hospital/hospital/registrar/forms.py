@@ -27,6 +27,7 @@ class formulario_visita_esp(forms.ModelForm):
 			'comentarios',
 			'nota',
 			'id_paciente',
+			'episodio',
 
 
 

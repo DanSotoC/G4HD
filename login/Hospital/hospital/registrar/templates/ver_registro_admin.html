@@ -12,10 +12,8 @@
   </div>
 
 
-Si alguien lo pone bonito plis </br>
-NOTA: Falta poner el num de episodio a las visitas
-</br>
-Con eso se puede filtrar las visitas de un episodio
+Si alguien lo pone bonito plis -> FUNCIONANDO </br>
+
 
   <div class="card-body">
 
@@ -44,7 +42,7 @@ Con eso se puede filtrar las visitas de un episodio
                                                             
                                     <td style="width: 10%">
                                   
-                                      <a href="#" class="btn btn-info"> Ver Episodio </a>                      
+                                      <a href="{% url 'ver_episodio_numerado' id=i id_paciente=obj.id %}" class="btn btn-info"> Ver Episodio </a>                      
 
                                     </td>
                                 </tr>

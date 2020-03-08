@@ -12,7 +12,15 @@ from django.contrib.auth.models import Group
 from registrar.models import formulario
 
 def agendar_visita(request, id=None):
-    aux = Paciente.objects.get(id=id)	
+    aux = Paciente.objects.get(id=id)
+    eq = Visita.objects.all()
+    zxc = "Disponible"
+
+
+    for z in eq:
+        if z.id_paciente == aux.id:
+            if z.equipo != "Disponible":
+                zxc = z.equipo
     
     if request.method=='POST':
 
@@ -26,6 +34,7 @@ def agendar_visita(request, id=None):
                 visita=Visita()
                 visita.id_paciente = paciente
                 visita.fecha = fecha_inicial
+                visita.equipo = zxc
                 visita.save()
                 print("entro")
         
@@ -35,6 +44,7 @@ def agendar_visita(request, id=None):
             visita=Visita()
             visita.id_paciente = paciente
             visita.fecha = fecha_inicial
+            visita.equipo = zxc
             visita.save()
 
         if request.POST.get('periosidad')=="2vsSA":
@@ -47,11 +57,13 @@ def agendar_visita(request, id=None):
             visita=Visita()
             visita.id_paciente = paciente
             visita.fecha = fecha_inicial
+            visita.equipo = zxc
             visita.save()
 
             visita=Visita()
             visita.id_paciente = paciente
             visita.fecha = fecha_sig
+            visita.equipo = zxc
             visita.save()
 
         if request.POST.get('periosidad')=="2vsSE":
@@ -64,11 +76,13 @@ def agendar_visita(request, id=None):
             visita=Visita()
             visita.id_paciente = paciente
             visita.fecha = fecha_inicial
+            visita.equipo = zxc
             visita.save()
 
             visita=Visita()
             visita.id_paciente = paciente
             visita.fecha = fecha_sig
+            visita.equipo = zxc
             visita.save()
         
 
@@ -83,16 +97,19 @@ def agendar_visita(request, id=None):
             visita=Visita()
             visita.id_paciente = paciente
             visita.fecha = fecha_inicial
+            visita.equipo = zxc
             visita.save()
 
             visita=Visita()
             visita.id_paciente = paciente
             visita.fecha = fecha_2
+            visita.equipo = zxc
             visita.save()
 
             visita=Visita()
             visita.id_paciente = paciente
             visita.fecha = fecha_3
+            visita.equipo = zxc
             visita.save()
 
         
@@ -107,16 +124,19 @@ def agendar_visita(request, id=None):
             visita=Visita()
             visita.id_paciente = paciente
             visita.fecha = fecha_inicial
+            visita.equipo = zxc
             visita.save()
 
             visita=Visita()
             visita.id_paciente = paciente
             visita.fecha = fecha_2
+            visita.equipo = zxc
             visita.save()
 
             visita=Visita()
             visita.id_paciente = paciente
             visita.fecha = fecha_3
+            visita.equipo = zxc
             visita.save()
 
 
@@ -127,7 +147,8 @@ def agendar_visita(request, id=None):
      
 
     context={
-            "px":aux
+            "px":aux,
+            "eq":zxc
         }
         
     return render(request,"agendar_visita.html",context)
