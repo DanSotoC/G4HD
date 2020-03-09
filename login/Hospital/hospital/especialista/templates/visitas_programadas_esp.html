@@ -143,8 +143,7 @@ li a{color:black}
                                         
                                         
                                         
-                                        {%endif%}
-                                        {%endfor%}
+                                        
                                         
 
                                     </td>
@@ -152,11 +151,16 @@ li a{color:black}
 
                                     <td style="width: 25%;">
         						      <a href="{% url 'formulario' id=fecha.id%}" class="button"> Registrar Visita </a>
-                                      <a href="#" class="button"> Ver historia </a>
+                                      <a href="{% url 'ver_episodio_numerado_esp' id=p.episodio id_paciente=p.id %}" class="button"> Ver historia </a>
         						      
 
 
                                     </td>
+
+
+                                    {%endif%}
+                                    {%endfor%}
+
                                 </tr>
                                 {%endif%}
                                 {%endif%}
