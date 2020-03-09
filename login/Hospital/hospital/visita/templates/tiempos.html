@@ -23,6 +23,8 @@
 	                            <tbody>
 	                            	{% for g in time %}
 	                            
+
+
 	                                <tr>
 	                                   	
 	                                    <td>                                      
@@ -31,13 +33,16 @@
 	                                    <td>{{g.item}}</td> 
 	                                    <td>{{g.tiempo}} minutos</td> 
 
+	                                    {% if g.item != "Vacio"%}
+
 	                                    <td><a href="#" class="btn btn-success" style="margin-right: 10px;">Modificar Tiempo</a><a href='{% url "eliminar_tiempo" id=g.id %}' class="btn btn-danger">Eliminar Item</a></td>
 
-	                                
+	                                	{%endif%}
 	                                    	
 	                                </tr>
 	                               											
 									{% endfor %}
+	                                	
 								</tbody>
 							</table>
 

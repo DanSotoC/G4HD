@@ -1,16 +1,24 @@
 from django.shortcuts import render
 from usuarios.models import Paciente, Personal
 from tutor.models import Consulta
+from visita.models import Visita
 from django.http import JsonResponse
 from django.contrib.auth.models import Group
-from datetime import datetime
+from datetime import datetime, date
 
 def home(request):
 	pacientes=Paciente.objects.all()
 	personal=Personal.objects.count()
 	current_user = request.user
 	now = datetime.now()
+	visita = Visita.objects.all()
 	total = 100 #diferencia entre pacientes totales y pacientes para hoy
+	hoy = 0
+
+	for v in visita:
+		if str(v.fecha) == str(date.today()):
+			hoy = hoy + 1
+
 
 	aux = 0
 	for n in pacientes:
@@ -34,6 +42,7 @@ def home(request):
 			"group":group,
 			"now":now,
 			"total":total,
+			"hoy":hoy,
 			
 	}
 	return render(request,"dashboard.html", context)

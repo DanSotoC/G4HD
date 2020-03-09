@@ -40,6 +40,7 @@ class Paciente(models.Model):
 	desc=models.CharField(max_length=100)
 	activo=models.IntegerField(null=False, default=1)
 	episodio=models.IntegerField(null=False, default=1)
+	tipo=models.CharField(max_length=30, default="Vacio")
 
 	
 	def __str__(self):
