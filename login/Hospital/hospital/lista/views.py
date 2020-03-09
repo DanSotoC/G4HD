@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, reverse
 from django.shortcuts import HttpResponse, HttpResponseRedirect, redirect
-from usuarios.models import Paciente , Personal, Tutor
+from usuarios.models import Paciente , Personal, Tutor,Perfil
 from registrar.models import formulario
 from tutor.models import Consulta
 from .forms import Paciente_Form_activo
@@ -37,9 +37,10 @@ def usuarios_listen(request):
 	qset = request.GET.get("buscar")
 	user = Personal.objects.filter(rut = qset)
 	current_user = request.user
-	
+	perfil=Perfil.objects.all()
 	if user.count() < 1:
 		queryset = Personal.objects.all()
+		
 	else:
 		queryset = user
 
@@ -47,6 +48,7 @@ def usuarios_listen(request):
 
 		"object_list": queryset,
 		"actual":current_user,	
+		"perfil":perfil,
 	}
 	return render(request,"listen.html",context)
 

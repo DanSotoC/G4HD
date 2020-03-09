@@ -72,10 +72,10 @@
 
 
 
-	<h1>Biblioteca</h1><br>
+	<h1>Examenes:</h1><br>
 
 	<hr style="background-color:lightblue; width: 300px; margin-left: -10px;margin-top:-20px; height: 3px;">
-	<a href="{% url 'form_archivos_unico' id=px%}" class="btn btn-info" id="subir_archivo"> + Subir Archivo </a>
+	<a href="{% url 'form_archivos_unico' id=px id_paciente=px %}" class="btn btn-info" id="subir_archivo"> + Subir Archivo </a>
 		
 
 	<div class=" row ">
@@ -87,9 +87,9 @@
 		<div class="dropdown2">
 		  <a class="dropbtn2"><img src="/static/pdf.png"style="width: 100px;"></a>
 		  <div class="dropdown-content2">
-			<a href="../media/{{arch.file}}" download="filename" > descargar</a>
-			<a href="{% url 'form_archivos_delete_unico' arch.id %}">Eliminar</a>
-			<a href="{% url 'form_archivos_edit' arch.id %}">editar</a>	
+			<a href="../..{{arch.file.url}}" download="{{arch.nombre}}" > descargar</a>
+			<a href="{% url 'form_archivos_delete_unico' id=arch.id id_paciente=px  %}">Eliminar</a>
+			
 		  </div>
 		  <p style="text-align: center;">{{arch.nombre}}</p>
 		</div>

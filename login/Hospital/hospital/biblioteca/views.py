@@ -41,12 +41,12 @@ def model_form_upload(request):
     })
 
 
-def model_form_upload_unico(request,id=None):
+def model_form_upload_unico(request,id=None,id_paciente=None):
     if request.method == 'POST':
         form = DocumentFormUnico(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect(biblioteca)
+            return redirect(biblioteca_unica,id_paciente)
     else:
         form = DocumentFormUnico()
     return render(request, 'form_archivos_unico.html', {
@@ -59,32 +59,23 @@ def model_form_delete(request,id):
     
     archivo=Archivo.objects.get(id=id)
     if request.method=='POST':
-        os.remove(str(archivo.file))
+        os.remove('.'+ str(archivo.file.url))
         archivo.delete()
         return redirect(biblioteca)
     return render(request,'form_archivos_delete.html', {'archivo':archivo})
 
-def model_form_delete_unico(request,id):
+def model_form_delete_unico(request,id,id_paciente):
     
     archivo=Archivo_Unico.objects.get(id=id)
     if request.method=='POST':
-        os.remove(str(archivo.file))
+        os.remove('.'+str(archivo.file.url))
         archivo.delete()
-        return redirect(biblioteca)
+        return redirect(biblioteca_unica,id_paciente)
     return render(request,'form_archivos_delete.html', {'archivo':archivo})
 
 
 
-def model_form_edit(request,id):
-    archivo=Archivo.objects.get(id=id)
-    if request.method=='GET':
-        form=DocumentForm(instance=archivo)
-    else:
-        form=DocumentForm(request.POST,instance=archivo)
-        if form.is_valid():
-            form.save()
-        return redirect(biblioteca)
-    return render(request,'form_archivos.html',{'form':form})
+
 
 
 
