@@ -59,7 +59,7 @@ class Paciente_Form(forms.ModelForm):
 				'nombre':forms.TextInput(attrs={'class':'form-control'}),
 				'apellido1':forms.TextInput(attrs={'class':'form-control'}),
 				'apellido2':forms.TextInput(attrs={'class':'form-control'}),
-				'rut':forms.TextInput(attrs={'class':'form-control'}),
+				'rut':forms.TextInput(attrs={'class':'form-control',"id":"rut", "required oninput":"checkRut(this)", "maxlength":"10"}),
 				'comuna':forms.TextInput(attrs={'class':'form-control'}),
 				'domicilio':forms.TextInput(attrs={'class':'form-control'}),
 				'num_domicilio':forms.TextInput(attrs={'class':'form-control'}),
@@ -80,7 +80,7 @@ class Tutor_Form(forms.ModelForm):
 				'f_nacimiento']
 
 		widgets={
-				'rut':forms.TextInput(attrs={'class':'form-control'}),
+				'rut':forms.TextInput(attrs={'class':'form-control',"id":"rut", "required oninput":"checkRut(this)", "maxlength":"10"}),
 				'comuna':forms.TextInput(attrs={'class':'form-control'}),
 				'domicilio':forms.TextInput(attrs={'class':'form-control'}),
 				'num_domicilio':forms.TextInput(attrs={'class':'form-control'}),
@@ -98,6 +98,6 @@ class Personal_Form(forms.ModelForm):
 		fields =['id_perfil','rut','especialidad','file']
 
 		widgets ={
-		'rut':forms.TextInput(attrs={'class':'form-control'}),
+		'rut':forms.TextInput(attrs={'class':'form-control',"id":"rut", "required oninput":"checkRut(this)", "maxlength":"10"}),
 		'especialidad': forms.Select(choices=ESPECIALIDAD,attrs={'class':'form-control'})
 		}
