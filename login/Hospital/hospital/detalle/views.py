@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404,redirect,HttpResponseRedirect, reverse
+import os
 from django.contrib.auth.models import User
 from django.contrib import messages
 from usuarios.models import Paciente
@@ -9,6 +10,7 @@ from tutor.models import Consulta
 from usuarios.forms import Paciente_Form , Tutor_Form , Personal_Form
 from tutor.forms import consulta_mensaje
 from lista.views import usuarios_listpa, usuarios_listen, usuarios_listu 
+
 
 
 def borrar_tutor(request,id):
@@ -34,6 +36,7 @@ def borrar_paciente(request,id):
 	tutor = get_object_or_404(Tutor, id=paciente.id_tutor_id)
 	user = get_object_or_404(User, id=tutor.id_perfil_id)
 	if request.method == "POST":
+		
 		user.delete()
 		return redirect(usuarios_listpa)
 
@@ -125,6 +128,7 @@ def borrar_especialista(request,id):
 	personal = get_object_or_404(Personal, id=id)
 	user = get_object_or_404(User, id=personal.id_perfil_id)
 	if request.method == "POST":
+		os.remove("."+ str(personal.file.url))
 		user.delete()
 		return redirect(usuarios_listen)
 
