@@ -80,6 +80,24 @@ def ver_registro_admin(request, id=None):
 
 	return render(request,'ver_registro_admin.html',context)
 
+def ver_registro_tutor(request, id=None):
+
+	px = get_object_or_404(Paciente, id=id)
+	fx = Visita.objects.all()
+
+
+	context = {
+
+		"obj":px,
+		"date_list":fx,
+		"episodio": range(1,px.episodio+1),
+		"count": 1,
+
+	}
+
+	return render(request,'ver_registro_tutor.html',context)
+
+
 
 def ver_episodio_numerado(request, id=None, id_paciente=None):
 
@@ -95,5 +113,20 @@ def ver_episodio_numerado(request, id=None, id_paciente=None):
 	}
 
 	return render(request,'ver_episodio_numerado.html',context)
+
+def ver_episodio_numerado_tutor(request, id=None, id_paciente=None):
+
+	aux = id
+	fx = fm.objects.all()
+	px = get_object_or_404(Paciente, id=id_paciente)
+
+	context = {
+
+		"aux":int(aux),
+		"formulario":fx,
+		"paciente":px,
+	}
+
+	return render(request,'ver_episodio_numerado_tutor.html',context)
 
 

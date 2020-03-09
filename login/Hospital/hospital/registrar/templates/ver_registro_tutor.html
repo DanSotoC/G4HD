@@ -1,5 +1,5 @@
 <!--DOCTYPE html -->
-{%  extends "base.html" %}
+{%  extends "base_tutor.html" %}
 
 <title> {%block head_title %} {{obj.nombre}} {{obj.apellido1}} {{obj.apellido2}} | {{block.super}} {%endblock head_title%} </title>
 
@@ -29,7 +29,6 @@ Centrar -> FUNCIONANDO </br>
 
 
 
-<div class="row">
 <div class="container bootstrap snippet">
     <div class="row">
         <div class="col-md-5">
@@ -56,7 +55,7 @@ Centrar -> FUNCIONANDO </br>
                                                             
                                     <td style="width: 10%">
                                   
-                                      <a href="{% url 'ver_episodio_numerado' id=i id_paciente=obj.id %}" class="btn btn-info"> Ver Episodio </a>                      
+                                      <a href="{% url 'ver_episodio_numerado_tutor' id=i id_paciente=obj.id %}" class="btn btn-danger"> Ver Episodio </a>                      
 
                                     </td>
                                 </tr>
@@ -74,11 +73,11 @@ Centrar -> FUNCIONANDO </br>
             </div>
         </div>
       </div>
-     </div>
+     
 
 
 
-    <a href='{% url "listpaciente" %}' class="btn btn-info" role="button">Volver</a>
+    <a href='{% url "home_t" %}' class="btn btn-danger" role="button">Volver</a>
    
 
 
