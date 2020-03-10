@@ -62,6 +62,7 @@ def usuarios_listu(request):
 		instance = User.objects.all()
 	else:
 		queryset = user
+		instance = User.objects.all()
 
 	context = {
 
@@ -70,6 +71,7 @@ def usuarios_listu(request):
 		"actual":current_user,
 	}
 	return render(request,"listu.html",context)
+
 
 def consulta_lista(request):
 	

@@ -62,7 +62,8 @@ a {
 
 
 
-<h1>Visitas: {{obj.nombre}} {{obj.apellido1}} {{obj.apellido2}} </h1>
+<h1>Visitas: {{obj.nombre}} {{obj.apellido1}} {{obj.apellido2}} </h1></br>
+<hr style="background-color:lightblue; width: 550px; margin-left: -10px;margin-top:-20px; height: 3px;">
 
 
 
@@ -74,8 +75,8 @@ a {
 <!-- FIN -->
 
 
-
-        <div class="col-sm-5">
+<div class="row row-cols-3" style="margin-top: 20px;">
+        <div class="col-sm-6">
             <div class="main-box no-header clearfix">
                 <div class="main-box-body clearfix">
                     <div class="table-responsive">
@@ -162,16 +163,17 @@ a {
                 </div>
             </div>
         </div>
-         <div class="col-sm-3" style="height: 100%;">
+</div>
+        
             <a href='{%  url "agendar_visita" id=obj.id %}' class="btn btn-info"> Agendar Hora</a>
             <a href= '{%  url "listpaciente" %}' type="button" class="btn btn-info"> Volver </a>
-        </div>
+        
 
-          <br><br>
 
 
     
-    <div class="col-sm-4" style=" margin-top: -110px; ">
+    <div class="col-sm-5" style=" margin-top: 0px; ">
+
         <h1>Tutor</h1>
         <h2>  {{usr.first_name}} {{usr.last_name}}  </h2>
         <span class="list"> - CONTACTO:</span> </br>  

@@ -68,6 +68,7 @@ a {
 
 
 
+
 <!-- FIN -->
 
 
@@ -95,25 +96,23 @@ a {
 
                                 {%if fecha.status == 0%}
                                 <tr>
-                                    <td>            
+                                               
 
 										{% for obj in px %}
 											
 											{% if obj.id == fecha.id_paciente %}
 
-											   <span class="user-subhead">{{ obj.nombre}} {{ obj.apellido1}} {{obj.apellido2}}</span>
+											<td> 
+
+                                               <span class="user-subhead">{{ obj.nombre}} {{ obj.apellido1}} {{obj.apellido2}}</span>
 
                                                <td>{{obj.rut}}</td> 
 
-											{%endif%}
+                                                <td>
+                                                    <a >{{fecha.fecha}}</a>
+                                                </td>
 
-                                        {%endfor%}	
 
-                                    </td>
-                                    
-                                    <td>
-                                        <a >{{fecha.fecha}}</a>
-                                    </td>
                                     <td>
                                         {% if fecha.status == 0 %}
                                             <span  class="badge badge-dark">Pendiente</span>
@@ -123,11 +122,20 @@ a {
                                         {%endif%}                                        
                                     </td>                            
                                     <td style="width: 20%;">
-        						      <a href='{%  url "update_fecha" id=fecha.id  %}' class="btn btn-info"> Modificar </a>
-        						      <a href='{%  url "delete_lista" id=fecha.id %}' class="btn btn-danger"> Borrar </a>
+                                      <a href='{%  url "update_fecha" id=fecha.id  %}' class="btn btn-info"> Modificar </a>
+                                      <a href='{%  url "delete_lista" id=fecha.id %}' class="btn btn-danger"> Borrar </a>
 
 
                                     </td>
+
+                                        </td>
+
+											{%endif%}
+
+                                        {%endfor%}	
+
+                                    
+                                    
                                 </tr>
                                 {%endif%}
 								        {% endfor %}
@@ -137,23 +145,17 @@ a {
 
                                 {%if fecha.status == 1%}
                                 <tr>
-                                    <td>            
+                                                
 
                                         {% for obj in px %}
                                             
                                             {% if obj.id == fecha.id_paciente %}
 
+                                              <td>
                                                <span class="user-subhead">{{ obj.nombre}} {{ obj.apellido1}} {{obj.apellido2}}</span>
 
                                                <td>{{obj.rut}}</td> 
 
-                                            {%endif%}
-
-                                        {%endfor%}  
-
-                                    </td>
-
-                                    
                                     <td>
                                         <a >{{fecha.fecha}}</a>
                                     </td>
@@ -171,6 +173,16 @@ a {
 
 
                                     </td>
+                                    </td>
+
+                                            {%endif%}
+
+                                        {%endfor%}  
+
+                                    
+
+                                    
+
 
                                         
                                 </tr>
