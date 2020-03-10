@@ -39,7 +39,7 @@
 	
 		<table>
 			<thead>
-				<h1>Datos del usuario<h1><hr style="background-color:lightblue; width: 320px; margin-left: 0px;margin-top:-20px; height: 3px;">
+				<h1>Datos del usuario<h1><hr style="background-color:lightblue; width: 320px; margin-left: 0px; height: 3px;">
 			</thead>
 			<tbody>
 				<tr>
@@ -152,9 +152,13 @@
 				
 			</tbody>
 		</table>
-		<a id="fin" href="{% url 'listtutor' %}" class="btn btn-info btn-block" style="margin-top:30px;" >Finalizar Registro</a>
+		<div style="  margin-left:-590px; margin-top: -80px; width: 400px;">
+			<a href="{% url 'listtutor' %}" class="btn btn-info btn-block">Finalizar Registro</a>
+			
+		</div>
 		
 	</div>
+	
 	{% else %}
 	{% if  perfil.rol == "PERSONAL" %}
 	<div class="col-sm-6" style="margin-top: 15px;">
@@ -167,6 +171,9 @@
 			<table>
 			<tbody>
 				<tr>
+					<td> <img id="myBtn"  src="../../..{{personal.file.url}}" width="50%"></td>
+				</tr>
+				<tr>
 					<th>Rut:</th>
 					<td>{{personal.rut}}</td>
 				</tr>
@@ -177,7 +184,9 @@
 			</tbody>
 			</table>
 		
-		<a id="fin" href="{% url 'listenfermero' %}" class="btn btn-info btn-block" style="margin:top:30px;">Finalizar Registro</a>
+		<div style="margin-top: 30px;">
+			<a id="fin" href="{% url 'listenfermero' %}" class="btn btn-info btn-block" >Finalizar Registro</a>
+		</div>
 		
 	</div>
 

@@ -45,7 +45,7 @@ a {
     border-bottom: 2px solid #e7ebee;
 }
 .table tbody tr td:first-child {
-    font-size: 1.125em;
+    font-size: 1.825em;
     font-weight: 300;
 }
 .table tbody tr td {
@@ -60,7 +60,7 @@ a {
 
 
 
-<h1>Lista de Visitas - {{hoy}} </h1>
+<h1 style="margin-left: -80px; margin-top: 20px;" >Lista de Visitas - {{hoy}} </h1>
 
 
 
@@ -71,7 +71,7 @@ a {
 
 
 
-<div class="container bootstrap snippet" style="margin-left: -80px;">
+<div class="container bootstrap snippet" style="margin-left: -80px; margin-top: 40px;">
     <div class="row">
         <div class="col-lg-9">
             <div class="main-box no-header clearfix">
@@ -129,10 +129,10 @@ a {
                                    
                                     <td>
                                         {% if fecha.status == 0 %}
-                                            <span class="label label-default">Pendiente</span>
+                                            <span class="badge badge-dark">Pendiente</span>
                                         {%endif%}
                                         {% if fecha.status == 1 %}
-                                            <span class="label label-success">Realizada</span>
+                                            <span class="badge badge-success">Realizada</span>
                                         {%endif%}                                        
                                     </td> 
 
@@ -173,7 +173,7 @@ a {
     </div>
 </div>
 
-<div class="container bootstrap snippet" style="margin-left: 240px; margin-top: -30%;">
+<div class="container bootstrap snippet" style="margin-left: 760px; margin-top: -255px; ">
     <div class="row">
         <div class="col-lg-4">
             <div class="main-box no-header clearfix">
@@ -182,7 +182,7 @@ a {
           
                       
                         <div style="text-align: center; padding: 20px;">
-                         <label for=equipo>Asignar Equipo:</label>
+                         <label for=equipo><h2>Asignar Equipo:</h2></label>
                           <select id="equipo" name="equipo" class="form-control">
                             {%for g in group %}
                               {%if g.name != 'Disponible' and g.name != 'Tutores' and g.name != 'Personal' and  g.name != 'Administrador' %}

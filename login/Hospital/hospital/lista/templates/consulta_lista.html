@@ -107,11 +107,11 @@ a {
                                     <td> 
 
                                    {% if obj.estado == 0 %}
-                                            <span class="label label-default">Pendiente</span>
+                                            <span class="badge badge-dark">Pendiente</span>
                                    {%endif%}
                                        
                                     {% if obj.estado == 1 %}
-                                            <span class="label label-success">Resuelta</span>
+                                            <span class="badge badge-success">Resuelta</span>
                                     {%endif%} 
 
                                     </td>
@@ -157,13 +157,13 @@ a {
 
                                     <td> 
 
-                                   {% if obj.estado == 0 %}
-                                            <span class="label label-default">Pendiente</span>
-                                   {%endif%}
-                                       
-                                    {% if obj.estado == 1 %}
-                                            <span class="label label-success">Resuelta</span>
-                                    {%endif%} 
+                                        {% if obj.estado == 0 %}
+                                        <span class="badge badge-dark">Pendiente</span>
+                                        {%endif%}
+                                   
+                                        {% if obj.estado == 1 %}
+                                        <span class="badge badge-success">Resuelta</span>
+                                        {%endif%} 
 
                                     </td>
 

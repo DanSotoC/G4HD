@@ -68,15 +68,15 @@ a {
 
 </style>
 
-<h1>Lista de Pacientes Antiguos</h1> <br> 
+<h1>Nuevo Registro</h1> <br> 
 
 <a href='{% url "registro" %}' class="btn btn-info"> Registrar Nuevo </a>
-</br></br></br></br><br>
+</br></br></br></br>
 
 <!-- Metodo Buscar -->
 
-
-<div class="container bootstrap snippet" style="margin-left: -30px; margin-top: -0%;">
+<h1>Lista de Pacientes Antiguos</h1> 
+<div class="container bootstrap snippet" style="margin-left: -30px; margin-top:30px; ">
     <div class="row">
         <div class="col-lg-7">
             <div class="main-box no-header clearfix">
@@ -99,11 +99,11 @@ a {
 
                                 <tr>
                                     
-                                    <td>                                      
-                                        <span class="user-subhead"> {{obj.nombre}} {{obj.apellido1}} {{obj.apellido2}} </span>
+                                    <td style="width: 28%;">                                      
+                                        <span  class="user-subhead"> {{obj.nombre}} {{obj.apellido1}} {{obj.apellido2}} </span>
                                     </td>
-                                    <td>{{obj.rut}}</td> 
-                                    <td style="width: 40%;">
+                                    <td style="width: 30%;">{{obj.rut}}</td> 
+                                    <td style="width: 50%;">
                                     
                                         <a href='{%  url "reingresopaciente" id=obj.id %}' class="btn btn-danger"> Reingresar </a
                                         >
@@ -127,9 +127,9 @@ a {
 
 
 
-<div class="container" style="margin-left: 50%; margin-top: -30%;">
+<div class="container" style="margin-left: 62%; margin-top: -130px;">
     <div class="row" >
-        <div class="col-md-5 search">
+        <div class="col-md-6 search">
         <form method="get">
             <div id="custom-search-input">
                 <input type="text" class="form-control" required oninput="checkRut(this)" minlength="1" maxlength="10" placeholder="Ingrese Rut..." name="buscar">

@@ -43,7 +43,7 @@ a {
     border-bottom: 2px solid #e7ebee;
 }
 .table tbody tr td:first-child {
-    font-size: 1.125em;
+    font-size: 1.425em;
     font-weight: 300;
 }
 .table tbody tr td {
@@ -53,27 +53,15 @@ a {
     padding: 12px 8px;
 }
 
-.button {
-  background-color: #27928E;
-  border: none;
-  color: white;
-  padding: 5px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 5px;
-  }
+
 
 </style>
 
-<h1>Lista de Pacientes</h1>
+<h1 style="margin-left: -40px;">Lista de Pacientes</h1>
 
 <!-- Metodo Buscar -->
 
-<div class="container">
+<div class="container"  style="margin-left: -50px;">
     <div class="row" >
         <div class="col-md-12 search">
         <form method="get">
@@ -93,7 +81,7 @@ a {
 <!-- FIN -->
 
 <hr>
-<div class="container bootstrap snippet">
+<div class="container bootstrap snippet"  style="margin-left: -50px;">
     <div class="row">
         <div class="col-lg-12">
             <div class="main-box no-header clearfix">
@@ -107,7 +95,8 @@ a {
                                 <th><span>Domicilio</span></th>
                                 <th><span>#</span></th>
                                 <th><span>Comuna</span></th>
-                                <th>&nbsp;</th>
+                                <th><span>Opciones</span></th>
+                               
                                 </tr>
                             </thead>
                             <tbody>
@@ -126,11 +115,11 @@ a {
                                     <td>
                                         <a >{{obj.comuna}}</a>
                                     </td>
-                                    <td style="width: 26%;">
+                                    <td style="width: 36%;">
         							
-        								<a href='{%  url "paciente_detalle" id=obj.id_tutor_id %}' class="btn btn-info"> Detail </a>
+        								<a href='{%  url "paciente_detalle" id=obj.id_tutor_id %}' class="btn btn-info"> Detalle </a>
 
-                                        <a href='{% url "biblioteca_adm_unica" id=obj.id %}' class="button"> Examenes </a>
+                                        <a href='{% url "biblioteca_adm_unica" id=obj.id %}' class="btn btn-warning"> Examenes </a>
 
                                         <a href='{% url "visita_paciente_admin" id=obj.id %}' class="btn btn-success">Ver Horas </a>
 

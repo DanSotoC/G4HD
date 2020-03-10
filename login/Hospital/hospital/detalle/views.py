@@ -116,7 +116,7 @@ def especialista_edit(request,perfil=None,id_personal=None):
 	if request.method=='GET':
 		form=Personal_Form(instance=personal)
 	else:
-		form=Personal_Form(request.POST,instance=personal)
+		form=Personal_Form(request.POST,request.FILES, instance=personal)
 		if form.is_valid():
 			form.save()
 		return redirect(especialista_detail,id_personal)
