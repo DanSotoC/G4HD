@@ -37,7 +37,7 @@
 								{% if g.item != "Vacio"%}
 
 								<td style="width: 350px; ">
-									<a href="#" class="btn btn-success" style="margin-right: 10px;">Modificar Tiempo</a>
+									<a href='{% url "update_tiempo" id=g.id %}' class="btn btn-success" style="margin-right: 10px;">Modificar Tiempo</a>
 									<a href='{% url "eliminar_tiempo" id=g.id %}' class="btn btn-danger">Eliminar Item</a>
 								</td>
 

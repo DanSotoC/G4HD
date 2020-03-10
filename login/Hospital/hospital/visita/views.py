@@ -348,3 +348,25 @@ def visita_detalles(request,id=None):
     }
 
     return render(request,'visita_detalles_registro.html',context)
+
+def tiempo_update(request, id=None):
+    aux = Tiempos.objects.get(id=id) 
+    
+    if request.method=='GET':
+        form=time(instance=aux)
+    else:
+        form=time(request.POST,instance=aux)     
+        if form.is_valid():
+            form.save()
+        return redirect(tiempos)
+    
+    context = {
+
+        "form":form,
+        "id":aux.id,
+        "item":aux.item,
+        "t":aux.tiempo
+    }
+
+
+    return render(request,"tiempo_update.html",context)
