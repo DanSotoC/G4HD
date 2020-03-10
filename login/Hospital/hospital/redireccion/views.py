@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.shortcuts import HttpResponse, HttpResponseRedirect, redirect
 from usuarios.models import Paciente , Personal, Tutor, Perfil
 from django.contrib.auth.models import User
+from usuarios.views import Registro_View
 
 def redireccion(request):
 	current_user = request.user
@@ -16,5 +17,6 @@ def redireccion(request):
 
 	if actual == "ADMINISTRADOR":
 		return HttpResponseRedirect(reverse('dash'))
-
+	else:
+		return redirect(Registro_View)
 	return render(request,"salto.html")

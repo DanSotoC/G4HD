@@ -192,7 +192,9 @@
 
 	{% else %}
 	{% if perfil.rol == 'ADMINISTRADOR' %}
-		<a id="fin" href="{% url 'dash' %}" class="btn btn-success" style="margin-top: 450px; margin-left:-560px;" >Finalizar Registro</a>
+	<div style="margin-top: 400px;">
+		<a  href="{% url 'dash' %}" class="btn btn-success btn-block "  >Finalizar Registro</a>
+	</div>
 	{% endif %}
 	{% endif %}
 	{% endif %}

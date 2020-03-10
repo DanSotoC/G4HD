@@ -85,8 +85,8 @@ def perfil_edit(request,usuario_id):
         	return redirect(Tutor_view,usuario.id)
         if usuario.rol=='PERSONAL':
         	return redirect(Personal_view,usuario.id)
-        
-        
+        if usuario.rol=='ADMINISTRADOR':
+            return redirect(PerfilView,usuario.id)       
     return render(request,'perfil_form.html',{'form':form})	
 
 
