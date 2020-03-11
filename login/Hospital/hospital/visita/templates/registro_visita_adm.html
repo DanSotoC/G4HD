@@ -60,7 +60,7 @@ a {
 
 </style>
 
-
+<br>
 
 <h1>Visitas: {{obj.nombre}} {{obj.apellido1}} {{obj.apellido2}} </h1></br>
 <hr style="background-color:lightblue; width: 550px; margin-left: -10px;margin-top:-20px; height: 3px;">
@@ -76,7 +76,8 @@ a {
 
 
 <div class="row row-cols-3" style="margin-top: 20px;">
-        <div class="col-sm-6">
+       
+    <div class="col-sm-6">
             <div class="main-box no-header clearfix">
                 <div class="main-box-body clearfix">
                     <div class="table-responsive">
@@ -143,7 +144,7 @@ a {
                                             <span class="label label-success">Realizada</span>
                                         {%endif%}                                        
                                     </td>                            
-                                    <td style="width: 50%;">
+                                    <td style="width: 55%;">
                                       <a href='{%  url "visita_detalles" id=fecha.id  %}' class="btn btn-info"> Ver detalle </a>
                                      
 
@@ -163,42 +164,51 @@ a {
                 </div>
             </div>
         </div>
-</div>
-        
+
+        <div class="col-lg-3">
             <a href='{%  url "agendar_visita" id=obj.id %}' class="btn btn-info"> Agendar Hora</a>
             <a href= '{%  url "listpaciente" %}' type="button" class="btn btn-info"> Volver </a>
         
 
+        </div>
+
+
+        <div class="col-sm-3" style=" margin-left: 0px; border:solid 1px #E7EBEE; ">
+
+            <h1>Tutor</h1>
+            <h2>  {{usr.first_name}} {{usr.last_name}}  </h2>
+            <span class="list"> - CONTACTO:</span> </br>  
+            
+            <ul class="list_box">
+                
+                <li>
+    
+                    <label>
+                        
+                                         
+                        <span class="small-list"> Email: {{usr.email}} </span> </br> 
+                        <span class="small-list"> Domicilio: {{tx.domicilio}} {{tx.num_domicilio}}, {{tx.comuna}} </span> </br> 
+                        <span class="small-list"> Telefono: +56 9 {{tel.tel}} </span> </br>                 
+    
+    
+    
+    
+                    </label>
+               
+                </li>
+                
+            </ul>
+            
+        </div>
+
+
+</div>
+        
+          
 
 
     
-    <div class="col-sm-5" style=" margin-top: 0px; ">
-
-        <h1>Tutor</h1>
-        <h2>  {{usr.first_name}} {{usr.last_name}}  </h2>
-        <span class="list"> - CONTACTO:</span> </br>  
-        
-        <ul class="list_box">
-            
-            <li>
-
-                <label>
-                    
-                                     
-                    <span class="small-list"> Email: {{usr.email}} </span> </br> 
-                    <span class="small-list"> Domicilio: {{tx.domicilio}} {{tx.num_domicilio}}, {{tx.comuna}} </span> </br> 
-                    <span class="small-list"> Telefono: +56 9 {{tel.tel}} </span> </br>                 
-
-
-
-
-                </label>
-           
-            </li>
-            
-        </ul>
-        
-    </div>
+   
 
  
 

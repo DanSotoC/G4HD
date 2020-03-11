@@ -25,63 +25,55 @@
     <h1>{{obj.nombre}} {{obj.apellido1}} {{obj.apellido2}} </h1>
   </div>
 
-Centrar -> FUNCIONANDO </br>
-
-
-
-<div class="container bootstrap snippet">
-    <div class="row">
-        <div class="col-md-5">
-            <div class="main-box no-header clearfix">
-                <div class="main-box-body clearfix">
-                    <div class="table-responsive">
-                        <table class="table user-list"  >
-                            <thead>
-                                <tr>    
-                                <th><span>Episodio</span></th>
-                                <th><span>Opciones</span></th>                          
-                                </tr>
-                            </thead>
-                            <tbody>
-
-
-
+  <div class="row row-col-3">
+  
+  
+    <div class="col-lg-10">
+      
+            <table class="table user-list" style="width: 500px;"  >
+                <thead>
+                    <tr>    
+                    <th><span>Episodio</span></th>
+                    <th><span>Opciones</span></th>                          
+                    </tr>
+                </thead>
+                <tbody>
+    
+    
+    
+    
+                  {% for i in episodio %}
+                    <tr>
+                        <td style="width: 10%">
+                            <a > {{i}}</a>
+                        </td>
+                                                
+                        <td style="width: 10%">
+                      
+                          <a href="{% url 'ver_episodio_numerado' id=i id_paciente=obj.id %}" class="btn btn-info"> Ver Episodio </a>                      
+    
+                        </td>
+                    </tr>
+                    
+                    
                   
-                              {% for i in episodio %}
-                                <tr>
-                                    <td style="width: 10%">
-                                        <a > {{i}}</a>
-                                    </td>
-                                                            
-                                    <td style="width: 10%">
-                                  
-                                      <a href="{% url 'ver_episodio_numerado_tutor' id=i id_paciente=obj.id %}" class="btn btn-danger"> Ver Episodio </a>                      
-
-                                    </td>
-                                </tr>
-                                
-                                
-                              
-                              
-                              {% endfor %}
-                                      
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </div>
-     
-
-
-
-    <a href='{% url "home_t" %}' class="btn btn-danger" role="button">Volver</a>
+                  
+                  {% endfor %}
+                          
+    
+                </tbody>
+            </table>
+       
+    
+    </div>
+    
    
-
-
-
+  
+      <a href='{% url "listpaciente" %}' class="btn btn-info" role="button">Volver</a>
+     
+  
+  
+  
 
 
 {%endblock content%}

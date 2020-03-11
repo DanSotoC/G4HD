@@ -4,6 +4,7 @@ from usuarios.models import Paciente , Personal, Tutor, Perfil
 from django.contrib.auth.models import User
 from usuarios.views import Registro_View
 
+
 def redireccion(request):
 	current_user = request.user
 	queryset = get_object_or_404(Perfil, usuario_id=current_user.id)
@@ -17,6 +18,9 @@ def redireccion(request):
 
 	if actual == "ADMINISTRADOR":
 		return HttpResponseRedirect(reverse('dash'))
-	else:
+	if actual != "TUTOR" or  actual != "PERSONAL" or actual != "ADMINISTRADOR":
 		return redirect(Registro_View)
+
+
+
 	return render(request,"salto.html")
