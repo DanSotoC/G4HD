@@ -88,43 +88,43 @@ a {
 
                                 <tr>
                                    	
-                                    <td>                                      
-                                        <span class="user-subhead"> {{obj.titulo}} </span>
-                                    </td>
-                                    <td>{{obj.timestamp}}</td>
-
                                         {% for u in usr %}
 
                                             {% if u.id == obj.id_usuario %}
 
+                                            <td>                                      
+                                                  <span class="user-subhead"> {{obj.titulo}} </span>
+                                            </td>
+                                            <td>{{obj.timestamp}}</td>
+
                                             <td>{{u.first_name}} {{u.last_name}} </td> 
 
+
+                                            <td> 
+
+                                            {% if obj.estado == 0 %}
+                                                <span class="badge badge-dark">Pendiente</span>
+                                            {%endif%}
+                                       
+                                            {% if obj.estado == 1 %}
+                                                <span class="badge badge-success">Resuelta</span>
+                                            {%endif%} 
+
+                                            </td>
+
+                                            <td style="width: 26%;">
+                                     
+                                                {% if obj.estado == 0 %}
+                                    
+                                                    <a href='{%  url "consulta_edit" id=obj.id %}' class="btn btn-warning">Resolver </a>
+
+                                                {% endif %}       
+        
+                                            </td>
 
                                             {% endif %} 
                                     
                                         {% endfor %}
-
-                                    <td> 
-
-                                   {% if obj.estado == 0 %}
-                                            <span class="badge badge-dark">Pendiente</span>
-                                   {%endif%}
-                                       
-                                    {% if obj.estado == 1 %}
-                                            <span class="badge badge-success">Resuelta</span>
-                                    {%endif%} 
-
-                                    </td>
-
-                                    <td style="width: 26%;">
-        							 
-                                     {% if obj.estado == 0 %}
-                                    
-                                        <a href='{%  url "consulta_edit" id=obj.id %}' class="btn btn-warning">Resolver </a>
-
-                                    {% endif %}       
-        
-                                    </td>
 
                                     	
                                 </tr>
@@ -140,42 +140,47 @@ a {
 
                                 <tr>
                                     
-                                    <td>                                      
-                                        <span class="user-subhead"> {{obj.titulo}} </span>
-                                    </td>
-                                    <td>{{obj.timestamp}}</td>
+
 
                                         {% for u in usr %}
 
                                             {% if u.id == obj.id_usuario %}
 
+                                            <td>                                      
+                                                <span class="user-subhead"> {{obj.titulo}} </span>
+                                            </td>
+                                            <td>{{obj.timestamp}}</td>
+
                                             <td> {{u.first_name}} {{u.last_name}} </td> 
+
+
+                                            <td> 
+
+                                            {% if obj.estado == 0 %}
+                                                <span class="badge badge-dark">Pendiente</span>
+                                             {%endif%}
+                                   
+                                            {% if obj.estado == 1 %}
+                                                <span class="badge badge-success">Resuelta</span>
+                                            {%endif%} 
+
+                                            </td>
+
+                                            <td style="width: 26%;">
+                                     
+                                            {% if obj.estado == 1 %}
+                                    
+                                                <a href='{%  url "consulta_detalle_adm" id=obj.id %}' class="btn btn-success"> Ver resolución </a>
+
+                                            {% endif %}       
+        
+                                            </td>
 
                                             {% endif %} 
                                     
                                         {% endfor %}
 
-                                    <td> 
 
-                                        {% if obj.estado == 0 %}
-                                        <span class="badge badge-dark">Pendiente</span>
-                                        {%endif%}
-                                   
-                                        {% if obj.estado == 1 %}
-                                        <span class="badge badge-success">Resuelta</span>
-                                        {%endif%} 
-
-                                    </td>
-
-                                    <td style="width: 26%;">
-                                     
-                                     {% if obj.estado == 1 %}
-                                    
-                                        <a href='{%  url "consulta_detalle_adm" id=obj.id %}' class="btn btn-success"> Ver resolución </a>
-
-                                    {% endif %}       
-        
-                                    </td>
 
                                         
                                 </tr>

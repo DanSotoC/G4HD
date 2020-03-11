@@ -110,6 +110,7 @@ def Paciente_edit(request,id_tutor=None,id_paciente=None):
 def contacto(request):
 	current_user = request.user
 	tx =  get_object_or_404(Tutor, id_perfil_id = current_user.id)
+	px = instance = get_object_or_404(Paciente, id_tutor_id = tx.id)
 	
 
 	form = consulta_mensaje(request.POST or None)
@@ -124,12 +125,15 @@ def contacto(request):
 		"form": form,
 		"user": tx,
 		"actual":current_user,
+		"paciente":px,
 	}
 		
 	return render(request,'Contacto.html',context)
 
 def ver_consultas (request):
 	current_user = request.user
+	tut = instance = get_object_or_404(Tutor, id_perfil_id = current_user.id)
+	px = instance = get_object_or_404(Paciente, id_tutor_id = tut.id)
 	tx = Tutor.objects.all()
 	con = Consulta.objects.all()
 
@@ -139,6 +143,7 @@ def ver_consultas (request):
 		"actual":current_user,
 		"con":con,
 		"aux":current_user.id,
+		"paciente":px,
 
 
 	}
@@ -147,11 +152,14 @@ def ver_consultas (request):
 def ver_respuesta (request,id=None):
 	current_user = request.user
 	con =  get_object_or_404(Consulta, id=id)
+	tut = instance = get_object_or_404(Tutor, id_perfil_id = current_user.id)
+	px = instance = get_object_or_404(Paciente, id_tutor_id = tut.id)
 
 	context = {
 
 		"actual":current_user,
 		"con":con,
+		"paciente":px,
 
 	}
 	return render(request,"ver_respuesta.html",context)

@@ -56,6 +56,7 @@ def usuarios_listu(request):
 	qset = request.GET.get("buscar")
 	user = Tutor.objects.filter(rut = qset)
 	current_user = request.user
+	px = Paciente.objects.all()
 	
 	if user.count() < 1:
 		queryset = Tutor.objects.all()
@@ -64,11 +65,13 @@ def usuarios_listu(request):
 		queryset = user
 		instance = User.objects.all()
 
+
 	context = {
 
 		"object_list": queryset,
 		"inst": instance,	
 		"actual":current_user,
+		"px":px,
 	}
 	return render(request,"listu.html",context)
 

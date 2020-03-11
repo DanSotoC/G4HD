@@ -100,6 +100,11 @@ a {
                             	{% for obj in object_list %}
                             	
 
+                                {% for p in px %}
+
+                                    {% if p.id_tutor_id == obj.id %}
+
+                                        {% if p.activo == 1 %}
                                 <tr>
                                 
                                 
@@ -135,8 +140,10 @@ a {
                                     	
                                 </tr>
 
-										
-										{% endfor %}
+										{%endif%}
+                                            {%endif%}
+										      {% endfor %}
+                                                {% endfor %}
 
 
 
@@ -190,7 +197,7 @@ a {
     dv = (dv == 0)?11:dv;
     
     // Validar que el Cuerpo coincide con su Dígito Verificador
-    if(dvEsperado != dv) { rut.setCustomValidity("RUT Inválido"); return false; }
+   // if(dvEsperado != dv) { rut.setCustomValidity("RUT Inválido"); return false; }
     
     // Si todo sale bien, eliminar errores (decretar que es válido)
     rut.setCustomValidity('');

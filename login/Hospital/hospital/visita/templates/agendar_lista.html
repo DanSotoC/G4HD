@@ -65,7 +65,22 @@ a {
 
 <!-- Metodo Buscar -->
 
-
+<div class="container" style="margin-left: -50px;">
+    <div class="row" >
+        <div class="col-md-12 search">
+        <form method="get">
+            <div id="custom-search-input">
+                <input type="text" class="form-control"  required oninput="checkRut(this)" minlength="1" maxlength="10" placeholder="Ingrese Rut" name="buscar">
+                <span class="input-group-list">
+                    <i class="icon icon-search"></i></br>
+                    <button type="submit" class="button btn btn-info">Buscar</button>
+                </span>
+                <a href='{% url "agendar_lista" %}' class="btn btn-info"> Refresh </a>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
 
 
 
@@ -241,7 +256,7 @@ a {
     dv = (dv == 0)?11:dv;
     
     // Validar que el Cuerpo coincide con su Dígito Verificador
-    if(dvEsperado != dv) { rut.setCustomValidity("RUT Inválido"); return false; }
+    //if(dvEsperado != dv) { rut.setCustomValidity("RUT Inválido"); return false; }
     
     // Si todo sale bien, eliminar errores (decretar que es válido)
     rut.setCustomValidity('');

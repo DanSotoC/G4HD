@@ -181,6 +181,8 @@ def agendar_lista(request):
 def visita_paciente(request):
     queryset = Visita.objects.all()
     current_user = request.user
+    tx =  get_object_or_404(Tutor, id_perfil_id = current_user.id)
+    pax = instance = get_object_or_404(Paciente, id_tutor_id = tx.id)
     px = Paciente.objects.all()
     instance = get_object_or_404(Tutor, id_perfil_id = current_user.id)
 
@@ -190,6 +192,7 @@ def visita_paciente(request):
         "date_list": queryset,
         "px": px,
         "aux":instance.id,
+        "paciente":pax,
     }	
 
     return render(request,"visita_paciente.html",context)
@@ -253,13 +256,17 @@ def reagendar(request):
 
 
 def visita_paciente_detalle(request, id=None):
+    current_user = request.user
+    tx =  get_object_or_404(Tutor, id_perfil_id = current_user.id)
+    px = instance = get_object_or_404(Paciente, id_tutor_id = tx.id)
     queryset = get_object_or_404(Visita, id=id)
     aux = get_object_or_404(formulario, id_visita=queryset.id)
 
     context = {
 
         "visita": queryset,
-        "detalle":aux.detalle
+        "detalle":aux.detalle,
+        "paciente":px,
         
     }	
 
