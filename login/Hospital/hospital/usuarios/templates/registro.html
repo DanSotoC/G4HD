@@ -46,13 +46,21 @@ label > span{
 	<form method="POST" class="row">
 		{% csrf_token%}
 
-
+		
 		
 		<div class="col-sm-12">
 			<div style="padding: 10px">
 			<label>N<span>ombre</span> <span>de</span> U<span>suario:</span></label> <br>
+			
 			<input type="text" name="username" maxlength="150" autofocus="" required="" id="id_username" class="form-control">
 			</div>	
+			{% if messages %}
+			{%for message in messages %}
+			
+			<div class="alert alert-danger">{{message}}</div>
+			{%endfor%}
+			{%endif%}
+		
 			<div style="padding: 10px">
 				<label>N<span>ombre:</span></label><br>
 				<input type="text" name="first_name" maxlength="140" required="" id="id_first_name" class="form-control">

@@ -55,6 +55,23 @@ a {
     padding: 12px 8px;
 }
 
+input[type=checkbox]
+{
+  /* Doble-tamaño Checkboxes */
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5);/* FF */
+  -webkit-transform: scale(1.5); /* Safari y Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  padding: 10px;
+}
+
+/* Tal vez desee envolver un espacio alrededor de su texto de casilla de verificación */
+.checkboxtexto
+{
+  /* Checkbox texto */
+  font-size: 110%;
+  display: inline;
+}
 
 </style>
 
@@ -69,137 +86,124 @@ a {
 
 <!-- FIN -->
 
+<div class="row row-cols-2" style="margin-left: -110px;">
 
-
-<div class="container bootstrap snippet" style="margin-left: -80px; margin-top: 40px;">
-    <div class="row">
-        <div class="col-lg-9">
-            <div class="main-box no-header clearfix">
-                <div class="main-box-body clearfix">
-                    <div class="table-responsive">
-                        
-                        <form method="POST">
-                            {% csrf_token %}
-                        <table class="table user-list" >
-                            <thead>
-                                <tr> 
-                                <th>#</th>   
-                                <th><span>Nombre Completo</span></th>
-                                <th><span>Rut</span></th>
-                                <th><span>Estado</span></th>
-                                <th><span>Equipo</span></th>
-                                
-                                <th>&nbsp;</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+    <div class="col-lg-7">
+        <div class="main-box no-header clearfix">
+            <div class="main-box-body clearfix">
+                <div class="table-responsive">
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                    <table class="table user-list" >
+                        <thead>
+                            <tr> 
+                            
+                            <th><span>Nombre Completo</span></th>
+                            <th><span>Rut</span></th>
+                            <th><span>Estado</span></th>
+                            <th><span>Equipo</span></th>
+                            
+                            <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
 
 
 
-                            	{% for fecha in date_list %}
+                            {% for fecha in date_list %}
 
-                                {% if fecha.fecha == hoy %}
+                            {% if fecha.fecha == hoy %}
 
-                                {%if fecha.status == 0%}
+                            {%if fecha.status == 0%}
 
-                                <tr>
-                                    {% for obj in px %}
-											
-											{% if obj.id == fecha.id_paciente %}
+                            <tr>
+                                {% for obj in px %}
+                                        
+                                        {% if obj.id == fecha.id_paciente %}
 
-                                    <td>
-                                        <label for="id_visita"></label>
-                                        <input type="checkbox" name="id_visita" id="id_visita" value={{fecha.id}} >
-                                    </td>
-                                    <td>            
+                                <td>
+                                    <label for="id_visita"></label>
+                                    <input type="checkbox" name="id_visita" id="id_visita" value={{fecha.id}} >  <span class="" style="font-size: 17px;">{{ obj.nombre}} {{ obj.apellido1}} {{obj.apellido2}}</span></input>
+                                </td>
+                             
+                                <td>{{obj.rut}}</td> 
+                                {%endif%}
 
-										
-											   <span class="user-subhead">{{ obj.nombre}} {{ obj.apellido1}} {{obj.apellido2}}</span>
+                                {%endfor%}	
+                               
+                                <td>
+                                    {% if fecha.status == 0 %}
+                                        <span class="badge badge-dark">Pendiente</span>
+                                    {%endif%}
+                                    {% if fecha.status == 1 %}
+                                        <span class="badge badge-success">Realizada</span>
+                                    {%endif%}                                        
+                                </td> 
 
-                                              
+                                <td>
+                                    
+                                    {% if fecha.equipo == 0%}
 
-										
+                                        <a> Sin equipo asignado </a>
 
-                                    </td>
-                                    <td>{{obj.rut}}</td> 
+                                    {% else %}
+
+
+                                            {% for g in group %}
+
+                                                {% if g.name == fecha.equipo %}
+                                                    <a>{{g.name}}</a>
+                                                {%endif%}
+
+                                            {%endfor%}  
+
                                     {%endif%}
 
-                                    {%endfor%}	
-                                   
-                                    <td>
-                                        {% if fecha.status == 0 %}
-                                            <span class="badge badge-dark">Pendiente</span>
-                                        {%endif%}
-                                        {% if fecha.status == 1 %}
-                                            <span class="badge badge-success">Realizada</span>
-                                        {%endif%}                                        
-                                    </td> 
-
-                                    <td>
-                                        
-                                        {% if fecha.equipo == 0%}
-
-                                            <a> Sin equipo asignado </a>
-
-                                        {% else %}
+                                </td>
 
 
-                                                {% for g in group %}
-
-                                                    {% if g.name == fecha.equipo %}
-                                                        <a>{{g.name}}</a>
-                                                    {%endif%}
-
-                                                {%endfor%}  
-
-                                        {%endif%}
-
-                                    </td>
-
-
-                                    
-                                </tr>
-                        
-                                {%endif%}
-                                {%endif%}
-								        {% endfor %}
-                              
-                        </table>
-                    </div>
+                                
+                            </tr>
+                    
+                            {%endif%}
+                            {%endif%}
+                                    {% endfor %}
+                          
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="container bootstrap snippet" style="margin-left: 760px; margin-top: -255px; ">
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="main-box no-header clearfix">
-                <div class="main-box-body clearfix">
-                    <div class="table-responsive">   
-          
-                      
-                        <div style="text-align: center; padding: 20px;">
-                         <label for=equipo><h2>Asignar Equipo:</h2></label>
-                          <select id="equipo" name="equipo" class="form-control">
-                            {%for g in group %}
-                              {%if g.name != 'Disponible' and g.name != 'Tutores' and g.name != 'Personal' and  g.name != 'Administrador' %}
-                                <option value="{{g.name}}">{{g.name}}</option>
-                              {% endif %}
-                            {% endfor %}
-                          </select>
-                          <br>
-                          <button class="btn btn-info" type="submit">Asignar</button>
-                        </div> 
-                    </div>
+    <div class="col-1"></div>
+    <div class="col-lg-4" style="margin-top: -70px;" >
+        <div class="main-box no-header clearfix">
+            <div class="main-box-body clearfix">
+                <div class="table-responsive">   
+      
+                  
+                    <div style="text-align: center; padding: 20px;">
+                     <label for=equipo><h2>Asignar Equipo:</h2></label>
+                      <select id="equipo" name="equipo" class="form-control">
+                        {%for g in group %}
+                          {%if g.name != 'Disponible' and g.name != 'Tutores' and g.name != 'Personal' and  g.name != 'Administrador' %}
+                            <option value="{{g.name}}">{{g.name}}</option>
+                          {% endif %}
+                        {% endfor %}
+                      </select>
+                      <br>
+                      <button class="btn btn-info" type="submit">Asignar</button>
+                    </div> 
                 </div>
             </div>
         </div>
     </div>
+
+                </form>
 </div>
-                    </form>
+
                         
                   
 <!--

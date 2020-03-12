@@ -53,15 +53,16 @@
         <li class="nav-item">
           <a href="{% url 'listar-equipo'%}"  style="color: white;" class="nav-link">Equipos</a>
         </li>
-        <li class="nav-item">
-          <a href="{% url 'listconsulta'%}"  style="color: white;" class="nav-link">Contacto <span  style="visibility: hidden;" class="badge badge-danger" id="Consulta"></span></a>
-                 
-        </li>
+       
         <li class="nav-item">
           <a href="{% url 'tiempos'%}"  style="color: white;" class="nav-link">Tiempos</a>
         </li>
         <li class="nav-item">
           <a href="{% url 'biblioteca'%}"  style="color: white;" class="nav-link">Bibliotecas</a>
+        </li>
+        <li class="nav-item" >
+          <a href="{% url 'listconsulta'%}"  style="color: white;" class="nav-link">Contacto <span  style="visibility: hidden; z-index: 100;" class="badge  badge-pill badge-danger" id="Consulta"></span></a>
+                         
         </li>
        
         <li class="nav-item">
@@ -74,6 +75,8 @@
 
 
 <div class="container" >
+ 
+			
   {%block content%}
   {%endblock%}
 </div>
@@ -90,7 +93,7 @@
     .then(data => {
         
       consulta=document.getElementById("Consulta");
-      consulta.innerHTML="<span>"+data.consulta+"</span>";  
+      consulta.innerHTML=data.consulta;  
     
       if (data.consulta == "0"){
         consulta.style.visibility="hidden";

@@ -8,6 +8,7 @@ from .models import Perfil, Tutor, Paciente ,Personal
 from .forms import  Registro_Form,Perfil_Form, Tutor_Form, Paciente_Form, Personal_Form
 from django.urls import reverse_lazy
 import threading
+
 from django.contrib.auth.models import Group
 from lista.views import usuarios_listen, usuarios_listu
 from django.contrib.auth.decorators import login_required
@@ -93,15 +94,25 @@ def perfil_edit(request,usuario_id):
 def Registro_View(request):
 	if request.method=='POST':
 		form1=Registro_Form(request.POST)
-		
+		users=User.objects.all()
 		
 
 		if form1.is_valid():
-			form1.save()
 
-		usuarios=User.objects.last()
-		usuario_id=usuarios.id
-		return redirect(perfil_edit,usuario_id)
+			
+			
+			for u in users:
+				print(u)
+				if request.POST.get('username') == u.username:
+					print(str(u.username))
+					messages.error(request,'El nombre de usuario ya existe, porfavor intente con otro.')
+					return redirect(Registro_View)
+				else:
+					form1.save()
+					
+					usuarios=User.objects.last()
+					usuario_id=usuarios.id
+					return redirect(perfil_edit,usuario_id)
 	else:
 		form1 = Registro_Form()
 		
