@@ -94,25 +94,19 @@ def perfil_edit(request,usuario_id):
 def Registro_View(request):
 	if request.method=='POST':
 		form1=Registro_Form(request.POST)
-		users=User.objects.all()
+		user_name=request.POST.get('username')
+				
 		
 
 		if form1.is_valid():
 
-			
-			
-			for u in users:
-				print(u)
-				if request.POST.get('username') == u.username:
-					print(str(u.username))
-					messages.error(request,'El nombre de usuario ya existe, porfavor intente con otro.')
-					return redirect(Registro_View)
-				else:
-					form1.save()
-					
-					usuarios=User.objects.last()
-					usuario_id=usuarios.id
-					return redirect(perfil_edit,usuario_id)
+				form1.save()
+				usuarios=User.objects.last()
+				usuario_id=usuarios.id
+				return redirect(perfil_edit,usuario_id)
+		else:
+			messages.error(request,"El nombre de usuario ya existe, porfavor elije otro :)")
+
 	else:
 		form1 = Registro_Form()
 		

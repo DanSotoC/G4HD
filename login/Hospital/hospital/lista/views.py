@@ -105,6 +105,7 @@ def reingreso(request):
 	context = {
 		"object_list":queryset,
 		"nota":calificacion,
+		"rut":qset
 	}
 	return render(request,"reingreso.html",context)
 

@@ -50,14 +50,14 @@ label > span{
 		
 		<div class="col-sm-12">
 			<div style="padding: 10px">
-			<label>N<span>ombre</span> <span>de</span> U<span>suario:</span></label> <br>
-			
+			<label>N<span>ombre</span> <span>de</span> U<span>suario:</span></label> {{a}} <br>
 			<input type="text" name="username" maxlength="150" autofocus="" required="" id="id_username" class="form-control">
 			</div>	
 			{% if messages %}
 			{%for message in messages %}
 			
 			<div class="alert alert-danger">{{message}}</div>
+
 			{%endfor%}
 			{%endif%}
 		
