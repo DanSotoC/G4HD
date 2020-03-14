@@ -14,10 +14,13 @@ def home(request):
 	visita = Visita.objects.all()
 	total = 100 #diferencia entre pacientes totales y pacientes para hoy
 	hoy = 0
+	completadas = 0
 
 	for v in visita:
 		if str(v.fecha) == str(date.today()):
 			hoy = hoy + 1
+			if v.status == 1:
+				completadas = completadas + 1
 
 
 	aux = 0
@@ -34,6 +37,9 @@ def home(request):
 		if i.estado == 0:
 			cont = cont + 1
 
+
+	completadas = (completadas*100)/hoy
+
 	group = Group.objects.all() 
 	context = {
 			'pacientes':aux,
@@ -43,6 +49,7 @@ def home(request):
 			"now":now,
 			"total":total,
 			"hoy":hoy,
+			"realizadas":completadas,
 			
 	}
 	return render(request,"dashboard.html", context)
