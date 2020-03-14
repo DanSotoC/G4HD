@@ -16,15 +16,15 @@
     {% csrf_token%} 
 
 
-<select id="tipo" name="tipo" form="tipo">
+  <select id="tipo" name="tipo" >
   
     {%for i in lista%}
 
-  <option value="{{i.item}}">{{i.item}} ({{i.tiempo}} minutos) </option>
+    <option value="{{i.item}}">{{i.item}} ({{i.tiempo}} minutos) </option>
 
     {%endfor%}
   
-</select>
+  </select>
 
     <button class="btn btn-info" type="submit">Guardar</button>
     </form>  

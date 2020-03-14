@@ -113,20 +113,20 @@ def tutor_edit(request,perfil=None,id_detalle=None):
 
 def tipo_paciente(request,id=id):
 
-	paciente = get_object_or_404(Paciente, id=id)
+	paciente = Paciente.objects.get(id=id)
 	lista = Tiempos.objects.all()
-	if request.method=='GET':
-		form=tipo(instance=paciente)
-	else:
-		form=tipo(request.POST,instance=paciente)
-		if form.is_valid():
-			form.save()
-		return HttpResponseRedirect(reverse('listpaciente'))
+	if request.method=='POST':
+		tipo_paciente=request.POST.get('tipo')
+		print(tipo_paciente)
+		paciente.tipo=tipo_paciente
+		paciente.save()
+		return redirect(usuario_detail,id)
+	
 
 	context = {
 
 		"lista":lista,
-		"form":form,
+		
 
 	}
 
