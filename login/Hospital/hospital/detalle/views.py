@@ -6,8 +6,10 @@ from usuarios.models import Paciente
 from usuarios.models import Tutor
 from usuarios.models import Personal
 from usuarios.models import Perfil
+from visita.models import Tiempos
 from tutor.models import Consulta
 from usuarios.forms import Paciente_Form , Tutor_Form , Personal_Form
+from .forms import tipo
 from tutor.forms import consulta_mensaje
 from lista.views import usuarios_listpa, usuarios_listen, usuarios_listu 
 
@@ -108,6 +110,28 @@ def tutor_edit(request,perfil=None,id_detalle=None):
 			form1.save()
 		return redirect(tutor_detail,perfil)
 	return render(request,'tutor_form.html',{'form1':form1,'perfil':perfil})
+
+def tipo_paciente(request,id=id):
+
+	paciente = get_object_or_404(Paciente, id=id)
+	lista = Tiempos.objects.all()
+	if request.method=='GET':
+		form=tipo(instance=paciente)
+	else:
+		form=tipo(request.POST,instance=paciente)
+		if form.is_valid():
+			form.save()
+		return HttpResponseRedirect(reverse('listpaciente'))
+
+	context = {
+
+		"lista":lista,
+		"form":form,
+
+	}
+
+	return render(request,'tipopx.html',context)	
+
 
 
 def especialista_edit(request,perfil=None,id_personal=None):
