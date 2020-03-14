@@ -173,7 +173,6 @@ def agendar_lista(request):
         "date_list": queryset,
         "px": instance,
 
-
     }	
 
     return render(request,"agendar_lista.html",context)
@@ -235,8 +234,9 @@ def borrar_lista(request,id=None):
 
 
 
-def visita_update(request, id=None):
+def visita_update(request, id=None, id_paciente=None):
     aux = Visita.objects.get(id=id)	
+    instance = get_object_or_404(Paciente, id=id_paciente)
     
     if request.method=='GET':
         form=Agendar(instance=aux)
@@ -244,7 +244,7 @@ def visita_update(request, id=None):
         form=Agendar(request.POST,instance=aux)		
         if form.is_valid():
             form.save()
-        return redirect(agendar_lista)
+        return redirect(visita_paciente_admin,instance.id)
     
     return render(request,"agendar_update.html",{"form":form,"id_paciente":aux.id_paciente,"status":aux.status})
 

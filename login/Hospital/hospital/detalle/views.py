@@ -26,7 +26,8 @@ def borrar_tutor(request,id):
 	context = {	
 	  "paciente":paciente,
 	  "tutor":tutor,
-	  "user":user
+	  "user":user,
+	  "idtut":tutor.id_perfil_id,
 	}
 	return render(request,"delete_tutor.html",context)
 

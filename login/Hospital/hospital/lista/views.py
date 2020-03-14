@@ -4,6 +4,7 @@ from django.shortcuts import HttpResponse, HttpResponseRedirect, redirect
 from usuarios.models import Paciente , Personal, Tutor,Perfil
 from registrar.models import formulario
 from tutor.models import Consulta
+from visita.models import Visita
 from .forms import Paciente_Form_activo
 
 from django.contrib.auth.models import User
@@ -139,7 +140,13 @@ def reingreso_paciente(request, id=None):
 def dar_de_baja_paciente(request, id=None):
 	paciente=Paciente.objects.get(id=id)
 	episodio = paciente.episodio
+	v = Visita.objects.all()
+	cont = 0
 	
+	for i in v:
+		if i.id_paciente == paciente.id:
+			if i.status == 0:
+				cont = cont + 1
 
 	if request.method=='GET':
 		form=Paciente_Form_activo(instance=paciente)
@@ -154,6 +161,7 @@ def dar_de_baja_paciente(request, id=None):
 		"paciente":paciente,
 		"form":form,
 		"ep":episodio,
+		"cont":cont,
 		
 
 	}

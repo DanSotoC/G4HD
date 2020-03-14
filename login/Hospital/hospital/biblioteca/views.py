@@ -67,11 +67,12 @@ def model_form_delete(request,id):
 def model_form_delete_unico(request,id,id_paciente):
     
     archivo=Archivo_Unico.objects.get(id=id)
+    px=get_object_or_404(Paciente, id=id_paciente) 
     if request.method=='POST':
         os.remove('.'+str(archivo.file.url))
         archivo.delete()
         return redirect(biblioteca_unica,id_paciente)
-    return render(request,'form_archivos_delete.html', {'archivo':archivo})
+    return render(request,'form_archivos_delete.html', {'archivo':archivo,'paciente':px})
 
 
 

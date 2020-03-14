@@ -101,6 +101,7 @@ input[type=checkbox]
                             
                             <th><span>Nombre Completo</span></th>
                             <th><span>Rut</span></th>
+                            <th><span>Comuna</span></th>
                             <th><span>Estado</span></th>
                             <th><span>Equipo</span></th>
                             
@@ -128,7 +129,9 @@ input[type=checkbox]
                                     <input type="checkbox" name="id_visita" id="id_visita" value={{fecha.id}} >  <span class="" style="font-size: 17px;">{{ obj.nombre}} {{ obj.apellido1}} {{obj.apellido2}}</span></input>
                                 </td>
                              
-                                <td>{{obj.rut}}</td> 
+                                <td>{{obj.rut}}</td>
+                                <td>{{obj.comuna}}</td>
+
                                 {%endif%}
 
                                 {%endfor%}	
