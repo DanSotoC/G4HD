@@ -89,6 +89,7 @@ def especialista_detail(request, id=None):
 def paciente_edit(request,id_tutor=None,id_paciente=None):
 	paciente=Paciente.objects.get(id=id_paciente)
 	tutor=Tutor.objects.get(id=id_tutor)
+	aux = 1
 	if request.method=='GET':
 		form=Paciente_Form(instance=paciente)
 	else:
@@ -96,7 +97,7 @@ def paciente_edit(request,id_tutor=None,id_paciente=None):
 		if form.is_valid():
 			form.save()
 		return redirect(usuario_detail,id_paciente)
-	return render(request,'paciente_form.html',{'form':form,'tutor':tutor})	
+	return render(request,'paciente_form.html',{'form':form,'tutor':tutor,'tipo':aux,'paciente':paciente})	
 
 
 def tutor_edit(request,perfil=None,id_detalle=None):

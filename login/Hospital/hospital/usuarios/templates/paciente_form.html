@@ -55,11 +55,24 @@
 			<label>Descripción Paciente</label>
 			{{form.desc}}
 		</div>
+
+		{% if tipo == 1%}
+
+			</br>
+
+			Asignación de tipo de paciente
+			<hr style="background-color:lightblue; width: 220px; margin-left: 0px;margin-top:0px; height: 3px;">
+
+			<a href='{%  url "tipo" id=paciente.id %}' class="btn btn-info" role="button">Asignar Tipo</a>
+
+		{% endif %}
 		
 		
 	</div>
 	
 	</div>
+
+
 	<br>
 	<div>
 			<button class="btn btn-info" type="submit">guardar</button>
