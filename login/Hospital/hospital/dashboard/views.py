@@ -25,6 +25,7 @@ def home(request):
 	LP=0
 	for v in visita:
 		if str(v.fecha) == str(date.today()):
+			hoy = hoy + 1
 			pac=Paciente.objects.get(id=v.id_paciente)
 			if pac.comuna=="San Bernardo":
 				SB=SB+1
@@ -32,11 +33,10 @@ def home(request):
 				LP=LP+1
 			if pac.comuna=="El Bosque":
 				EB=EB+1
-
-
-			hoy = hoy + 1
+			
 			if v.status == 1:
 				completadas = completadas + 1
+			completadas = (completadas*100)/hoy
 
 
 	aux = 0
@@ -54,7 +54,7 @@ def home(request):
 			cont = cont + 1
 
 
-	completadas = (completadas*100)/hoy
+	
 
 	group = Group.objects.all() 
 	context = {
@@ -71,6 +71,7 @@ def home(request):
 			"SB":SB,
 			"LP":LP,
 			"EB":EB,
+
 			
 	}
 	return render(request,"dashboard.html", context)

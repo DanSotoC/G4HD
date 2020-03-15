@@ -12,20 +12,18 @@
 <body class="w3-light-grey">
 
 <!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1400px;">
+<div class="w3-content w3-margin-top" style="max-width:1900px; max-height: 2000px;">
 
   <!-- The Grid -->
-  <div class="w3-row-padding">
+  <div class="w3-row-padding" style="margin-left: -190px; width: 1800px;">
   
     <!-- Left Column -->
-    <div class="w3-third">
+    <div class="w3-third" style="width: 300px; margin-right: 10px; height: 100% ">
     
-      <div class="w3-white w3-text-grey w3-card-4">
+      <div class="w3-white w3-text-grey w3-card-4" style="height: 100%;">
         <div class="w3-display-container">
           <img src="http://hospitalelpino.cl/wphep/wp-content/uploads/2017/03/gob_hep_2011.jpg" style="width:70%" alt="Avatar">
-<!--          <div class="w3-display-bottomleft w3-container w3-text-black">
-            <h2>Hospital El Pino</h2>
-          </div> -->
+
         </div>
         <div class="w3-container">
           <hr>
@@ -62,12 +60,12 @@
 
     <!-- Right Column -->
     
-    <div class="w3-twothird">
+    <div class="w3-twothird row" style="width: 68%">
 
-      <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 20px;">
-         <canvas id="myPieChart2"  style="margin: auto; width: 100%;"></canvas>
+      <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 20px; width: 48%; height: 400px; margin-right: 10px;">
+         <canvas id="myPieChart2"  style=" width: 100%;"></canvas>
       </div>
-      <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 20px;">
+      <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 20px;  width: 48%;">
        
         <canvas id="myPieChart"  style="margin: auto; width: 100%;"></canvas>
         
@@ -78,7 +76,7 @@
                                 
         {% if g.name != 'Administrador' and g.name != 'Tutores' and g.name != 'Personal' and  g.name != 'Disponible' %}
     
-      <div class="w3-container w3-card w3-white w3-margin-bottom">
+      <div class="w3-container w3-card w3-white w3-margin-bottom" style="margin-right: 10px; width: 48%;">
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Equipo {{g.name}} </h2>
         <h6 class="w3-text-teal">Visitas para hoy: N°</h6>
         <h6 class="w3-text-teal">Pacientes para hoy: N°</h6>
@@ -135,7 +133,7 @@
                              text: 'Visitas por Comuna'
                             },
 
-                            responsive:false,
+                            responsive:true,
                             maintainAspectRatio: false,
   }
 }
@@ -165,7 +163,7 @@ var myChart= new Chart(chrt2,{
                            text: 'Pacientes por Comuna'
                           },
 
-                          responsive:false,
+                          responsive:true,
                           maintainAspectRatio: false,
 }
 }
