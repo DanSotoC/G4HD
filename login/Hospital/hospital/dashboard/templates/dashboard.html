@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
 
 <body class="w3-light-grey">
 
@@ -60,7 +61,18 @@
     </div>
 
     <!-- Right Column -->
+    
     <div class="w3-twothird">
+
+      <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 20px;">
+         <canvas id="myPieChart2"  style="margin: auto; width: 100%;"></canvas>
+      </div>
+      <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 20px;">
+       
+        <canvas id="myPieChart"  style="margin: auto; width: 100%;"></canvas>
+        
+
+      </div>
 
         {% for g in group %}
                                 
@@ -99,6 +111,73 @@
   <p>Camino Padre Hurtado 13560, San Bernardo - Teléfono: (562) 5767300 / Anexo Minsal: 267300 - email: oirs.elpino@redsalud.gov.cl
 </a></p>
 </footer>
+
+
+<script>
+  var chrt1=document.getElementById('myPieChart').getContext('2d');
+
+  var myChart= new Chart(chrt1,{
+   "type":"pie",
+   "data":{
+     "labels":["La Pintana","El Bosque","San Bernardo"],
+     "datasets":[{"label":"My First Dataset",
+     "data":[{{LP|safe}},{{EB|safe}},{{SB|safe}}],
+     "backgroundColor":["rgb(255, 99, 132)",
+     "rgb(54, 162, 235)",
+     "rgb(255, 205, 86)"]
+    }]
+  },
+  "options":{
+    title: {
+                             display: true,
+                             fontColor:'#000',
+                             fontSize:28,
+                             text: 'Visitas por Comuna'
+                            },
+
+                            responsive:false,
+                            maintainAspectRatio: false,
+  }
+}
+
+
+
+);
+
+var chrt2=document.getElementById('myPieChart2').getContext('2d');
+
+var myChart= new Chart(chrt2,{
+ "type":"pie",
+ "data":{
+   "labels":["La Pintana","El Bosque","San Bernardo"],
+   "datasets":[{"label":"My First Dataset",
+   "data":[{{pacientes_LP|safe}},{{pacientes_EB|safe}},{{pacientes_SB|safe}}],
+   "backgroundColor":["rgb(255, 99, 132)",
+   "rgb(54, 162, 235)",
+   "rgb(255, 205, 86)"]
+  }]
+},
+"options":{
+  title: {
+                           display: true,
+                           fontColor:'#000',
+                           fontSize:28,
+                           text: 'Pacientes por Comuna'
+                          },
+
+                          responsive:false,
+                          maintainAspectRatio: false,
+}
+}
+
+
+
+);
+ 
+ 
+</script>
+
+
 
 </body>
 </html>

@@ -52,6 +52,10 @@ class Perfil_Form(forms.ModelForm):
 
 class Paciente_Form(forms.ModelForm):
 	class Meta:
+		COMUNA=(("La Pintana","La Pintana"),
+				("San Bernardo","San Bernardo"),
+				("El Bosque","El Bosque"))
+
 		model = Paciente
 
 		fields=['id_tutor',
@@ -70,7 +74,7 @@ class Paciente_Form(forms.ModelForm):
 				'apellido1':forms.TextInput(attrs={'class':'form-control'}),
 				'apellido2':forms.TextInput(attrs={'class':'form-control'}),
 				'rut':forms.TextInput(attrs={'class':'form-control',"id":"rut", "required oninput":"checkRut(this)", "maxlength":"10"}),
-				'comuna':forms.TextInput(attrs={'class':'form-control'}),
+				'comuna':forms.Select(choices=COMUNA,attrs={'class':'form-control'}),
 				'domicilio':forms.TextInput(attrs={'class':'form-control'}),
 				'num_domicilio':forms.TextInput(attrs={'class':'form-control'}),
 				'f_nacimiento':forms.DateInput(attrs={'class':'form-control','type':'date'}),
@@ -80,6 +84,10 @@ class Paciente_Form(forms.ModelForm):
 
 class Tutor_Form(forms.ModelForm):
 	class Meta:
+		COMUNA=(("La Pintana","La Pintana"),
+				("San Bernardo","San Bernardo"),
+				("El Bosque","El Bosque"))
+
 		model = Tutor
 
 		fields=['id_perfil',
@@ -91,7 +99,7 @@ class Tutor_Form(forms.ModelForm):
 
 		widgets={
 				'rut':forms.TextInput(attrs={'class':'form-control',"id":"rut", "required oninput":"checkRut(this)", "maxlength":"10"}),
-				'comuna':forms.TextInput(attrs={'class':'form-control'}),
+				'comuna':forms.Select(choices=COMUNA,attrs={'class':'form-control'}),
 				'domicilio':forms.TextInput(attrs={'class':'form-control'}),
 				'num_domicilio':forms.TextInput(attrs={'class':'form-control'}),
 				'f_nacimiento':forms.DateInput(attrs={'class':'form-control','type':'date'})

@@ -8,6 +8,11 @@ from datetime import datetime, date
 
 def home(request):
 	pacientes=Paciente.objects.all()
+	
+	pacientes_SB=Paciente.objects.filter(comuna='San Bernardo').count()
+	pacientes_LP=Paciente.objects.filter(comuna='La Pintana').count()
+	pacientes_EB=Paciente.objects.filter(comuna='El Bosque').count()
+
 	personal=Personal.objects.count()
 	current_user = request.user
 	now = datetime.now()
@@ -15,9 +20,20 @@ def home(request):
 	total = 100 #diferencia entre pacientes totales y pacientes para hoy
 	hoy = 0
 	completadas = 0
-
+	SB=0
+	EB=0
+	LP=0
 	for v in visita:
 		if str(v.fecha) == str(date.today()):
+			pac=Paciente.objects.get(id=v.id_paciente)
+			if pac.comuna=="San Bernardo":
+				SB=SB+1
+			if pac.comuna=="La Pintana":
+				LP=LP+1
+			if pac.comuna=="El Bosque":
+				EB=EB+1
+
+
 			hoy = hoy + 1
 			if v.status == 1:
 				completadas = completadas + 1
@@ -43,13 +59,18 @@ def home(request):
 	group = Group.objects.all() 
 	context = {
 			'pacientes':aux,
-			'personal':personal,
+			'pacientes_SB':pacientes_SB,
+			'pacientes_LP':pacientes_LP,
+			'pacientes_EB':pacientes_EB,
 			"actual":current_user,
 			"group":group,
 			"now":now,
 			"total":total,
 			"hoy":hoy,
 			"realizadas":completadas,
+			"SB":SB,
+			"LP":LP,
+			"EB":EB,
 			
 	}
 	return render(request,"dashboard.html", context)
