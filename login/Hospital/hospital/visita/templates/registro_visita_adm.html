@@ -92,11 +92,11 @@ a {
                             </thead>
                             <tbody>
 
-
-
                             	{% for fecha in date_list %}
 
-                                   {%if fecha.id_paciente == obj.id%}  
+                                   {%if fecha.id_paciente == obj.id%}
+
+                                        {%if fecha.episodio == obj.episodio%}  
 
                                 {%if fecha.status == 0%}
                                 <tr>
@@ -118,8 +118,8 @@ a {
 
                                     </td>
                                 </tr>
-                                {%endif%}
-
+                                        {%endif%}
+                                        {%endif%}
 
                                         {%endif%}
 								        {% endfor %}
@@ -129,6 +129,8 @@ a {
 
 
                                     {%if fecha.id_paciente == obj.id%}  
+
+                                        {%if fecha.episodio == obj.episodio%} 
 
                                 {%if fecha.status == 1%}
                                 <tr>
@@ -155,7 +157,7 @@ a {
                                 </tr>
 
                                 {%endif%}
-
+                                {%endif%}
                                 {%endif%}
                                 {% endfor %}
                             </tbody>
@@ -188,16 +190,21 @@ a {
                                          
                         <span class="small-list"> Email: {{usr.email}} </span> </br> 
                         <span class="small-list"> Domicilio: {{tx.domicilio}} {{tx.num_domicilio}}, {{tx.comuna}} </span> </br> 
-                        <span class="small-list"> Telefono: +56 9 {{tel.tel}} </span> </br>                 
-    
-    
+                        <span class="small-list"> Telefono: +56 9 {{tel.tel}} </span> </br>  
     
     
                     </label>
+
+
+
                
                 </li>
+
+
                 
             </ul>
+
+            <span class="list"> - EPISODIO: {{obj.episodio}} </span> </br></br>
             
         </div>
 

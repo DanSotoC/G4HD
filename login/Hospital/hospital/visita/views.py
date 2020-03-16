@@ -15,6 +15,7 @@ def agendar_visita(request, id=None):
     aux = Paciente.objects.get(id=id)
     eq = Visita.objects.all()
     zxc = "Disponible"
+    ep = aux.episodio
 
 
     for z in eq:
@@ -35,6 +36,7 @@ def agendar_visita(request, id=None):
                 visita.id_paciente = paciente
                 visita.fecha = fecha_inicial
                 visita.equipo = zxc
+                visita.episodio = ep
                 visita.save()
                 print("entro")
         
@@ -45,6 +47,7 @@ def agendar_visita(request, id=None):
             visita.id_paciente = paciente
             visita.fecha = fecha_inicial
             visita.equipo = zxc
+            visita.episodio = ep
             visita.save()
 
         if request.POST.get('periosidad')=="2vsSA":
@@ -58,12 +61,14 @@ def agendar_visita(request, id=None):
             visita.id_paciente = paciente
             visita.fecha = fecha_inicial
             visita.equipo = zxc
+            visita.episodio = ep
             visita.save()
 
             visita=Visita()
             visita.id_paciente = paciente
             visita.fecha = fecha_sig
             visita.equipo = zxc
+            visita.episodio = ep
             visita.save()
 
         if request.POST.get('periosidad')=="2vsSE":
@@ -77,12 +82,14 @@ def agendar_visita(request, id=None):
             visita.id_paciente = paciente
             visita.fecha = fecha_inicial
             visita.equipo = zxc
+            visita.episodio = ep
             visita.save()
 
             visita=Visita()
             visita.id_paciente = paciente
             visita.fecha = fecha_sig
             visita.equipo = zxc
+            visita.episodio = ep
             visita.save()
         
 
@@ -98,18 +105,21 @@ def agendar_visita(request, id=None):
             visita.id_paciente = paciente
             visita.fecha = fecha_inicial
             visita.equipo = zxc
+            visita.episodio = ep
             visita.save()
 
             visita=Visita()
             visita.id_paciente = paciente
             visita.fecha = fecha_2
             visita.equipo = zxc
+            visita.episodio = ep
             visita.save()
 
             visita=Visita()
             visita.id_paciente = paciente
             visita.fecha = fecha_3
             visita.equipo = zxc
+            visita.episodio = ep
             visita.save()
 
         
@@ -125,18 +135,21 @@ def agendar_visita(request, id=None):
             visita.id_paciente = paciente
             visita.fecha = fecha_inicial
             visita.equipo = zxc
+            visita.episodio = ep
             visita.save()
 
             visita=Visita()
             visita.id_paciente = paciente
             visita.fecha = fecha_2
             visita.equipo = zxc
+            visita.episodio = ep
             visita.save()
 
             visita=Visita()
             visita.id_paciente = paciente
             visita.fecha = fecha_3
             visita.equipo = zxc
+            visita.episodio = ep
             visita.save()
 
 

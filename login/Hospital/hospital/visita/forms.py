@@ -6,7 +6,8 @@ class Agendar(forms.ModelForm):
 		model = Visita
 
 		fields=['fecha',
-				'id_paciente']
+				'id_paciente',
+				'episodio']
 
 		widgets={
 
