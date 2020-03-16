@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from usuarios.models import Paciente, Personal
 from tutor.models import Consulta
-from visita.models import Visita
+from visita.models import Visita, Tiempos
 from django.http import JsonResponse
 from django.contrib.auth.models import Group
 from datetime import datetime, date
@@ -36,8 +36,13 @@ def home(request):
 			
 			if v.status == 1:
 				completadas = completadas + 1
-			completadas = (completadas*100)/hoy
 
+	if hoy == 0:
+		completadas = 100
+	else:
+		completadas = (completadas*100)/hoy
+
+	
 
 	aux = 0
 	for n in pacientes:
@@ -86,3 +91,55 @@ def get_data_consulta(request,*args,**kwargs):
 	}
 	return JsonResponse(data)
 	
+
+
+def equipo_dash(request,id=None):
+
+	group = get_object_or_404(Group, id=id)
+	px = Paciente.objects.all()
+	vx = Visita.objects.all()
+	tx = Tiempos.objects.all()
+
+	aux = 0
+	cont = 0
+	tiempo = 0
+	taux = 0
+	horas = 0
+	minutos = 0
+
+	for v in vx:
+		if str(v.fecha) == str(date.today()): 
+			if v.equipo == group.name:
+				cont = cont + 1 #Total de visitas del equipo
+				
+				if v.status == 1:
+					aux = aux +1 #Visitas completadas
+				else:
+					p = get_object_or_404(Paciente, id=v.id_paciente)
+					for i in tx:
+						if i.item == p.tipo:
+							tiempo = tiempo + i.tiempo
+							taux = taux + 1
+
+
+	if tiempo != 0:
+		horas = tiempo/60
+		horas = int(horas)
+		minutos = tiempo - (horas*60)
+
+
+	context = {
+
+		"group":group.name,
+		"totalvisitas": cont,
+		"realizadas": aux,
+		"horas": horas,
+		"minutos": minutos,
+		"t":tiempo,
+		"vx":vx,
+		"px":px,
+		"hoy":str(date.today()),
+
+	}
+
+	return render(request,"equipo_detalle_dash.html",context)

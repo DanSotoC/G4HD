@@ -3,6 +3,24 @@
 
 {%  block content %}
 
+<style>
+
+.button {
+  background-color: #009688;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  }
+
+</style>
+
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
@@ -78,17 +96,7 @@
     
       <div class="w3-container w3-card w3-white w3-margin-bottom" style="margin-right: 10px; width: 48%;">
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Equipo {{g.name}} </h2>
-        <h6 class="w3-text-teal">Visitas para hoy: N°</h6>
-        <h6 class="w3-text-teal">Pacientes para hoy: N°</h6>
-        <h6 class="w3-text-teal">Tiempo estimado: X:XX:XX </h6>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Cumplimiento del dia</b></h5>
-          <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-center w3-round-xlarge w3-teal" style="height:24px;width:100%">%cumplimiento</div>
-            el widht tambien corresponde al porcentaje de cumplimiento
-          </div>
-          <hr>
-      	</div>
+        <a href='{% url "equipo_dash" id=g.id %}' class="button"> Detalles </a></br></br>
       </div>
 
         {%endif%}

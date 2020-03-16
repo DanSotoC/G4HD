@@ -6,6 +6,7 @@ urlpatterns =[
 
 url(r'home/',views.home,name="dash"),
 url(r'data/consulta',views.get_data_consulta,name="consulta"),
+url(r'equipo/detalle/(?P<id>\d+)$',views.equipo_dash,name="equipo_dash"),
 
 
 ]

@@ -1,0 +1,65 @@
+<!--DOCTYPE html -->
+{%  extends "base.html" %}
+
+{%  block content %}
+
+
+Equipo {{group}}</br>
+total visitas {{totalvisitas}}</br>
+realizadas {{realizadas}}</br>
+tiempo {{horas}}:{{minutos}}</br>
+minutos totales: {{t}}
+Hacer cumplimiento total </br>
+
+paciente x listo</br>
+paciente y falta</br>
+
+Fecha de hoy: {{hoy}}</br>
+
+{% for v in vx %}
+
+
+
+  {%if v.equipo == group%}
+
+    {%for p in px%}
+
+      {%if p.id == v.id_paciente%}
+
+        Nombre paciente</br>
+        Estado visita
+
+        {%if v.status == 1 %}
+
+          Visita realizada
+
+        {%else%}
+
+          Visita Pendiente
+
+        {%endif%}
+
+
+      {%endif%}
+
+
+    {%endfor%}
+
+
+  {%endif%}
+
+
+
+
+{%endfor%}
+
+
+
+Lista de especialistas en el grupo</br>
+
+
+
+
+
+
+{%  endblock content %}
