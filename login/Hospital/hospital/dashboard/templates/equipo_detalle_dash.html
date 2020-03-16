@@ -3,6 +3,17 @@
 
 {%  block content %}
 
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+ <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 20px; width: 48%; height: 500px; margin-right: 10px; overflow: hidden;">
+  <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Equipo {{group}}</h2>
+  <h2>Fecha de hoy: {{hoy}}</h2>
+  <hr style="width: 100%;">
+  <h2 style="position: absolute; z-index: 100; margin-left: 120px;">Realización del Día</h2>
+        <div id="myspeedChart" class="chart--container" style=" width: 100%; height: 100%; margin-left: 70px;"> </div>
+         
+      </div>
 
 Equipo {{group}}</br>
 total visitas {{totalvisitas}}</br>
@@ -26,7 +37,7 @@ Fecha de hoy: {{hoy}}</br>
 
       {%if p.id == v.id_paciente%}
 
-        Nombre paciente</br>
+        Nombre paciente;{{p.nombre}}</br>
         Estado visita
 
         {%if v.status == 1 %}
@@ -59,7 +70,120 @@ Lista de especialistas en el grupo</br>
 
 
 
+<script type="text/javascript">
+  var total={{totalvisitas|safe}}
+  var realizadas={{realizadas|safe}}
 
+  var valor= (realizadas*100)/total
+
+  let chartConfig = {
+        type: 'gauge',
+        globals: {
+        fontSize: '10px'
+        },
+        plot: {
+        valueBox: {
+        text: '%v', // default
+        fontSize: '40px',
+        placement: 'center',
+        rules: [
+                {
+                text: '%v',
+                rule: '%v >= 80'
+                },
+                {
+                text: '%v',
+                rule: '%v < 80 && %v > 60'
+                },
+                {
+                text: '%v',
+                rule: '%v < 60 && %v > 40'
+                },
+                {
+                text: '%v',
+                rule: '%v <  40'
+                }
+        ]
+        },
+        size: '100%'
+        },
+        plotarea: {
+        width:'290px',
+        marginTop: '70px',
+        marginLeft:'20px'
+        },
+        scaleR: {
+        aperture: 180,
+        center: {
+        visible: false
+        },
+        item: {
+        offsetR: 0,
+        rules: [
+                {
+                offsetX: '15px',
+                rule: '%i == 9'
+                }
+        ]
+        },
+        labels: ['0', '10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
+        maxValue: 100,
+        minValue: 0,
+        ring: {
+        rules: [
+                {
+                backgroundColor: 'red',
+                rule: '%v >= 0 && %v <= 20'
+                },
+                {
+                backgroundColor: 'orange',
+                rule: '%v >= 20 && %v <= 40'
+                },
+                {
+                backgroundColor: 'yellow',
+                rule: '%v >= 40 && %v <= 80'
+                },
+                {
+                backgroundColor: 'green',
+                rule: '%v >= 80'
+                }
+        ],
+        size: '40px'
+        },
+        step: 10,
+        tick: {
+        visible: false
+        }
+        },
+        tooltip: {
+        borderRadius: '5px'
+        },
+        refresh: {
+        type: 'feed',
+        url: 'feed()',
+        interval: 1500,
+        resetTimeout: 1000,
+        transport: 'js'
+        },
+        series: [
+        {
+        values: [valor], // starting value
+        backgroundColor: 'black',
+        indicator: [10, 10, 10, 10, 0.75],
+        animation: {
+                effect: 'ANIMATION_EXPAND_VERTICAL',
+                method: 'ANIMATION_BACK_EASE_OUT',
+                sequence: 'null',
+                speed: 1500
+        }
+        }
+        ]
+        };
+         zingchart.render({
+        id: 'myspeedChart',
+        data: chartConfig
+        });
+</script>
 
 
 {%  endblock content %}
