@@ -4,6 +4,7 @@ from tutor.models import Consulta
 from visita.models import Visita, Tiempos
 from django.http import JsonResponse
 from django.contrib.auth.models import Group
+from django.contrib.auth.models import User
 from datetime import datetime, date
 
 def home(request):
@@ -99,6 +100,8 @@ def equipo_dash(request,id=None):
 	px = Paciente.objects.all()
 	vx = Visita.objects.all()
 	tx = Tiempos.objects.all()
+	user=User.objects.filter(groups__name=group.name)
+	personal=Personal.objects.all()
 
 	aux = 0
 	cont = 0
@@ -106,6 +109,8 @@ def equipo_dash(request,id=None):
 	taux = 0
 	horas = 0
 	minutos = 0
+	now=date.today()
+	
 
 	for v in vx:
 		if str(v.fecha) == str(date.today()): 
@@ -120,6 +125,8 @@ def equipo_dash(request,id=None):
 						if i.item == p.tipo:
 							tiempo = tiempo + i.tiempo
 							taux = taux + 1
+
+	
 
 
 	if tiempo != 0:
@@ -138,7 +145,9 @@ def equipo_dash(request,id=None):
 		"t":tiempo,
 		"vx":vx,
 		"px":px,
-		"hoy":str(date.today()),
+		"hoy":now,
+		"personal":personal,
+		"user":user
 
 	}
 

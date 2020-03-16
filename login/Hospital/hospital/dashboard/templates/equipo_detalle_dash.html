@@ -15,7 +15,14 @@
          
       </div>
 
-Equipo {{group}}</br>
+ <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 20px; width: 48%; height: 500px; margin-right: 10px; overflow: hidden;">
+  
+  
+  
+  
+           
+      </div>
+
 total visitas {{totalvisitas}}</br>
 realizadas {{realizadas}}</br>
 tiempo {{horas}}:{{minutos}}</br>
@@ -25,48 +32,57 @@ Hacer cumplimiento total </br>
 paciente x listo</br>
 paciente y falta</br>
 
-Fecha de hoy: {{hoy}}</br>
+Fecha de hoy: {{hoy}}</br><br>
 
+
+
+
+Visitas <br><br>
 {% for v in vx %}
 
 
+{% if v.fecha == hoy %}
 
-  {%if v.equipo == group%}
-
-    {%for p in px%}
-
-      {%if p.id == v.id_paciente%}
-
-        Nombre paciente;{{p.nombre}}</br>
-        Estado visita
-
-        {%if v.status == 1 %}
-
-          Visita realizada
-
-        {%else%}
-
-          Visita Pendiente
-
-        {%endif%}
+{% for p in px%}
+ {% if v.id_paciente == p.id %}
 
 
-      {%endif%}
+ {%if v.equipo == group %}
+
+ {{p.nombre}} {{p.apellido1}} {{p.apellido2}}
 
 
-    {%endfor%}
+ {%endif%}
+ {%endif%}
+
+{% endfor %} 
 
 
-  {%endif%}
+{%endif%}
+
+{%endfor%}
+
+<br>
+Personal <br>
+
+{% for u in user%}
+
+{%for p in personal %}
 
 
 
+{%if p.id_perfil_i == u.id  %}
+
+    {{u.first_name}}{{p.apellido1}}{{p.apellido2}}<br>
+
+{%endif%}
 
 {%endfor%}
 
 
 
-Lista de especialistas en el grupo</br>
+
+{%endfor%}
 
 
 

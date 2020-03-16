@@ -127,3 +127,8 @@ def visitas_programadas_esp(request):
 
 	}
 	return render(request,"visitas_programadas_esp.html",context)
+
+
+
+
+	
