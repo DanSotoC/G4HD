@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from usuarios.models import Paciente, Personal
+from usuarios.models import Paciente, Personal, Perfil
 from tutor.models import Consulta
 from visita.models import Visita, Tiempos
 from django.http import JsonResponse
@@ -101,6 +101,8 @@ def equipo_dash(request,id=None):
 	vx = Visita.objects.all()
 	tx = Tiempos.objects.all()
 	user=User.objects.filter(groups__name=group.name)
+	perfil = Perfil.objects.all()
+
 	personal=Personal.objects.all()
 
 	aux = 0
@@ -135,6 +137,7 @@ def equipo_dash(request,id=None):
 		minutos = tiempo - (horas*60)
 
 
+
 	context = {
 
 		"group":group.name,
@@ -147,7 +150,9 @@ def equipo_dash(request,id=None):
 		"px":px,
 		"hoy":now,
 		"personal":personal,
-		"user":user
+		"user":user,
+		"restantes": cont - aux,
+		"perfil":perfil,
 
 	}
 

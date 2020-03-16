@@ -6,6 +6,13 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<script src="https://www.google-analytics.com/cx/api.js"></script>
+
+    <script src="https://m.servedby-buysellads.com/monetization.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://use.fortawesome.com/349cfdf6.js"></script>
+    <script src="https://embed.typeform.com/embed.js"></script>
+
  <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 20px; width: 48%; height: 500px; margin-right: 10px; overflow: hidden;">
   <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Equipo {{group}}</h2>
   <h2>Fecha de hoy: {{hoy}}</h2>
@@ -22,86 +29,124 @@
 
  <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 20px; width: 48%; height: 500px; margin-right: 10px; overflow: hidden;">
   
-  
-  hola
-  
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Datos generales</h2>
+        total visitas {{totalvisitas}}</br>
+        realizadas {{realizadas}}</br></br>
+
+           
+                
+                    <canvas id="myPieChart2"  style=" width: 100%;"></canvas>
+
+           
+           
+         
+      
+
            
       </div>
 
  <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 20px; width: 48%; height: 500px; margin-right: 10px; overflow: hidden;">
   
+    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Listado de pacientes</h2>
   
-  hola
-  
+        {% for v in vx %}
+
+        {%if v.fecha == hoy%} 
+
+            {% if v.equipo == group%}
+
+                {%if v.status == 1%}
+
+                    {% for p in px %}
+
+                        {% if v.id_paciente == p.id %}
+
+                            Visita {{v.id}} </br>
+                            {{p.nombre}} {{p.apellido1}} {{p.apellido2}} Realizada </br></br>
+
+                            
+
+
+                        {%endif%}
+
+
+                    {% endfor %}
+                
+
+                {%endif%}
+
+            {%endif%}
+
+
+
+        {%endif%}
+        {% endfor %}
+
+
+        {% for v in vx %}
+        {%if v.fecha == hoy%} 
+
+            {% if v.equipo == group%}
+
+                {%if v.status == 0%}
+
+                    {% for p in px %}
+
+                        {% if v.id_paciente == p.id %}
+
+                            Visita {{v.id}} </br>
+                            {{p.nombre}} {{p.apellido1}} {{p.apellido2}} Pendiente </br></br>
+
+                            
+
+
+                        {%endif%}
+
+
+                    {% endfor %}
+                
+
+                {%endif%}
+
+            {%endif%}
+
+        {%endif%}
+        {% endfor %}
            
       </div>
 
  <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 20px; width: 48%; height: 500px; margin-right: 10px; overflow: hidden;">
   
+
+<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Personal del equipo {{group}} </h2>
+
+    {% for g in user %}
+
+        {{g.first_name}} {{g.last_name}}
+
+        {%for i in perfil%}
+
+            {%if g.id == i.id%}
+
+                {{i.tel}}
+
+            {%endif%}
+
+        {%endfor%}
+
+    </br>
+
+    {% endfor %}
   
-  hola
   
            
       </div>
 
-total visitas {{totalvisitas}}</br>
-realizadas {{realizadas}}</br>
-
-
-paciente x listo</br>
-paciente y falta</br>
-
-Fecha de hoy: {{hoy}}</br><br>
 
 
 
 
-Visitas <br><br>
-{% for v in vx %}
 
-
-{% if v.fecha == hoy %}
-
-{% for p in px%}
- {% if v.id_paciente == p.id %}
-
-
- {%if v.equipo == group %}
-
- {{p.nombre}} {{p.apellido1}} {{p.apellido2}}
-
-
- {%endif%}
- {%endif%}
-
-{% endfor %} 
-
-
-{%endif%}
-
-{%endfor%}
-
-<br>
-Personal <br>
-
-{% for u in user%}
-
-{%for p in personal %}
-
-
-
-{%if p.id_perfil_i == u.id  %}
-
-    {{u.first_name}}{{p.apellido1}}{{p.apellido2}}<br>
-
-{%endif%}
-
-{%endfor%}
-
-
-
-
-{%endfor%}
 
 
 
@@ -109,7 +154,7 @@ Personal <br>
   var total={{totalvisitas|safe}}
   var realizadas={{realizadas|safe}}
 
-  var valor= (realizadas*100)/total
+  var valor= Math.round((realizadas*100)/total,2)
 
   let chartConfig = {
         type: 'gauge',
@@ -218,6 +263,38 @@ Personal <br>
         id: 'myspeedChart',
         data: chartConfig
         });
+
+
+var chrt2=document.getElementById('myPieChart2').getContext('2d');
+
+  var total={{totalvisitas|safe}}
+  var realizadas={{realizadas|safe}}
+  
+
+
+var myChart= new Chart(chrt2,{
+ "type":"pie",
+ "data":{
+   "labels":["Visitas Restantes","Visitas Realizadas"],
+   "datasets":[{"label":"My First Dataset",
+   "data":[{{restantes|safe}},{{realizadas|safe}}],
+   "backgroundColor":["rgb(179, 200, 198)",
+   "rgb(0, 150, 136)",
+   ]
+  }]
+},
+"options":{
+
+                          responsive:true,
+                          maintainAspectRatio: true,
+}
+}
+
+
+
+);
+
+
 </script>
 
 
