@@ -70,6 +70,14 @@
         <li class="nav-item">
           <a href="{% url 'logout'%}"  style="color: white;" class="nav-link">Logout</a>
         </li>
+        <li class="nav-item" style="margin-top: 8px; margin-left: 190px; color: white;">
+                                      <div class="row-inline">
+                                              
+                                        <span  id="date_time"></span>
+                                        <span  id="hour" ></span>
+                                       
+                                    </div>
+                                    </li>
       </ul>
       
     </div>
@@ -115,6 +123,63 @@
 
 
   window.onload=Consulta;
+
+ window.onload = date_time('date_time');
+        function date_time(id)
+                {
+                        date = new Date;
+                        year = date.getFullYear();
+                        month = date.getMonth();
+                        months = new Array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Deciembre');
+                        d = date.getDate();
+                        day = date.getDay();
+                        days = new Array('Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado');
+                        h = date.getHours();
+                        if(h<10)
+                        {
+                                h = "0"+h;
+                        }
+                        m = date.getMinutes();
+                        if(m<10)
+                        {
+                                m = "0"+m;
+                        }
+                        s = date.getSeconds();
+                        if(s<10)
+                        {
+                                s = "0"+s;
+                        }
+                        result = ' '+d+' de '+months[month]+' '+year;
+                        document.getElementById(id).innerHTML = result;
+                        setTimeout('date_time("'+id+'");','1000');
+                        return true;
+                }
+        
+
+                window.onload = hour('hour');
+        function hour(id)
+        {
+                h = date.getHours();
+                        if(h<10)
+                        {
+                                h = "0"+h;
+                        }
+                        m = date.getMinutes();
+                        if(m<10)
+                        {
+                                m = "0"+m;
+                        }
+                        s = date.getSeconds();
+                        if(s<10)
+                        {
+                                s = "0"+s;
+                        }
+                        result =h+':'+m;
+                        document.getElementById(id).innerHTML = result;
+                        setTimeout('hour("'+id+'");','1000');
+                        return true;      
+        }
+
 </script>
 
 

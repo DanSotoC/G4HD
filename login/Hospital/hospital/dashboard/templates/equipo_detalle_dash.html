@@ -4,7 +4,8 @@
 {%  block content %}
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
 <script src="https://www.google-analytics.com/cx/api.js"></script>
 
@@ -13,30 +14,44 @@
     <script src="https://use.fortawesome.com/349cfdf6.js"></script>
     <script src="https://embed.typeform.com/embed.js"></script>
 
- <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 20px; width: 48%; height: 500px; margin-right: 10px; overflow: hidden;">
-  <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Equipo {{group}}</h2>
-  <h2>Fecha de hoy: {{hoy}}</h2>
-  <hr style="width: 100%;">
-  <h2 style="position: absolute; z-index: 100; margin-left: 120px;">Realización del Día </br> {{horas}} horas y {{minutos}} minutos </h2>
-        <div id="myspeedChart" class="chart--container" style=" width: 100%; height: 100%; margin-left: 70px;"></div>
-         
+<div class="row">
+    
+ <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 20px; width: 48%; height: 450px; margin-right: 10px; overflow: hidden;">
+  <h2 class="w3-text-grey w3-padding-16"style="position: absolute; z-index: 100;"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal" ></i>Equipo {{group}}</h2>
+  
+  
+        
+        <div id="myspeedChart" class="chart--container" style=" width: 70%; height: 90%; margin-left: 70px; margin-top: -10px;"></div>
 
+        <div class="row" style=" position: absolute; z-index: 100; margin-top: -0px;" data-toggle="tooltip" data-placement="bottom" title="tiempo por tipo de paciente visitado"><i class="far fa-clock fa-fw w3-margin-right w3-xxlarge w3-text-teal" ></i><h4>{{horas}} horas y {{minutos}} minutos</h4></div> 
+        
 
       </div>
 
 
 
 
- <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 20px; width: 48%; height: 500px; margin-right: 10px; overflow: hidden;">
+
+ <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 20px; width: 48%; height: 450px; margin-right: 10px; overflow: hidden;">
   
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Datos generales</h2>
-        total visitas {{totalvisitas}}</br>
-        realizadas {{realizadas}}</br></br>
+       
 
            
                 
-                    <canvas id="myPieChart2"  style=" width: 100%;"></canvas>
+                  
 
+                    <div class="row" style="">
+                          <canvas id="myPieChart2"  style=" width: 80%;"></canvas>
+                    <div style="margin-right: 50px; margin-left: 200px; margin-top: 10px;"data-toggle="tooltip" data-placement="bottom" title="Total visitas del día">
+                        <i class="fas fa-square fa-fw w3-margin-right w3-text-teal"style="font-size: 20px;" ></i>
+                        {{totalvisitas}}
+                    </div>
+                    <div style="margin-top: 10px;data-toggle="tooltip" data-placement="bottom" title="Visitas Realizadas"">
+                        <i class="fas fa-check-square fa-fw w3-margin-right w3-text-teal"style="font-size: 20px;"></i>
+                         {{realizadas}}</div>
+ 
+                    </div>                   
            
            
          
@@ -49,7 +64,9 @@
   
     <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Listado de pacientes</h2>
   
-        {% for v in vx %}
+       <table style="margin-left: 70px;">
+           <tbody>
+                {% for v in vx %}
 
         {%if v.fecha == hoy%} 
 
@@ -61,12 +78,19 @@
 
                         {% if v.id_paciente == p.id %}
 
-                            Visita {{v.id}} </br>
-                            {{p.nombre}} {{p.apellido1}} {{p.apellido2}} Realizada </br></br>
+                            <tr>
+                                <td style="width: 200px;"> {{p.nombre}} {{p.apellido1}} {{p.apellido2}} </td>
+                                
+                                <td>
+                                    <span class=" badge badge-success">Realizada</span>
+
+                                </td>    
+                            </tr>
+                             
 
                             
 
-
+ 
                         {%endif%}
 
 
@@ -94,8 +118,15 @@
 
                         {% if v.id_paciente == p.id %}
 
-                            Visita {{v.id}} </br>
-                            {{p.nombre}} {{p.apellido1}} {{p.apellido2}} Pendiente </br></br>
+                            <tr >
+                                <td> {{p.nombre}} {{p.apellido1}} {{p.apellido2}} </td>
+                                
+                                <td>
+                                    <span class=" badge badge-dark">Pendiente</span>
+
+                                </td>    
+                            </tr>
+                            
 
                             
 
@@ -112,7 +143,9 @@
 
         {%endif%}
         {% endfor %}
-           
+           </tbody>
+
+       </table>           
       </div>
 
  <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 20px; width: 48%; height: 500px; margin-right: 10px; overflow: hidden;">
@@ -120,28 +153,37 @@
 
 <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Personal del equipo {{group}} </h2>
 
-    {% for g in user %}
+   <table style="margin-left: 70px;">
+       <tbody>
+            {% for g in user %}
 
-        {{g.first_name}} {{g.last_name}}
+       <tr>
+           <td style="width: 200px;"> {{g.first_name}} {{g.last_name}}</td>
+       
 
         {%for i in perfil%}
 
             {%if g.id == i.id%}
 
-                {{i.tel}}
+                <td>
+                    {{i.tel}}
+                </td>
 
             {%endif%}
 
         {%endfor%}
 
-    </br>
+        </tr>
 
     {% endfor %}
   
+       </tbody>
+   </table>
   
            
       </div>
 
+</div>
 
 
 
@@ -151,6 +193,7 @@
 
 
 <script type="text/javascript">
+
   var total={{totalvisitas|safe}}
   var realizadas={{realizadas|safe}}
 
@@ -295,6 +338,9 @@ var myChart= new Chart(chrt2,{
 );
 
 
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 </script>
 
 
