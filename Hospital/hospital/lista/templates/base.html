@@ -70,7 +70,7 @@
         <li class="nav-item">
           <a href="{% url 'logout'%}"  style="color: white;" class="nav-link">Logout</a>
         </li>
-        <li class="nav-item" style="margin-top: 8px; margin-left: 190px; color: white;">
+        <li class="nav-item" style="margin-top: 8px; margin-left: 150px; color: white;">
                                       <div class="row-inline">
                                               
                                         <span  id="date_time"></span>
@@ -98,6 +98,7 @@
 
 
 <script>
+  window.onload=Consulta();
   function Consulta(){
     fetch('http://localhost:8000/dashboard/data/consulta')
     .then(res => res.json())
@@ -122,7 +123,7 @@
   };
 
 
-  window.onload=Consulta;
+  
 
  window.onload = date_time('date_time');
         function date_time(id)
@@ -156,7 +157,7 @@
                 }
         
 
-                window.onload = hour('hour');
+        window.onload = hour('hour');
         function hour(id)
         {
                 h = date.getHours();
