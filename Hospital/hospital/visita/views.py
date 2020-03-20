@@ -251,15 +251,13 @@ def visita_update(request, id=None, id_paciente=None):
     aux = Visita.objects.get(id=id)	
     instance = get_object_or_404(Paciente, id=id_paciente)
     
-    if request.method=='GET':
-        form=Agendar(instance=aux)
-    else:
-        form=Agendar(request.POST,instance=aux)		
-        if form.is_valid():
-            form.save()
+    if request.method=='POST':
+        f= request.POST.get('fecha')
+        aux.fecha=f
+        aux.save()
         return redirect(visita_paciente_admin,instance.id)
     
-    return render(request,"agendar_update.html",{"form":form,"id_paciente":aux.id_paciente,"status":aux.status})
+    return render(request,"agendar_update.html",{"id_paciente":aux.id_paciente,"status":aux.status})
 
 
 

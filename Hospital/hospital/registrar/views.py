@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from registrar.forms import formulario_visita_esp
 from especialista.views import visitas_programadas_esp
 from visita.forms import  asignar_equipo
-from datetime import date, time,datetime
+from datetime import date, time,datetime 
 from registrar.models import formulario as fm
 
 def formulario(request, id=None):
@@ -20,6 +20,8 @@ def formulario(request, id=None):
 	visita =  get_object_or_404(Visita, id=id)
 	px = get_object_or_404(Paciente, id=visita.id_paciente)
 	form=formulario_visita_esp(request.POST)
+
+	edad_p=edad(px.f_nacimiento)
 	if request.method=='POST':
 		form=formulario_visita_esp(request.POST)
 
@@ -41,6 +43,7 @@ def formulario(request, id=None):
 		"form":form,
 		"h_inicio":current_time,
 		"id_paciente":px.id,
+		"edad":edad_p
 	}
 		
 	return render(request,'formulario_visita_esp.html',context)
@@ -144,3 +147,16 @@ def ver_episodio_numerado_esp(request, id=None, id_paciente=None):
 
 	return render(request,'ver_episodio_numerado_esp.html',context)
 
+
+
+def edad(naci):
+    hoy = datetime.today()
+    f_naci=datetime.strptime(naci,"%Y-%m-%d")
+    if hoy < f_naci:
+    	print("error en fecha nacimiento")
+        
+    else:
+        ano = f_naci.year
+        anno_hoy=hoy.year
+        fecha=anno_hoy-ano
+        return fecha 
