@@ -73,7 +73,7 @@ def home(request):
 			"now":now,
 			"total":total,
 			"hoy":hoy,
-			"realizadas":completadas,
+			"realizadas":int(completadas),
 			"SB":SB,
 			"LP":LP,
 			"EB":EB,

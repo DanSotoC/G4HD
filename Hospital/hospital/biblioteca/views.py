@@ -55,7 +55,7 @@ def model_form_upload_unico(request,id=None,id_paciente=None):
 
 
 
-def model_form_delete(request,id):
+def model_form_delete(request,id=None):
     
     archivo=Archivo.objects.get(id=id)
     if request.method=='POST':

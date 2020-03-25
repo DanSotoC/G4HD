@@ -78,7 +78,7 @@ def Especialista_edit(request,perfil=None,id_personal=None):
 		if form.is_valid():
 			form.save()
 		return redirect(ver_perfil_e)
-	return render(request,'personal_f.html',{'form':form,'perfil':perfil})
+	return render(request,'personal_f.html',{'form':form,'perfil':perfil,'r':personal.rut})
 
 
 def contraseña_edit(request):

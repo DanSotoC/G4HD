@@ -361,11 +361,11 @@ def visita_detalles(request,id=None):
 
     context = {
 
-        "registro":registro,
+        "f":registro,
 
     }
 
-    return render(request,'visita_detalles_registro.html',context)
+    return render(request,'visita_detalles_registro_adm.html',context)
 
 def tiempo_update(request, id=None):
     aux = Tiempos.objects.get(id=id) 

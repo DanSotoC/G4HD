@@ -135,7 +135,7 @@ def ver_episodio_numerado_tutor(request, id=None, id_paciente=None):
 def ver_episodio_numerado_esp(request, id=None, id_paciente=None):
 
 	aux = id
-	fx = fm.objects.all()
+	fx = fm.objects.all().order_by('-id')
 	px = get_object_or_404(Paciente, id=id_paciente)
 
 	context = {
