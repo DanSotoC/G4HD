@@ -19,24 +19,30 @@
   border-radius: 5px;
   }
 
+
+i {
+  color: #009688;
+}
+
 </style>
 
 
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-<body class="w3-light-grey">
+
+
+
+
+
 
 <!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1400px; max-height: 2000px;">
+<div class="row row-cols-2" style="width:110%;margin-left: -50px; height: 95%; margin-top: 20px; ">
 
   <!-- The Grid -->
-  <div class="w3-row-padding" style="margin-left: -80px; width: 1400px;">
+  <div class=" col-sm-3" style=" ">
   
     <!-- Left Column -->
-    <div class="w3-third" style="width: 300px; margin-right: 10px; height: 100% ">
+    <div class="col-sm-12" style="width: 100%; margin-right: 10px; height: 100%;border-radius:3px; background: white; ">
     
       <div class="w3-white w3-text-grey w3-card-4" style="height: 100%;">
         <div class="w3-display-container">
@@ -45,23 +51,32 @@
         </div>
         <div class="w3-container">
           <hr>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i> {{now}} </h6></br>
+          
           <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Datos Generales</b></p>
           <p>Pacientes Totales</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:100%">{{pacientes}}</div>
+            <div class="progress" style="height: 20px;">
+  <div class="progress-bar" role="progressbar" style="width: 100%;background: #009688;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{pacientes}}</div>
+</div>
+            
           </div></br>
           <p>Visitas Para Hoy</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
             <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:100%">
-              <div class="w3-center w3-text-white">{{hoy}}</div>
+              <div class="progress" style="height: 20px;">
+  <div class="progress-bar" role="progressbar" style="width: 100%;background: #009688;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{hoy}}</div>
+</div>
+              
             </div>
           </div>
           <br>
           <p>Cumplimiento del día</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:{{realizadas}}%">
-              <div class="w3-center w3-text-white">{{realizadas}}%</div>
+            <div>
+              <div class="progress" style="height: 20px;">
+              <div class="progress-bar" id="cumplimiento" role="progressbar" style="width:;background: #009688;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">{{realizadas}}%</div>
+            </div>
+              
             </div>
           </div>
 
@@ -74,24 +89,29 @@
 
     <!-- Right Column -->
     
-    <div class="w3-twothird row" style="width: 68%">
+   
+    
+  <!-- End Grid -->
+  </div>
+   <div class="col-sm-9 row" style="width: 110%; ">
 
-      <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 20px; width: 48%; height: 400px; margin-right: 10px;">
+      <div class="col-sm-6" style="border-radius:3px; background: white;padding: 10px;">
          <canvas id="myPieChart2"  style=" width: 100%;"></canvas>
       </div>
-      <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding: 20px;  width: 48%;">
+      <div class="col-sm-6" style="border-radius:3px; background: white;padding:10px;">
        
         <canvas id="myPieChart"  style="margin: auto; width: 100%;"></canvas>
         
 
       </div>
+      <div class="col-sm-12" style="height: 50px;"></div>
 
         {% for g in group %}
                                 
         {% if g.name != 'Administrador' and g.name != 'Tutores' and g.name != 'Personal' and  g.name != 'Disponible' %}
     
-      <div class="w3-container w3-card w3-white w3-margin-bottom" style="margin-right: 10px; width: 48%;">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Equipo {{g.name}} </h2>
+      <div class="col-sm-5" style="margin-left: 40px; text-align: center; margin-bottom: 30px;background: white;margin-right: 30px;border-radius:3px;">
+        <h2 class=""><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Equipo {{g.name}} </h2>
         <a href='{% url "equipo_dash" id=g.id %}' class="button"> Detalles </a></br></br>
       </div>
 
@@ -102,20 +122,21 @@
 
     <!-- End Right Column -->
     </div>
-    
-  <!-- End Grid -->
-  </div>
   
   <!-- End Page Container -->
 </div>
 
-<footer class="w3-container w3-teal w3-center w3-margin-top">
+<footer class="w3-container w3-teal w3-center w3-margin-top" style="background:#009688;color: white; margin-top: 10px;border-radius:3px;padding: 5px; ">
   <p>Camino Padre Hurtado 13560, San Bernardo - Teléfono: (562) 5767300 / Anexo Minsal: 267300 - email: oirs.elpino@redsalud.gov.cl
 </a></p>
 </footer>
 
 
 <script>
+/*modificacion barra cumplimiento*/
+document.getElementById("cumplimiento").style.width={{realizadas|safe}}+"%";
+
+
   var chrt1=document.getElementById('myPieChart').getContext('2d');
 
   var myChart= new Chart(chrt1,{
@@ -181,7 +202,5 @@ var myChart= new Chart(chrt2,{
 
 
 
-</body>
-</html>
 
 {%  endblock content %}
