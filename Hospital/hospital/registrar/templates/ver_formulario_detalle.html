@@ -35,19 +35,44 @@ li a{color:black}
     <h1>Detalles Visita </h1>
   </div>
   <div class="card-body">
-    <h3 class="card-title"><b>Procedimiento Realizado</b></br></br>
+   
+    <button class="btn btn-info" style="float:right;"  data-clipboard-target="#myInput">
+    Copy
+</button>
+   <textarea  id="myInput" style="width: 100%; height: 500px;" >
+     ID Visita: {{f.id_visita}}
+     Nombre Personal en visita: {{user.first_name}} {{user.last_name}}
+     Nombre Paciente: {{paciente.nombre}} {{paciente.apellido1}} {{paciente.apellido2}}
+     Fecha: {{v.fecha}}
+     Antecedentes Mórbidos: {{f.antecedentes}}
+     Red de Apoyo:{%if f.red_apoyo == '1' %} Buena{%endif%}{%if f.red_apoyo == '2' %} Regular{%endif%}{%if f.red_apoyo == '3'%} Mala{%endif%}
+     Indice de Barthel:{%if f.indice_barthel == 1 %} Autovalente{%endif%}{%if f.indice_barthel == 2 %} Semivalente{%endif%}{%if f.indice_barthel == 3%} Dependiente{%endif%}
+     Escala Braden(LPP):{%if f.escala_braden == 1 %} Alta{%endif%}{%if f.escala_braden == 2 %} Moderada{%endif%}{%if f.escala_braden == 3%} Baja{%endif%}
+     Escala Norton(Caidas):{%if f.escala_norton == 1 %} Alta{%endif%}{%if f.escala_norton == 2 %} Moderada{%endif%}{%if f.escala_norton == 3%} Baja{%endif%}
+     
+     Evolucion:
+     {{f.evolucion}}
+     
+     Detalle:
+     {{f.detalle}}
 
-          <b>Evolución del Paciente</b></br>
-          {{f.evolucion}}</br></br>
-          <b>Pendientes del Paciente</b></br>
-          {{f.pendientes}}</br></br>
-          <b>Observaciones del Paciente</b></br>
-          {{f.detalle}}</br></br>
+     Pendiente:
+     {{f.pendientes}}
+     
+     Comentarios:
+     {{f.comentarios}}
 
-    </h3></br>
-             
+     
+    
+   </textarea>
     <a href='{% url "visitas_esp" %}' class="button">Volver</a>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+
+<script type="text/javascript">
+  new ClipboardJS('.btn');
+</script>
 
 {%endblock content%}
 

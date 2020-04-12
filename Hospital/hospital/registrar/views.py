@@ -53,6 +53,9 @@ def ver_formulario(request, id=None):
 
 	visita = get_object_or_404(Visita, id=id)
 	frml = get_object_or_404(fm,id_visita=visita.id)
+	paciente=Paciente.objects.get(id=frml.id_paciente)
+	personal=Personal.objects.get(id=frml.id_especialista)
+	user=User.objects.get(id=personal.id_perfil_id)
 	
 
 
@@ -60,6 +63,8 @@ def ver_formulario(request, id=None):
 
 		"f": frml,
 		"v": visita,
+		"user":user,
+		"paciente":paciente,
 	}
 
 	return render(request,'ver_formulario_detalle.html',context)

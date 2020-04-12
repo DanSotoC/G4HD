@@ -6,62 +6,62 @@
 <div class="card text-center">
   <div class="card-header">
   	<div class="card-title">
-  		Visita n° {{form.id_visita}}
+  		<strong>Visita n° {{form.id_visita}}</strong> 
 
   	</div>
   	<div class="card-body">
   		<div class="row">
   			<div class="col-sm-6">
-  			Personal: {{user.first_name}} {{user.last_name}}<br>
-  		Fecha:{{visita.fecha}}<br>
-  		Antecedentes Morbidos:{{form.antecedentes}}<br>
-  		
+  			<strong>Personal:</strong> {{user.first_name}} {{user.last_name}}<br><br>
+  		<strong>Fecha:</strong> {{visita.fecha}}<br><br>
+  		<strong>Antecedentes Morbidos:</strong> {{form.antecedentes}}<br><br>
+  		<strong>Red de Apoyo:</strong>
   		{%if form.red_apoyo == 1 %}
-  		Red de Apoyo: Buena<br>
+  		 Buena<br><br>
   		{%endif%}
   		{%if form.red_apoyo == 2 %}
-  		Red de Apoyo: Regular<br>
+  		 Regular<br><br>
   		{%endif%}
   		{%if form.red_apoyo == 3 %}
-  		Red de Apoyo: Mala<br>
+  		 Mala<br><br>
   		{%endif%}
-  		
+  		<strong>Indice Barthel:</strong>
   		{%if form.indice_barthel == 1 %}
-  		Indice Barthel:Autovalente<br>
+  		Autovalente<br><br>
 		{%endif%}
 		{%if form.indice_barthel == 2 %}
-  		Indice Barthel: Semivalente<br>
+  		 Semivalente<br><br>
 		{%endif%}
 		{%if form.indice_barthel == 3 %}
-  		Indice Barthel:Dependiente  <br>
+  		Dependiente  <br><br>
 		{%endif%}
-		
+		<strong>Escala Braden:</strong>
 		{%if form.escala_braden == 1%}
-		Escala Braden: Alta<br>
+		 Alta<br><br>
 		{%endif%}
 		{%if form.escala_braden == 2%}
-		Escala Braden: Moderada <br>
+		 Moderada <br><br>
 		{%endif%}
 		{%if form.escala_braden == 3%}
-		Escala Braden: Bajo<br>
+		 Bajo<br><br>
 		{%endif%}
-		
+		<strong>Escala Norton:</strong>
 		{%if form.escala_norton == 1%}
-		Escala Norton: Alta<br>
+		 Alta<br><br>
 		{%endif%}
 		{%if form.escala_norton == 2%}
-		Escala Norton: Moderada<br>
+		 Moderada<br><br>
 		{%endif%}
 		{%if form.escala_norton == 3%}
-		Escala Norton: Baja<br>
+		 Baja<br><br>
 		{%endif%}
   		</div>
 			
 		<div class="col-sm-6">
-			Detalle:{{form.detalle}}<br>
-		Evolución:{{form.evolucion}}<br>
-		Pendientes:{{form.pendientes}}<br>
-		Comentarios:{{form.comentarios}}<br>
+			<strong>Detalle:</strong><br>{{form.detalle}}<br><br>
+		<strong>Evolución:</strong><br>{{form.evolucion}}<br><br>
+		<strong>Pendientes:</strong><br>{{form.pendientes}}<br><br>
+		<strong>Comentarios:</strong><br>{{form.comentarios}}<br>
 		</div>
 		
 
