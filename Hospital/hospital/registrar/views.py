@@ -137,12 +137,13 @@ def ver_episodio_numerado_esp(request, id=None, id_paciente=None):
 	aux = id
 	fx = fm.objects.all().order_by('-id')
 	px = get_object_or_404(Paciente, id=id_paciente)
-
+	visita=Visita.objects.all()
 	context = {
 
 		"aux":int(aux),
 		"formulario":fx,
 		"paciente":px,
+		"visita":visita,
 	}
 
 	return render(request,'ver_episodio_numerado_esp.html',context)
@@ -160,3 +161,21 @@ def edad(naci):
         anno_hoy=hoy.year
         fecha=anno_hoy-ano
         return fecha 
+
+
+
+
+def detalle_historial_visita_esp(request,id_visita=None):
+	
+	visita=Visita.objects.get(id=id_visita)
+	form=fm.objects.get(id_visita=id_visita)
+	personal=Personal.objects.get(id=form.id_especialista)
+	user=User.objects.get(id=personal.id_perfil_id)
+	context={
+		"form":form,
+		"personal":personal,
+		"user":user,
+		"visita":visita,
+	}
+
+	return render(request,"detalle_historial.html",context)

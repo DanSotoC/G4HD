@@ -11,38 +11,46 @@
     <h1>{{paciente.nombre}} {{paciente.apellido1}} {{paciente.apellido2}} </h1>
     <h2 class="card-title"> Episodio {{aux}}</h2></br></br>
   </div>
-  <div class="card-body">
+  <div class="card-body ">
+    <div class="row">
+         {% for f in formulario%}
+              
 
+                {%if f.id_paciente == paciente.id%}
+
+                  {% if f.episodio == aux %}
+          
+                 <div class="card" style="margin-right: 5px;">
+                    <div class="card-header">
+                      Visita {{f.id_visita}}
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Fecha Visita</h5>
+                      {%for v in visita%}
+                     {%if v.id == f.id_visita%}
+                        <p class="card-text">{{v.fecha}}</p>   
+                     {%endif%}
+                     {% endfor %}
+                     
+                      <a href="{% url 'historial' id_visita=f.id_visita %}" class="btn btn-info">Detalle Visita</a>
+                    </div>
+                  </div>
+
+                  
+                 
+                  {% endif %}
+
+                {% endif %}
+                
+                 
+              {% endfor %}
+           
+
+    </div>
     
-    {% for f in formulario%}
-
-      {%if f.id_paciente == paciente.id%}
-
-        {% if f.episodio == aux %}
-
-          <u>Visita ID {{id_visita}}</u></br></br>          
-
-          <b>Evolución del Paciente</b></br>
-          {{f.evolucion}}</br></br>
-          <b>Pendientes del Paciente</b></br>
-          {{f.pendientes}}</br></br>
-          <b>Observaciones del Paciente</b></br>
-          {{f.detalle}}</br></br>
-
-
-
-
-
-
-
-
-
-  
-        {% endif %}
-
-      {% endif %}
-
-    {% endfor %}
+              
+           
+               
 
     </br></br></br>
     <a href="{% url 'visitas_esp' %}" class="btn btn-info" role="button">Volver</a>

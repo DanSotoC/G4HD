@@ -1,0 +1,82 @@
+{%extends "base_especialista.html"%}
+
+
+{%block content%}
+
+<div class="card text-center">
+  <div class="card-header">
+  	<div class="card-title">
+  		Visita n° {{form.id_visita}}
+
+  	</div>
+  	<div class="card-body">
+  		<div class="row">
+  			<div class="col-sm-6">
+  			Personal: {{user.first_name}} {{user.last_name}}<br>
+  		Fecha:{{visita.fecha}}<br>
+  		Antecedentes Morbidos:{{form.antecedentes}}<br>
+  		
+  		{%if form.red_apoyo == 1 %}
+  		Red de Apoyo: Buena<br>
+  		{%endif%}
+  		{%if form.red_apoyo == 2 %}
+  		Red de Apoyo: Regular<br>
+  		{%endif%}
+  		{%if form.red_apoyo == 3 %}
+  		Red de Apoyo: Mala<br>
+  		{%endif%}
+  		
+  		{%if form.indice_barthel == 1 %}
+  		Indice Barthel:Autovalente<br>
+		{%endif%}
+		{%if form.indice_barthel == 2 %}
+  		Indice Barthel: Semivalente<br>
+		{%endif%}
+		{%if form.indice_barthel == 3 %}
+  		Indice Barthel:Dependiente  <br>
+		{%endif%}
+		
+		{%if form.escala_braden == 1%}
+		Escala Braden: Alta<br>
+		{%endif%}
+		{%if form.escala_braden == 2%}
+		Escala Braden: Moderada <br>
+		{%endif%}
+		{%if form.escala_braden == 3%}
+		Escala Braden: Bajo<br>
+		{%endif%}
+		
+		{%if form.escala_norton == 1%}
+		Escala Norton: Alta<br>
+		{%endif%}
+		{%if form.escala_norton == 2%}
+		Escala Norton: Moderada<br>
+		{%endif%}
+		{%if form.escala_norton == 3%}
+		Escala Norton: Baja<br>
+		{%endif%}
+  		</div>
+			
+		<div class="col-sm-6">
+			Detalle:{{form.detalle}}<br>
+		Evolución:{{form.evolucion}}<br>
+		Pendientes:{{form.pendientes}}<br>
+		Comentarios:{{form.comentarios}}<br>
+		</div>
+		
+
+  		</div>
+
+ 
+
+	
+
+  	</div>
+
+    <a href="{% url 'ver_episodio_numerado_esp' id=form.episodio id_paciente=form.id_paciente %}" class="btn btn-info" role="button">Volver</a>
+    
+
+
+
+
+{%endblock%}
