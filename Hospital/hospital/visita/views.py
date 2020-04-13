@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404,redirect, reverse, HttpResponseRedirect
 from usuarios.models import Paciente
 from visita.models import Visita, Tiempos
-from usuarios.models import Tutor
+from usuarios.models import Tutor,Personal
 from usuarios.models import Perfil
 from .forms import  Agendar, asignar_equipo, time
 from lista.views import usuarios_listpa
@@ -272,12 +272,15 @@ def visita_paciente_detalle(request, id=None):
     px = instance = get_object_or_404(Paciente, id_tutor_id = tx.id)
     queryset = get_object_or_404(Visita, id=id)
     aux = get_object_or_404(formulario, id_visita=queryset.id)
+    personal=Personal.objects.get(id=aux.id_especialista)
+    user=User.objects.get(id=personal.id_perfil_id)
 
     context = {
 
         "visita": queryset,
-        "detalle":aux.detalle,
+        "form":aux,
         "paciente":px,
+        "user":user
         
     }	
 
