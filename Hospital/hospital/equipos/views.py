@@ -2,13 +2,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import Group		
 from usuarios.models import Personal, Perfil
 from django.contrib.auth.models import User
-
-
-# Create your views here.
-
+from django.contrib.auth.decorators import login_required
 
 
 
+
+
+@login_required
 def Listar_equipo_view(request):	
 	group = Group.objects.all()
 	if request.POST.get('nombre_equipo'):
@@ -26,7 +26,7 @@ def Listar_equipo_view(request):
 
 
 
-
+@login_required
 def Ingreso_usuarios(request,id):
 	
 	group=Group.objects.get(id=id)
@@ -55,7 +55,7 @@ def Ingreso_usuarios(request,id):
 	return render(request,"ingreso_usuarios_grupo.html",{'disponible':disponible,'personal':personal,'equipo':equipo,'group':group})
 
 
-
+@login_required
 def Eliminar_equipo(request,id):
 	group=Group.objects.get(id=id)
 	dispgroup=Group.objects.get(name='Disponible')

@@ -6,18 +6,19 @@ from .forms import DocumentForm, DocumentFormUnico
 from django.contrib import messages 
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
  
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 import os
 from tutor.models import Consulta
 
-
+@login_required
 def biblioteca(request):
 	archivo = Archivo.objects.all()    
 	return render(request,'biblioteca.html',{'archivo':archivo})
 
-
+@login_required
 def biblioteca_unica(request,id=None):
     px=get_object_or_404(Paciente, id_tutor_id = id) 
     archivo = Archivo_Unico.objects.all()
@@ -27,7 +28,7 @@ def biblioteca_unica(request,id=None):
     }
     return render(request,'biblioteca_unica.html',context)
 
-
+@login_required
 def model_form_upload(request):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
@@ -40,7 +41,7 @@ def model_form_upload(request):
         'form': form
     })
 
-
+@login_required
 def model_form_upload_unico(request,id=None,id_paciente=None):
     if request.method == 'POST':
         form = DocumentFormUnico(request.POST, request.FILES)
@@ -54,7 +55,7 @@ def model_form_upload_unico(request,id=None,id_paciente=None):
     })
 
 
-
+@login_required
 def model_form_delete(request,id=None):
     
     archivo=Archivo.objects.get(id=id)
@@ -63,7 +64,8 @@ def model_form_delete(request,id=None):
         archivo.delete()
         return redirect(biblioteca)
     return render(request,'form_archivos_delete.html', {'archivo':archivo})
-
+    
+@login_required
 def model_form_delete_unico(request,id,id_paciente):
     
     archivo=Archivo_Unico.objects.get(id=id)

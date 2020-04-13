@@ -13,13 +13,14 @@ from usuarios.forms import Paciente_Form , Tutor_Form , Personal_Form
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
 from datetime import date
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def logout_view(request):
     logout(request)
     return render(request,"main.html")
 
-
+@login_required
 def home_especialista(request):
 	current_user = request.user
 	px = instance = get_object_or_404(Personal, id_perfil_id = current_user.id)
@@ -32,7 +33,7 @@ def home_especialista(request):
 	}
 	return render(request,"index_especialista.html",context)
 
-
+@login_required
 def ver_perfil_e (request):
 
 	current_user = request.user
@@ -63,11 +64,12 @@ def ver_perfil_e (request):
 	}
 	return render(request,"ver_perfil_e.html",context)
 
+@login_required
 def biblioteca_e(request):
 	archivo = Archivo.objects.all()
 	return render(request,'biblioteca_especialista.html',{'archivo':archivo})
 
-
+@login_required
 def Especialista_edit(request,perfil=None,id_personal=None):
 	
 	personal=Personal.objects.get(id=id_personal)
@@ -80,7 +82,7 @@ def Especialista_edit(request,perfil=None,id_personal=None):
 		return redirect(ver_perfil_e)
 	return render(request,'personal_f.html',{'form':form,'perfil':perfil,'r':personal.rut})
 
-
+@login_required
 def contraseña_edit(request):
 	if request.method == 'POST':
 		form = PasswordChangeForm(request.user, request.POST)
@@ -96,7 +98,7 @@ def contraseña_edit(request):
 		form = PasswordChangeForm(request.user)
 		return render(request,'contra_especialista_edit.html',{'form': form})
 		
-
+@login_required
 def visitas_programadas_esp(request):
 
 	current_user = request.user

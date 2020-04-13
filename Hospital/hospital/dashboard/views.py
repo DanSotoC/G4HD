@@ -6,7 +6,10 @@ from django.http import JsonResponse
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
 from datetime import datetime, date
+from django.contrib.auth.decorators import login_required
 
+
+@login_required
 def home(request):
 	pacientes=Paciente.objects.all()
 	
@@ -82,7 +85,7 @@ def home(request):
 	}
 	return render(request,"dashboard.html", context)
 
-
+@login_required
 def get_data_consulta(request,*args,**kwargs):
 
 	con=Consulta.objects.filter(estado='0')
@@ -93,7 +96,7 @@ def get_data_consulta(request,*args,**kwargs):
 	return JsonResponse(data)
 	
 
-
+@login_required
 def equipo_dash(request,id=None):
 
 	group = get_object_or_404(Group, id=id)

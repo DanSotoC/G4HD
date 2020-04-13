@@ -6,15 +6,16 @@ from registrar.models import formulario
 from tutor.models import Consulta
 from visita.models import Visita
 from .forms import Paciente_Form_activo
-
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
 
-
+@login_required
 def logout_view(request):
     logout(request)
     return render(request,"main.html")
 
+@login_required
 def usuarios_listpa(request):
 	qset = request.GET.get("buscar")
 	user = Paciente.objects.filter(rut = qset)
@@ -33,7 +34,7 @@ def usuarios_listpa(request):
 	}
 	return render(request,"listpa.html",context)
 
-
+@login_required
 def usuarios_listen(request):
 	qset = request.GET.get("buscar")
 	user = Personal.objects.filter(rut = qset)
@@ -53,6 +54,7 @@ def usuarios_listen(request):
 	}
 	return render(request,"listen.html",context)
 
+@login_required
 def usuarios_listu(request):
 	qset = request.GET.get("buscar")
 	user = Tutor.objects.filter(rut = qset)
@@ -76,7 +78,7 @@ def usuarios_listu(request):
 	}
 	return render(request,"listu.html",context)
 
-
+@login_required
 def consulta_lista(request):
 	
 	con = Consulta.objects.all().order_by('timestamp')
@@ -91,7 +93,7 @@ def consulta_lista(request):
 	}
 	return render(request,"consulta_lista.html",context)
 
-
+@login_required
 def reingreso(request):
 	qset = request.GET.get("buscar")
 	user = Paciente.objects.filter(rut = qset)
@@ -110,7 +112,7 @@ def reingreso(request):
 	}
 	return render(request,"reingreso.html",context)
 
-
+@login_required
 def reingreso_paciente(request, id=None):
 	paciente=Paciente.objects.get(id=id)
 	ep = paciente.episodio
@@ -136,7 +138,7 @@ def reingreso_paciente(request, id=None):
 	return render(request,"confirmarreingreso.html",context)
 
 
-
+@login_required
 def dar_de_baja_paciente(request, id=None):
 	paciente=Paciente.objects.get(id=id)
 	episodio = paciente.episodio
@@ -164,7 +166,7 @@ def dar_de_baja_paciente(request, id=None):
 	return render(request,"dar_de_baja.html",context)
 
 
-
+@login_required
 def observaciones(request,id=None):
 
 	px = get_object_or_404(Paciente, id=id)

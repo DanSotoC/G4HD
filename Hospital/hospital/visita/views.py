@@ -10,7 +10,9 @@ from django.contrib.auth.models import User
 from datetime import datetime, timedelta, date
 from django.contrib.auth.models import Group
 from registrar.models import formulario
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def agendar_visita(request, id=None):
     aux = Paciente.objects.get(id=id)
     eq = Visita.objects.all()
@@ -167,7 +169,7 @@ def agendar_visita(request, id=None):
     return render(request,"agendar_visita.html",context)
 
 
-
+@login_required
 def agendar_lista(request):
     queryset = Visita.objects.all()
     instance = Paciente.objects.all()
@@ -189,7 +191,8 @@ def agendar_lista(request):
     }	
 
     return render(request,"agendar_lista.html",context)
-    
+ 
+@login_required    
 def visita_paciente(request):
     queryset = Visita.objects.all()
     current_user = request.user
@@ -209,6 +212,7 @@ def visita_paciente(request):
 
     return render(request,"visita_paciente.html",context)
 
+@login_required
 def visita_paciente_admin(request, id=None):
     px = Paciente.objects.get(id=id)
     queryset = Visita.objects.all()
@@ -229,7 +233,7 @@ def visita_paciente_admin(request, id=None):
 
     return render(request,"registro_visita_adm.html",context)
 
-
+@login_required
 def borrar_fecha(request,id=None):
     instance = get_object_or_404(Visita, id=id)
     id_p=instance.id_paciente
@@ -237,6 +241,7 @@ def borrar_fecha(request,id=None):
     messages.error(request, "Successfully deleted")
     return redirect(visita_paciente_admin,id_p)
 
+@login_required
 def borrar_lista(request,id=None):
     instance = get_object_or_404(Visita, id=id)
     id_p=instance.id_paciente
@@ -246,7 +251,7 @@ def borrar_lista(request,id=None):
 
 
 
-
+@login_required
 def visita_update(request, id=None, id_paciente=None):
     aux = Visita.objects.get(id=id)	
     instance = get_object_or_404(Paciente, id=id_paciente)
@@ -261,11 +266,11 @@ def visita_update(request, id=None, id_paciente=None):
 
 
 
-
+@login_required
 def reagendar(request):
     return render(request,"reagendar.html")
 
-
+@login_required
 def visita_paciente_detalle(request, id=None):
     current_user = request.user
     tx =  get_object_or_404(Tutor, id_perfil_id = current_user.id)
@@ -286,7 +291,7 @@ def visita_paciente_detalle(request, id=None):
 
     return render(request,"visita_paciente_detalle.html",context)
 
-
+@login_required
 def agendar_lista_hoy(request):
     queryset = Visita.objects.all()
     instance = Paciente.objects.all()
@@ -320,7 +325,7 @@ def agendar_lista_hoy(request):
     return render(request,"agendar_lista_hoy.html",context)
 
 
-
+@login_required
 def tiempos(request):
 
     lista = Tiempos.objects.all()
@@ -340,7 +345,7 @@ def tiempos(request):
 
     return render(request,'tiempos.html',context)
 
-
+@login_required
 def eliminar_tiempo(request,id):
     tiempo = get_object_or_404(Tiempos, id=id)
     
@@ -357,7 +362,7 @@ def eliminar_tiempo(request,id):
     return render(request,'delete_time.html',context)
 
 
-
+@login_required
 def visita_detalles(request,id=None):
 
     registro = get_object_or_404(formulario, id_visita=id)    
@@ -370,6 +375,7 @@ def visita_detalles(request,id=None):
 
     return render(request,'visita_detalles_registro_adm.html',context)
 
+@login_required
 def tiempo_update(request, id=None):
     aux = Tiempos.objects.get(id=id) 
     

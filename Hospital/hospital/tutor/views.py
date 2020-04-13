@@ -12,15 +12,17 @@ from usuarios.forms import Paciente_Form , Tutor_Form , Personal_Form
 from django.views.generic import TemplateView ,View
 from tutor.forms import consulta_mensaje
 from tutor.models import Consulta
-
+from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 import os
 
+@login_required
 def logout_view(request):
     logout(request)
     return render(request,"main.html")
 
+@login_required
 def home_tutor(request):
 	current_user = request.user
 	tx = instance = get_object_or_404(Tutor, id_perfil_id = current_user.id)
@@ -40,6 +42,7 @@ def home_tutor(request):
 	}
 	return render(request,"home_tutor.html",context)
 
+@login_required
 def ver_perfil (request):
 	current_user = request.user
 	tx = instance = get_object_or_404(Tutor, id_perfil_id = current_user.id)
@@ -62,6 +65,7 @@ def ver_perfil (request):
 	}
 	return render(request,"ver_perfil.html",context)
 
+@login_required
 def biblioteca_tutor(request, id=None):
 	archivo = Archivo.objects.all()
 	current_user =  request.user
@@ -80,7 +84,7 @@ def biblioteca_tutor(request, id=None):
 
 	return render(request,'biblioteca_tutor.html',context)
 
-
+@login_required
 def Tutor_edit(request,perfil=None,id_detalle=None):
 	
 	tutor=Tutor.objects.get(id=id_detalle)
@@ -93,7 +97,7 @@ def Tutor_edit(request,perfil=None,id_detalle=None):
 		return redirect(ver_perfil)
 	return render(request,'tutor_f.html',{'form1':form1,'perfil':perfil,'tutor':tutor})
 
-
+@login_required
 def Paciente_edit(request,id_tutor=None,id_paciente=None):
 	paciente=Paciente.objects.get(id=id_paciente)
 	tutor=Tutor.objects.get(id=id_tutor)
@@ -106,7 +110,7 @@ def Paciente_edit(request,id_tutor=None,id_paciente=None):
 		return redirect(ver_perfil)
 	return render(request,'paciente_f.html',{'form':form,'tutor':tutor,'paciente':paciente})	
 
-
+@login_required
 def contacto(request):
 	current_user = request.user
 	tx =  get_object_or_404(Tutor, id_perfil_id = current_user.id)
@@ -130,6 +134,7 @@ def contacto(request):
 		
 	return render(request,'Contacto.html',context)
 
+@login_required
 def ver_consultas (request):
 	current_user = request.user
 	tut = instance = get_object_or_404(Tutor, id_perfil_id = current_user.id)
@@ -149,6 +154,7 @@ def ver_consultas (request):
 	}
 	return render(request,"ver_consulta.html",context)
 
+@login_required
 def ver_respuesta (request,id=None):
 	current_user = request.user
 	con =  get_object_or_404(Consulta, id=id)
@@ -168,7 +174,7 @@ def ver_respuesta (request,id=None):
 
 
 
-
+@login_required
 def contraseña_edit(request):
 	if request.method == 'POST':
 		form = PasswordChangeForm(request.user, request.POST)

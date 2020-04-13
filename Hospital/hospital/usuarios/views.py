@@ -8,11 +8,12 @@ from .models import Perfil, Tutor, Paciente ,Personal
 from .forms import  Registro_Form,Perfil_Form, Tutor_Form, Paciente_Form, Personal_Form
 from django.urls import reverse_lazy
 import threading
-
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from lista.views import usuarios_listen, usuarios_listu
 from django.contrib.auth.decorators import login_required
 
+@login_required
 def Usuarios_in_Grupos(usuario_id):
 	users=User.objects.get(id=usuario_id)
 	tutores=Group.objects.get(name='Tutores')
@@ -26,7 +27,7 @@ def Usuarios_in_Grupos(usuario_id):
 			personal.user_set.add(users)
 			disponible.user_set.add(users)
 
-
+@login_required
 def Set_password(usuario_id):
 	nombre=[]
 	apellido=[]
@@ -47,7 +48,7 @@ def Set_password(usuario_id):
 	
        	
 
-
+@login_required
 def PerfilView(request,perfil):
 	tutor=None
 	paciente=None
@@ -71,7 +72,7 @@ def PerfilView(request,perfil):
 	return render(request,'perfil.html',context)
 
 
-
+@login_required
 def perfil_edit(request,usuario_id):
     usuario=Perfil.objects.get(usuario_id=usuario_id)
     if request.method=='GET':
@@ -90,7 +91,7 @@ def perfil_edit(request,usuario_id):
             return redirect(PerfilView,usuario.id)       
     return render(request,'perfil_form.html',{'form':form})	
 
-
+@login_required
 def Registro_View(request):
 	if request.method=='POST':
 		form1=Registro_Form(request.POST)
@@ -113,7 +114,7 @@ def Registro_View(request):
 	return render(request,'registro.html',{'form1':form1})
 			
 		
-
+@login_required
 def Tutor_view(request,perfil):
 	
 	if request.method=='POST':
@@ -133,7 +134,7 @@ def Tutor_view(request,perfil):
 
 
 
-
+@login_required
 def Paciente_view(request,perfil):
 	tutor=Tutor.objects.get(id_perfil=perfil)
 	if request.method=='POST':
@@ -155,7 +156,7 @@ def Paciente_view(request,perfil):
 
 
 
-
+@login_required
 def Personal_view(request,perfil):
 	if request.method=='POST':
 		form=Personal_Form(request.POST,request.FILES)
@@ -172,4 +173,4 @@ def Personal_view(request,perfil):
 		
 	return render(request,'personal_form.html',{'form':form,'perfil':perfil})
 
-# Create your views here.
+
