@@ -268,12 +268,16 @@ def visita_update(request, id=None, id_paciente=None):
 
 @login_required
 def reagendar(request):
-    query = Llamar.objects.all()
+    query = 0
     cont = Llamar.objects.count()
+
+    if cont >0:
+        query = get_object_or_404(Llamar, id=1)
 
     context = {
 
     "cont": cont,
+    "i":query,
 
     }
 

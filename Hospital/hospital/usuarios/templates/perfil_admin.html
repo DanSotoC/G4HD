@@ -60,6 +60,56 @@
 
 		</table><br>
 		<a href="{%url 'contra_perfil_edit'%}" class="btn btn-info btn-block">Cambiar Clave</a>
+
+
+
+<!-- Fin primera query -->
+
+{%if cont == 0 %}
+
+	<div class="col-sm-6"> 
+		<br>
+
+	
+		<table>
+			<thead>
+				<h1>Datos Reagendar:<h1><hr style="background-color:lightblue; width: 360px; margin-left: 0px; height: 3px;"></h1>
+
+		<a href="#" class="btn btn-info btn-block">Ingresar Datos</a>
+
+
+{%else%}
+
+	<div class="col-sm-6"> 
+		<br>
+
+	
+		<table>
+			<thead>
+				<h1>Datos Reagendar:<h1><hr style="background-color:lightblue; width: 360px; margin-left: 0px; height: 3px;"></h1>
+
+			</thead>
+			<tbody>
+				<tr>
+					<th>Telefono:</th>
+					<td> {{q.tel}} </td>
+				</tr>
+				<tr>
+					<th>Correo Electronico: </th>
+					<td>{{q.correo}}</td>
+				</tr>
+				<tr>
+					<th>Texto Explicativo:</th>
+					<td>{{q.texto_explicativo}}</td>
+				</tr>
+				
+			</tbody>
+
+		</table><br>
+		<a href="#" class="btn btn-info btn-block">Editar Datos</a>
+
+{%endif%}
+
 </div>
 
 

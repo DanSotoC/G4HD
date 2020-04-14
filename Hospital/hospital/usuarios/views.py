@@ -1,12 +1,13 @@
 
 from django.views import generic
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.views.generic import TemplateView
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordChangeForm
 from .models import Perfil, Tutor, Paciente ,Personal
+from visita.models import Llamar
 from .forms import  Registro_Form,Perfil_Form, Tutor_Form, Paciente_Form, Personal_Form
 from django.urls import reverse_lazy
 import threading
@@ -179,9 +180,16 @@ def Personal_view(request,perfil):
 @login_required
 def Perfil_admin(request):
 	current_user = request.user
+	cont = Llamar.objects.count()
+	query = 0
+
+	if cont > 0:
+		query = get_object_or_404(Llamar, id=1)
 
 	context={
 	"user":current_user,
+	"q":query,
+	"cont":cont,
 	}
 
 	return render(request,"perfil_admin.html",context)
@@ -203,4 +211,5 @@ def contraseña_perfil_edit(request):
 			
 	else:
 		form = PasswordChangeForm(request.user)
+
 		return render(request,'contra_perfil_edit.html',{'form': form})
