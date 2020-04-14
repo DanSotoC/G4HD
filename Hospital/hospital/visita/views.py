@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404,redirect, reverse, HttpResponseRedirect
 from usuarios.models import Paciente
-from visita.models import Visita, Tiempos
+from visita.models import Visita, Tiempos, Llamar
 from usuarios.models import Tutor,Personal
 from usuarios.models import Perfil
 from .forms import  Agendar, asignar_equipo, time
@@ -268,7 +268,16 @@ def visita_update(request, id=None, id_paciente=None):
 
 @login_required
 def reagendar(request):
-    return render(request,"reagendar.html")
+    query = Llamar.objects.all()
+    cont = Llamar.objects.count()
+
+    context = {
+
+    "cont": cont,
+
+    }
+
+    return render(request,"reagendar.html", context)
 
 @login_required
 def visita_paciente_detalle(request, id=None):

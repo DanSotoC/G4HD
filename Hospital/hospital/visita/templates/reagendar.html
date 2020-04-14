@@ -6,16 +6,30 @@
 
 {%block content%}
 
+
+
 <div class="card text-center">
   <div class="card-header">
     <h1> Contacto Hospital </h1>
   </div>
+
+  {% if cont == 0 %}
+
   <div class="card-body">
   
-    <p class="card-text">Numero de telefono: xxxxxxxx</p>
-    <p class="card-text">Correo: xxxxxxx</p>
-    <p class="card-text"> Algun texto explicando bajos que normas se puede solicitar que se reagende una hora </p>
+    <p class="card-text">Pronto se actualizaran los datos para reagendar su visita, muchas gracias.</p>
     
+  {%else%}  
+
+  <div class="card-body">
+  
+    <p class="card-text">Numero de telefono: {{tel}} </p>
+    <p class="card-text">Correo: {{correo}} </p>
+    <p class="card-text"> {{texto_explicativo}} </p>
+
+  {%endif%}
+
+
 
     <a href='{%  url "visita_paciente" %}' class="btn btn-danger" role="button">Volver</a>
 

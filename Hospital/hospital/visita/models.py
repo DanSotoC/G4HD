@@ -12,4 +12,7 @@ class Tiempos(models.Model):
 	tiempo = models.IntegerField(null=False, default=0)
 
 
-
+class Llamar(models.Model):
+	tel = models.CharField(max_length=20,null=False)
+	correo = models.CharField(max_length=40,null=False)
+	texto_explicativo = models.CharField(max_length=200,null=False)
