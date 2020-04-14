@@ -24,6 +24,7 @@ def logout_view(request):
 
 @login_required
 def home_tutor(request):
+	request.session.set_expiry(0)
 	current_user = request.user
 	tx = instance = get_object_or_404(Tutor, id_perfil_id = current_user.id)
 	px = instance = get_object_or_404(Paciente, id_tutor_id = tx.id)

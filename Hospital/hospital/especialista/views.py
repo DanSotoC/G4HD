@@ -22,6 +22,7 @@ def logout_view(request):
 
 @login_required
 def home_especialista(request):
+	request.session.set_expiry(0)
 	current_user = request.user
 	px = instance = get_object_or_404(Personal, id_perfil_id = current_user.id)
 

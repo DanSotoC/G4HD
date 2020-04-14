@@ -2,8 +2,10 @@
 from django.views import generic
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
 from django.views.generic import TemplateView
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import PasswordChangeForm
 from .models import Perfil, Tutor, Paciente ,Personal
 from .forms import  Registro_Form,Perfil_Form, Tutor_Form, Paciente_Form, Personal_Form
 from django.urls import reverse_lazy
@@ -174,3 +176,31 @@ def Personal_view(request,perfil):
 	return render(request,'personal_form.html',{'form':form,'perfil':perfil})
 
 
+@login_required
+def Perfil_admin(request):
+	current_user = request.user
+
+	context={
+	"user":current_user,
+	}
+
+	return render(request,"perfil_admin.html",context)
+
+
+
+@login_required
+def contraseña_perfil_edit(request):
+	if request.method == 'POST':
+		form = PasswordChangeForm(request.user, request.POST)
+		if form.is_valid():
+			user = form.save()
+			update_session_auth_hash(request, user)  # Important!
+			messages.success(request, 'Your password was successfully updated!')
+			return redirect(contraseña_perfil_edit)
+		else:
+			messages.error(request, 'Porfavor introduzca contraseña correcta')
+			return redirect(contraseña_perfil_edit)
+			
+	else:
+		form = PasswordChangeForm(request.user)
+		return render(request,'contra_perfil_edit.html',{'form': form})

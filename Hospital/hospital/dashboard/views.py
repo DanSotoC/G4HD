@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def home(request):
+	request.session.set_expiry(0)
 	pacientes=Paciente.objects.all()
 	
 	pacientes_SB=Paciente.objects.filter(comuna='San Bernardo').count()

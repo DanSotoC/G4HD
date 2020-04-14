@@ -10,4 +10,6 @@ url(r'editar/(?P<usuario_id>\d+)$',views.perfil_edit, name="perfil_editar"),
 url(r'tutor/datos/(?P<perfil>\d+)$',views.Tutor_view, name="tutor_form"),
 url(r'paciente/datos/(?P<perfil>\d+)$',views.Paciente_view, name="paciente_form"),
 url(r'personal/datos/(?P<perfil>\d+)$',views.Personal_view, name="personal_form"),
+url(r'perfil/admin/',views.Perfil_admin, name="perfil_admin"),
+url(r'admin/password/edit',views.contraseña_perfil_edit, name="contra_perfil_edit"),
 ]
