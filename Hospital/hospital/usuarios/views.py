@@ -15,6 +15,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 from lista.views import usuarios_listen, usuarios_listu
 from django.contrib.auth.decorators import login_required
+from dashboard.views import home
 
 @login_required
 def Usuarios_in_Grupos(usuario_id):
@@ -184,7 +185,7 @@ def Perfil_admin(request):
 	query = 0
 
 	if cont > 0:
-		query = get_object_or_404(Llamar, id=1)
+		query = get_object_or_404(Llamar)
 
 	context={
 	"user":current_user,
@@ -213,3 +214,35 @@ def contraseña_perfil_edit(request):
 		form = PasswordChangeForm(request.user)
 
 		return render(request,'contra_perfil_edit.html',{'form': form})
+
+
+
+def contacto(request):
+	
+	if request.method=='POST':
+
+		telefono=request.POST.get('tel')
+		email=request.POST.get('correo')
+		exp=request.POST.get('texto_explicativo')
+		llamar=Llamar(tel=telefono,correo=email,texto_explicativo=exp)
+		llamar.save()
+		return redirect(home)
+	return render(request,"contacto_f.html",context=None)
+
+def contacto_edit(request):
+	llamar=Llamar.objects.last()
+	if request.method=='POST':
+
+		telefono=request.POST.get('tel')
+		email=request.POST.get('correo')
+		exp=request.POST.get('texto_explicativo')
+		llamar.tel=telefono
+		llamar.correo=email
+		llamar.texto_explicativo=exp
+		llamar.save()
+		return redirect(home)
+
+	context={
+		"llamar":llamar,
+	}
+	return render(request,"contacto_edit_f.html",context)

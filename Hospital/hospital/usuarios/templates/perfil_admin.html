@@ -75,7 +75,7 @@
 			<thead>
 				<h1>Datos Reagendar:<h1><hr style="background-color:lightblue; width: 360px; margin-left: 0px; height: 3px;"></h1>
 
-		<a href="#" class="btn btn-info btn-block">Ingresar Datos</a>
+		<a href="{%url 'contacto'%}" class="btn btn-info btn-block">Ingresar Datos</a>
 
 
 {%else%}
@@ -106,7 +106,7 @@
 			</tbody>
 
 		</table><br>
-		<a href="#" class="btn btn-info btn-block">Editar Datos</a>
+		<a href="{% url 'contacto_edit'%}" class="btn btn-info btn-block">Editar Datos</a>
 
 {%endif%}
 

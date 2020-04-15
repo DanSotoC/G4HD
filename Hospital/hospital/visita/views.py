@@ -272,7 +272,7 @@ def reagendar(request):
     cont = Llamar.objects.count()
 
     if cont >0:
-        query = get_object_or_404(Llamar, id=1)
+        query = get_object_or_404(Llamar)
 
     context = {
 

@@ -12,4 +12,8 @@ url(r'paciente/datos/(?P<perfil>\d+)$',views.Paciente_view, name="paciente_form"
 url(r'personal/datos/(?P<perfil>\d+)$',views.Personal_view, name="personal_form"),
 url(r'perfil/admin/',views.Perfil_admin, name="perfil_admin"),
 url(r'admin/password/edit',views.contraseña_perfil_edit, name="contra_perfil_edit"),
+url(r'contacto/add',views.contacto, name="contacto"),
+url(r'edit/contacto',views.contacto_edit, name="contacto_edit"),
+
+
 ]
