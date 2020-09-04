@@ -1,0 +1,24 @@
+Usuarios con acceso al sistema
+
+la password se setea comun para todos al principio y luego se modifica internamente
+con los datos del usuario nombre,apellido y numero telefonico
+
+Camilo Gutierrez 965744389
+
+password: camgu9657
+-----------------------------------------------------------------------------------
+
+Superuser-------
+username: admin
+password: admadm1212
+
+
+Administrador--------
+username: Administrador1
+password:admadm9876
+Tutor----------(el paciente no tiene u usuario ,es el tutor quien maneja la app y tiene asignado la info del paciente)
+
+
+
+
+Personal------------(personal interno del hospital,quienes van a terreno tienen distintos roles dentro del sistema)

@@ -17,21 +17,25 @@ from lista.views import usuarios_listen, usuarios_listu
 from django.contrib.auth.decorators import login_required
 from dashboard.views import home
 
-@login_required
+
 def Usuarios_in_Grupos(usuario_id):
+	
 	users=User.objects.get(id=usuario_id)
 	tutores=Group.objects.get(name='Tutores')
 	personal=Group.objects.get(name='Personal')
 	disponible=Group.objects.get(name='Disponible')
+	administrador=Group.objects.get(name='Administrador')
 
 	if users.perfil.rol=='TUTOR':
 		tutores.user_set.add(users)
-	else:
-		if users.perfil.rol=='PERSONAL':
-			personal.user_set.add(users)
-			disponible.user_set.add(users)
+	if users.perfil.rol=='PERSONAL':
+		personal.user_set.add(users)
+		disponible.user_set.add(users)
+	if users.perfil.rol=='ADMINISTRADOR':
+		administrador.user_set.add(users)
 
-@login_required
+
+
 def Set_password(usuario_id):
 	nombre=[]
 	apellido=[]
